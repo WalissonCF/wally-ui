@@ -1,0 +1,49 @@
+{
+  "name": "wally-ui",
+  "version": "1.0.0",
+  "description": "About Where’s Wally? Right here — bringing you ready-to-use Angular components with Wally-UI. Stop searching, start building.",
+  "bin": {
+    "wally": "dist/cli.js"
+  },
+  "files": [
+    "dist/**/*",
+    "templates/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "echo 'Tests temporarily disabled' && exit 0",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WalissonCF/wally-ui.git"
+  },
+  "keywords": [
+    "angular",
+    "cli",
+    "component-generator",
+    "tailwind",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "author": "Walisson Ferreira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WalissonCF/wally-ui/issues"
+  },
+  "homepage": "https://github.com/WalissonCF/wally-ui#readme",
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^24.5.1",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.1",
+    "fs-extra": "^11.3.2"
+  }
+}
