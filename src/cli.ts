@@ -68,7 +68,7 @@ program
                 console.log(chalk.green(`  ✓ ${component}`));
             })
         } catch (error) {
-            console.log(chalk.red('No templates found'));
+            console.log(chalk.red('No templates found!'));
         }
     })
 
