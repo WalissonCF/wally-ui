@@ -1,6 +1,6 @@
 {
   "name": "wally-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "About Where’s Wally? Right here — bringing you ready-to-use Angular components with Wally-UI. Stop searching, start building.",
   "bin": {
     "wally": "dist/cli.js"
@@ -21,17 +21,21 @@
     "url": "git+https://github.com/WalissonCF/wally-ui.git"
   },
   "keywords": [
+    "wally",
+    "wally-ui",
+    "wally-ui-cli",
+    "wally-components",
     "angular",
     "angular-components",
     "angular-cli",
     "component-generator",
-    "scaffolding",
+    "component-scaffolding",
     "ui-library",
     "ui-kit",
+    "design-system",
     "tailwind",
     "angular-tailwind",
-    "typescript",
-    "design-system"
+    "typescript"
   ],
   "engines": {
     "node": ">=20.0.0"
