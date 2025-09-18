@@ -1,5 +1,5 @@
 {
-  "name": "wally-ui",
+  "name": "@wally-ui/cli",
   "version": "1.0.0",
   "description": "About Where’s Wally? Right here — bringing you ready-to-use Angular components with Wally-UI. Stop searching, start building.",
   "bin": {
