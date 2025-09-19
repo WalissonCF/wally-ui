@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from "commander";
+import readline from "readline";
 import fs from "fs-extra";
 import chalk from "chalk";
 import path from "path";
@@ -19,10 +20,24 @@ console.log(chalk.whiteBright(`
 
 const program: Command = new Command();
 
+const askConfirmation = (question: string) => {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    return new Promise(resolve => {
+        rl.question(question, answer => {
+            rl.close();
+            resolve(answer.toLowerCase().trim() === 'y' || answer.toLowerCase().trim() === 'yes');
+        });
+    });
+};
+
 program
     .name('wally')
     .description('Angular component generator')
-    .version('1.0.5');
+    .version('1.0.8');
 
 program
     .command('add <component>')
@@ -30,7 +45,7 @@ program
     .action(async (component) => {
         // Check if Angular project
         if (!fs.existsSync('angular.json')) {
-            console.log(chalk.red('Not an Angular project. Run this in Angular project root.'));
+            console.log(chalk.redBright('Not an Angular project. Run this in Angular project root.'));
             return;
         }
 
@@ -41,8 +56,20 @@ program
             const htmlFile = await fs.readFile(path.join(playgroundPath, `${component}.html`), 'utf8');
 
             // Create component directory
-            const componentPath = `src/app/components/${component}`;
+            const componentPath = `src/app/components/wally-ui/${component}`;
             await fs.ensureDir(componentPath);
+
+            if (await fs.pathExists(componentPath)) {
+                console.log(chalk.yellowBright(`Component '${component}' already exists at ${componentPath}`));
+                const shouldOverwrite = await askConfirmation(
+                    chalk.blueBright('Do you want to overwrite it? ') + chalk.cyan('(y/N): ')
+                );
+
+                if (!shouldOverwrite) {
+                    console.log(chalk.gray('Operation cancelled.'));
+                    return;
+                }
+            }
 
             // Write files
             await fs.writeFile(`${componentPath}/${component}.ts`, typescriptFile);
