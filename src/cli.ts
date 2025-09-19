@@ -34,7 +34,7 @@ program
             return;
         }
 
-        const playgroundPath = path.join(__dirname, '..', 'playground', 'src', 'app', 'components', component);
+        const playgroundPath = path.join(__dirname, '..', 'playground', 'showcase', 'src', 'app', 'components', component);
 
         try {
             const typescriptFile = await fs.readFile(path.join(playgroundPath, `${component}.ts`), 'utf8');
@@ -59,7 +59,7 @@ program
     .alias('ls')
     .description('List available components')
     .action(async () => {
-        const playgroundComponentsPath: string = path.join(__dirname, '..', 'playground', 'src', 'app', 'components');
+        const playgroundComponentsPath: string = path.join(__dirname, '..', 'playground', 'showcase', 'src', 'app', 'components');
 
         try {
             const components: string[] = await fs.readdir(playgroundComponentsPath);
