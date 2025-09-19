@@ -22,7 +22,7 @@ const program: Command = new Command();
 program
     .name('wally')
     .description('Angular component generator')
-    .version('1.0.0');
+    .version('1.0.5');
 
 program
     .command('add <component>')
@@ -34,19 +34,19 @@ program
             return;
         }
 
-        const templatePath = path.join(__dirname, '..', 'templates', component);
+        const playgroundPath = path.join(__dirname, '..', 'playground', 'src', 'app', 'components', component);
 
         try {
-            const typescriptFile = await fs.readFile(path.join(templatePath, `${component}.component.ts`), 'utf8');
-            const htmlFile = await fs.readFile(path.join(templatePath, `${component}.component.html`), 'utf8');
+            const typescriptFile = await fs.readFile(path.join(playgroundPath, `${component}.ts`), 'utf8');
+            const htmlFile = await fs.readFile(path.join(playgroundPath, `${component}.html`), 'utf8');
 
             // Create component directory
             const componentPath = `src/app/components/${component}`;
             await fs.ensureDir(componentPath);
 
             // Write files
-            await fs.writeFile(`${componentPath}/${component}.component.ts`, typescriptFile);
-            await fs.writeFile(`${componentPath}/${component}.component.html`, htmlFile);
+            await fs.writeFile(`${componentPath}/${component}.ts`, typescriptFile);
+            await fs.writeFile(`${componentPath}/${component}.html`, htmlFile);
 
             console.log(chalk.green('Template loaded successfully!'));
         } catch (error) {
@@ -59,16 +59,17 @@ program
     .alias('ls')
     .description('List available components')
     .action(async () => {
-        const templatesPath: string = path.join(__dirname, '..', 'templates');
+        const playgroundComponentsPath: string = path.join(__dirname, '..', 'playground', 'src', 'app', 'components');
 
         try {
-            const components: string[] = await fs.readdir(templatesPath);
+            const components: string[] = await fs.readdir(playgroundComponentsPath);
             console.log(chalk.blue('\nAvailable components:'));
             components.forEach(component => {
                 console.log(chalk.green(`  ✓ ${component}`));
             })
         } catch (error) {
-            console.log(chalk.red('No templates found!'));
+            console.log(chalk.red('Could not access playground components.'));
+            console.log(chalk.yellow('Make sure playground/src/app/components/ exists.'));
         }
     })
 

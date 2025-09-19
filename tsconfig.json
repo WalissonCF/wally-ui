@@ -41,7 +41,6 @@
     "src/**/*"
   ],
   "exclude": [
-    "templates/**/*",
     "playground/**/*",
     "node_modules/**/*",
     "dist/**/*"

@@ -1,13 +1,13 @@
 {
   "name": "wally-ui",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "About Where’s Wally? Right here — bringing you ready-to-use Angular components with Wally-UI. Stop searching, start building.",
   "bin": {
     "wally": "dist/cli.js"
   },
   "files": [
     "dist/**/*",
-    "templates/**/*",
+    "playground/**/*",
     "README.md"
   ],
   "scripts": {
