@@ -1,12 +1,33 @@
-<button class="
+<button [type]="buttonType()" [disabled]="buttonDisabled() || buttonLoading()" class="
+        group
         w-full
-        bg-[#0a0a0a]
-        dark:bg-white
+        flex items-center justify-center
+        bg-[#0a0a0a] hover:bg-[#0a0a0a]/85
+        disabled:bg-[#0a0a0a]/85
+        dark:bg-white dark:hover:bg-white/85
+        dark:disabled:bg-white/85
+        disabled:pointer-events-none
         p-2.5
         rounded-md
+        transition delay-150 duration-300 ease-in-out
+        antialiased
+        cursor-pointer
     ">
+
+    @if (buttonLoading()) {
+    <svg class="mr-3 -ml-1 size-4 animate-spin dark:text-[#0a0a0a]" xmlns="http://www.w3.org/2000/svg" fill="none"
+        viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+        </path>
+    </svg>
+    }
+
     <span class="
     text-white
+    text-sm
+    font-medium
     dark:text-[#0a0a0a]
     ">
         {{ buttonText() }}
