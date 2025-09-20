@@ -1,4 +1,4 @@
-<button [type]="buttonType()" [disabled]="buttonDisabled() || buttonLoading()" class="
+<button [type]="type()" [disabled]="disabled() || loading()" class="
         group
         relative
         w-full
@@ -15,7 +15,7 @@
         cursor-pointer
     ">
 
-    @if (buttonNotification()) {
+    @if (showNotification()) {
     <span class="absolute top-0 right-0 -mt-1 -mr-1 flex size-3">
         <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75">
         </span>
@@ -24,7 +24,7 @@
     </span>
     }
 
-    @if (buttonLoading()) {
+    @if (loading()) {
     <svg class="mr-3 -ml-1 size-4 animate-spin dark:text-[#0a0a0a]" xmlns="http://www.w3.org/2000/svg" fill="none"
         viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -40,6 +40,6 @@
     font-medium
     dark:text-[#0a0a0a]
     ">
-        {{ buttonText() }}
+        {{ text() }}
     </span>
 </button>

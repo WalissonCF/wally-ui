@@ -10,9 +10,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './button.html',
 })
 export class Button {
-  buttonText: InputSignal<string> = input<string>('Wally Button');
-  buttonType: InputSignal<string> = input<string>('button');
-  buttonDisabled: InputSignal<boolean> = input<boolean>(false);
-  buttonLoading: InputSignal<boolean> = input<boolean>(false);
-  buttonNotification: InputSignal<boolean> = input<boolean>(false);
+  text: InputSignal<string> = input<string>('Wally Button');
+  type: InputSignal<string> = input<string>('button');
+  disabled: InputSignal<boolean> = input<boolean>(false);
+  loading: InputSignal<boolean> = input<boolean>(false);
+  showNotification: InputSignal<boolean> = input<boolean>(false);
 }
