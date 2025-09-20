@@ -45,7 +45,7 @@
   "bugs": {
     "url": "https://github.com/WalissonCF/wally-ui/issues"
   },
-  "homepage": "https://github.com/WalissonCF/wally-ui#readme",
+  "homepage": "https://walissoncf.github.io/wally-ui/",
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^24.5.1",

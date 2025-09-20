@@ -1,6 +1,8 @@
 # Wally UI
 
-Angular component generator CLI
+Where's Wally? Right here — bringing you ready-to-use Angular components.
+
+**[Live Demo](https://walissoncf.github.io/wally-ui/)**
 
 ## Usage
 ```bash
