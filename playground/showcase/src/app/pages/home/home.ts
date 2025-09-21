@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import { Button } from '../../components/button/button';
 
 @Component({
   selector: 'wally-home',
-  imports: [
-    Button
-  ],
+  imports: [],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

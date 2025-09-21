@@ -1,0 +1,192 @@
+<div class="font-mono">
+  <div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-4xl font-bold mb-4 text-[#0a0a0a] dark:text-white">
+      Button
+    </h1>
+    <p class="text-lg mb-12 text-gray-700 dark:text-gray-400">
+      A versatile button component with loading states, notifications, and customizable text.
+    </p>
+
+    <!-- Basic Usage -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">
+        Basic Usage
+      </h2>
+
+      <div class="space-y-8">
+        <div>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <code class="text-sm text-[#0a0a0a] dark:text-white">
+              {{ '<' }}wally-button{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
+            </code>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button></wally-button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Text -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">
+        Custom Text
+      </h2>
+
+      <div class="space-y-8">
+        <div>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <code class="text-sm text-[#0a0a0a] dark:text-white">
+              {{ '<' }}wally-button text="Save Changes"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
+            </code>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button text="Save Changes"></wally-button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- States -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">
+        States
+      </h2>
+
+      <div class="space-y-8">
+        <!-- Disabled -->
+        <div>
+          <h3 class="text-lg font-medium mb-3 text-[#0a0a0a] dark:text-white">
+            Disabled
+          </h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <code class="text-sm text-[#0a0a0a] dark:text-white">
+              {{ '<' }}wally-button text="Disabled" [disabled]="true"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
+            </code>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button text="Disabled" [disabled]="true"></wally-button>
+          </div>
+        </div>
+
+        <!-- Loading -->
+        <div>
+          <h3 class="text-lg font-medium mb-3 text-[#0a0a0a] dark:text-white">
+            Loading
+          </h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <code class="text-sm text-[#0a0a0a] dark:text-white">
+              {{ '<' }}wally-button text="Loading" [loading]="true"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
+            </code>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button text="Loading" [loading]="true"></wally-button>
+          </div>
+        </div>
+
+        <!-- With Notification -->
+        <div>
+          <h3 class="text-lg font-medium mb-3 text-[#0a0a0a] dark:text-white">
+            With Notification Badge
+          </h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <code class="text-sm text-[#0a0a0a] dark:text-white">
+              {{ '<' }}wally-button text="Messages" [showNotification]="true"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
+            </code>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button text="Messages" [showNotification]="true"></wally-button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Button Types -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">
+        Button Types
+      </h2>
+
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-lg font-medium mb-3 text-[#0a0a0a] dark:text-white">Submit Button</h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <code class="text-sm text-[#0a0a0a] dark:text-white">
+              {{ '<' }}wally-button text="Submit Form" type="submit"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
+            </code>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button text="Submit Form" type="submit"></wally-button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Properties -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">Properties</h2>
+
+      <div class="space-y-4">
+        <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
+          <div class="font-mono text-sm mb-2">
+            <span class="text-blue-600 dark:text-blue-400">text</span><span class="text-[#0a0a0a] dark:text-white">: </span>
+            <span class="text-purple-600 dark:text-purple-400">string</span> <span class="text-[#0a0a0a] dark:text-white"> = </span>
+            <span class="text-green-600 dark:text-green-400">'Wally Button'</span>
+            <span class="text-[#0a0a0a] dark:text-white">;</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">The text displayed on the button</p>
+        </div>
+
+        <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
+          <div class="font-mono text-sm mb-2">
+            <span class="text-blue-600 dark:text-blue-400">type</span><span class="text-[#0a0a0a] dark:text-white">: </span>
+            <span class="text-purple-600 dark:text-purple-400">string</span> <span class="text-[#0a0a0a] dark:text-white"> = </span>
+            <span class="text-green-600 dark:text-green-400">'button'</span>
+            <span class="text-[#0a0a0a] dark:text-white">;</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">HTML button type (button, submit, reset)</p>
+        </div>
+
+        <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
+          <div class="font-mono text-sm mb-2">
+            <span class="text-blue-600 dark:text-blue-400">disabled</span><span class="text-[#0a0a0a] dark:text-white">: </span>
+            <span class="text-purple-600 dark:text-purple-400">boolean</span> <span class="text-[#0a0a0a] dark:text-white"> = </span>
+            <span class="text-green-600 dark:text-green-400">false</span>
+            <span class="text-[#0a0a0a] dark:text-white">;</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">Whether the button is disabled</p>
+        </div>
+
+        <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
+          <div class="font-mono text-sm mb-2">
+            <span class="text-blue-600 dark:text-blue-400">loading</span><span class="text-[#0a0a0a] dark:text-white">: </span>
+            <span class="text-purple-600 dark:text-purple-400">boolean</span> <span class="text-[#0a0a0a] dark:text-white"> = </span>
+            <span class="text-green-600 dark:text-green-400">false</span>
+            <span class="text-[#0a0a0a] dark:text-white">;</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">Shows loading spinner when true</p>
+        </div>
+
+        <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
+          <div class="font-mono text-sm mb-2">
+            <span class="text-blue-600 dark:text-blue-400">showNotification</span><span class="text-[#0a0a0a] dark:text-white">: </span>
+            <span class="text-purple-600 dark:text-purple-400">boolean</span> <span class="text-[#0a0a0a] dark:text-white"> = </span>
+            <span class="text-green-600 dark:text-green-400">false</span>
+            <span class="text-[#0a0a0a] dark:text-white">;</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">Shows notification badge when true</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Import -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">Import</h2>
+      <div class="p-4 rounded-lg bg-gray-200 dark:bg-[#121212]">
+        <code class="text-sm text-[#0a0a0a] dark:text-white">
+          import {{ '{' }} Button {{ '}' }} from './components/button/button';
+        </code>
+      </div>
+    </section>
+  </div>
+</div>
