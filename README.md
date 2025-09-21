@@ -2,7 +2,7 @@
 
 Where's Wally? Right here — bringing you ready-to-use Angular components.
 
-**[Live Demo](https://walissoncf.github.io/wally-ui/)**
+**[Live Demo](https://wally-ui.com/)**
 
 ## Usage
 ```bash
