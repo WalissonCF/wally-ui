@@ -1,6 +1,6 @@
 {
   "name": "wally-ui",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "About Where’s Wally? Right here — bringing you ready-to-use Angular components with Wally-UI. Stop searching, start building.",
   "bin": {
     "wally": "dist/cli.js"
@@ -45,7 +45,7 @@
   "bugs": {
     "url": "https://github.com/WalissonCF/wally-ui/issues"
   },
-  "homepage": "https://walissoncf.github.io/wally-ui/",
+  "homepage": "https://wally-ui.com/",
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^24.5.1",
