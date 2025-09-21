@@ -1,15 +1,15 @@
 <div class="font-mono">
   <div class="max-w-4xl mx-auto p-6">
-    <h1 class="text-4xl font-bold mb-4 text-[#0a0a0a] dark:text-white">
+    <h1 class="text-2xl font-bold mb-4 text-[#0a0a0a] dark:text-white">
       Button
     </h1>
-    <p class="text-lg mb-12 text-gray-700 dark:text-gray-400">
+    <p class="text-gray-700 dark:text-gray-400 mb-6">
       A versatile button component with loading states, notifications, and customizable text.
     </p>
 
     <!-- Installation -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">Installation</h2>
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Installation</h2>
       <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
         <code class="text-sm text-[#0a0a0a] dark:text-white">
           npx wally-ui add button
@@ -17,9 +17,32 @@
       </div>
     </section>
 
+    <!-- Import -->
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Import</h2>
+      <div class="space-y-4">
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <code class="text-sm text-[#0a0a0a] dark:text-white">
+            import {{ '{' }} Button {{ '}' }} from './components/wally-ui/button/button';
+          </code>
+        </div>
+
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <code class="text-sm text-[#0a0a0a] dark:text-white">
+            &#64;Component({{ '{' }}<br>
+            &nbsp;&nbsp;selector: 'app-example',<br>
+            &nbsp;&nbsp;imports: [Button],<br>
+            &nbsp;&nbsp;templateUrl: './example.html',<br>
+            &nbsp;&nbsp;styleUrl: './example.css'<br>
+            {{ '}' }})
+          </code>
+        </div>
+      </div>
+    </section>
+
     <!-- Basic Usage -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">
         Basic Usage
       </h2>
 
@@ -38,8 +61,8 @@
     </section>
 
     <!-- Custom Text -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">
         Custom Text
       </h2>
 
@@ -58,15 +81,15 @@
     </section>
 
     <!-- States -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">
         States
       </h2>
 
       <div class="space-y-8">
         <!-- Disabled -->
         <div>
-          <h3 class="text-lg font-medium mb-3 text-[#0a0a0a] dark:text-white">
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">
             Disabled
           </h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
@@ -81,7 +104,7 @@
 
         <!-- Loading -->
         <div>
-          <h3 class="text-lg font-medium mb-3 text-[#0a0a0a] dark:text-white">
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">
             Loading
           </h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
@@ -96,7 +119,7 @@
 
         <!-- With Notification -->
         <div>
-          <h3 class="text-lg font-medium mb-3 text-[#0a0a0a] dark:text-white">
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">
             With Notification Badge
           </h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
@@ -112,14 +135,14 @@
     </section>
 
     <!-- Button Types -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">
         Button Types
       </h2>
 
       <div class="space-y-8">
         <div>
-          <h3 class="text-lg font-medium mb-3 text-[#0a0a0a] dark:text-white">Submit Button</h3>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Submit Button</h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
             <code class="text-sm text-[#0a0a0a] dark:text-white">
               {{ '<' }}wally-button text="Submit Form" type="submit"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
@@ -133,8 +156,8 @@
     </section>
 
     <!-- Properties -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">Properties</h2>
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Properties</h2>
 
       <div class="space-y-4">
         <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
@@ -189,14 +212,93 @@
       </div>
     </section>
 
-    <!-- Import -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-6 text-[#0a0a0a] dark:text-white">Import</h2>
-      <div class="p-4 rounded-lg bg-gray-200 dark:bg-[#121212]">
-        <code class="text-sm text-[#0a0a0a] dark:text-white">
-          import {{ '{' }} Button {{ '}' }} from './components/button/button';
-        </code>
+    <!-- Under Construction -->
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Under Construction</h2>
+
+      <div class="space-y-4">
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Button with Icon</h3>
+            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">
+            Support for icons within buttons. This will include leading and trailing icon positions with proper spacing.
+          </p>
+        </div>
+
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Button Variants</h3>
+            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">
+            Multiple button styles including outline, ghost, destructive, and secondary variants.
+          </p>
+        </div>
+
+
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Click Events</h3>
+            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">
+            Support for click event handling and custom callback functions.
+          </p>
+        </div>
+
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Accessibility</h3>
+            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">
+            ARIA labels, keyboard navigation, and screen reader support for better accessibility.
+          </p>
+        </div>
+
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Ripple Effect</h3>
+            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">
+            Visual feedback with ripple animation on button press for enhanced user experience.
+          </p>
+        </div>
+
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Tooltip Support</h3>
+            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">
+            Built-in tooltip integration for providing additional context and information.
+          </p>
+        </div>
+
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Link Button</h3>
+            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">
+            Button that functions as a link with href support while maintaining button styling.
+          </p>
+        </div>
+
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Button Group</h3>
+            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">
+            Group multiple buttons together with proper spacing and border handling.
+          </p>
+        </div>
       </div>
     </section>
+
   </div>
 </div>
