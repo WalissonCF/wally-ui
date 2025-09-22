@@ -7,10 +7,10 @@ export const componentsRoutes: Routes = [
     },
     {
         path: 'button',
-        loadComponent: () => import('./button/button-docs').then(m => m.ButtonDocs)
+        loadComponent: () => import('./button-docs/button-docs').then(m => m.ButtonDocs)
     },
     {
         path: 'breadcrumb',
-        loadComponent: () => import('./breadcrumb/breadcrumb-docs').then(m => m.BreadcrumbDocs)
+        loadComponent: () => import('./breadcrumb-docs/breadcrumb-docs').then(m => m.BreadcrumbDocs)
     }
 ];
