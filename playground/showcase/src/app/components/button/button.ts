@@ -1,4 +1,4 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -15,4 +15,10 @@ export class Button {
   disabled: InputSignal<boolean> = input<boolean>(false);
   loading: InputSignal<boolean> = input<boolean>(false);
   showNotification: InputSignal<boolean> = input<boolean>(false);
+
+  click: OutputEmitterRef<void> = output<void>();
+
+  handleClick(): void {
+    this.click.emit();
+  }
 }

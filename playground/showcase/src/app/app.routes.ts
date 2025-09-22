@@ -8,5 +8,5 @@ export const routes: Routes = [
     {
         path: 'components',
         loadChildren: () => import('./pages/components/components.routes').then(m => m.componentsRoutes)
-    },
+    }
 ];

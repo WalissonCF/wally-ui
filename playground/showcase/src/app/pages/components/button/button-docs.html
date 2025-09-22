@@ -1,5 +1,9 @@
 <div class="font-mono">
   <div class="max-w-4xl mx-auto p-6">
+    <div class="mb-4">
+      <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
+    </div>
+
     <h1 class="text-2xl font-bold mb-4 text-[#0a0a0a] dark:text-white">
       Button
     </h1>
@@ -14,6 +18,19 @@
         <code class="text-sm text-[#0a0a0a] dark:text-white">
           npx wally-ui add button
         </code>
+      </div>
+    </section>
+
+    <!-- Preview -->
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Preview</h2>
+      <div class="p-6 border rounded-lg bg-white dark:bg-[#121212] text-center">
+        <div class="flex flex-col gap-4">
+          <wally-button></wally-button>
+          <wally-button text="Disabled" [disabled]="true"></wally-button>
+          <wally-button text="Loading" [loading]="true"></wally-button>
+          <wally-button text="Messages" [showNotification]="true"></wally-button>
+        </div>
       </div>
     </section>
 
@@ -155,6 +172,37 @@
       </div>
     </section>
 
+    <!-- Click Events -->
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">
+        Click Events
+      </h2>
+
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Handling Click Events</h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <code class="text-sm text-[#0a0a0a] dark:text-white">
+              {{ '<' }}wally-button text="Click Me" (click)="handleClick()"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}<br><br>
+              handleClick() {{ '{' }}<br>
+              &nbsp;&nbsp;this.clickMessage.set('Button clicked!');<br>
+              {{ '}' }}
+            </code>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <div class="space-y-4 text-center">
+              <wally-button text="Click Me" (click)="handleClick()"></wally-button>
+              @if (clickMessage()) {
+                <p class="text-sm text-green-600 dark:text-green-400 font-medium mt-4">
+                  {{ clickMessage() }}
+                </p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Properties -->
     <section class="mb-8">
       <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Properties</h2>
@@ -238,15 +286,6 @@
         </div>
 
 
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Click Events</h3>
-            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            Support for click event handling and custom callback functions.
-          </p>
-        </div>
 
         <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
           <div class="flex items-center gap-2 mb-2">
