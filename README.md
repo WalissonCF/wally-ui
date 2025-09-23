@@ -61,7 +61,7 @@ import { Button } from './components/wally-ui/button/button';
 @Component({
   selector: 'app-example',
   imports: [Button],
-  template: `<wally-button text="Click me"></wally-button>`
+  template: `<wally-button>Click me</wally-button>`
 })
 export class ExampleComponent {}
 ```
