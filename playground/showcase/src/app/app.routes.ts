@@ -8,5 +8,9 @@ export const routes: Routes = [
     {
         path: 'components',
         loadChildren: () => import('./pages/components/components.routes').then(m => m.componentsRoutes)
+    },
+    {
+        path: 'mcp',
+        loadComponent: () => import('./pages/mcp/mcp').then(m => m.MCP)
     }
 ];

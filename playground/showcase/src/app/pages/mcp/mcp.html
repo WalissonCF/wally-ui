@@ -1,0 +1,203 @@
+<div class="max-w-4xl mx-auto p-6 font-mono">
+  <div class="mb-4">
+    <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
+  </div>
+
+  <!-- Header -->
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-[#0a0a0a] dark:text-white mb-2">
+      Wally UI MCP Server
+    </h1>
+    <p class="text-lg text-gray-700 dark:text-gray-400">
+      Model Context Protocol server for intelligent AI-powered component installation with Claude Desktop.
+    </p>
+  </div>
+
+  <!-- Installation Section -->
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold text-[#0a0a0a] dark:text-white mb-4">
+      Installation
+    </h2>
+
+    <div class="bg-gray-200 dark:bg-[#121212] rounded-lg p-4 mb-4">
+      <code class="text-[#0a0a0a] dark:text-white">
+          <pre class="m-0">npm install -g wally-ui-mcp</pre>
+        </code>
+    </div>
+  </section>
+
+  <!-- Configuration Section -->
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold text-[#0a0a0a] dark:text-white mb-4">
+      Configuration
+    </h2>
+
+    <p class="text-gray-700 dark:text-gray-400 mb-4">
+      Add to your Claude Desktop configuration file:
+    </p>
+
+    <div class="mb-4">
+      <p class="text-sm text-gray-700 dark:text-gray-400 mb-2">
+        <strong>Mac:</strong> <code
+          class="bg-gray-200 dark:bg-[#121212] px-2 py-1 rounded text-[#0a0a0a] dark:text-white">~/Library/Application Support/Claude/claude_desktop_config.json</code>
+      </p>
+      <p class="text-sm text-gray-700 dark:text-gray-400 mb-4">
+        <strong>Windows:</strong> <code
+          class="bg-gray-200 dark:bg-[#121212] px-2 py-1 rounded text-[#0a0a0a] dark:text-white">%APPDATA%\Claude\claude_desktop_config.json</code>
+      </p>
+    </div>
+
+    <div class="bg-gray-200 dark:bg-[#121212] rounded-lg p-4 mb-4">
+      <code class="text-sm text-[#0a0a0a] dark:text-white">
+          {{ '{' }}<br>
+          &nbsp;&nbsp;"mcpServers": {{ '{' }}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;"wally-ui": {{ '{' }}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"command": "npx",<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"args": ["wally-ui-mcp"],<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"env": {{ '{' }}{{ '}' }}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;{{ '}' }}<br>
+          &nbsp;&nbsp;{{ '}' }}<br>
+          {{ '}' }}
+        </code>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold text-[#0a0a0a] dark:text-white mb-4">
+      Available Tools
+    </h2>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="bg-white dark:bg-[#121212] border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+        <h3 class="text-lg font-semibold text-[#0a0a0a] dark:text-white mb-2">
+          install-component
+        </h3>
+        <p class="text-gray-700 dark:text-gray-400 text-sm mb-2">
+          Installs Wally UI components directly into your Angular project.
+        </p>
+        <code class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded text-[#0a0a0a] dark:text-white">
+            componentName: string
+          </code>
+      </div>
+
+      <div class="bg-white dark:bg-[#121212] border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+        <h3 class="text-lg font-semibold text-[#0a0a0a] dark:text-white mb-2">
+          list-components
+        </h3>
+        <p class="text-gray-700 dark:text-gray-400 text-sm mb-2">
+          Lists all available components in the Wally UI library.
+        </p>
+        <code class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded text-[#0a0a0a] dark:text-white">
+            No parameters
+          </code>
+      </div>
+
+      <div class="bg-white dark:bg-[#121212] border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+        <h3 class="text-lg font-semibold text-[#0a0a0a] dark:text-white mb-2">
+          validate-component
+        </h3>
+        <p class="text-gray-700 dark:text-gray-400 text-sm mb-2">
+          Validates component structure and integrity.
+        </p>
+        <code class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded text-[#0a0a0a] dark:text-white">
+            componentName: string
+          </code>
+      </div>
+
+      <div class="bg-white dark:bg-[#121212] border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+        <h3 class="text-lg font-semibold text-[#0a0a0a] dark:text-white mb-2">
+          generate-docs
+        </h3>
+        <p class="text-gray-700 dark:text-gray-400 text-sm mb-2">
+          Generates documentation for components.
+        </p>
+        <code class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded text-[#0a0a0a] dark:text-white">
+            componentName: string
+          </code>
+      </div>
+    </div>
+  </section>
+
+  <!-- Usage Examples -->
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold text-[#0a0a0a] dark:text-white mb-4">
+      Usage Examples
+    </h2>
+
+    <div class="space-y-4">
+      <div>
+        <h3 class="text-lg font-semibold text-[#0a0a0a] dark:text-white mb-2">
+          List Available Components
+        </h3>
+        <p class="text-gray-700 dark:text-gray-400 mb-2">
+          Ask Claude to show you what components are available:
+        </p>
+        <div class="bg-gray-200 dark:bg-[#121212] rounded-lg p-4">
+          <code class="text-[#0a0a0a] dark:text-white">
+              <pre class="m-0">"Show me the available Wally UI components"</pre>
+            </code>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-[#0a0a0a] dark:text-white mb-2">
+          Install a Component
+        </h3>
+        <p class="text-gray-700 dark:text-gray-400 mb-2">
+          Ask Claude to install a specific component in your project:
+        </p>
+        <div class="bg-gray-200 dark:bg-[#121212] rounded-lg p-4">
+          <code class="text-[#0a0a0a] dark:text-white">
+              <pre class="m-0">"Install the button component from Wally UI in my Angular project"</pre>
+            </code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements -->
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold text-[#0a0a0a] dark:text-white mb-4">
+      Requirements
+    </h2>
+
+    <ul class="list-disc list-inside text-gray-700 dark:text-gray-400 space-y-2">
+      <li>Node.js 18+</li>
+      <li>Claude Desktop with MCP support</li>
+      <li>Angular project (for component installation)</li>
+      <li>Tailwind CSS configured in your project</li>
+    </ul>
+  </section>
+
+  <!-- Links -->
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold text-[#0a0a0a] dark:text-white mb-4">
+      Links
+    </h2>
+
+    <div class="flex flex-wrap gap-4">
+      <a href="https://www.npmjs.com/package/wally-ui-mcp" target="_blank"
+        class="text-blue-500 underline hover:text-blue-700">
+        NPM Package
+      </a>
+      <a href="https://github.com/WalissonCF/wally-ui" target="_blank"
+        class="text-blue-500 underline hover:text-blue-700">
+        GitHub Repository
+      </a>
+      <a href="https://modelcontextprotocol.io/" target="_blank" class="text-blue-500 underline hover:text-blue-700">
+        Model Context Protocol
+      </a>
+      <a href="/components" class="text-blue-500 underline hover:text-blue-700">
+        Browse Components
+      </a>
+    </div>
+  </section>
+
+  <!-- Back to Home -->
+  <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+    <a href="/" class="text-blue-500 underline hover:text-blue-700">
+      Back to Home
+    </a>
+  </div>
+</div>
