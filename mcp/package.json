@@ -1,0 +1,56 @@
+{
+  "name": "wally-ui-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server for Wally UI - Angular component library with intelligent installation tools",
+  "main": "dist/index.js",
+  "bin": {
+    "wally-ui-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "wally-ui",
+    "angular",
+    "components",
+    "cli",
+    "ui-library",
+    "claude",
+    "ai-tools"
+  ],
+  "author": "Walisson Ferreira",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WalissonCF/wally-ui.git",
+    "directory": "mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/WalissonCF/wally-ui/issues"
+  },
+  "homepage": "https://wally-ui.com/",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.1",
+    "chalk": "^5.6.2",
+    "fs-extra": "^11.3.2",
+    "glob": "^11.0.3"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^24.5.2",
+    "typescript": "^5.9.2"
+  }
+}

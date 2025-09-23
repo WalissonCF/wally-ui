@@ -42,6 +42,7 @@
   ],
   "exclude": [
     "playground/**/*",
+    "mcp/**/*",
     "node_modules/**/*",
     "dist/**/*"
   ]
