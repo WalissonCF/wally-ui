@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { Breadcrumb, BreadcrumbItem } from '../../../components/breadcrumb/breadcrumb';
 
+import { AiPromptService } from '../../../core/services/ai-prompt.service';
+
 @Component({
   selector: 'app-breadcrumb-docs',
   imports: [
@@ -26,4 +28,16 @@ export class BreadcrumbDocs {
   simpleBreadcrumbs: BreadcrumbItem[] = [
     { label: 'Components' }
   ];
+
+  constructor(
+    private aiPromptService: AiPromptService
+  ) { }
+
+  get claudeUrl(): string {
+    return this.aiPromptService.generateClaudeUrl();
+  }
+
+  get chatGptUrl(): string {
+    return this.aiPromptService.generateChatGptUrl();
+  }
 }

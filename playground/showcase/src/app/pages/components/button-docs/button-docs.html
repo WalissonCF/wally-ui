@@ -7,9 +7,42 @@
     <h1 class="text-2xl font-bold mb-4 text-[#0a0a0a] dark:text-white">
       Button
     </h1>
-    <p class="text-gray-700 dark:text-gray-400 mb-6">
+    <p class="text-gray-700 dark:text-gray-400 mb-4">
       A versatile button component with loading states, notifications, and customizable text.
     </p>
+
+    <!-- AI Prompts -->
+    <div class="flex flex-wrap gap-2 mb-6">
+      <a [href]="claudeUrl" target="_blank"
+        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-200 dark:bg-[#121212] text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-[#1a1a1a] hover:text-[#0a0a0a] dark:hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24">
+          <path fill="currentColor"
+            d="m4.714 15.956l4.718-2.648l.079-.23l-.08-.128h-.23l-.79-.048l-2.695-.073l-2.337-.097l-2.265-.122l-.57-.121l-.535-.704l.055-.353l.48-.321l.685.06l1.518.104l2.277.157l1.651.098l2.447.255h.389l.054-.158l-.133-.097l-.103-.098l-2.356-1.596l-2.55-1.688l-1.336-.972l-.722-.491L2 6.223l-.158-1.008l.656-.722l.88.06l.224.061l.893.686l1.906 1.476l2.49 1.833l.364.304l.146-.104l.018-.072l-.164-.274l-1.354-2.446l-1.445-2.49l-.644-1.032l-.17-.619a3 3 0 0 1-.103-.729L6.287.133L6.7 0l.995.134l.42.364l.619 1.415L9.735 4.14l1.555 3.03l.455.898l.243.832l.09.255h.159V9.01l.127-1.706l.237-2.095l.23-2.695l.08-.76l.376-.91l.747-.492l.583.28l.48.685l-.067.444l-.286 1.851l-.558 2.903l-.365 1.942h.213l.243-.242l.983-1.306l1.652-2.064l.728-.82l.85-.904l.547-.431h1.032l.759 1.129l-.34 1.166l-1.063 1.347l-.88 1.142l-1.263 1.7l-.79 1.36l.074.11l.188-.02l2.853-.606l1.542-.28l1.84-.315l.832.388l.09.395l-.327.807l-1.967.486l-2.307.462l-3.436.813l-.043.03l.049.061l1.548.146l.662.036h1.62l3.018.225l.79.522l.473.638l-.08.485l-1.213.62l-1.64-.389l-3.825-.91l-1.31-.329h-.183v.11l1.093 1.068l2.003 1.81l2.508 2.33l.127.578l-.321.455l-.34-.049l-2.204-1.657l-.85-.747l-1.925-1.62h-.127v.17l.443.649l2.343 3.521l.122 1.08l-.17.353l-.607.213l-.668-.122l-1.372-1.924l-1.415-2.168l-1.141-1.943l-.14.08l-.674 7.254l-.316.37l-.728.28l-.607-.461l-.322-.747l.322-1.476l.388-1.924l.316-1.53l.285-1.9l.17-.632l-.012-.042l-.14.018l-1.432 1.967l-2.18 2.945l-1.724 1.845l-.413.164l-.716-.37l.066-.662l.401-.589l2.386-3.036l1.439-1.882l.929-1.086l-.006-.158h-.055L4.138 18.56l-1.13.146l-.485-.456l.06-.746l.231-.243l1.907-1.312Z" />
+        </svg>
+
+        Open in Claude
+      </a>
+
+      <a [href]="chatGptUrl" target="_blank"
+        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-200 dark:bg-[#121212] text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-[#1a1a1a] hover:text-[#0a0a0a] dark:hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 48 48">
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="M18.38 27.94v-14.4l11.19-6.46c6.2-3.58 17.3 5.25 12.64 13.33" />
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="m18.38 20.94l12.47-7.2l11.19 6.46c6.2 3.58 4.1 17.61-5.23 17.61" />
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="m24.44 17.44l12.47 7.2v12.93c0 7.16-13.2 12.36-17.86 4.28" />
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="M30.5 21.2v14.14L19.31 41.8c-6.2 3.58-17.3-5.25-12.64-13.33" />
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="m30.5 27.94l-12.47 7.2l-11.19-6.46c-6.21-3.59-4.11-17.61 5.22-17.61" />
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="m24.44 31.44l-12.47-7.2V11.31c0-7.16 13.2-12.36 17.86-4.28" />
+        </svg>
+
+        Open in ChatGPT
+      </a>
+    </div>
 
     <!-- Installation -->
     <section class="mb-8">
@@ -26,10 +59,47 @@
       <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Preview</h2>
       <div class="p-6 border rounded-lg bg-white dark:bg-[#121212] text-center">
         <div class="flex flex-col gap-4">
-          <wally-button></wally-button>
-          <wally-button text="Disabled" [disabled]="true"></wally-button>
-          <wally-button text="Loading" [loading]="true"></wally-button>
-          <wally-button text="Messages" [showNotification]="true"></wally-button>
+          <wally-button>Wally Button</wally-button>
+          <wally-button>
+            Send
+            <svg slot="icon-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </wally-button>
+          <wally-button [disabled]="true">Disabled</wally-button>
+          <wally-button [loading]="true">
+            Loading
+          </wally-button>
+
+          <div class="w-full flex justify-center items-center gap-2">
+            <div class="w-full">
+              <wally-button [showNotification]="true">
+                Messages
+              </wally-button>
+            </div>
+
+            <div class="flex justify-center">
+              <wally-button [showNotification]="true">
+                <svg slot="icon-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke-width="1.5" stroke="currentColor" class="size-5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 13.5h3.86a2.25 2.25 0 0 1 2.012 1.244l.256.512a2.25 2.25 0 0 0 2.013 1.244h3.218a2.25 2.25 0 0 0 2.013-1.244l.256-.512a2.25 2.25 0 0 1 2.013-1.244h3.859m-19.5.338V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 0 0-2.15-1.588H6.911a2.25 2.25 0 0 0-2.15 1.588L2.35 13.177a2.25 2.25 0 0 0-.1.661Z" />
+                </svg>
+              </wally-button>
+            </div>
+
+            <div class="flex justify-center">
+              <wally-button [showNotification]="true">
+                <svg slot="icon-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke-width="1.5" stroke="currentColor" class="size-5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5" />
+                </svg>
+              </wally-button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -67,31 +137,11 @@
         <div>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
             <code class="text-sm text-[#0a0a0a] dark:text-white">
-              {{ '<' }}wally-button{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
+              {{ '<' }}wally-button{{ '>' }}Wally Button{{ '<' }}/wally-button{{ '>' }}
             </code>
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-button></wally-button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Custom Text -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">
-        Custom Text
-      </h2>
-
-      <div class="space-y-8">
-        <div>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <code class="text-sm text-[#0a0a0a] dark:text-white">
-              {{ '<' }}wally-button text="Save Changes"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
-            </code>
-          </div>
-          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-button text="Save Changes"></wally-button>
+            <wally-button>Wally Button</wally-button>
           </div>
         </div>
       </div>
@@ -111,11 +161,11 @@
           </h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
             <code class="text-sm text-[#0a0a0a] dark:text-white">
-              {{ '<' }}wally-button text="Disabled" [disabled]="true"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
+              {{ '<' }}wally-button [disabled]="true"{{ '>' }}Disabled{{ '<' }}/wally-button{{ '>' }}
             </code>
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-button text="Disabled" [disabled]="true"></wally-button>
+            <wally-button [disabled]="true">Disabled</wally-button>
           </div>
         </div>
 
@@ -126,11 +176,11 @@
           </h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
             <code class="text-sm text-[#0a0a0a] dark:text-white">
-              {{ '<' }}wally-button text="Loading" [loading]="true"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
+              {{ '<' }}wally-button [loading]="true"{{ '>' }}Loading{{ '<' }}/wally-button{{ '>' }}
             </code>
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-button text="Loading" [loading]="true"></wally-button>
+            <wally-button [loading]="true">Loading</wally-button>
           </div>
         </div>
 
@@ -141,11 +191,11 @@
           </h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
             <code class="text-sm text-[#0a0a0a] dark:text-white">
-              {{ '<' }}wally-button text="Messages" [showNotification]="true"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
+              {{ '<' }}wally-button [showNotification]="true"{{ '>' }}Messages{{ '<' }}/wally-button{{ '>' }}
             </code>
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-button text="Messages" [showNotification]="true"></wally-button>
+            <wally-button [showNotification]="true">Messages</wally-button>
           </div>
         </div>
       </div>
@@ -162,11 +212,11 @@
           <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Submit Button</h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
             <code class="text-sm text-[#0a0a0a] dark:text-white">
-              {{ '<' }}wally-button text="Submit Form" type="submit"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}
+              {{ '<' }}wally-button type="submit"{{ '>' }}Submit Form{{ '<' }}/wally-button{{ '>' }}
             </code>
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-button text="Submit Form" type="submit"></wally-button>
+            <wally-button type="submit">Submit Form</wally-button>
           </div>
         </div>
       </div>
@@ -183,7 +233,7 @@
           <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Handling Click Events</h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
             <code class="text-sm text-[#0a0a0a] dark:text-white">
-              {{ '<' }}wally-button text="Click Me" (click)="handleClick()"{{ '>' }}{{ '<' }}/wally-button{{ '>' }}<br><br>
+              {{ '<' }}wally-button (click)="handleClick()"{{ '>' }}Click Me{{ '<' }}/wally-button{{ '>' }}<br><br>
               handleClick() {{ '{' }}<br>
               &nbsp;&nbsp;this.clickMessage.set('Button clicked!');<br>
               {{ '}' }}
@@ -191,13 +241,74 @@
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
             <div class="space-y-4 text-center">
-              <wally-button text="Click Me" (click)="handleClick()"></wally-button>
+              <wally-button (click)="handleClick()">Click Me</wally-button>
               @if (clickMessage()) {
-                <p class="text-sm text-green-600 dark:text-green-400 font-medium mt-4">
-                  {{ clickMessage() }}
-                </p>
+              <p class="text-sm text-green-600 dark:text-green-400 font-medium mt-4">
+                {{ clickMessage() }}
+              </p>
               }
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Button with Icons -->
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">
+        Button with Icons
+      </h2>
+
+      <div class="space-y-8">
+        <!-- Icon with Text -->
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Icon with Text</h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <code class="text-sm text-[#0a0a0a] dark:text-white">
+              {{ '<' }}wally-button{{ '>' }}<br>
+              &nbsp;&nbsp;Save<br>
+              &nbsp;&nbsp;{{ '<' }}svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stroke-width="1.5" stroke="currentColor" class="size-5"{{ '>' }}<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;{{ '<' }}path stroke-linecap="round" stroke-linejoin="round"<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /{{ '>' }}<br>
+              &nbsp;&nbsp;{{ '<' }}/svg{{ '>' }}<br>
+              {{ '<' }}/wally-button{{ '>' }}
+            </code>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button>
+              Save
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </wally-button>
+          </div>
+        </div>
+
+        <!-- Icon Only -->
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Icon Only</h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <code class="text-sm text-[#0a0a0a] dark:text-white">
+              {{ '<' }}wally-button{{ '>' }}<br>
+              &nbsp;&nbsp;{{ '<' }}svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stroke-width="1.5" stroke="currentColor" class="size-5"{{ '>' }}<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;{{ '<' }}path stroke-linecap="round" stroke-linejoin="round"<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5" /{{ '>' }}<br>
+              &nbsp;&nbsp;{{ '<' }}/svg{{ '>' }}<br>
+              {{ '<' }}/wally-button{{ '>' }}
+            </code>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5" />
+              </svg>
+            </wally-button>
           </div>
         </div>
       </div>
@@ -208,20 +319,13 @@
       <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Properties</h2>
 
       <div class="space-y-4">
-        <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
-          <div class="font-mono text-sm mb-2">
-            <span class="text-blue-600 dark:text-blue-400">text</span><span class="text-[#0a0a0a] dark:text-white">: </span>
-            <span class="text-purple-600 dark:text-purple-400">string</span> <span class="text-[#0a0a0a] dark:text-white"> = </span>
-            <span class="text-green-600 dark:text-green-400">'Wally Button'</span>
-            <span class="text-[#0a0a0a] dark:text-white">;</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">The text displayed on the button</p>
-        </div>
 
         <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
           <div class="font-mono text-sm mb-2">
-            <span class="text-blue-600 dark:text-blue-400">type</span><span class="text-[#0a0a0a] dark:text-white">: </span>
-            <span class="text-purple-600 dark:text-purple-400">string</span> <span class="text-[#0a0a0a] dark:text-white"> = </span>
+            <span class="text-blue-600 dark:text-blue-400">type</span><span class="text-[#0a0a0a] dark:text-white">:
+            </span>
+            <span class="text-purple-600 dark:text-purple-400">string</span> <span
+              class="text-[#0a0a0a] dark:text-white"> = </span>
             <span class="text-green-600 dark:text-green-400">'button'</span>
             <span class="text-[#0a0a0a] dark:text-white">;</span>
           </div>
@@ -230,8 +334,10 @@
 
         <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
           <div class="font-mono text-sm mb-2">
-            <span class="text-blue-600 dark:text-blue-400">disabled</span><span class="text-[#0a0a0a] dark:text-white">: </span>
-            <span class="text-purple-600 dark:text-purple-400">boolean</span> <span class="text-[#0a0a0a] dark:text-white"> = </span>
+            <span class="text-blue-600 dark:text-blue-400">disabled</span><span class="text-[#0a0a0a] dark:text-white">:
+            </span>
+            <span class="text-purple-600 dark:text-purple-400">boolean</span> <span
+              class="text-[#0a0a0a] dark:text-white"> = </span>
             <span class="text-green-600 dark:text-green-400">false</span>
             <span class="text-[#0a0a0a] dark:text-white">;</span>
           </div>
@@ -240,8 +346,10 @@
 
         <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
           <div class="font-mono text-sm mb-2">
-            <span class="text-blue-600 dark:text-blue-400">loading</span><span class="text-[#0a0a0a] dark:text-white">: </span>
-            <span class="text-purple-600 dark:text-purple-400">boolean</span> <span class="text-[#0a0a0a] dark:text-white"> = </span>
+            <span class="text-blue-600 dark:text-blue-400">loading</span><span class="text-[#0a0a0a] dark:text-white">:
+            </span>
+            <span class="text-purple-600 dark:text-purple-400">boolean</span> <span
+              class="text-[#0a0a0a] dark:text-white"> = </span>
             <span class="text-green-600 dark:text-green-400">false</span>
             <span class="text-[#0a0a0a] dark:text-white">;</span>
           </div>
@@ -250,12 +358,26 @@
 
         <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
           <div class="font-mono text-sm mb-2">
-            <span class="text-blue-600 dark:text-blue-400">showNotification</span><span class="text-[#0a0a0a] dark:text-white">: </span>
-            <span class="text-purple-600 dark:text-purple-400">boolean</span> <span class="text-[#0a0a0a] dark:text-white"> = </span>
+            <span class="text-blue-600 dark:text-blue-400">showNotification</span><span
+              class="text-[#0a0a0a] dark:text-white">: </span>
+            <span class="text-purple-600 dark:text-purple-400">boolean</span> <span
+              class="text-[#0a0a0a] dark:text-white"> = </span>
             <span class="text-green-600 dark:text-green-400">false</span>
             <span class="text-[#0a0a0a] dark:text-white">;</span>
           </div>
           <p class="text-sm text-gray-700 dark:text-gray-400">Shows notification badge when true</p>
+        </div>
+
+        <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
+          <div class="font-mono text-sm mb-2">
+            <span class="text-blue-600 dark:text-blue-400">icon</span><span class="text-[#0a0a0a] dark:text-white">:
+            </span>
+            <span class="text-purple-600 dark:text-purple-400">'left' | 'right' | 'none'</span> <span
+              class="text-[#0a0a0a] dark:text-white"> = </span>
+            <span class="text-green-600 dark:text-green-400">'none'</span>
+            <span class="text-[#0a0a0a] dark:text-white">;</span>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">Position of the icon content (left, right, or none)</p>
         </div>
       </div>
     </section>
@@ -265,16 +387,6 @@
       <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Under Construction</h2>
 
       <div class="space-y-4">
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Button with Icon</h3>
-            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            Support for icons within buttons. This will include leading and trailing icon positions with proper spacing.
-          </p>
-        </div>
-
         <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
           <div class="flex items-center gap-2 mb-2">
             <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Button Variants</h3>
