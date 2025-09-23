@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: claudebot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
