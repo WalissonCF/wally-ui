@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Breadcrumb, BreadcrumbItem } from '../../components/breadcrumb/breadcrumb';
+
+import { Breadcrumb, BreadcrumbItem } from '../../../components/breadcrumb/breadcrumb';
 
 @Component({
   selector: 'wally-components',
@@ -10,6 +11,7 @@ import { Breadcrumb, BreadcrumbItem } from '../../components/breadcrumb/breadcru
 export class Components {
   breadcrumbItems: BreadcrumbItem[] = [
     { label: 'Home', url: '/' },
+    { label: 'Documentation', url: '/documentation' },
     { label: 'Components' }
   ];
 }

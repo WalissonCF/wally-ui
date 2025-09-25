@@ -6,11 +6,23 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender
   },
   {
-    path: 'components',
+    path: 'documentation',
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'components/button',
+    path: 'documentation/components',
+    renderMode: RenderMode.Prerender,
+  },
+  {
+    path: 'documentation/components/button',
+    renderMode: RenderMode.Prerender,
+  },
+  {
+    path: 'documentation/components/breadcrumb',
+    renderMode: RenderMode.Prerender,
+  },
+  {
+    path: 'components',
     renderMode: RenderMode.Prerender,
   },
   {

@@ -26,8 +26,8 @@ export class AiPromptService {
     if (isPlatformBrowser(this.platformId)) {
       return window.location.href;
     }
-    // Fallback for SSR - you can customize this
-    return 'https://wally-ui.com/components/button';
+    
+    return 'https://wally-ui.com/documentation/components/button';
   }
 
   generateCustomPromptUrl(aiService: 'claude' | 'chatgpt', customPrompt: string, pageUrl?: string): string {

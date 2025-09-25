@@ -6,8 +6,12 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/home/home').then(m => m.Home)
     },
     {
+        path: 'documentation',
+        loadChildren: () => import('./pages/documentation/documentation.routes').then(m => m.documentationRoutes)
+    },
+    {
         path: 'components',
-        loadChildren: () => import('./pages/components/components.routes').then(m => m.componentsRoutes)
+        redirectTo: '/documentation/components'
     },
     {
         path: 'mcp',

@@ -47,9 +47,7 @@
     <section class="mb-8">
       <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Installation</h2>
       <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-        <code class="text-sm text-[#0a0a0a] dark:text-white">
-          npx wally-ui add breadcrumb
-        </code>
+        <pre><code [innerHTML]="installationCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
       </div>
     </section>
 
@@ -70,20 +68,11 @@
       <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Import</h2>
       <div class="space-y-4">
         <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <code class="text-sm text-[#0a0a0a] dark:text-white">
-            import {{ '{' }} Breadcrumb, BreadcrumbItem {{ '}' }} from './components/wally-ui/breadcrumb/breadcrumb';
-          </code>
+          <pre><code [innerHTML]="importCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
 
         <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <code class="text-sm text-[#0a0a0a] dark:text-white">
-            &#64;Component({{ '{' }}<br>
-            &nbsp;&nbsp;selector: 'app-example',<br>
-            &nbsp;&nbsp;imports: [Breadcrumb],<br>
-            &nbsp;&nbsp;templateUrl: './example.html',<br>
-            &nbsp;&nbsp;styleUrl: './example.css'<br>
-            {{ '}' }})
-          </code>
+          <pre><code [innerHTML]="componentImportCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
       </div>
     </section>
@@ -95,9 +84,10 @@
       <div class="space-y-8">
         <div>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <code class="text-sm text-[#0a0a0a] dark:text-white">
-              {{ '<' }}wally-breadcrumb [items]="breadcrumbItems"{{ '>' }}{{ '<' }}/wally-breadcrumb{{ '>' }}
-            </code>
+            <pre><code [innerHTML]="basicSetupCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <pre><code [innerHTML]="basicUsageCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
             <wally-breadcrumb [items]="simpleBreadcrumbs"></wally-breadcrumb>
@@ -115,13 +105,7 @@
         <div>
           <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Multi-level Navigation</h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <code class="text-sm text-[#0a0a0a] dark:text-white">
-              breadcrumbItems: BreadcrumbItem[] = [<br>
-              &nbsp;&nbsp;{{ '{' }} label: 'Home', url: '/' {{ '}' }},<br>
-              &nbsp;&nbsp;{{ '{' }} label: 'Components', url: '/components' {{ '}' }},<br>
-              &nbsp;&nbsp;{{ '{' }} label: 'Button' {{ '}' }}<br>
-              ];
-            </code>
+            <pre><code [innerHTML]="multiLevelSetupCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
             <wally-breadcrumb [items]="exampleBreadcrumbs"></wally-breadcrumb>
@@ -132,11 +116,7 @@
         <div>
           <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Single Item</h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <code class="text-sm text-[#0a0a0a] dark:text-white">
-              breadcrumbItems: BreadcrumbItem[] = [<br>
-              &nbsp;&nbsp;{{ '{' }} label: 'Components' {{ '}' }}<br>
-              ];
-            </code>
+            <pre><code [innerHTML]="singleItemSetupCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
             <wally-breadcrumb [items]="simpleBreadcrumbs"></wally-breadcrumb>
@@ -150,14 +130,9 @@
       <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Properties</h2>
 
       <div class="space-y-4">
-        <div class="p-4 bg-gray-200 dark:bg-[#121212] rounded-lg">
-          <div class="font-mono text-sm mb-2">
-            <span class="text-blue-600 dark:text-blue-400">items</span><span class="text-[#0a0a0a] dark:text-white">:
-            </span>
-            <span class="text-purple-600 dark:text-purple-400">BreadcrumbItem[]</span> <span
-              class="text-[#0a0a0a] dark:text-white"> = </span>
-            <span class="text-green-600 dark:text-green-400">[]</span>
-            <span class="text-[#0a0a0a] dark:text-white">;</span>
+        <div class="space-y-2">
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="propertyItemsCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
           <p class="text-sm text-gray-700 dark:text-gray-400">Array of breadcrumb items to display</p>
         </div>
@@ -169,12 +144,7 @@
       <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Interface</h2>
 
       <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-        <code class="text-sm text-[#0a0a0a] dark:text-white">
-          interface BreadcrumbItem {{ '{' }}<br>
-          &nbsp;&nbsp;label: string;<br>
-          &nbsp;&nbsp;url?: string;<br>
-          {{ '}' }}
-        </code>
+        <pre><code [innerHTML]="interfaceCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
       </div>
     </section>
 
