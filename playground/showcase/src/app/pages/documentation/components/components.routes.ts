@@ -12,5 +12,9 @@ export const componentsRoutes: Routes = [
     {
         path: 'breadcrumb',
         loadComponent: () => import('./breadcrumb-docs/breadcrumb-docs').then(m => m.BreadcrumbDocs)
+    },
+    {
+        path: 'input',
+        loadComponent: () => import('./input-docs/input-docs').then(m => m.InputDocs)
     }
 ];
