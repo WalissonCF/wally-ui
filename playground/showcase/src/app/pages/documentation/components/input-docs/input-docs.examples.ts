@@ -71,8 +71,18 @@ onSubmit() {
   username: ['', [Validators.required, Validators.minLength(3)]]
 });`,
 
+  // New Features Examples
+  withLabel: `<wally-input label="Full Name" placeholder="Enter your name"></wally-input>`,
+  loadingState: `<wally-input [loading]="true" placeholder="Loading..."></wally-input>`,
+  validState: `<wally-input [valid]="true" placeholder="Valid input"></wally-input>`,
+  errorState: `<wally-input errorMessage="This field is required" placeholder="Enter value"></wally-input>`,
+  passwordWithToggle: `<wally-input type="password" label="Password" placeholder="Enter secure password"></wally-input>`,
+
   // Properties
+  propertyLabel: `label: string = '';`,
   propertyType: `type: string = 'text';`,
   propertyPlaceholder: `placeholder: string = '';`,
-  propertyValue: `value: string = '';`
+  propertyLoading: `loading: boolean = false;`,
+  propertyValid: `valid: boolean = false;`,
+  propertyError: `errorMessage: string = '';`
 };

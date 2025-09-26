@@ -56,10 +56,20 @@ export class InputDocs {
   validationTemplateCode = getFormattedCode(InputCodeExamples.validationTemplate, 'html');
   validationSetupCode = getFormattedCode(InputCodeExamples.validationSetup, 'typescript');
 
+  // New Features
+  labelCode = getFormattedCode(InputCodeExamples.withLabel, 'html');
+  loadingCode = getFormattedCode(InputCodeExamples.loadingState, 'html');
+  validCode = getFormattedCode(InputCodeExamples.validState, 'html');
+  errorCode = getFormattedCode(InputCodeExamples.errorState, 'html');
+  passwordCode = getFormattedCode(InputCodeExamples.passwordWithToggle, 'html');
+
   // Properties
+  propertyLabelCode = getFormattedCode(InputCodeExamples.propertyLabel, 'typescript');
   propertyTypeCode = getFormattedCode(InputCodeExamples.propertyType, 'typescript');
   propertyPlaceholderCode = getFormattedCode(InputCodeExamples.propertyPlaceholder, 'typescript');
-  propertyValueCode = getFormattedCode(InputCodeExamples.propertyValue, 'typescript');
+  propertyLoadingCode = getFormattedCode(InputCodeExamples.propertyLoading, 'typescript');
+  propertyValidCode = getFormattedCode(InputCodeExamples.propertyValid, 'typescript');
+  propertyErrorCode = getFormattedCode(InputCodeExamples.propertyError, 'typescript');
 
   constructor(
     private aiPromptService: AiPromptService,

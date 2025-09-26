@@ -12,3 +12,6 @@ Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
+
+# Sitemap location
+Sitemap: https://wally-ui.com/sitemap.xml

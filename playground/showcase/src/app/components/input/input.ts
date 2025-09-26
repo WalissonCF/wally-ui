@@ -1,4 +1,7 @@
-import { Component, effect, forwardRef, HostListener, input, InputSignal, model, signal, untracked, WritableSignal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  Component, computed, HostListener, input, InputSignal, signal, untracked, WritableSignal
+} from '@angular/core';
 
 import {
   ControlValueAccessor,
@@ -7,9 +10,11 @@ import {
 
 @Component({
   selector: 'wally-input',
-  imports: [],
+  imports: [
+    CommonModule
+  ],
+  // standalone: true, (If your application is lower than Angular 19, uncomment this line)
   templateUrl: './input.html',
-  styleUrl: './input.css',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -19,31 +24,44 @@ import {
   ]
 })
 export class Input implements ControlValueAccessor {
-  type: WritableSignal<string> = signal<string>('text');
-  // disabled: WritableSignal<boolean> = signal<boolean>(false);
-  disabled = false;
-  loading: WritableSignal<boolean> = signal<boolean>(false);
-  
   placeholder: InputSignal<string> = input<string>('');
+  type: InputSignal<string> = input<string>('text');
+  label: InputSignal<string> = input<string>('');
+  autocomplete: InputSignal<string> = input<string>('');
 
-  value = signal<string>('');
+  valid: InputSignal<boolean> = input<boolean>(false);
+  errorMessage: InputSignal<string> = input<string>('');
+  loading: InputSignal<boolean> = input<boolean>(false);
 
-  private touched = signal<boolean>(false);
+  protected readonly showPassword = signal<boolean>(false);
+  protected readonly inputId = `wally-input-${Math.random().toString(36).substring(2, 11)}`;
+
+  private touched: WritableSignal<boolean> = signal<boolean>(false);
+  value: WritableSignal<string> = signal<string>('');
+
+  protected readonly currentInputType = computed(() => {
+    const currentType = this.type();
+
+    if (currentType !== 'password') {
+      return currentType;
+    }
+
+    if (this.showPassword()) {
+      return 'text';
+    }
+
+    return 'password';
+  });
+
+  disabled: boolean = false;
 
   private onChange = (value: any) => { };
   private onTouched = () => { };
 
-  constructor() {
-    effect(() => {
-      const currentValue = this.value();
-      this.onChange(currentValue)
-    });
-  }
-
   writeValue(obj: any): void {
     untracked(() => {
       this.value.set(obj || '');
-    })
+    });
   }
 
   registerOnChange(fn: any): void {
@@ -58,10 +76,16 @@ export class Input implements ControlValueAccessor {
     this.disabled = isDisabled;
   }
 
+  togglePasswordVisibility(): void {
+    this.showPassword.set(!this.showPassword());
+  }
+
   @HostListener('input', ['$event'])
   onInputChange(event: Event): void {
     const target = event.target as HTMLInputElement;
-    this.value.set(target.value);
+    const newValue = target.value;
+    this.value.set(newValue);
+    this.onChange(newValue);
   }
 
   @HostListener('blur')
@@ -70,9 +94,5 @@ export class Input implements ControlValueAccessor {
       this.touched.set(true);
       this.onTouched();
     }
-  }
-
-  onInputFocus(): void {
-
   }
 }

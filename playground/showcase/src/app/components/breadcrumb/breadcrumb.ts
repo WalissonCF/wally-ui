@@ -13,6 +13,7 @@ export interface BreadcrumbItem {
     CommonModule,
     RouterModule
   ],
+  // standalone: true, (If your application is lower than Angular 19, uncomment this line)
   templateUrl: './breadcrumb.html',
 })
 export class Breadcrumb {

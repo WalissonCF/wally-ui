@@ -8,7 +8,7 @@
       Input
     </h1>
     <p class="text-gray-700 dark:text-gray-400 mb-4">
-      A versatile input component with full FormGroup and ReactiveFormsModule support, perfect for forms and data entry.
+      A fully-featured input component with label support, loading states, validation styling, and complete FormGroup integration.
     </p>
 
     <!-- Under Construction Badge -->
@@ -62,10 +62,13 @@
     <section class="mb-8">
       <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Preview</h2>
       <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-        <div class="flex flex-col gap-2 w-full">
-          <wally-input placeholder="Enter your name"></wally-input>
-          <wally-input type="email" placeholder="Enter your email"></wally-input>
-        </div>
+        <form>
+          <div class="flex flex-col gap-4 w-full">
+            <wally-input label="Full Name" placeholder="Enter your name"></wally-input>
+            <wally-input label="Email Address" type="email" placeholder="Enter your email"></wally-input>
+            <wally-input label="Password" type="password" placeholder="Enter password"></wally-input>
+          </div>
+        </form>
       </div>
     </section>
 
@@ -156,30 +159,68 @@
       </div>
     </section>
 
-    <!-- Input Types -->
+    <!-- Input Features -->
     <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Input Types</h2>
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Input Features</h2>
 
       <div class="space-y-8">
-        <!-- Email -->
+        <!-- Labels -->
         <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Email Input</h3>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">With Labels</h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="emailTypeCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+            <pre><code [innerHTML]="labelCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-input type="email" placeholder="Enter your email"></wally-input>
+            <div class="flex flex-col gap-4">
+              <wally-input label="Full Name" placeholder="Enter your name"></wally-input>
+              <wally-input label="Email Address" type="email" placeholder="Enter your email"></wally-input>
+            </div>
           </div>
         </div>
 
-        <!-- Password -->
+        <!-- Loading State -->
         <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Password Input</h3>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Loading State</h3>
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="passwordTypeCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+            <pre><code [innerHTML]="loadingCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-input type="password" placeholder="Enter password"></wally-input>
+            <wally-input label="Processing..." [loading]="true" placeholder="Loading example"></wally-input>
+          </div>
+        </div>
+
+        <!-- Valid State -->
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Valid State</h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <pre><code [innerHTML]="validCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-input label="Username" [valid]="true" placeholder="Valid input example"></wally-input>
+          </div>
+        </div>
+
+        <!-- Error State -->
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Error State</h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <pre><code [innerHTML]="errorCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-input label="Email" errorMessage="Please enter a valid email address" placeholder="Enter email"></wally-input>
+          </div>
+        </div>
+
+        <!-- Password with Toggle -->
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Password with Toggle</h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <pre><code [innerHTML]="passwordCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <form>
+              <wally-input label="Password" type="password" placeholder="Enter secure password"></wally-input>
+            </form>
           </div>
         </div>
       </div>
@@ -243,6 +284,13 @@
       <div class="space-y-4">
         <div class="space-y-2">
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="propertyLabelCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">Optional label text displayed above the input</p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
             <pre><code [innerHTML]="propertyTypeCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
           <p class="text-sm text-gray-700 dark:text-gray-400">HTML input type (text, email, password, etc.)</p>
@@ -257,55 +305,49 @@
 
         <div class="space-y-2">
           <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyValueCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+            <pre><code [innerHTML]="propertyLoadingCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Current value of the input</p>
+          <p class="text-sm text-gray-700 dark:text-gray-400">Shows loading spinner and disables input when true</p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="propertyValidCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">Shows green styling when input is valid</p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="propertyErrorCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">Error message text - shows red styling and displays error below input</p>
         </div>
       </div>
     </section>
 
-    <!-- Under Construction -->
+    <!-- Future Features -->
     <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Under Construction</h2>
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Future Features</h2>
 
       <div class="space-y-4">
         <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
           <div class="flex items-center gap-2 mb-2">
             <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Input Icons</h3>
-            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
+            <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">Coming Soon</span>
           </div>
           <p class="text-sm text-gray-700 dark:text-gray-400">
-            Support for left and right icons within the input field.
+            Support for custom icons on the left and right sides of the input.
           </p>
         </div>
 
         <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
           <div class="flex items-center gap-2 mb-2">
             <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Input Sizes</h3>
-            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
+            <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">Coming Soon</span>
           </div>
           <p class="text-sm text-gray-700 dark:text-gray-400">
-            Different input sizes: small, medium, large for various use cases.
-          </p>
-        </div>
-
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Loading States</h3>
-            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            Loading spinner integration for async operations.
-          </p>
-        </div>
-
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Error States</h3>
-            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            Built-in error styling and validation message integration.
+            Different input sizes: small, medium, large for various layouts.
           </p>
         </div>
       </div>
