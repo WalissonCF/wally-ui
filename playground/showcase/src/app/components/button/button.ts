@@ -15,6 +15,11 @@ export class Button {
   loading: InputSignal<boolean> = input<boolean>(false);
   showNotification: InputSignal<boolean> = input<boolean>(false);
 
+  // Accessibility properties
+  ariaLabel: InputSignal<string> = input<string>('');
+  ariaDescribedBy: InputSignal<string> = input<string>('');
+  ariaPressed: InputSignal<boolean | undefined> = input<boolean | undefined>(undefined);
+
   click: OutputEmitterRef<void> = output<void>();
 
   handleClick(): void {

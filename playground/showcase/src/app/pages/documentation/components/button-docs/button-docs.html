@@ -274,6 +274,57 @@
       </div>
     </section>
 
+    <!-- Accessibility -->
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Accessibility</h2>
+
+      <div class="space-y-8">
+        <!-- ARIA Label -->
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">ARIA Label for Icon-Only Buttons</h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <pre><code [innerHTML]="ariaLabelCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button ariaLabel="Save document">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+              </svg>
+            </wally-button>
+          </div>
+        </div>
+
+        <!-- Toggle Button -->
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Toggle Button with ARIA Pressed</h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <pre><code [innerHTML]="ariaPressedCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button [ariaPressed]="toggleState()">
+              Toggle Setting
+            </wally-button>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Loading State with ARIA Busy</h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <pre><code [innerHTML]="ariaBusyCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button [loading]="true">
+              Processing...
+            </wally-button>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+            Automatically sets <code class="bg-gray-200 dark:bg-[#121212] px-1 py-0.5 rounded text-xs">aria-busy="true"</code> when loading
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Properties -->
     <section class="mb-8">
       <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Properties</h2>
@@ -306,6 +357,27 @@
           </div>
           <p class="text-sm text-gray-700 dark:text-gray-400">Shows notification badge when true</p>
         </div>
+
+        <div class="space-y-2">
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="propertyAriaLabelCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">Accessible label for screen readers (essential for icon-only buttons)</p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="propertyAriaPressedCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">Indicates pressed state for toggle buttons</p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="propertyAriaDescribedByCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">References element(s) that describe the button</p>
+        </div>
       </div>
     </section>
 
@@ -321,16 +393,6 @@
           </div>
           <p class="text-sm text-gray-700 dark:text-gray-400">
             Multiple button styles including outline, ghost, destructive, and secondary variants.
-          </p>
-        </div>
-
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Accessibility</h3>
-            <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            ARIA labels, keyboard navigation, and screen reader support for better accessibility.
           </p>
         </div>
 

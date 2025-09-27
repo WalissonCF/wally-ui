@@ -38,13 +38,22 @@ export class ButtonDocs {
   iconCode = getFormattedCode(ButtonCodeExamples.iconWithText, 'html');
   iconNotificationCode = getFormattedCode(ButtonCodeExamples.iconOnly, 'html');
 
+  // Accessibility
+  ariaLabelCode = getFormattedCode(ButtonCodeExamples.ariaLabel, 'html');
+  ariaPressedCode = getFormattedCode(ButtonCodeExamples.ariaPressed, 'html');
+  ariaBusyCode = getFormattedCode(ButtonCodeExamples.ariaBusy, 'html');
+
   // Properties
   propertyTypeCode = getFormattedCode(ButtonCodeExamples.propertyType, 'typescript');
   propertyDisabledCode = getFormattedCode(ButtonCodeExamples.propertyDisabled, 'typescript');
   propertyLoadingCode = getFormattedCode(ButtonCodeExamples.propertyLoading, 'typescript');
   propertyShowNotificationCode = getFormattedCode(ButtonCodeExamples.propertyShowNotification, 'typescript');
+  propertyAriaLabelCode = getFormattedCode(ButtonCodeExamples.propertyAriaLabel, 'typescript');
+  propertyAriaPressedCode = getFormattedCode(ButtonCodeExamples.propertyAriaPressed, 'typescript');
+  propertyAriaDescribedByCode = getFormattedCode(ButtonCodeExamples.propertyAriaDescribedBy, 'typescript');
 
   clickMessage: WritableSignal<string> = signal<string>('');
+  toggleState: WritableSignal<boolean> = signal<boolean>(false);
 
   constructor(
     private aiPromptService: AiPromptService

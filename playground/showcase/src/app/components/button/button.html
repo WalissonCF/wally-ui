@@ -1,4 +1,12 @@
-<button [type]="type()" [disabled]="disabled() || loading()" (click)="handleClick()" class="
+<button
+    [type]="type()"
+    [disabled]="disabled() || loading()"
+    [attr.aria-label]="ariaLabel() || null"
+    [attr.aria-describedby]="ariaDescribedBy() || null"
+    [attr.aria-pressed]="ariaPressed()"
+    [attr.aria-busy]="loading()"
+    (click)="handleClick()"
+    class="
         group
         relative
         w-full
