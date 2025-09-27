@@ -22,6 +22,10 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
   },
   {
+    path: 'documentation/components/carousel',
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: 'components',
     renderMode: RenderMode.Prerender,
   },

@@ -44,4 +44,12 @@
         <priority>0.8</priority>
     </url>
 
+    <!-- Carousel Documentation -->
+    <url>
+        <loc>https://wally-ui.com/documentation/components/carousel</loc>
+        <lastmod>2025-09-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
 </urlset>
