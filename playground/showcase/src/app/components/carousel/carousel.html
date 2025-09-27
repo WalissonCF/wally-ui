@@ -1,38 +1,31 @@
 <div class="w-full flex flex-col items-center gap-4">
-    <div class="relative w-64 h-40 overflow-hidden rounded-lg shadow">
-        @for (item of items; track item; let i = $index) {
-            <div class="absolute inset-0 flex items-center justify-center bg-blue-500 text-white text-2xl
-                        transition-all duration-700 ease-in-out"
-                 [ngClass]="{
-                    'translate-x-0 opacity-100': i === itemVisible(),
-                    'translate-x-full opacity-0': i > itemVisible(),
-                    '-translate-x-full opacity-0': i < itemVisible()
-                 }">
-                {{ item }}
-            </div>
-        }
+    <div class="relative w-96 h-96 overflow-hidden shadow rounded-lg" #carouselContainer>
+        <ng-content></ng-content>
     </div>
 
-    <div class="flex gap-2">
-        @for (item of items; track item; let i = $index) {
+    <div class="flex items-center gap-3">
+        @for (navigationDot of navigationDotsArray; track $index; let dotIndex = $index) {
             <button
-                class="w-2 h-2 rounded-full transition-all duration-300"
+                class="size-2 rounded-full transition-all duration-500 ease-in-out cursor-pointer"
                 [ngClass]="{
-                    'bg-blue-500 scale-125': i === itemVisible(),
-                    'bg-gray-300 hover:bg-gray-400': i !== itemVisible()
+                    'bg-blue-500 border scale-150': dotIndex === currentVisibleItemIndex(),
+                    'bg-white hover:bg-gray-400 hover:scale-125': dotIndex !== currentVisibleItemIndex()
                 }"
-                (click)="goToSlide(i)">
+                (click)="navigateToSpecificItem(dotIndex)"
+                [attr.aria-label]="'Navigate to slide ' + (dotIndex + 1)">
             </button>
         }
     </div>
 
     <div class="flex gap-4">
         <button class="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-600 transition-colors duration-200"
-                (click)="goPrevios()">
-            Previos
+                (click)="navigateToPreviousItem()"
+                aria-label="Go to previous slide">
+            Previous
         </button>
         <button class="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-600 transition-colors duration-200"
-                (click)="goNext()">
+                (click)="navigateToNextItem()"
+                aria-label="Go to next slide">
             Next
         </button>
     </div>

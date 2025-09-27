@@ -29,6 +29,8 @@ export class CarouselDocs {
   importCode = getFormattedCode(CarouselCodeExamples.import, 'typescript');
   componentImportCode = getFormattedCode(CarouselCodeExamples.componentImport, 'typescript');
   basicUsageCode = getFormattedCode(CarouselCodeExamples.basicUsage, 'html');
+  customContentCode = getFormattedCode(CarouselCodeExamples.customContent, 'html');
+  propertiesCode = getFormattedCode(CarouselCodeExamples.properties, 'typescript');
 
   constructor(
     private aiPromptService: AiPromptService

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Carousel } from '../../components/carousel/carousel';
 
 @Component({
   selector: 'wally-home',
-  imports: [Carousel],
+  imports: [],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

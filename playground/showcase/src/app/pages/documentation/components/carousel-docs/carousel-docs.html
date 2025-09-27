@@ -8,14 +8,14 @@
       Carousel
     </h1>
     <p class="text-gray-700 dark:text-gray-400 mb-4">
-      A smooth carousel component with navigation controls, dot indicators, and elegant transitions.
+      A carousel component with navigation controls, touch gestures, and smooth transitions.
     </p>
 
     <!-- Under Construction Badge -->
     <div class="mb-6">
       <span class="text-xs bg-yellow-500 text-black px-3 py-1 rounded-full font-medium">Under Construction</span>
       <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
-        This component is actively being developed. Features like auto-play, touch gestures, and customization options are coming soon!
+        This component is actively being developed. Touch gestures, accessibility, and customization options are coming soon.
       </p>
     </div>
 
@@ -63,7 +63,17 @@
       <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Preview</h2>
       <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
         <div class="flex justify-center">
-          <wally-carousel></wally-carousel>
+          <wally-carousel>
+            <div class="w-full h-full bg-blue-500 text-white flex items-center justify-center text-lg font-semibold">
+              Slide 1
+            </div>
+            <div class="w-full h-full bg-green-500 text-white flex items-center justify-center text-lg font-semibold">
+              Slide 2
+            </div>
+            <div class="w-full h-full bg-purple-500 text-white flex items-center justify-center text-lg font-semibold">
+              Slide 3
+            </div>
+          </wally-carousel>
         </div>
       </div>
     </section>
@@ -90,91 +100,57 @@
       </div>
       <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
         <div class="flex justify-center">
-          <wally-carousel></wally-carousel>
+          <wally-carousel>
+            <div class="w-full h-full bg-blue-400 text-white flex items-center justify-center">
+              Item 1
+            </div>
+            <div class="w-full h-full bg-green-400 text-white flex items-center justify-center">
+              Item 2
+            </div>
+          </wally-carousel>
         </div>
       </div>
     </section>
 
-    <!-- Current Features -->
+    <!-- Advanced Examples -->
     <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Current Features</h2>
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Advanced Examples</h2>
 
-      <div class="space-y-4">
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Circular Buffer Algorithm</h3>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            Infinite navigation using circular buffer data structure for seamless looping.
-          </p>
+      <!-- Custom Content Example -->
+      <div class="mb-6">
+        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Custom Content</h3>
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+          <pre><code [innerHTML]="customContentCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Smooth Transitions</h3>
+        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+          <div class="flex justify-center">
+            <wally-carousel>
+              <div class="w-full h-full bg-gradient-to-r from-blue-500 to-purple-600 text-white flex flex-col items-center justify-center p-6">
+                <h3 class="text-xl font-bold mb-2">Feature 1</h3>
+                <p class="text-center text-sm">This is a custom slide with rich content</p>
+              </div>
+              <div class="w-full h-full bg-gradient-to-r from-green-500 to-blue-500 text-white flex flex-col items-center justify-center p-6">
+                <h3 class="text-xl font-bold mb-2">Feature 2</h3>
+                <p class="text-center text-sm">Another slide with different styling</p>
+              </div>
+              <div class="w-full h-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex flex-col items-center justify-center p-6">
+                <h3 class="text-xl font-bold mb-2">Feature 3</h3>
+                <p class="text-center text-sm">Beautiful gradients and typography</p>
+              </div>
+            </wally-carousel>
           </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            Tailwind CSS v4 powered transitions with transform and opacity animations.
-          </p>
-        </div>
-
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Navigation Controls</h3>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            Previous/Next buttons and dot indicators for direct slide navigation.
-          </p>
         </div>
       </div>
     </section>
 
-    <!-- Future Features -->
+    <!-- Properties -->
     <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Future Features</h2>
-
-      <div class="space-y-4">
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Auto-play</h3>
-            <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">Coming Soon</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            Automatic slide progression with configurable intervals and pause on hover.
-          </p>
-        </div>
-
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Touch Gestures</h3>
-            <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">Coming Soon</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            Swipe support for mobile devices with momentum scrolling and gesture recognition.
-          </p>
-        </div>
-
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Accessibility</h3>
-            <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">Coming Soon</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            ARIA labels, keyboard navigation, and screen reader support for better accessibility.
-          </p>
-        </div>
-
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Custom Content</h3>
-            <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">Coming Soon</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            Support for custom slide content through content projection and templates.
-          </p>
-        </div>
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Properties</h2>
+      <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+        <pre><code [innerHTML]="propertiesCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
       </div>
     </section>
+
 
   </div>
 </div>
