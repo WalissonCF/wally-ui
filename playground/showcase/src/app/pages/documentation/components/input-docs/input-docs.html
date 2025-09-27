@@ -11,13 +11,6 @@
       A fully-featured input component with label support, loading states, validation styling, and complete FormGroup integration.
     </p>
 
-    <!-- Under Construction Badge -->
-    <div class="mb-6">
-      <span class="text-xs bg-yellow-500 text-black px-3 py-1 rounded-full font-medium">Under Construction</span>
-      <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
-        This component is actively being developed. More features and improvements coming soon!
-      </p>
-    </div>
 
     <!-- AI Prompts -->
     <div class="flex flex-wrap gap-2 mb-6">
@@ -67,6 +60,10 @@
             <wally-input label="Full Name" placeholder="Enter your name"></wally-input>
             <wally-input label="Email Address" type="email" placeholder="Enter your email"></wally-input>
             <wally-input label="Password" type="password" placeholder="Enter password"></wally-input>
+            <wally-input label="Loading State" [loading]="true" placeholder="Processing..."></wally-input>
+            <wally-input label="Valid State" [valid]="true" placeholder="Valid input"></wally-input>
+            <wally-input label="Error State" errorMessage="This field is required" placeholder="Invalid input"></wally-input>
+            <wally-input label="Disabled State" [disabled]="true" placeholder="Disabled input"></wally-input>
           </div>
         </form>
       </div>
@@ -211,6 +208,17 @@
           </div>
         </div>
 
+        <!-- Disabled State -->
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Disabled State</h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <pre><code [innerHTML]="disabledCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-input label="Username" [disabled]="true" placeholder="Disabled input"></wally-input>
+          </div>
+        </div>
+
         <!-- Password with Toggle -->
         <div>
           <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Password with Toggle</h3>
@@ -323,6 +331,13 @@
           </div>
           <p class="text-sm text-gray-700 dark:text-gray-400">Error message text - shows red styling and displays error below input</p>
         </div>
+
+        <div class="space-y-2">
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="propertyDisabledCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-400">Disables the input when true - shows visual disabled state and prevents interaction</p>
+        </div>
       </div>
     </section>
 
@@ -333,21 +348,11 @@
       <div class="space-y-4">
         <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
           <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Input Icons</h3>
+            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Styles-Only Directive</h3>
             <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">Coming Soon</span>
           </div>
           <p class="text-sm text-gray-700 dark:text-gray-400">
-            Support for custom icons on the left and right sides of the input.
-          </p>
-        </div>
-
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Input Sizes</h3>
-            <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">Coming Soon</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            Different input sizes: small, medium, large for various layouts.
+            A lightweight directive for developers who want only the input styling without the full component logic.
           </p>
         </div>
       </div>

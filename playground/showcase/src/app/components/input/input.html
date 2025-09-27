@@ -1,5 +1,5 @@
 @if (label()) {
-<div class="py-1">
+<div class="py-2">
     <label [for]="inputId" class="block text-sm font-medium text-[#0a0a0a] dark:text-white">
         {{ label() }}
     </label>
@@ -7,8 +7,9 @@
 }
 
 <div class="relative">
-    <input [id]="inputId" [type]="currentInputType()" [value]="value()" [disabled]="disabled || loading()"
-        [placeholder]="placeholder()" [autocomplete]="autocomplete() || (type() === 'password' ? 'new-password' : '')" class="
+    <input [id]="inputId" [type]="currentInputType()" [value]="value()" [disabled]="isDisabled() || loading()"
+        [placeholder]="placeholder()" [autocomplete]="autocomplete() || (type() === 'password' ? 'new-password' : '')"
+        [attr.aria-describedby]="errorId()" [attr.aria-invalid]="!!errorMessage()" class="
         font-semibold
         block
         w-full
@@ -18,7 +19,7 @@
         focus:outline-none focus:ring-2 focus:ring-neutral-300
         bg-gray-100
         dark:bg-[#1b1b1b] dark:text-white dark:placeholder:text-neutral-500 dark:focus:ring-neutral-700
-        disabled:opacity-80 disabled:pointer-events-none
+        disabled:opacity-70 disabled:pointer-events-none disabled:cursor-not-allowed
         transition duration-200 ease-in-out
         py-4 px-4" [ngClass]="{
             'pe-12': type() === 'password',
@@ -62,7 +63,7 @@
 </div>
 
 @if (errorMessage()) {
-<div class="py-1">
+<div class="py-1" [id]="inputId + '-error'">
     <span class="text-sm text-red-500 font-medium">
         {{ errorMessage() }}
     </span>

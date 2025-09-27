@@ -32,9 +32,17 @@ export class Input implements ControlValueAccessor {
   valid: InputSignal<boolean> = input<boolean>(false);
   errorMessage: InputSignal<string> = input<string>('');
   loading: InputSignal<boolean> = input<boolean>(false);
+  disabled: InputSignal<boolean> = input<boolean>(false);
 
   protected readonly showPassword = signal<boolean>(false);
   protected readonly inputId = `wally-input-${Math.random().toString(36).substring(2, 11)}`;
+  protected readonly errorId = computed(() =>
+    this.errorMessage() ? `${this.inputId}-error` : undefined
+  );
+
+  protected readonly isDisabled = computed(() =>
+    this.disabled() || this.internalDisabled()
+  );
 
   private touched: WritableSignal<boolean> = signal<boolean>(false);
   value: WritableSignal<string> = signal<string>('');
@@ -53,7 +61,7 @@ export class Input implements ControlValueAccessor {
     return 'password';
   });
 
-  disabled: boolean = false;
+  private internalDisabled = signal<boolean>(false);
 
   private onChange = (value: any) => { };
   private onTouched = () => { };
@@ -73,7 +81,7 @@ export class Input implements ControlValueAccessor {
   }
 
   setDisabledState?(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this.internalDisabled.set(isDisabled);
   }
 
   togglePasswordVisibility(): void {

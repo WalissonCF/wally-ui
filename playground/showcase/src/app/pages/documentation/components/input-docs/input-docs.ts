@@ -61,6 +61,7 @@ export class InputDocs {
   loadingCode = getFormattedCode(InputCodeExamples.loadingState, 'html');
   validCode = getFormattedCode(InputCodeExamples.validState, 'html');
   errorCode = getFormattedCode(InputCodeExamples.errorState, 'html');
+  disabledCode = getFormattedCode(InputCodeExamples.disabledState, 'html');
   passwordCode = getFormattedCode(InputCodeExamples.passwordWithToggle, 'html');
 
   // Properties
@@ -70,6 +71,7 @@ export class InputDocs {
   propertyLoadingCode = getFormattedCode(InputCodeExamples.propertyLoading, 'typescript');
   propertyValidCode = getFormattedCode(InputCodeExamples.propertyValid, 'typescript');
   propertyErrorCode = getFormattedCode(InputCodeExamples.propertyError, 'typescript');
+  propertyDisabledCode = getFormattedCode(InputCodeExamples.propertyDisabled, 'typescript');
 
   constructor(
     private aiPromptService: AiPromptService,

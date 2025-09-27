@@ -76,6 +76,7 @@ onSubmit() {
   loadingState: `<wally-input [loading]="true" placeholder="Loading..."></wally-input>`,
   validState: `<wally-input [valid]="true" placeholder="Valid input"></wally-input>`,
   errorState: `<wally-input errorMessage="This field is required" placeholder="Enter value"></wally-input>`,
+  disabledState: `<wally-input [disabled]="true" placeholder="Disabled input"></wally-input>`,
   passwordWithToggle: `<wally-input type="password" label="Password" placeholder="Enter secure password"></wally-input>`,
 
   // Properties
@@ -84,5 +85,6 @@ onSubmit() {
   propertyPlaceholder: `placeholder: string = '';`,
   propertyLoading: `loading: boolean = false;`,
   propertyValid: `valid: boolean = false;`,
-  propertyError: `errorMessage: string = '';`
+  propertyError: `errorMessage: string = '';`,
+  propertyDisabled: `disabled: boolean = false;`
 };
