@@ -1,32 +1,46 @@
-<div class="w-full flex flex-col items-center gap-4">
-    <div class="relative w-96 h-96 overflow-hidden shadow rounded-lg" #carouselContainer>
-        <ng-content></ng-content>
+<div class="w-full h-full flex flex-col items-center gap-4 p-2">
+    <div class="w-full h-full flex items-center gap-3">
+        <div>
+            <button type="button"
+                class="group hidden sm:block bg-neutral-100 hover:bg-neutral-200 border-2 border-neutral-200 hover:border-neutral-300 dark:bg-[#1b1b1b] dark:hover:bg-[#1d1d1d] dark:border-neutral-700 hover:dark:border-neutral-600 p-2 rounded-full cursor-pointer transition-all duration-500 ease-in-out"
+                (click)="navigateToPreviousItem()" aria-label="Go to previous slide">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor"
+                    class="size-5 text-neutral-500 dark:text-neutral-300 group-hover:dark:text-white transition-all duration-500 ease-in-out">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="relative w-full h-full overflow-hidden p-2 shadow rounded-lg" #carouselContainer>
+            <ng-content></ng-content>
+        </div>
+
+        <div>
+            <button type="button"
+                class="group hidden sm:block bg-neutral-100 hover:bg-neutral-200 border-2 border-neutral-200 hover:border-neutral-300 dark:bg-[#1b1b1b] dark:hover:bg-[#1d1d1d] dark:border-neutral-700 hover:dark:border-neutral-600 p-2 rounded-full cursor-pointer transition-all duration-500 ease-in-out"
+                (click)="navigateToNextItem()" aria-label="Go to next slide">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor"
+                    class="size-5 text-neutral-500 dark:text-neutral-300 group-hover:dark:text-white transition-all duration-500 ease-in-out">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+            </button>
+        </div>
     </div>
 
-    <div class="flex items-center gap-3">
-        @for (navigationDot of navigationDotsArray; track $index; let dotIndex = $index) {
-            <button
-                class="size-2 rounded-full transition-all duration-500 ease-in-out cursor-pointer"
-                [ngClass]="{
-                    'bg-blue-500 border scale-150': dotIndex === currentVisibleItemIndex(),
-                    'bg-white hover:bg-gray-400 hover:scale-125': dotIndex !== currentVisibleItemIndex()
-                }"
-                (click)="navigateToSpecificItem(dotIndex)"
-                [attr.aria-label]="'Navigate to slide ' + (dotIndex + 1)">
-            </button>
+    @if (isNavigationIndicator()) {
+    <div class="flex items-center gap-2">
+        @for (navigationIndicator of navigationIndicatorsArray; track $index; let indicatorIndex = $index) {
+        <button type="button"
+            class="w-3.5 h-1.5 rounded-sm transition-all duration-500 ease-in-out cursor-pointer focus:outline-none focus:ring-0 active:outline-none"
+            [ngClass]="{
+                        'bg-blue-500': indicatorIndex === currentVisibleItemIndex(),
+                        'bg-neutral-300 hover:bg-neutral-400 hover:scale-105 dark:bg-neutral-700': indicatorIndex !== currentVisibleItemIndex()
+                    }" (click)="navigateToSpecificItem(indicatorIndex)"
+            [attr.aria-label]="'Navigate to slide ' + (indicatorIndex + 1)">
+        </button>
         }
     </div>
-
-    <div class="flex gap-4">
-        <button class="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-600 transition-colors duration-200"
-                (click)="navigateToPreviousItem()"
-                aria-label="Go to previous slide">
-            Previous
-        </button>
-        <button class="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-600 transition-colors duration-200"
-                (click)="navigateToNextItem()"
-                aria-label="Go to next slide">
-            Next
-        </button>
-    </div>
+    }
 </div>

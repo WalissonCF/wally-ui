@@ -29,8 +29,20 @@ export class CarouselDocs {
   importCode = getFormattedCode(CarouselCodeExamples.import, 'typescript');
   componentImportCode = getFormattedCode(CarouselCodeExamples.componentImport, 'typescript');
   basicUsageCode = getFormattedCode(CarouselCodeExamples.basicUsage, 'html');
+  withNavigationIndicatorsCode = getFormattedCode(CarouselCodeExamples.withNavigationIndicators, 'html');
+  imageCarouselCode = getFormattedCode(CarouselCodeExamples.imageCarousel, 'html');
+  productShowcaseCode = getFormattedCode(CarouselCodeExamples.productShowcase, 'html');
   customContentCode = getFormattedCode(CarouselCodeExamples.customContent, 'html');
-  propertiesCode = getFormattedCode(CarouselCodeExamples.properties, 'typescript');
+  responsiveExampleCode = getFormattedCode(CarouselCodeExamples.responsiveExample, 'html');
+
+  propertyIsNavigationIndicatorCode = getFormattedCode(CarouselCodeExamples.propertyIsNavigationIndicator, 'typescript');
+  propertyTotalItemsCountCode = getFormattedCode(CarouselCodeExamples.propertyTotalItemsCount, 'typescript');
+  propertyCurrentVisibleItemIndexCode = getFormattedCode(CarouselCodeExamples.propertyCurrentVisibleItemIndex, 'typescript');
+  propertyNavigationIndicatorsArrayCode = getFormattedCode(CarouselCodeExamples.propertyNavigationIndicatorsArray, 'typescript');
+
+  apiMethodsCode = getFormattedCode(CarouselCodeExamples.apiMethods, 'typescript');
+  keyboardShortcutsCode = getFormattedCode(CarouselCodeExamples.keyboardShortcuts, 'typescript');
+  touchGesturesCode = getFormattedCode(CarouselCodeExamples.touchGestures, 'typescript');
 
   constructor(
     private aiPromptService: AiPromptService
