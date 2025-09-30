@@ -1,48 +1,72 @@
-<div class="h-dvh antialiased font-mono">
-    <div class="w-full h-full flex flex-col items-center justify-center p-4">
-        <div class="max-w-md">
-            <h1 class="text-2xl font-bold text-[#0a0a0a] dark:text-white">
-                Wally UI
-            </h1>
-            <h2 class="text-xl font-semibold text-[#0a0a0a] dark:text-white">
-                Where's Wally? Right here!
-            </h2>
-            <p class="mt-4 text-gray-700 dark:text-gray-400">
-                Stop searching for the perfect Angular components. Wally UI brings you a
-                collection of ready-to-use, beautifully crafted Angular components built with
-                standalone architecture and Tailwind CSS that integrate seamlessly with your projects.
-            </p>
-        </div>
+<main class="h-dvh subpixel-antialiased font-mono" role="main">
+    <section class="w-full h-full flex flex-col items-center justify-center p-4">
+        <article class="max-w-xl">
+            <header class="w-full">
+                <hgroup>
+                    <h1 class="font-sans text-4xl font-medium tracking-tight text-[#0a0a0a] dark:text-white">
+                        Wally UI
+                    </h1>
 
-        <div class="w-full max-w-md">
-            <code
-                class="w-full mt-6 block bg-gray-200 dark:bg-[#121212] dark:text-white text-[#0a0a0a] p-4 rounded-md text-sm cursor-pointer hover:opacity-85 transition-colorsselect-all"
-                onclick="navigator.clipboard.writeText('npx wally-ui list')">
-                <pre class="m-0">$ npx wally-ui list</pre>
-            </code>
-        </div>
+                    <h2 class="font-sans text-lg font-normal tracking-wide text-[#0a0a0a] dark:text-white">
+                        Where's Wally? Right here!
+                    </h2>
+                </hgroup>
+                <p class="mt-4 text-gray-700 dark:text-neutral-300/75">
+                    Stop searching for the perfect Angular components. Wally UI is a free, open source
+                    design system built for modern developers and AI coding assistants. Copy-paste
+                    ready TypeScript components with accessibility-first design, SSR compatibility,
+                    and zero configuration. <strong>Own your code - just pure Angular + Tailwind CSS</strong>.
+                </p>
+            </header>
 
-        <div class="mt-4 w-full max-w-md flex flex-col gap-2">
-            <a href="/documentation" class="text-blue-500 underline">
-                Documentation
-            </a>
-            <a href="/documentation/components" class="text-blue-500 underline">
-                Components
-            </a>
-            <a href="/mcp" class="text-blue-500 underline">
-                MCP Server
-            </a>
+            <section class="w-full" aria-labelledby="installation-heading">
+                <h3 id="installation-heading" class="sr-only">Installation Command</h3>
+                <code
+                    class="w-full mt-6 block bg-gray-200 dark:bg-[#121212] dark:text-white text-[#0a0a0a] p-4 rounded-md text-sm cursor-pointer hover:opacity-85 transition-colorsselect-all"
+                    onclick="navigator.clipboard.writeText('npx wally-ui list')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Copy command to clipboard: npx wally-ui list">
+                    <pre class="m-0">$ npx wally-ui list</pre>
+                </code>
+            </section>
 
-            <div class="flex gap-4 mt-2">
-                <a href="https://github.com/WalissonCF/wally-ui" target="_blank"
-                    class="text-blue-500 underline text-sm">
-                    GitHub
-                </a>
-                <a href="https://www.npmjs.com/package/wally-ui" target="_blank"
-                    class="text-blue-500 underline text-sm">
-                    NPM
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+            <nav class="mt-6 w-full space-y-4" aria-label="Main navigation">
+                <div class="space-y-3">
+                    <a [routerLink]="'/documentation'"
+                       class="block text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium transition-colors duration-200 text-base"
+                       aria-label="View complete documentation and setup guide for Wally UI components">
+                        Documentation
+                    </a>
+                    <a [routerLink]="'/documentation/components'"
+                       class="block text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium transition-colors duration-200 text-base"
+                       aria-label="Browse all available Angular components with examples and API reference">
+                        Components
+                    </a>
+                    <a [routerLink]="'/mcp'"
+                       class="block text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium transition-colors duration-200 text-base"
+                       aria-label="Learn about Wally UI MCP Server for AI coding assistants integration">
+                        MCP Server
+                    </a>
+                </div>
+
+                <div class="flex gap-4 pt-3 mt-4 border-t border-gray-200 dark:border-white" aria-label="External links">
+                    <a href="https://github.com/WalissonCF/wally-ui"
+                       target="_blank"
+                       class="inline-flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-200"
+                       rel="noopener noreferrer"
+                       aria-label="View Wally UI on GitHub (opens in new tab)">
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.npmjs.com/package/wally-ui"
+                       target="_blank"
+                       class="inline-flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-200"
+                       rel="noopener noreferrer"
+                       aria-label="View Wally UI on NPM (opens in new tab)">
+                        <span>NPM</span>
+                    </a>
+                </div>
+            </nav>
+        </article>
+    </section>
+</main>
