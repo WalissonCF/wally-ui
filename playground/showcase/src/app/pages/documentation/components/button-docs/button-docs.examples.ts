@@ -15,6 +15,10 @@ export const ButtonCodeExamples = {
   // Basic usage
   basicUsage: `<wally-button>Wally Button</wally-button>`,
 
+  // Variants
+  primaryVariant: `<wally-button variant="primary">Primary Button</wally-button>`,
+  secondaryVariant: `<wally-button variant="secondary">Secondary Button</wally-button>`,
+
   // States
   disabled: `<wally-button [disabled]="true">Disabled</wally-button>`,
   loading: `<wally-button [loading]="true">Loading</wally-button>`,

@@ -29,6 +29,10 @@ export class ButtonDocs {
   importCode = getFormattedCode(ButtonCodeExamples.import, 'typescript');
   componentImportCode = getFormattedCode(ButtonCodeExamples.componentImport, 'typescript');
   basicUsageTemplateCode = getFormattedCode(ButtonCodeExamples.basicUsage, 'html');
+
+  // Variants
+  primaryVariantCode = getFormattedCode(ButtonCodeExamples.primaryVariant, 'html');
+  secondaryVariantCode = getFormattedCode(ButtonCodeExamples.secondaryVariant, 'html');
   disabledCode = getFormattedCode(ButtonCodeExamples.disabled, 'html');
   loadingCode = getFormattedCode(ButtonCodeExamples.loading, 'html');
   notificationCode = getFormattedCode(ButtonCodeExamples.notification, 'html');

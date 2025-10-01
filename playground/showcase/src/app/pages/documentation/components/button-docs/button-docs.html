@@ -70,6 +70,10 @@
           <wally-button [loading]="true">
             Loading
           </wally-button>
+          <wally-button variant="primary">Primary Button</wally-button>
+          <wally-button variant="secondary">Secondary Button</wally-button>
+          <wally-button variant="secondary" [disabled]="true">Secondary Disabled</wally-button>
+          <wally-button variant="secondary" [loading]="true">Secondary Loading</wally-button>
 
           <div class="w-full flex justify-center items-center gap-2">
             <div class="w-full">
@@ -129,6 +133,45 @@
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
             <wally-button>Wally Button</wally-button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Button Variants -->
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">
+        Button Variants
+      </h2>
+
+      <div class="space-y-8">
+        <!-- Primary Variant -->
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">
+            Primary (Default)
+          </h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <pre><code [innerHTML]="primaryVariantCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <wally-button variant="primary">Primary Button</wally-button>
+          </div>
+        </div>
+
+        <!-- Secondary Variant -->
+        <div>
+          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">
+            Secondary
+          </h3>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
+            <pre><code [innerHTML]="secondaryVariantCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+            <div class="flex flex-col gap-2">
+              <wally-button variant="secondary">Secondary Button</wally-button>
+              <wally-button variant="secondary" [disabled]="true">Secondary Disabled</wally-button>
+              <wally-button variant="secondary" [loading]="true">Secondary Loading</wally-button>
+            </div>
           </div>
         </div>
       </div>
@@ -287,8 +330,10 @@
           </div>
           <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
             <wally-button ariaLabel="Save document">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
               </svg>
             </wally-button>
           </div>
@@ -318,65 +363,101 @@
               Processing...
             </wally-button>
           </div>
-          <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
-            Automatically sets <code class="bg-gray-200 dark:bg-[#121212] px-1 py-0.5 rounded text-xs">aria-busy="true"</code> when loading
-          </p>
         </div>
       </div>
     </section>
 
-    <!-- Properties -->
+    <!-- API Reference -->
     <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Properties</h2>
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">API Reference</h2>
 
-      <div class="space-y-4">
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyTypeCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">HTML button type (button, submit, reset)</p>
+      <div class="bg-white dark:bg-[#0f0f0f] border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-gray-50 dark:bg-gray-900">
+              <tr>
+                <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Property</th>
+                <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Type</th>
+                <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Default</th>
+                <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Description</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">type</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">'button'</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">HTML button type (button, submit, reset)</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">variant</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">'primary' | 'secondary'</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">'primary'</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Button visual style variant</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">disabled</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">boolean</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">false</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Whether the button is disabled</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">loading</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">boolean</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">false</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Shows loading spinner and disables button</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">showNotification</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">boolean</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">false</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Shows notification badge indicator</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">ariaLabel</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">''</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Accessible label for screen readers (essential for icon-only buttons)</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">ariaPressed</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">boolean | undefined</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">undefined</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Indicates pressed state for toggle buttons</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">ariaDescribedBy</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">''</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">References element(s) that describe the button</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
 
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyDisabledCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <!-- Events Table -->
+      <div class="mt-6">
+        <h3 class="text-md font-medium mb-4 text-[#0a0a0a] dark:text-white">Events</h3>
+        <div class="bg-white dark:bg-[#0f0f0f] border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50 dark:bg-gray-900">
+                <tr>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Event</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Payload</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">click</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">void</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">Emitted when button is clicked</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Whether the button is disabled</p>
-        </div>
-
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyLoadingCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Shows loading spinner when true</p>
-        </div>
-
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyShowNotificationCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Shows notification badge when true</p>
-        </div>
-
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyAriaLabelCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Accessible label for screen readers (essential for icon-only buttons)</p>
-        </div>
-
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyAriaPressedCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Indicates pressed state for toggle buttons</p>
-        </div>
-
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyAriaDescribedByCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">References element(s) that describe the button</p>
         </div>
       </div>
     </section>
@@ -388,11 +469,11 @@
       <div class="space-y-4">
         <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
           <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Button Variants</h3>
+            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Additional Button Variants</h3>
             <span class="text-xs bg-yellow-500 text-black px-2 py-1 rounded">Under Construction</span>
           </div>
           <p class="text-sm text-gray-700 dark:text-gray-400">
-            Multiple button styles including outline, ghost, destructive, and secondary variants.
+            Additional button styles including outline, ghost, and destructive variants.
           </p>
         </div>
 

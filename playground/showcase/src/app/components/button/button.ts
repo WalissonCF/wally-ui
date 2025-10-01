@@ -1,6 +1,8 @@
 import { Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive';
+
 @Component({
   selector: 'wally-button',
   imports: [
@@ -14,6 +16,7 @@ export class Button {
   disabled: InputSignal<boolean> = input<boolean>(false);
   loading: InputSignal<boolean> = input<boolean>(false);
   showNotification: InputSignal<boolean> = input<boolean>(false);
+  variant: InputSignal<ButtonVariant> = input<ButtonVariant>('primary');
 
   // Accessibility properties
   ariaLabel: InputSignal<string> = input<string>('');
