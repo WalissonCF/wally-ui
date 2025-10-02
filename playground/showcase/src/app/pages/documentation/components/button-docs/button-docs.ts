@@ -71,6 +71,17 @@ export class ButtonDocs {
   ariaBusyCode = getFormattedCode(ButtonCodeExamples.ariaBusy, 'html');
   ariaDescribedByCode = getFormattedCode(ButtonCodeExamples.ariaDescribedBy, 'html');
 
+  // Advanced & Edge Cases
+  formIntegrationCode = getFormattedCode(ButtonCodeExamples.formIntegration, 'html');
+  formIntegrationTsCode = getFormattedCode(ButtonCodeExamples.formIntegrationTs, 'typescript');
+  routerExampleCode = getFormattedCode(ButtonCodeExamples.routerExample, 'html');
+  routerExampleTsCode = getFormattedCode(ButtonCodeExamples.routerExampleTs, 'typescript');
+  loadingDisabledExampleCode = getFormattedCode(ButtonCodeExamples.loadingDisabledExample, 'html');
+  iconRecommendationsCode = getFormattedCode(ButtonCodeExamples.iconRecommendations, 'html');
+  signalsPatternCode = getFormattedCode(ButtonCodeExamples.signalsPattern, 'typescript');
+  buttonTypeExplainedCode = getFormattedCode(ButtonCodeExamples.buttonTypeExplained, 'html');
+  hrefBehaviorCode = getFormattedCode(ButtonCodeExamples.hrefBehavior, 'html');
+
   // Interactive states
   clickMessage: WritableSignal<string> = signal<string>('');
   toggleState: WritableSignal<boolean> = signal<boolean>(false);

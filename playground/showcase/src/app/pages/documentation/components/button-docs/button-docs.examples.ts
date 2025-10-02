@@ -225,4 +225,118 @@ export const ButtonCodeExamples = {
 <p id="save-description" class="sr-only">
   Saves your changes permanently
 </p>`,
+
+  // === EDGE CASES & ADVANCED ===
+
+  // Form Integration
+  formIntegration: `<!-- Button with form validation -->
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <!-- form fields -->
+
+  <wally-button
+    type="submit"
+    [disabled]="!myForm.valid"
+    [loading]="isSubmitting()">
+    Submit
+  </wally-button>
+</form>`,
+
+  formIntegrationTs: `export class MyComponent {
+  myForm = new FormGroup({
+    name: new FormControl('', Validators.required)
+  });
+
+  isSubmitting = signal(false);
+
+  onSubmit() {
+    if (this.myForm.valid) {
+      this.isSubmitting.set(true);
+      // API call...
+    }
+  }
+}`,
+
+  // Router Integration
+  routerExample: `<!-- Using with Angular Router -->
+<wally-button variant="link" href="/dashboard">
+  Go to Dashboard
+</wally-button>
+
+<!-- Programmatic navigation -->
+<wally-button (click)="navigateToProfile()">
+  View Profile
+</wally-button>`,
+
+  routerExampleTs: `constructor(private router: Router) {}
+
+navigateToProfile() {
+  this.router.navigate(['/profile', this.userId]);
+}`,
+
+  // Loading + Disabled behavior
+  loadingDisabledExample: `<!-- Loading takes precedence over disabled -->
+<wally-button
+  [disabled]="formInvalid()"
+  [loading]="isSaving()">
+  Save
+</wally-button>
+
+<!-- Result: When loading=true, button is disabled regardless of disabled prop -->`,
+
+  // Icon recommendations
+  iconRecommendations: `<!-- Recommended: Heroicons with size-5 (20px) -->
+<wally-button>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+       stroke-width="1.5" stroke="currentColor" class="size-5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="..." />
+  </svg>
+  Action
+</wally-button>
+
+<!-- Also works with: Lucide, Phosphor, Font Awesome SVG -->`,
+
+  // Signals pattern
+  signalsPattern: `<!-- Using Angular Signals (reactive) -->
+export class MyComponent {
+  isLoading = signal(false);
+  isDisabled = computed(() => !this.form.valid);
+
+  async handleSubmit() {
+    this.isLoading.set(true);
+    await this.api.save();
+    this.isLoading.set(false);
+  }
+}
+
+<!-- Template -->
+<wally-button
+  [loading]="isLoading()"
+  [disabled]="isDisabled()"
+  (click)="handleSubmit()">
+  Submit
+</wally-button>`,
+
+  // Button vs type="button"
+  buttonTypeExplained: `<!-- GOOD: Explicit type prevents accidental form submission -->
+<wally-button type="button" (click)="openModal()">
+  Open
+</wally-button>
+
+<!-- CAUTION: Default type="button" is safe, but explicit is better -->
+<wally-button (click)="openModal()">Open</wally-button>
+
+<!-- GOOD: Use type="submit" for form submission -->
+<form (ngSubmit)="save()">
+  <wally-button type="submit">Save</wally-button>
+</form>`,
+
+  // Href without link variant
+  hrefBehavior: `<!-- href only works with variant="link" -->
+
+<!-- CORRECT: Works as expected -->
+<wally-button variant="link" href="/page">Link</wally-button>
+
+<!-- INCORRECT: href is ignored, just a regular button -->
+<wally-button href="/page">Button</wally-button>`,
+
 };

@@ -672,5 +672,97 @@
         </div>
       </div>
     </section>
+
+    <!-- Advanced Usage & Edge Cases -->
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Advanced Usage & Edge Cases</h2>
+
+      <!-- Form Integration -->
+      <div class="mb-6">
+        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Form Validation Integration</h3>
+        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+          Button automatically integrates with Angular Forms. Combine disabled with form validation for better UX.
+        </p>
+        <div class="space-y-4">
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="formIntegrationCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="formIntegrationTsCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Router Integration -->
+      <div class="mb-6">
+        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Router Integration</h3>
+        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+          Use variant="link" for declarative navigation, or programmatic navigation with click events.
+        </p>
+        <div class="space-y-4">
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="routerExampleCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+            <pre><code [innerHTML]="routerExampleTsCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading + Disabled Behavior -->
+      <div class="mb-6">
+        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Loading + Disabled Behavior</h3>
+        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+          When both loading and disabled are set, loading takes precedence. The button will show the loading spinner.
+        </p>
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <pre><code [innerHTML]="loadingDisabledExampleCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </div>
+
+      <!-- Icon Recommendations -->
+      <div class="mb-6">
+        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Icon Library Recommendations</h3>
+        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+          Use size-5 (20px) icons for optimal visual balance. Compatible with all SVG icon libraries.
+        </p>
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <pre><code [innerHTML]="iconRecommendationsCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </div>
+
+      <!-- Signals Pattern -->
+      <div class="mb-6">
+        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Using Angular Signals (Recommended)</h3>
+        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+          Button properties work seamlessly with Angular Signals for reactive state management.
+        </p>
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <pre><code [innerHTML]="signalsPatternCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </div>
+
+      <!-- Button Type Explained -->
+      <div class="mb-6">
+        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Understanding Button Types</h3>
+        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+          Always specify type="button" for non-form buttons to prevent accidental form submission.
+        </p>
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <pre><code [innerHTML]="buttonTypeExplainedCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </div>
+
+      <!-- Href Behavior -->
+      <div class="mb-6">
+        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Href Behavior (Important)</h3>
+        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+          The href property only works when variant="link" is set. Otherwise, it's ignored.
+        </p>
+        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
+          <pre><code [innerHTML]="hrefBehaviorCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </div>
+    </section>
   </div>
 </div>
