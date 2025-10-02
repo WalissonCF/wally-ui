@@ -25,6 +25,7 @@ export class ButtonDocs {
     { label: 'Button' }
   ];
 
+  // Installation & Import
   basicUsageCode = getFormattedCode(ButtonCodeExamples.installation, 'bash');
   importCode = getFormattedCode(ButtonCodeExamples.import, 'typescript');
   componentImportCode = getFormattedCode(ButtonCodeExamples.componentImport, 'typescript');
@@ -33,29 +34,44 @@ export class ButtonDocs {
   // Variants
   primaryVariantCode = getFormattedCode(ButtonCodeExamples.primaryVariant, 'html');
   secondaryVariantCode = getFormattedCode(ButtonCodeExamples.secondaryVariant, 'html');
+  destructiveVariantCode = getFormattedCode(ButtonCodeExamples.destructiveVariant, 'html');
+  outlineVariantCode = getFormattedCode(ButtonCodeExamples.outlineVariant, 'html');
+  ghostVariantCode = getFormattedCode(ButtonCodeExamples.ghostVariant, 'html');
+  linkVariantCode = getFormattedCode(ButtonCodeExamples.linkVariant, 'html');
+
+  // States
   disabledCode = getFormattedCode(ButtonCodeExamples.disabled, 'html');
   loadingCode = getFormattedCode(ButtonCodeExamples.loading, 'html');
   notificationCode = getFormattedCode(ButtonCodeExamples.notification, 'html');
+
+  // Production Examples
+  ctaExampleCode = getFormattedCode(ButtonCodeExamples.ctaExample, 'html');
+  loginExampleCode = getFormattedCode(ButtonCodeExamples.loginExample, 'html');
+  loginExampleTsCode = getFormattedCode(ButtonCodeExamples.loginExampleTs, 'typescript');
+  deleteExampleCode = getFormattedCode(ButtonCodeExamples.deleteExample, 'html');
+  dashboardExampleCode = getFormattedCode(ButtonCodeExamples.dashboardExample, 'html');
+  notificationButtonCode = getFormattedCode(ButtonCodeExamples.notificationButton, 'html');
+
+  // Button Types
   submitCode = getFormattedCode(ButtonCodeExamples.submit, 'html');
+  resetCode = getFormattedCode(ButtonCodeExamples.reset, 'html');
+
+  // Events
   clickCodeHTML = getFormattedCode(ButtonCodeExamples.clickTemplate, 'html');
   clickCodeTs = getFormattedCode(ButtonCodeExamples.clickMethod, 'typescript');
+
+  // Icons
   iconCode = getFormattedCode(ButtonCodeExamples.iconWithText, 'html');
-  iconNotificationCode = getFormattedCode(ButtonCodeExamples.iconOnly, 'html');
+  iconOnlyCode = getFormattedCode(ButtonCodeExamples.iconOnly, 'html');
+  iconLeftCode = getFormattedCode(ButtonCodeExamples.iconLeft, 'html');
 
   // Accessibility
   ariaLabelCode = getFormattedCode(ButtonCodeExamples.ariaLabel, 'html');
   ariaPressedCode = getFormattedCode(ButtonCodeExamples.ariaPressed, 'html');
   ariaBusyCode = getFormattedCode(ButtonCodeExamples.ariaBusy, 'html');
+  ariaDescribedByCode = getFormattedCode(ButtonCodeExamples.ariaDescribedBy, 'html');
 
-  // Properties
-  propertyTypeCode = getFormattedCode(ButtonCodeExamples.propertyType, 'typescript');
-  propertyDisabledCode = getFormattedCode(ButtonCodeExamples.propertyDisabled, 'typescript');
-  propertyLoadingCode = getFormattedCode(ButtonCodeExamples.propertyLoading, 'typescript');
-  propertyShowNotificationCode = getFormattedCode(ButtonCodeExamples.propertyShowNotification, 'typescript');
-  propertyAriaLabelCode = getFormattedCode(ButtonCodeExamples.propertyAriaLabel, 'typescript');
-  propertyAriaPressedCode = getFormattedCode(ButtonCodeExamples.propertyAriaPressed, 'typescript');
-  propertyAriaDescribedByCode = getFormattedCode(ButtonCodeExamples.propertyAriaDescribedBy, 'typescript');
-
+  // Interactive states
   clickMessage: WritableSignal<string> = signal<string>('');
   toggleState: WritableSignal<boolean> = signal<boolean>(false);
 
