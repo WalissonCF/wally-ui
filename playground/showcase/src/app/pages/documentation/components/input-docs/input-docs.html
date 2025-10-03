@@ -1,60 +1,78 @@
-<div class="font-mono">
-  <div class="max-w-4xl mx-auto p-6">
-    <div class="mb-4">
+<main class="min-h-dvh bg-white dark:bg-[#0a0a0a] font-mono" role="main">
+  <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 md:px-8">
+    <!-- Breadcrumb Navigation -->
+    <nav class="mb-8" aria-label="Breadcrumb navigation">
       <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
-    </div>
+    </nav>
 
-    <h1 class="text-2xl font-bold mb-4 text-[#0a0a0a] dark:text-white">
-      Input
-    </h1>
-    <p class="text-gray-700 dark:text-gray-400 mb-4">
-      A fully-featured input component with label support, loading states, validation styling, and complete FormGroup integration.
-    </p>
+    <!-- Header -->
+    <header class="mb-12" role="banner">
+      <h1 id="page-title" class="text-3xl sm:text-4xl font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+        <span aria-hidden="true">&gt;_ </span>Input
+      </h1>
+      <p class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4 leading-relaxed">
+        Production-ready input component with label support, loading states, validation styling, password toggle, and complete FormGroup integration. Enterprise-grade accessibility with ARIA support.
+      </p>
 
+      <!-- AI Assistant Links -->
+      <div class="flex flex-wrap gap-0 mt-6 border-2 border-neutral-300 dark:border-neutral-700" role="list" aria-label="Open documentation in AI coding assistants">
+        <a [href]="claudeUrl" target="_blank"
+           class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] border-b-2 sm:border-b-0 sm:border-r-2 border-neutral-300 dark:border-neutral-700 hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+           rel="noopener noreferrer"
+           role="listitem"
+           aria-label="Open Input component documentation in Claude AI assistant (opens in new tab)">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor"
+              d="m4.714 15.956l4.718-2.648l.079-.23l-.08-.128h-.23l-.79-.048l-2.695-.073l-2.337-.097l-2.265-.122l-.57-.121l-.535-.704l.055-.353l.48-.321l.685.06l1.518.104l2.277.157l1.651.098l2.447.255h.389l.054-.158l-.133-.097l-.103-.098l-2.356-1.596l-2.55-1.688l-1.336-.972l-.722-.491L2 6.223l-.158-1.008l.656-.722l.88.06l.224.061l.893.686l1.906 1.476l2.49 1.833l.364.304l.146-.104l.018-.072l-.164-.274l-1.354-2.446l-1.445-2.49l-.644-1.032l-.17-.619a3 3 0 0 1-.103-.729L6.287.133L6.7 0l.995.134l.42.364l.619 1.415L9.735 4.14l1.555 3.03l.455.898l.243.832l.09.255h.159V9.01l.127-1.706l.237-2.095l.23-2.695l.08-.76l.376-.91l.747-.492l.583.28l.48.685l-.067.444l-.286 1.851l-.558 2.903l-.365 1.942h.213l.243-.242l.983-1.306l1.652-2.064l.728-.82l.85-.904l.547-.431h1.032l.759 1.129l-.34 1.166l-1.063 1.347l-.88 1.142l-1.263 1.7l-.79 1.36l.074.11l.188-.02l2.853-.606l1.542-.28l1.84-.315l.832.388l.09.395l-.327.807l-1.967.486l-2.307.462l-3.436.813l-.043.03l.049.061l1.548.146l.662.036h1.62l3.018.225l.79.522l.473.638l-.08.485l-1.213.62l-1.64-.389l-3.825-.91l-1.31-.329h-.183v.11l1.093 1.068l2.003 1.81l2.508 2.33l.127.578l-.321.455l-.34-.049l-2.204-1.657l-.85-.747l-1.925-1.62h-.127v.17l.443.649l2.343 3.521l.122 1.08l-.17.353l-.607.213l-.668-.122l-1.372-1.924l-1.415-2.168l-1.141-1.943l-.14.08l-.674 7.254l-.316.37l-.728.28l-.607-.461l-.322-.747l.322-1.476l.388-1.924l.316-1.53l.285-1.9l.17-.632l-.012-.042l-.14.018l-1.432 1.967l-2.18 2.945l-1.724 1.845l-.413.164l-.716-.37l.066-.662l.401-.589l2.386-3.036l1.439-1.882l.929-1.086l-.006-.158h-.055L4.138 18.56l-1.13.146l-.485-.456l.06-.746l.231-.243l1.907-1.312Z" />
+          </svg>
+          <span class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150">
+            Open in Claude
+          </span>
+        </a>
 
-    <!-- AI Prompts -->
-    <div class="flex flex-wrap gap-2 mb-6">
-      <a [href]="claudeUrl" target="_blank"
-        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-200 dark:bg-[#121212] text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-[#1a1a1a] hover:text-[#0a0a0a] dark:hover:text-white transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24">
-          <path fill="currentColor"
-            d="m4.714 15.956l4.718-2.648l.079-.23l-.08-.128h-.23l-.79-.048l-2.695-.073l-2.337-.097l-2.265-.122l-.57-.121l-.535-.704l.055-.353l.48-.321l.685.06l1.518.104l2.277.157l1.651.098l2.447.255h.389l.054-.158l-.133-.097l-.103-.098l-2.356-1.596l-2.55-1.688l-1.336-.972l-.722-.491L2 6.223l-.158-1.008l.656-.722l.88.06l.224.061l.893.686l1.906 1.476l2.49 1.833l.364.304l.146-.104l.018-.072l-.164-.274l-1.354-2.446l-1.445-2.49l-.644-1.032l-.17-.619a3 3 0 0 1-.103-.729L6.287.133L6.7 0l.995.134l.42.364l.619 1.415L9.735 4.14l1.555 3.03l.455.898l.243.832l.09.255h.159V9.01l.127-1.706l.237-2.095l.23-2.695l.08-.76l.376-.91l.747-.492l.583.28l.48.685l-.067.444l-.286 1.851l-.558 2.903l-.365 1.942h.213l.243-.242l.983-1.306l1.652-2.064l.728-.82l.85-.904l.547-.431h1.032l.759 1.129l-.34 1.166l-1.063 1.347l-.88 1.142l-1.263 1.7l-.79 1.36l.074.11l.188-.02l2.853-.606l1.542-.28l1.84-.315l.832.388l.09.395l-.327.807l-1.967.486l-2.307.462l-3.436.813l-.043.03l.049.061l1.548.146l.662.036h1.62l3.018.225l.79.522l.473.638l-.08.485l-1.213.62l-1.64-.389l-3.825-.91l-1.31-.329h-.183v.11l1.093 1.068l2.003 1.81l2.508 2.33l.127.578l-.321.455l-.34-.049l-2.204-1.657l-.85-.747l-1.925-1.62h-.127v.17l.443.649l2.343 3.521l.122 1.08l-.17.353l-.607.213l-.668-.122l-1.372-1.924l-1.415-2.168l-1.141-1.943l-.14.08l-.674 7.254l-.316.37l-.728.28l-.607-.461l-.322-.747l.322-1.476l.388-1.924l.316-1.53l.285-1.9l.17-.632l-.012-.042l-.14.018l-1.432 1.967l-2.18 2.945l-1.724 1.845l-.413.164l-.716-.37l.066-.662l.401-.589l2.386-3.036l1.439-1.882l.929-1.086l-.006-.158h-.055L4.138 18.56l-1.13.146l-.485-.456l.06-.746l.231-.243l1.907-1.312Z" />
-        </svg>
-        Open in Claude
-      </a>
-
-      <a [href]="chatGptUrl" target="_blank"
-        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-200 dark:bg-[#121212] text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-[#1a1a1a] hover:text-[#0a0a0a] dark:hover:text-white transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 48 48">
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="M18.38 27.94v-14.4l11.19-6.46c6.2-3.58 17.3 5.25 12.64 13.33" />
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="m18.38 20.94l12.47-7.2l11.19 6.46c6.2 3.58 4.1 17.61-5.23 17.61" />
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="m24.44 17.44l12.47 7.2v12.93c0 7.16-13.2 12.36-17.86 4.28" />
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="M30.5 21.2v14.14L19.31 41.8c-6.2 3.58-17.3-5.25-12.64-13.33" />
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="m30.5 27.94l-12.47 7.2l-11.19-6.46c-6.21-3.59-4.11-17.61 5.22-17.61" />
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="m24.44 31.44l-12.47-7.2V11.31c0-7.16 13.2-12.36 17.86-4.28" />
-        </svg>
-        Open in ChatGPT
-      </a>
-    </div>
+        <a [href]="chatGptUrl" target="_blank"
+           class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+           rel="noopener noreferrer"
+           role="listitem"
+           aria-label="Open Input component documentation in ChatGPT AI assistant (opens in new tab)">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150" viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="M18.38 27.94v-14.4l11.19-6.46c6.2-3.58 17.3 5.25 12.64 13.33" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m18.38 20.94l12.47-7.2l11.19 6.46c6.2 3.58 4.1 17.61-5.23 17.61" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m24.44 17.44l12.47 7.2v12.93c0 7.16-13.2 12.36-17.86 4.28" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="M30.5 21.2v14.14L19.31 41.8c-6.2 3.58-17.3-5.25-12.64-13.33" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m30.5 27.94l-12.47 7.2l-11.19-6.46c-6.21-3.59-4.11-17.61 5.22-17.61" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m24.44 31.44l-12.47-7.2V11.31c0-7.16 13.2-12.36 17.86-4.28" />
+          </svg>
+          <span class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150">
+            Open in ChatGPT
+          </span>
+        </a>
+      </div>
+    </header>
 
     <!-- Installation -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Installation</h2>
-      <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-        <pre><code [innerHTML]="installationCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+    <section id="installation" class="mb-12" aria-labelledby="installation-heading">
+      <h2 id="installation-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Installation ]
+      </h2>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+        <pre><code [innerHTML]="installationCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
       </div>
     </section>
 
-    <!-- Preview -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Preview</h2>
-      <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+    <!-- All States Preview -->
+    <section id="preview" class="mb-12" aria-labelledby="preview-heading">
+      <h2 id="preview-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ All States Preview ]
+      </h2>
+      <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+           aria-label="Live preview showing all input component states: default, email, password, loading, valid, error, and disabled">
         <form>
           <div class="flex flex-col gap-4 w-full">
             <wally-input label="Full Name" placeholder="Enter your name"></wally-input>
@@ -70,293 +88,353 @@
     </section>
 
     <!-- Import -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Import</h2>
+    <section id="import" class="mb-12" aria-labelledby="import-heading">
+      <h2 id="import-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Import ]
+      </h2>
       <div class="space-y-4">
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="importCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="importCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
 
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="componentImportCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="componentImportCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
       </div>
     </section>
 
-    <!-- FormGroup Usage (HIGHLIGHTED SECTION) -->
-    <section class="mb-8">
-      <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 p-4 rounded-lg mb-4">
-        <h2 class="text-lg font-semibold mb-2 text-blue-800 dark:text-blue-200">
-          FormGroup & ReactiveFormsModule Support
-        </h2>
-        <p class="text-sm text-blue-700 dark:text-blue-300">
-          This input component is fully compatible with Angular's FormGroup and ReactiveFormsModule!
-          Use <span class="bg-blue-100 dark:bg-blue-800 px-1 py-0.5 rounded text-xs">formControlName</span> for seamless form integration.
+    <!-- FormGroup Integration -->
+    <section id="formgroup" class="mb-12" aria-labelledby="formgroup-heading">
+      <h2 id="formgroup-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ FormGroup Integration ]
+      </h2>
+
+      <aside class="bg-blue-50 dark:bg-blue-900/10 border-2 border-blue-400 dark:border-blue-700 p-4 mb-8" role="note"
+             aria-labelledby="formgroup-note-heading">
+        <h3 id="formgroup-note-heading" class="text-sm sm:text-base font-bold text-blue-800 dark:text-blue-300 mb-2 uppercase">
+          ReactiveFormsModule Compatible
+        </h3>
+        <p class="text-xs sm:text-sm text-blue-700 dark:text-blue-400 leading-relaxed">
+          This input component implements ControlValueAccessor for full Angular Forms compatibility.
+          Use <span class="bg-blue-100 dark:bg-blue-800 px-1 py-0.5">formControlName</span> for seamless reactive forms integration.
         </p>
-      </div>
+      </aside>
 
-      <div class="space-y-8">
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Template Setup</h3>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="formGroupTemplateCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
+      <!-- Template Setup -->
+      <article class="mb-8" aria-labelledby="template-setup-heading">
+        <h3 id="template-setup-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Template Setup
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="formGroupTemplateCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
+      </article>
 
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Component Setup</h3>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="formGroupSetupCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
+      <!-- Component Setup -->
+      <article class="mb-8" aria-labelledby="component-setup-heading">
+        <h3 id="component-setup-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Component Setup
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="formGroupSetupCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
+      </article>
 
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Live Example</h3>
-          <form [formGroup]="basicForm" (ngSubmit)="onBasicSubmit()" class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <div class="flex flex-col gap-2 w-full">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
-                <wally-input formControlName="name" placeholder="Enter your name"></wally-input>
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                <wally-input formControlName="email" type="email" placeholder="Enter your email"></wally-input>
-              </div>
-
-              <wally-button type="submit" class="w-full">
-                Submit (Check Console)
-              </wally-button>
-
-              <div class="text-sm text-gray-600 dark:text-gray-400 mt-4">
-                Form Value: {{ basicForm.value | json }}
-              </div>
+      <!-- Live Example -->
+      <article class="mb-8" aria-labelledby="live-example-heading">
+        <h3 id="live-example-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Live Example
+        </h3>
+        <form [formGroup]="basicForm" (ngSubmit)="onBasicSubmit()"
+              class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+              aria-label="FormGroup integration live example with name and email fields">
+          <div class="flex flex-col gap-2 w-full">
+            <div>
+              <label class="block text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Name</label>
+              <wally-input formControlName="name" placeholder="Enter your name"></wally-input>
             </div>
-          </form>
-        </div>
-      </div>
+
+            <div>
+              <label class="block text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Email</label>
+              <wally-input formControlName="email" type="email" placeholder="Enter your email"></wally-input>
+            </div>
+
+            <wally-button type="submit" class="w-full">
+              Submit (Check Console)
+            </wally-button>
+
+            <div class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-4">
+              Form Value: {{ basicForm.value | json }}
+            </div>
+          </div>
+        </form>
+      </article>
     </section>
 
     <!-- Basic Usage -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Basic Usage</h2>
+    <section id="basic-usage" class="mb-12" aria-labelledby="basic-usage-heading">
+      <h2 id="basic-usage-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Basic Usage ]
+      </h2>
 
-      <div class="space-y-8">
-        <div>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="basicSetupCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="basicUsageCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-input placeholder="Enter text"></wally-input>
-          </div>
+      <div class="space-y-4">
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="basicSetupCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="basicUsageCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Live preview of basic input component without label">
+          <wally-input placeholder="Enter text"></wally-input>
         </div>
       </div>
     </section>
 
-    <!-- Input Features -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Input Features</h2>
+    <!-- States & Features -->
+    <section id="states" class="mb-12" aria-labelledby="states-heading">
+      <h2 id="states-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ States & Features ]
+      </h2>
 
-      <div class="space-y-8">
-        <!-- Labels -->
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">With Labels</h3>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="labelCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <div class="flex flex-col gap-4">
-              <wally-input label="Full Name" placeholder="Enter your name"></wally-input>
-              <wally-input label="Email Address" type="email" placeholder="Enter your email"></wally-input>
-            </div>
+      <!-- Labels -->
+      <article class="mb-8" aria-labelledby="labels-heading">
+        <h3 id="labels-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>With Labels
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="labelCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Live preview showing inputs with labels for Full Name and Email Address">
+          <div class="flex flex-col gap-4">
+            <wally-input label="Full Name" placeholder="Enter your name"></wally-input>
+            <wally-input label="Email Address" type="email" placeholder="Enter your email"></wally-input>
           </div>
         </div>
+      </article>
 
-        <!-- Loading State -->
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Loading State</h3>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="loadingCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-input label="Processing..." [loading]="true" placeholder="Loading example"></wally-input>
-          </div>
+      <!-- Loading State -->
+      <article class="mb-8" aria-labelledby="loading-heading">
+        <h3 id="loading-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Loading State
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="loadingCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Live preview of loading state with spinner and disabled input">
+          <wally-input label="Processing..." [loading]="true" placeholder="Loading example"></wally-input>
+        </div>
+      </article>
 
-        <!-- Valid State -->
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Valid State</h3>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="validCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-input label="Username" [valid]="true" placeholder="Valid input example"></wally-input>
-          </div>
+      <!-- Valid State -->
+      <article class="mb-8" aria-labelledby="valid-heading">
+        <h3 id="valid-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Valid State
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="validCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Live preview of valid state with green styling indicating successful validation">
+          <wally-input label="Username" [valid]="true" placeholder="Valid input example"></wally-input>
+        </div>
+      </article>
 
-        <!-- Error State -->
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Error State</h3>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="errorCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-input label="Email" errorMessage="Please enter a valid email address" placeholder="Enter email"></wally-input>
-          </div>
+      <!-- Error State -->
+      <article class="mb-8" aria-labelledby="error-heading">
+        <h3 id="error-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Error State
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="errorCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Live preview of error state with red styling and error message below input">
+          <wally-input label="Email" errorMessage="Please enter a valid email address" placeholder="Enter email"></wally-input>
+        </div>
+      </article>
 
-        <!-- Disabled State -->
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Disabled State</h3>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="disabledCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <wally-input label="Username" [disabled]="true" placeholder="Disabled input"></wally-input>
-          </div>
+      <!-- Disabled State -->
+      <article class="mb-8" aria-labelledby="disabled-heading">
+        <h3 id="disabled-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Disabled State
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="disabledCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Live preview of disabled state with reduced opacity and cursor-not-allowed">
+          <wally-input label="Username" [disabled]="true" placeholder="Disabled input"></wally-input>
+        </div>
+      </article>
 
-        <!-- Password with Toggle -->
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Password with Toggle</h3>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="passwordCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <form>
-              <wally-input label="Password" type="password" placeholder="Enter secure password"></wally-input>
-            </form>
-          </div>
+      <!-- Password with Toggle -->
+      <article class="mb-8" aria-labelledby="password-heading">
+        <h3 id="password-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Password with Toggle
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="passwordCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-      </div>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Live preview of password input with show/hide toggle button">
+          <form>
+            <wally-input label="Password" type="password" placeholder="Enter secure password"></wally-input>
+          </form>
+        </div>
+      </article>
     </section>
 
 
     <!-- Form Validation -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Form Validation</h2>
+    <section id="validation" class="mb-12" aria-labelledby="validation-heading">
+      <h2 id="validation-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Form Validation ]
+      </h2>
 
-      <div class="space-y-8">
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Validation Setup</h3>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="validationSetupCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
+      <!-- Validation Setup -->
+      <article class="mb-8" aria-labelledby="validation-setup-heading">
+        <h3 id="validation-setup-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Validation Setup
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="validationSetupCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
+      </article>
 
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Template with Validation</h3>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-            <pre><code [innerHTML]="validationTemplateCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
+      <!-- Template with Validation -->
+      <article class="mb-8" aria-labelledby="validation-template-heading">
+        <h3 id="validation-template-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Template with Validation
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="validationTemplateCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
+      </article>
 
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Live Validation Example</h3>
-          <form [formGroup]="validationForm" (ngSubmit)="onValidationSubmit()" class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <div class="flex flex-col gap-2 w-full">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Username (min 3 chars)</label>
-                <wally-input formControlName="username" placeholder="Enter username"></wally-input>
+      <!-- Live Validation Example -->
+      <article class="mb-8" aria-labelledby="validation-example-heading">
+        <h3 id="validation-example-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Live Validation Example
+        </h3>
+        <form [formGroup]="validationForm" (ngSubmit)="onValidationSubmit()"
+              class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+              aria-label="Live validation example with username field requiring minimum 3 characters">
+          <div class="flex flex-col gap-2 w-full">
+            <div>
+              <label class="block text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Username (min 3 chars)</label>
+              <wally-input formControlName="username" placeholder="Enter username"></wally-input>
 
-                @if (validationForm.get('username')?.invalid && validationForm.get('username')?.touched) {
-                  <div class="mt-2">
-                    <span class="text-red-500 text-sm">
-                      @if (validationForm.get('username')?.errors?.['required']) {
-                        <span>Username is required</span>
-                      }
-                      @if (validationForm.get('username')?.errors?.['minlength']) {
-                        <span>Username must be at least 3 characters</span>
-                      }
-                    </span>
-                  </div>
-                }
-              </div>
-
-              <wally-button type="submit" [disabled]="validationForm.invalid" class="w-full">
-                Submit ({{ validationForm.valid ? 'Valid' : 'Invalid' }})
-              </wally-button>
+              @if (validationForm.get('username')?.invalid && validationForm.get('username')?.touched) {
+                <div class="mt-2">
+                  <span class="text-red-500 text-xs sm:text-sm">
+                    @if (validationForm.get('username')?.errors?.['required']) {
+                      <span>Username is required</span>
+                    }
+                    @if (validationForm.get('username')?.errors?.['minlength']) {
+                      <span>Username must be at least 3 characters</span>
+                    }
+                  </span>
+                </div>
+              }
             </div>
-          </form>
-        </div>
-      </div>
+
+            <wally-button type="submit" [disabled]="validationForm.invalid" class="w-full">
+              Submit ({{ validationForm.valid ? 'Valid' : 'Invalid' }})
+            </wally-button>
+          </div>
+        </form>
+      </article>
     </section>
 
-    <!-- Properties -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Properties</h2>
+    <!-- API Reference -->
+    <section id="api" class="mb-12" aria-labelledby="api-heading">
+      <h2 id="api-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ API Reference ]
+      </h2>
 
-      <div class="space-y-4">
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyLabelCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Optional label text displayed above the input</p>
-        </div>
-
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyTypeCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">HTML input type (text, email, password, etc.)</p>
-        </div>
-
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyPlaceholderCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Placeholder text for the input</p>
-        </div>
-
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyLoadingCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Shows loading spinner and disables input when true</p>
-        </div>
-
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyValidCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Shows green styling when input is valid</p>
-        </div>
-
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyErrorCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Error message text - shows red styling and displays error below input</p>
-        </div>
-
-        <div class="space-y-2">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="propertyDisabledCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Disables the input when true - shows visual disabled state and prevents interaction</p>
+      <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs sm:text-sm" role="table" aria-label="Input component API reference with properties, types, defaults, and descriptions">
+            <thead class="bg-gray-50 dark:bg-gray-900">
+              <tr>
+                <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100" scope="col">Property</th>
+                <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100" scope="col">Type</th>
+                <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100" scope="col">Default</th>
+                <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100" scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">label</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">''</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Optional label text displayed above the input</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">type</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">'text'</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">HTML input type (text, email, password, etc.)</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">placeholder</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">''</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Placeholder text for the input</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">loading</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">boolean</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">false</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Shows loading spinner and disables input when true</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">valid</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">boolean</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">false</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Shows green styling when input is valid</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">errorMessage</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">''</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Error message text - shows red styling and displays error below input</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-mono text-blue-600 dark:text-blue-400">disabled</td>
+                <td class="p-4 font-mono text-purple-600 dark:text-purple-400">boolean</td>
+                <td class="p-4 font-mono text-green-600 dark:text-green-400">false</td>
+                <td class="p-4 text-gray-700 dark:text-gray-300">Disables the input when true - shows visual disabled state and prevents interaction</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
     <!-- Future Features -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Future Features</h2>
+    <section id="future" class="mb-12" aria-labelledby="future-heading">
+      <h2 id="future-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Future Features ]
+      </h2>
 
-      <div class="space-y-4">
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-md font-medium text-[#0a0a0a] dark:text-white">Styles-Only Directive</h3>
-            <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">Coming Soon</span>
-          </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">
-            A lightweight directive for developers who want only the input styling without the full component logic.
-          </p>
+      <div class="bg-neutral-100 dark:bg-[#121212] border-2 border-neutral-300 dark:border-neutral-700 p-4">
+        <div class="flex items-center gap-3 mb-3">
+          <h3 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white uppercase">
+            Styles-Only Directive
+          </h3>
+          <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider" aria-label="Status: Coming Soon Feature">
+            COMING SOON
+          </span>
         </div>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          A lightweight directive for developers who want only the input styling without the full component logic.
+        </p>
       </div>
     </section>
 
   </div>
-</div>
+</main>

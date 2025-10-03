@@ -1,32 +1,49 @@
-<div class="font-mono">
-  <div class="max-w-4xl mx-auto p-6">
-    <div class="mb-4">
+<main class="min-h-dvh bg-white dark:bg-[#0a0a0a] font-mono" role="main">
+  <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 md:px-8">
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="mb-8" aria-label="Breadcrumb navigation">
       <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
-    </div>
+    </nav>
 
     <!-- Header -->
-    <h1 class="text-2xl font-bold mb-4 text-[#0a0a0a] dark:text-white">
-      Button
-    </h1>
-    <p class="text-gray-700 dark:text-gray-400 mb-4">
-      A production-ready button component with multiple variants, loading states, notifications, and comprehensive
-      accessibility support. Built with Angular Signals and optimized for modern applications.
-    </p>
+    <header class="mb-12" role="banner">
+      <h1 id="page-title" class="text-3xl sm:text-4xl font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+        <span aria-hidden="true">&gt;_ </span>Button
+      </h1>
+      <p
+        class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4 leading-relaxed">
+        Production-ready button component with multiple variants, loading states, notifications, and comprehensive
+        accessibility support. Built with Angular Signals and optimized for modern applications.
+      </p>
+    </header>
 
-    <!-- AI Prompts -->
-    <div class="flex flex-wrap gap-2 mb-6">
+    <!-- AI Assistant Links -->
+    <div class="flex flex-wrap gap-0 mt-6 mb-12 border-2 border-neutral-300 dark:border-neutral-700" role="list"
+      aria-label="Open documentation in AI coding assistants">
       <a [href]="claudeUrl" target="_blank"
-        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-200 dark:bg-[#121212] text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-[#1a1a1a] hover:text-[#0a0a0a] dark:hover:text-white transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24">
+        class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] border-b-2 sm:border-b-0 sm:border-r-2 border-neutral-300 dark:border-neutral-700 hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+        rel="noopener noreferrer" role="listitem"
+        aria-label="Open Button component documentation in Claude AI assistant (opens in new tab)">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+          viewBox="0 0 24 24" aria-hidden="true">
           <path fill="currentColor"
             d="m4.714 15.956l4.718-2.648l.079-.23l-.08-.128h-.23l-.79-.048l-2.695-.073l-2.337-.097l-2.265-.122l-.57-.121l-.535-.704l.055-.353l.48-.321l.685.06l1.518.104l2.277.157l1.651.098l2.447.255h.389l.054-.158l-.133-.097l-.103-.098l-2.356-1.596l-2.55-1.688l-1.336-.972l-.722-.491L2 6.223l-.158-1.008l.656-.722l.88.06l.224.061l.893.686l1.906 1.476l2.49 1.833l.364.304l.146-.104l.018-.072l-.164-.274l-1.354-2.446l-1.445-2.49l-.644-1.032l-.17-.619a3 3 0 0 1-.103-.729L6.287.133L6.7 0l.995.134l.42.364l.619 1.415L9.735 4.14l1.555 3.03l.455.898l.243.832l.09.255h.159V9.01l.127-1.706l.237-2.095l.23-2.695l.08-.76l.376-.91l.747-.492l.583.28l.48.685l-.067.444l-.286 1.851l-.558 2.903l-.365 1.942h.213l.243-.242l.983-1.306l1.652-2.064l.728-.82l.85-.904l.547-.431h1.032l.759 1.129l-.34 1.166l-1.063 1.347l-.88 1.142l-1.263 1.7l-.79 1.36l.074.11l.188-.02l2.853-.606l1.542-.28l1.84-.315l.832.388l.09.395l-.327.807l-1.967.486l-2.307.462l-3.436.813l-.043.03l.049.061l1.548.146l.662.036h1.62l3.018.225l.79.522l.473.638l-.08.485l-1.213.62l-1.64-.389l-3.825-.91l-1.31-.329h-.183v.11l1.093 1.068l2.003 1.81l2.508 2.33l.127.578l-.321.455l-.34-.049l-2.204-1.657l-.85-.747l-1.925-1.62h-.127v.17l.443.649l2.343 3.521l.122 1.08l-.17.353l-.607.213l-.668-.122l-1.372-1.924l-1.415-2.168l-1.141-1.943l-.14.08l-.674 7.254l-.316.37l-.728.28l-.607-.461l-.322-.747l.322-1.476l.388-1.924l.316-1.53l.285-1.9l.17-.632l-.012-.042l-.14.018l-1.432 1.967l-2.18 2.945l-1.724 1.845l-.413.164l-.716-.37l.066-.662l.401-.589l2.386-3.036l1.439-1.882l.929-1.086l-.006-.158h-.055L4.138 18.56l-1.13.146l-.485-.456l.06-.746l.231-.243l1.907-1.312Z" />
         </svg>
-        Open in Claude
+        <span
+          class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150">
+          Open in Claude
+        </span>
       </a>
 
       <a [href]="chatGptUrl" target="_blank"
-        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-200 dark:bg-[#121212] text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-[#1a1a1a] hover:text-[#0a0a0a] dark:hover:text-white transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 48 48">
+        class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+        rel="noopener noreferrer" role="listitem"
+        aria-label="Open Button component documentation in ChatGPT AI assistant (opens in new tab)">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+          viewBox="0 0 48 48" aria-hidden="true">
           <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
             d="M18.38 27.94v-14.4l11.19-6.46c6.2-3.58 17.3 5.25 12.64 13.33" />
           <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
@@ -40,46 +57,65 @@
           <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
             d="m24.44 31.44l-12.47-7.2V11.31c0-7.16 13.2-12.36 17.86-4.28" />
         </svg>
-        Open in ChatGPT
+        <span
+          class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150">
+          Open in ChatGPT
+        </span>
       </a>
     </div>
 
     <!-- Installation -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Installation</h2>
-      <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-        <pre><code [innerHTML]="basicUsageCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
-      </div>
+    <section id="installation" class="mb-12" aria-labelledby="installation-heading">
+      <h2 id="installation-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Installation ]
+      </h2>
+      <code
+        class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white block bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+        aria-label="Installation command for Button component">
+        <pre><code [innerHTML]="basicUsageCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </code>
     </section>
 
     <!-- Import -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Import</h2>
-      <div class="space-y-4">
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="importCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+    <section id="import" class="mb-12" aria-labelledby="import-heading">
+      <h2 id="import-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Import ]
+      </h2>
+      <div class="space-y-3">
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="importCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="componentImportCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="componentImportCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
       </div>
     </section>
 
     <!-- Basic Usage -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Basic Usage</h2>
-      <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-        <pre><code [innerHTML]="basicUsageTemplateCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+    <section id="basic-usage" class="mb-12" aria-labelledby="basic-usage-heading">
+      <h2 id="basic-usage-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Basic Usage ]
+      </h2>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+        <pre><code [innerHTML]="basicUsageTemplateCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
       </div>
-      <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+      <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+        aria-label="Live preview of basic button">
         <wally-button>Click me</wally-button>
       </div>
     </section>
 
     <!-- All Variants Preview -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">All Variants</h2>
-      <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+    <section id="all-variants" class="mb-12" aria-labelledby="variants-preview-heading">
+      <h2 id="variants-preview-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ All Variants ]
+      </h2>
+      <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+        aria-label="Live preview of all button variants">
         <div class="flex flex-col gap-4">
           <wally-button variant="primary">Primary</wally-button>
           <wally-button variant="secondary">Secondary</wally-button>
@@ -92,129 +128,163 @@
     </section>
 
     <!-- Variants Documentation -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Variants</h2>
+    <section id="variants" class="mb-12" aria-labelledby="variants-heading">
+      <h2 id="variants-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Variants ]
+      </h2>
 
       <!-- Primary -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Primary (Default)</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="primary-variant-heading">
+        <h3 id="primary-variant-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Primary (Default)
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
           High emphasis. Use for main actions and CTAs.
         </p>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="primaryVariantCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="primaryVariantCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-          <div class="flex flex-col gap-2">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of primary button variant in normal, disabled, and loading states">
+          <div class="flex flex-col gap-4">
             <wally-button variant="primary">Primary</wally-button>
             <wally-button variant="primary" [disabled]="true">Disabled</wally-button>
             <wally-button variant="primary" [loading]="true">Loading</wally-button>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Secondary -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Secondary</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="secondary-variant-heading">
+        <h3 id="secondary-variant-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Secondary
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
           Medium emphasis. Use for secondary actions.
         </p>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="secondaryVariantCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="secondaryVariantCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-          <div class="flex flex-col gap-2">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of secondary button variant in normal, disabled, and loading states">
+          <div class="flex flex-col gap-4">
             <wally-button variant="secondary">Secondary</wally-button>
             <wally-button variant="secondary" [disabled]="true">Disabled</wally-button>
             <wally-button variant="secondary" [loading]="true">Loading</wally-button>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Destructive -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Destructive</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="destructive-variant-heading">
+        <h3 id="destructive-variant-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Destructive
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
           Use for dangerous actions like delete or remove.
         </p>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="destructiveVariantCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="destructiveVariantCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-          <div class="flex flex-col gap-2">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of destructive button variant in normal, disabled, and loading states">
+          <div class="flex flex-col gap-4">
             <wally-button variant="destructive">Delete</wally-button>
             <wally-button variant="destructive" [disabled]="true">Disabled</wally-button>
             <wally-button variant="destructive" [loading]="true">Deleting...</wally-button>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Outline -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Outline</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="outline-variant-heading">
+        <h3 id="outline-variant-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Outline
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
           Low emphasis with border. Use for tertiary actions.
         </p>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="outlineVariantCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="outlineVariantCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-          <div class="flex flex-col gap-2">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of outline button variant in normal, disabled, and loading states">
+          <div class="flex flex-col gap-4">
             <wally-button variant="outline">Outline</wally-button>
             <wally-button variant="outline" [disabled]="true">Disabled</wally-button>
             <wally-button variant="outline" [loading]="true">Loading</wally-button>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Ghost -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Ghost</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="ghost-variant-heading">
+        <h3 id="ghost-variant-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Ghost
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
           Minimal styling. Use for less prominent actions.
         </p>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="ghostVariantCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="ghostVariantCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-          <div class="flex flex-col gap-2">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of ghost button variant in normal, disabled, and loading states">
+          <div class="flex flex-col gap-4">
             <wally-button variant="ghost">Ghost</wally-button>
             <wally-button variant="ghost" [disabled]="true">Disabled</wally-button>
             <wally-button variant="ghost" [loading]="true">Loading</wally-button>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Link -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Link</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="link-variant-heading">
+        <h3 id="link-variant-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Link
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
           Styled as a link. Supports internal routing and external URLs.
         </p>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="linkVariantCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="linkVariantCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-          <div class="flex flex-col gap-2">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of link button variant with internal route, external URL, and disabled state">
+          <div class="flex flex-col gap-4">
             <wally-button variant="link" href="/components">Internal Link</wally-button>
             <wally-button variant="link" href="https://github.com">External Link</wally-button>
             <wally-button variant="link" [disabled]="true">Disabled</wally-button>
           </div>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Production Examples -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Production Examples</h2>
+    <section id="production-examples" class="mb-12" aria-labelledby="production-heading">
+      <h2 id="production-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Production Examples ]
+      </h2>
 
       <!-- CTA -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Call-to-Action Button</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="ctaExampleCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="cta-example-heading">
+        <h3 id="cta-example-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Call-to-Action Button
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="ctaExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of call-to-action button with icon">
           <wally-button>
             Get Started Free
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -223,48 +293,60 @@
             </svg>
           </wally-button>
         </div>
-      </div>
+      </article>
 
       <!-- Login Form -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Login Form</h3>
-        <div class="space-y-4">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="loginExampleCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="login-example-heading">
+        <h3 id="login-example-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Login Form
+        </h3>
+        <div class="space-y-3">
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="loginExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="loginExampleTsCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="loginExampleTsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212] mt-4">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a] mt-4" role="img"
+          aria-label="Live preview of login form buttons with primary submit and secondary create account">
           <div class="flex gap-2">
             <wally-button type="submit">Sign In</wally-button>
             <wally-button variant="secondary">Create Account</wally-button>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Delete Confirmation -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Delete Confirmation Modal</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="deleteExampleCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="delete-example-heading">
+        <h3 id="delete-example-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Delete Confirmation Modal
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="deleteExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of delete confirmation modal buttons with ghost cancel and destructive delete">
           <div class="flex gap-2 justify-end">
             <wally-button variant="ghost">Cancel</wally-button>
             <wally-button variant="destructive">Delete Account</wally-button>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Dashboard Actions -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Dashboard Actions</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="dashboardExampleCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="dashboard-example-heading">
+        <h3 id="dashboard-example-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Dashboard Actions
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="dashboardExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of dashboard action buttons with outline export and primary create new">
           <div class="flex gap-2">
             <wally-button variant="outline">
               Export
@@ -283,42 +365,57 @@
             </wally-button>
           </div>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- States -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">States</h2>
+    <section id="states" class="mb-12" aria-labelledby="states-heading">
+      <h2 id="states-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ States ]
+      </h2>
 
       <!-- Disabled -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Disabled</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="disabledCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="disabled-state-heading">
+        <h3 id="disabled-state-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Disabled
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="disabledCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of disabled button state">
           <wally-button [disabled]="true">Disabled Button</wally-button>
         </div>
-      </div>
+      </article>
 
       <!-- Loading -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Loading</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="loadingCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="loading-state-heading">
+        <h3 id="loading-state-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Loading
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="loadingCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of loading button state with spinner">
           <wally-button [loading]="true">Loading...</wally-button>
         </div>
-      </div>
+      </article>
 
       <!-- Notification -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">With Notification Badge</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="notificationButtonCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="notification-state-heading">
+        <h3 id="notification-state-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>With Notification Badge
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="notificationButtonCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of button with notification badge indicator">
           <wally-button [showNotification]="true" ariaLabel="View messages">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="size-5">
@@ -327,50 +424,65 @@
             </svg>
           </wally-button>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Button Types -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Button Types</h2>
+    <section id="button-types" class="mb-12" aria-labelledby="types-heading">
+      <h2 id="types-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Button Types ]
+      </h2>
 
       <!-- Submit -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Submit Button</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="submitCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="submit-type-heading">
+        <h3 id="submit-type-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Submit Button
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="submitCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of submit type button for form submission">
           <wally-button type="submit">Submit Form</wally-button>
         </div>
-      </div>
+      </article>
 
       <!-- Reset -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Reset Button</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="resetCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="reset-type-heading">
+        <h3 id="reset-type-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Reset Button
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="resetCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of reset type button for form reset">
           <wally-button type="reset" variant="ghost">Reset</wally-button>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Events -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Click Events</h2>
+    <section id="events" class="mb-12" aria-labelledby="events-heading">
+      <h2 id="events-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Click Events ]
+      </h2>
 
-      <div class="space-y-4">
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="clickCodeHTML" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <div class="space-y-3 mb-4">
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="clickCodeHTML" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="clickCodeTs" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="clickCodeTs" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
       </div>
 
-      <div class="p-6 border rounded-lg bg-white dark:bg-[#121212] mt-4">
+      <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+        aria-label="Live preview of button click event handling with feedback message">
         <div class="flex flex-col gap-2 text-center">
           <wally-button (click)="handleClick()">Click Me</wally-button>
           @if (clickMessage()) {
@@ -383,16 +495,22 @@
     </section>
 
     <!-- Icons -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Button with Icons</h2>
+    <section id="icons" class="mb-12" aria-labelledby="icons-heading">
+      <h2 id="icons-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Button with Icons ]
+      </h2>
 
       <!-- Icon with Text -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Icon with Text</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="iconCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="icon-text-heading">
+        <h3 id="icon-text-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Icon with Text
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="iconCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of button with text and icon on the right">
           <wally-button>
             Save Changes
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -402,15 +520,18 @@
             </svg>
           </wally-button>
         </div>
-      </div>
+      </article>
 
       <!-- Icon Only -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Icon Only</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="iconOnlyCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="icon-only-heading">
+        <h3 id="icon-only-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Icon Only
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="iconOnlyCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of icon-only button with ARIA label">
           <wally-button ariaLabel="Notifications">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="size-5">
@@ -419,15 +540,18 @@
             </svg>
           </wally-button>
         </div>
-      </div>
+      </article>
 
       <!-- Icon Left -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Icon Left</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="iconLeftCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="icon-left-heading">
+        <h3 id="icon-left-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Icon Left
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="iconLeftCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of button with icon on the left and text on the right">
           <wally-button>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
               stroke="currentColor" class="size-5">
@@ -436,21 +560,27 @@
             Back
           </wally-button>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Accessibility -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Accessibility</h2>
+    <section id="accessibility" class="mb-12" aria-labelledby="accessibility-heading">
+      <h2 id="accessibility-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Accessibility ]
+      </h2>
 
       <!-- ARIA Label -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">ARIA Label (Essential for Icon-Only
-          Buttons)</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="ariaLabelCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="aria-label-heading">
+        <h3 id="aria-label-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>ARIA Label (Essential for Icon-Only Buttons)
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="ariaLabelCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of icon-only button with ARIA label for screen readers">
           <wally-button ariaLabel="Save document">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="size-5">
@@ -459,56 +589,72 @@
             </svg>
           </wally-button>
         </div>
-      </div>
+      </article>
 
       <!-- Toggle Button -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Toggle Button with ARIA Pressed</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="ariaPressedCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="aria-pressed-heading">
+        <h3 id="aria-pressed-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Toggle Button with ARIA Pressed
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="ariaPressedCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of toggle button with ARIA pressed state">
           <wally-button [ariaPressed]="toggleState()">
             {{ toggleState() ? 'On' : 'Off' }}
           </wally-button>
         </div>
-      </div>
+      </article>
 
       <!-- Loading State ARIA -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Loading State (Automatic ARIA Busy)</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="ariaBusyCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="aria-busy-heading">
+        <h3 id="aria-busy-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Loading State (Automatic ARIA Busy)
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="ariaBusyCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of button in loading state with automatic ARIA busy attribute">
           <wally-button [loading]="true">Processing...</wally-button>
         </div>
-      </div>
+      </article>
 
       <!-- ARIA Described By -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">ARIA Described By</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="ariaDescribedByCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="aria-describedby-heading">
+        <h3 id="aria-describedby-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>ARIA Described By
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="ariaDescribedByCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of button with ARIA described by attribute linking to description element">
           <wally-button ariaDescribedBy="save-description">Save</wally-button>
-          <p id="save-description" class="text-xs text-gray-600 dark:text-gray-400 mt-2">
+          <p id="save-description" class="text-xs text-neutral-600 dark:text-neutral-400 mt-2">
             Saves your changes permanently
           </p>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- API Reference -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">API Reference</h2>
+    <section id="api-reference" class="mb-12" aria-labelledby="api-heading">
+      <h2 id="api-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ API Reference ]
+      </h2>
 
       <!-- Input Properties -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-4 text-[#0a0a0a] dark:text-white">Input Properties</h3>
-        <div
-          class="bg-white dark:bg-[#0f0f0f] border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+      <article class="mb-8" aria-labelledby="input-properties-heading">
+        <h3 id="input-properties-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+          <span aria-hidden="true">&gt; </span>Input Properties
+        </h3>
+        <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
               <thead class="bg-gray-50 dark:bg-gray-900">
@@ -587,13 +733,15 @@
             </table>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Output Events -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-4 text-[#0a0a0a] dark:text-white">Output Events</h3>
-        <div
-          class="bg-white dark:bg-[#0f0f0f] border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+      <article class="mb-8" aria-labelledby="output-events-heading">
+        <h3 id="output-events-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+          <span aria-hidden="true">&gt; </span>Output Events
+        </h3>
+        <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
               <thead class="bg-gray-50 dark:bg-gray-900">
@@ -614,13 +762,14 @@
             </table>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Methods -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-4 text-[#0a0a0a] dark:text-white">Methods</h3>
-        <div
-          class="bg-white dark:bg-[#0f0f0f] border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+      <article class="mb-8" aria-labelledby="methods-heading">
+        <h3 id="methods-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+          <span aria-hidden="true">&gt; </span>Methods
+        </h3>
+        <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
               <thead class="bg-gray-50 dark:bg-gray-900">
@@ -643,13 +792,15 @@
             </table>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Computed Properties -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-4 text-[#0a0a0a] dark:text-white">Computed Properties</h3>
-        <div
-          class="bg-white dark:bg-[#0f0f0f] border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+      <article class="mb-8" aria-labelledby="computed-properties-heading">
+        <h3 id="computed-properties-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+          <span aria-hidden="true">&gt; </span>Computed Properties
+        </h3>
+        <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
               <thead class="bg-gray-50 dark:bg-gray-900">
@@ -670,99 +821,124 @@
             </table>
           </div>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Advanced Usage & Edge Cases -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Advanced Usage & Edge Cases</h2>
+    <section id="advanced-usage" class="mb-12" aria-labelledby="advanced-heading">
+      <h2 id="advanced-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Advanced Usage & Edge Cases ]
+      </h2>
 
       <!-- Form Integration -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Form Validation Integration</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="form-integration-heading">
+        <h3 id="form-integration-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Form Validation Integration
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
           Button automatically integrates with Angular Forms. Combine disabled with form validation for better UX.
         </p>
         <div class="space-y-4">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="formIntegrationCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="formIntegrationCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="formIntegrationTsCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="formIntegrationTsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Router Integration -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Router Integration</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="router-integration-heading">
+        <h3 id="router-integration-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Router Integration
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
           Use variant="link" for declarative navigation, or programmatic navigation with click events.
         </p>
         <div class="space-y-4">
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="routerExampleCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="routerExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
-          <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-            <pre><code [innerHTML]="routerExampleTsCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="routerExampleTsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Loading + Disabled Behavior -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Loading + Disabled Behavior</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="loading-disabled-heading">
+        <h3 id="loading-disabled-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Loading + Disabled Behavior
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
           When both loading and disabled are set, loading takes precedence. The button will show the loading spinner.
         </p>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="loadingDisabledExampleCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="loadingDisabledExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-      </div>
+      </article>
 
       <!-- Icon Recommendations -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Icon Library Recommendations</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="icon-recommendations-heading">
+        <h3 id="icon-recommendations-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Icon Library Recommendations
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
           Use size-5 (20px) icons for optimal visual balance. Compatible with all SVG icon libraries.
         </p>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="iconRecommendationsCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="iconRecommendationsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-      </div>
+      </article>
 
       <!-- Signals Pattern -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Using Angular Signals (Recommended)</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="signals-pattern-heading">
+        <h3 id="signals-pattern-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Using Angular Signals (Recommended)
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
           Button properties work seamlessly with Angular Signals for reactive state management.
         </p>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="signalsPatternCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="signalsPatternCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-      </div>
+      </article>
 
       <!-- Button Type Explained -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Understanding Button Types</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="button-type-heading">
+        <h3 id="button-type-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Understanding Button Types
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
           Always specify type="button" for non-form buttons to prevent accidental form submission.
         </p>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="buttonTypeExplainedCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="buttonTypeExplainedCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-      </div>
+      </article>
 
       <!-- Href Behavior -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Href Behavior (Important)</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
+      <article class="mb-8" aria-labelledby="href-behavior-heading">
+        <h3 id="href-behavior-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Href Behavior (Important)
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
           The href property only works when variant="link" is set. Otherwise, it's ignored.
         </p>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="hrefBehaviorCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="hrefBehaviorCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-      </div>
+      </article>
     </section>
+
   </div>
-</div>
+</main>

@@ -1,59 +1,83 @@
-<div class="font-mono">
-  <div class="max-w-4xl mx-auto p-6">
-    <div class="mb-4">
+<main class="min-h-dvh bg-white dark:bg-[#0a0a0a] font-mono" role="main">
+  <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 md:px-8">
+    <!-- Breadcrumb Navigation -->
+    <nav class="mb-8" aria-label="Breadcrumb navigation">
       <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
-    </div>
+    </nav>
 
-    <h1 class="text-2xl font-bold mb-4 text-[#0a0a0a] dark:text-white">
-      Carousel
-    </h1>
-    <p class="text-gray-700 dark:text-gray-400 mb-6">
-      A fully responsive carousel component with navigation controls, touch/swipe gestures, keyboard accessibility, and smooth transitions. Built with comprehensive accessibility features and optimized performance.
-    </p>
+    <!-- Header -->
+    <header class="mb-12" role="banner">
+      <h1 id="page-title" class="text-3xl sm:text-4xl font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+        <span aria-hidden="true">&gt;_ </span>Carousel
+      </h1>
+      <p class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4 leading-relaxed">
+        Production-ready carousel component with touch/swipe gestures, keyboard navigation, circular buffer algorithm, and comprehensive ARIA accessibility. GPU-accelerated transitions with zero configuration required.
+      </p>
 
-    <!-- AI Prompts -->
-    <div class="flex flex-wrap gap-2 mb-6">
-      <a [href]="claudeUrl" target="_blank"
-        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-200 dark:bg-[#121212] text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-[#1a1a1a] hover:text-[#0a0a0a] dark:hover:text-white transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24">
-          <path fill="currentColor"
-            d="m4.714 15.956l4.718-2.648l.079-.23l-.08-.128h-.23l-.79-.048l-2.695-.073l-2.337-.097l-2.265-.122l-.57-.121l-.535-.704l.055-.353l.48-.321l.685.06l1.518.104l2.277.157l1.651.098l2.447.255h.389l.054-.158l-.133-.097l-.103-.098l-2.356-1.596l-2.55-1.688l-1.336-.972l-.722-.491L2 6.223l-.158-1.008l.656-.722l.88.06l.224.061l.893.686l1.906 1.476l2.49 1.833l.364.304l.146-.104l.018-.072l-.164-.274l-1.354-2.446l-1.445-2.49l-.644-1.032l-.17-.619a3 3 0 0 1-.103-.729L6.287.133L6.7 0l.995.134l.42.364l.619 1.415L9.735 4.14l1.555 3.03l.455.898l.243.832l.09.255h.159V9.01l.127-1.706l.237-2.095l.23-2.695l.08-.76l.376-.91l.747-.492l.583.28l.48.685l-.067.444l-.286 1.851l-.558 2.903l-.365 1.942h.213l.243-.242l.983-1.306l1.652-2.064l.728-.82l.85-.904l.547-.431h1.032l.759 1.129l-.34 1.166l-1.063 1.347l-.88 1.142l-1.263 1.7l-.79 1.36l.074.11l.188-.02l2.853-.606l1.542-.28l1.84-.315l.832.388l.09.395l-.327.807l-1.967.486l-2.307.462l-3.436.813l-.043.03l.049.061l1.548.146l.662.036h1.62l3.018.225l.79.522l.473.638l-.08.485l-1.213.62l-1.64-.389l-3.825-.91l-1.31-.329h-.183v.11l1.093 1.068l2.003 1.81l2.508 2.33l.127.578l-.321.455l-.34-.049l-2.204-1.657l-.85-.747l-1.925-1.62h-.127v.17l.443.649l2.343 3.521l.122 1.08l-.17.353l-.607.213l-.668-.122l-1.372-1.924l-1.415-2.168l-1.141-1.943l-.14.08l-.674 7.254l-.316.37l-.728.28l-.607-.461l-.322-.747l.322-1.476l.388-1.924l.316-1.53l.285-1.9l.17-.632l-.012-.042l-.14.018l-1.432 1.967l-2.18 2.945l-1.724 1.845l-.413.164l-.716-.37l.066-.662l.401-.589l2.386-3.036l1.439-1.882l.929-1.086l-.006-.158h-.055L4.138 18.56l-1.13.146l-.485-.456l.06-.746l.231-.243l1.907-1.312Z" />
-        </svg>
-        Open in Claude
-      </a>
+      <!-- AI Assistant Links -->
+      <div class="flex flex-wrap gap-0 mt-6 border-2 border-neutral-300 dark:border-neutral-700" role="list"
+        aria-label="Open documentation in AI coding assistants">
+        <a [href]="claudeUrl" target="_blank"
+          class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] border-b-2 sm:border-b-0 sm:border-r-2 border-neutral-300 dark:border-neutral-700 hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+          rel="noopener noreferrer" role="listitem"
+          aria-label="Open Carousel component documentation in Claude AI assistant (opens in new tab)">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor"
+              d="m4.714 15.956l4.718-2.648l.079-.23l-.08-.128h-.23l-.79-.048l-2.695-.073l-2.337-.097l-2.265-.122l-.57-.121l-.535-.704l.055-.353l.48-.321l.685.06l1.518.104l2.277.157l1.651.098l2.447.255h.389l.054-.158l-.133-.097l-.103-.098l-2.356-1.596l-2.55-1.688l-1.336-.972l-.722-.491L2 6.223l-.158-1.008l.656-.722l.88.06l.224.061l.893.686l1.906 1.476l2.49 1.833l.364.304l.146-.104l.018-.072l-.164-.274l-1.354-2.446l-1.445-2.49l-.644-1.032l-.17-.619a3 3 0 0 1-.103-.729L6.287.133L6.7 0l.995.134l.42.364l.619 1.415L9.735 4.14l1.555 3.03l.455.898l.243.832l.09.255h.159V9.01l.127-1.706l.237-2.095l.23-2.695l.08-.76l.376-.91l.747-.492l.583.28l.48.685l-.067.444l-.286 1.851l-.558 2.903l-.365 1.942h.213l.243-.242l.983-1.306l1.652-2.064l.728-.82l.85-.904l.547-.431h1.032l.759 1.129l-.34 1.166l-1.063 1.347l-.88 1.142l-1.263 1.7l-.79 1.36l.074.11l.188-.02l2.853-.606l1.542-.28l1.84-.315l.832.388l.09.395l-.327.807l-1.967.486l-2.307.462l-3.436.813l-.043.03l.049.061l1.548.146l.662.036h1.62l3.018.225l.79.522l.473.638l-.08.485l-1.213.62l-1.64-.389l-3.825-.91l-1.31-.329h-.183v.11l1.093 1.068l2.003 1.81l2.508 2.33l.127.578l-.321.455l-.34-.049l-2.204-1.657l-.85-.747l-1.925-1.62h-.127v.17l.443.649l2.343 3.521l.122 1.08l-.17.353l-.607.213l-.668-.122l-1.372-1.924l-1.415-2.168l-1.141-1.943l-.14.08l-.674 7.254l-.316.37l-.728.28l-.607-.461l-.322-.747l.322-1.476l.388-1.924l.316-1.53l.285-1.9l.17-.632l-.012-.042l-.14.018l-1.432 1.967l-2.18 2.945l-1.724 1.845l-.413.164l-.716-.37l.066-.662l.401-.589l2.386-3.036l1.439-1.882l.929-1.086l-.006-.158h-.055L4.138 18.56l-1.13.146l-.485-.456l.06-.746l.231-.243l1.907-1.312Z" />
+          </svg>
+          <span
+            class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150">
+            Open in Claude
+          </span>
+        </a>
 
-      <a [href]="chatGptUrl" target="_blank"
-        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-200 dark:bg-[#121212] text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-[#1a1a1a] hover:text-[#0a0a0a] dark:hover:text-white transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 48 48">
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="M18.38 27.94v-14.4l11.19-6.46c6.2-3.58 17.3 5.25 12.64 13.33" />
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="m18.38 20.94l12.47-7.2l11.19 6.46c6.2 3.58 4.1 17.61-5.23 17.61" />
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="m24.44 17.44l12.47 7.2v12.93c0 7.16-13.2 12.36-17.86 4.28" />
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="M30.5 21.2v14.14L19.31 41.8c-6.2 3.58-17.3-5.25-12.64-13.33" />
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="m30.5 27.94l-12.47 7.2l-11.19-6.46c-6.21-3.59-4.11-17.61 5.22-17.61" />
-          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-            d="m24.44 31.44l-12.47-7.2V11.31c0-7.16 13.2-12.36 17.86-4.28" />
-        </svg>
-        Open in ChatGPT
-      </a>
-    </div>
+        <a [href]="chatGptUrl" target="_blank"
+          class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+          rel="noopener noreferrer" role="listitem"
+          aria-label="Open Carousel component documentation in ChatGPT AI assistant (opens in new tab)">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+            viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="M18.38 27.94v-14.4l11.19-6.46c6.2-3.58 17.3 5.25 12.64 13.33" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m18.38 20.94l12.47-7.2l11.19 6.46c6.2 3.58 4.1 17.61-5.23 17.61" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m24.44 17.44l12.47 7.2v12.93c0 7.16-13.2 12.36-17.86 4.28" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="M30.5 21.2v14.14L19.31 41.8c-6.2 3.58-17.3-5.25-12.64-13.33" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m30.5 27.94l-12.47 7.2l-11.19-6.46c-6.21-3.59-4.11-17.61 5.22-17.61" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m24.44 31.44l-12.47-7.2V11.31c0-7.16 13.2-12.36 17.86-4.28" />
+          </svg>
+          <span
+            class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150">
+            Open in ChatGPT
+          </span>
+        </a>
+      </div>
+    </header>
 
     <!-- Installation -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Installation</h2>
-      <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-        <pre><code [innerHTML]="installationCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+    <section id="installation" class="mb-12" aria-labelledby="installation-heading">
+      <h2 id="installation-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Installation ]
+      </h2>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+        <pre><code [innerHTML]="installationCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
       </div>
     </section>
 
     <!-- Preview -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Preview</h2>
-      <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+    <section id="preview" class="mb-12" aria-labelledby="preview-heading">
+      <h2 id="preview-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Preview ]
+      </h2>
+      <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+           aria-label="Live preview of carousel with 3 slides showing blue, green, and purple backgrounds">
         <div class="flex justify-center">
           <div class="w-96 h-96">
             <wally-carousel>
@@ -63,8 +87,7 @@
               <div class="w-full h-full bg-green-500 text-white flex items-center justify-center text-lg font-semibold">
                 Slide 2
               </div>
-              <div
-                class="w-full h-full bg-purple-500 text-white flex items-center justify-center text-lg font-semibold">
+              <div class="w-full h-full bg-purple-500 text-white flex items-center justify-center text-lg font-semibold">
                 Slide 3
               </div>
             </wally-carousel>
@@ -74,33 +97,40 @@
     </section>
 
     <!-- Import -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Import</h2>
+    <section id="import" class="mb-12" aria-labelledby="import-heading">
+      <h2 id="import-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Import ]
+      </h2>
       <div class="space-y-4">
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="importCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="importCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
 
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-          <pre><code [innerHTML]="componentImportCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="componentImportCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
       </div>
     </section>
 
     <!-- Basic Usage -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Basic Usage</h2>
-      <p class="text-gray-700 dark:text-gray-400 mb-4">
+    <section id="basic-usage" class="mb-12" aria-labelledby="basic-usage-heading">
+      <h2 id="basic-usage-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Basic Usage ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
         Simple carousel setup - just wrap your content elements. No configuration required.
       </p>
 
-      <!-- Simple Example -->
-      <div class="mb-8">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Simple Carousel</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="basicUsageCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <!-- Simple Carousel -->
+      <article class="mb-8" aria-labelledby="simple-carousel-heading">
+        <h3 id="simple-carousel-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Simple Carousel
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="basicUsageCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Live example of simple carousel with 2 items">
           <div class="flex justify-center">
             <div class="w-96 h-96">
               <wally-carousel>
@@ -114,37 +144,43 @@
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- With Navigation Indicators -->
-      <div class="mb-8">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">With Navigation Indicators</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="withNavigationIndicatorsCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="navigation-indicators-heading">
+        <h3 id="navigation-indicators-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>With Navigation Indicators
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="withNavigationIndicatorsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Carousel with navigation dot indicators example (currently commented out)">
           <div class="flex justify-center">
             <div class="w-96 h-96">
-              <wally-carousel [isNavigationIndicator]="true">
+              <!-- <wally-carousel [isNavigationIndicator]="true">
                 <div class="w-full h-full bg-orange-400 text-white flex items-center justify-center text-lg font-semibold">
                   Item 1
                 </div>
                 <div class="w-full h-full bg-red-400 text-white flex items-center justify-center text-lg font-semibold">
                   Item 2
                 </div>
-              </wally-carousel>
+              </wally-carousel> -->
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Product Showcase -->
-      <div class="mb-8">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Product Showcase</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="productShowcaseCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="product-showcase-heading">
+        <h3 id="product-showcase-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Product Showcase
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="productShowcaseCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Product showcase carousel displaying MacBook Pro, iPhone 15, and iPad Air with prices">
           <div class="w-full h-96">
             <wally-carousel>
               <div class="w-full h-full bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-lg p-8 flex flex-col items-center justify-center">
@@ -168,29 +204,38 @@
             </wally-carousel>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="mt-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
-        <h3 class="font-medium text-amber-900 dark:text-amber-100 mb-2">Tip</h3>
-        <p class="text-sm text-amber-800 dark:text-amber-200">
+      <!-- Tip Box -->
+      <aside class="mt-6 p-4 bg-amber-50 dark:bg-amber-900/10 border-2 border-amber-400 dark:border-amber-700" role="note"
+             aria-labelledby="tip-heading">
+        <h3 id="tip-heading" class="text-sm sm:text-base font-bold text-amber-800 dark:text-amber-300 mb-2 uppercase">
+          Tip
+        </h3>
+        <p class="text-xs sm:text-sm text-amber-700 dark:text-amber-400 leading-relaxed">
           The carousel automatically detects child elements and creates navigation.
           Try swiping on mobile or using keyboard arrows when focused!
         </p>
-      </div>
+      </aside>
     </section>
 
 
     <!-- Advanced Examples -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Advanced Examples</h2>
+    <section id="advanced-examples" class="mb-12" aria-labelledby="advanced-heading">
+      <h2 id="advanced-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Advanced Examples ]
+      </h2>
 
-      <!-- Custom Content Example -->
-      <div class="mb-6">
-        <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Custom Content</h3>
-        <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-          <pre><code [innerHTML]="customContentCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <article class="mb-8" aria-labelledby="custom-content-heading">
+        <h3 id="custom-content-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Custom Content
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="customContentCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
         </div>
-        <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live example of carousel with custom rich content and gradient backgrounds">
           <div class="flex justify-center">
             <div class="w-96 h-96">
               <wally-carousel>
@@ -213,47 +258,53 @@
             </div>
           </div>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Responsive Design -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Responsive Design</h2>
-      <p class="text-gray-700 dark:text-gray-400 mb-4">
+    <section id="responsive-design" class="mb-12" aria-labelledby="responsive-heading">
+      <h2 id="responsive-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Responsive Design ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
         The carousel is 100% responsive and adapts to any container size. Simply set the parent container dimensions and
         the carousel will fill it completely.
       </p>
-      <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-4">
-        <pre><code [innerHTML]="responsiveExampleCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-8">
+        <pre><code [innerHTML]="responsiveExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
       </div>
 
-      <!-- Live Examples -->
-      <div class="space-y-6">
-        <!-- Hero style -->
-        <div>
-          <h3 class="text-md font-medium mb-2 text-[#0a0a0a] dark:text-white">Hero Carousel (w-full h-96)</h3>
-          <div class="p-4 border rounded-lg bg-white dark:bg-[#121212]">
+      <div class="space-y-8" role="list" aria-label="Responsive carousel examples">
+        <article role="listitem" aria-labelledby="hero-carousel-heading">
+          <h3 id="hero-carousel-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+            <span aria-hidden="true">&gt; </span>Hero Carousel (w-full h-96)
+          </h3>
+          <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+            aria-label="Live example of hero carousel with full width and 96 height">
             <div class="w-full h-96">
               <wally-carousel>
                 <div
                   class="w-full h-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white flex flex-col items-center justify-center p-6">
-                  <h3 class="text-2xl font-bold mb-2">Hero Slide 1</h3>
+                  <h4 class="text-2xl font-bold mb-2">Hero Slide 1</h4>
                   <p class="text-center">Perfect for landing page heroes</p>
                 </div>
                 <div
                   class="w-full h-full bg-gradient-to-r from-purple-600 to-pink-600 text-white flex flex-col items-center justify-center p-6">
-                  <h3 class="text-2xl font-bold mb-2">Hero Slide 2</h3>
+                  <h4 class="text-2xl font-bold mb-2">Hero Slide 2</h4>
                   <p class="text-center">Responsive and touch-friendly</p>
                 </div>
               </wally-carousel>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Compact style -->
-        <div>
-          <h3 class="text-md font-medium mb-2 text-[#0a0a0a] dark:text-white">Compact Carousel (w-full h-48)</h3>
-          <div class="p-4 border rounded-lg bg-white dark:bg-[#121212]">
+        <article role="listitem" aria-labelledby="compact-carousel-heading">
+          <h3 id="compact-carousel-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+            <span aria-hidden="true">&gt; </span>Compact Carousel (w-full h-48)
+          </h3>
+          <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+            aria-label="Live example of compact carousel with full width and 48 height">
             <div class="w-full h-48">
               <wally-carousel>
                 <div
@@ -273,221 +324,234 @@
               </wally-carousel>
             </div>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
     <!-- Accessibility -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Accessibility</h2>
-      <p class="text-gray-700 dark:text-gray-400 mb-6">
+    <section id="accessibility" class="mb-12" aria-labelledby="accessibility-heading">
+      <h2 id="accessibility-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Accessibility ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
         The carousel is built with comprehensive accessibility features and follows WCAG guidelines for inclusive design.
       </p>
 
       <div class="space-y-8">
-        <!-- ARIA Attributes -->
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">ARIA Attributes</h3>
-          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
+        <article aria-labelledby="aria-attributes-heading">
+          <h3 id="aria-attributes-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+            <span aria-hidden="true">&gt; </span>ARIA Attributes
+          </h3>
+          <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="space-y-3">
                 <div>
-                  <code class="text-sm dark:text-white bg-gray-200 dark:bg-[#1a1a1a] px-2 py-1 rounded">role="region"</code>
-                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Identifies the carousel as a landmark region</p>
+                  <code class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white bg-neutral-100 dark:bg-[#1a1a1a] px-2 py-1">role="region"</code>
+                  <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">Identifies the carousel as a landmark region</p>
                 </div>
                 <div>
-                  <code class="text-sm dark:text-white bg-gray-200 dark:bg-[#1a1a1a] px-2 py-1 rounded">aria-label="Carousel"</code>
-                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Provides accessible name for screen readers</p>
+                  <code class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white bg-neutral-100 dark:bg-[#1a1a1a] px-2 py-1">aria-label="Carousel"</code>
+                  <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">Provides accessible name for screen readers</p>
                 </div>
               </div>
               <div class="space-y-3">
                 <div>
-                  <code class="text-sm dark:text-white bg-gray-200 dark:bg-[#1a1a1a] px-2 py-1 rounded">tabindex="0"</code>
-                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Makes carousel keyboard focusable</p>
+                  <code class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white bg-neutral-100 dark:bg-[#1a1a1a] px-2 py-1">tabindex="0"</code>
+                  <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">Makes carousel keyboard focusable</p>
                 </div>
                 <div>
-                  <code class="text-sm dark:text-white bg-gray-200 dark:bg-[#1a1a1a] px-2 py-1 rounded">aria-label="Navigate to slide X"</code>
-                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Descriptive labels for navigation indicators</p>
+                  <code class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white bg-neutral-100 dark:bg-[#1a1a1a] px-2 py-1">aria-label="Navigate to slide X"</code>
+                  <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">Descriptive labels for navigation indicators</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Keyboard Navigation -->
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Keyboard Navigation Example</h3>
-          <div class="p-6 border rounded-lg bg-white dark:bg-[#121212]">
-            <p class="text-sm text-gray-700 dark:text-gray-400 mb-4">
-              Click the carousel below to focus it, then use keyboard arrows to navigate:
-            </p>
+        <article aria-labelledby="keyboard-example-heading">
+          <h3 id="keyboard-example-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+            <span aria-hidden="true">&gt; </span>Keyboard Navigation Example
+          </h3>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+            Click the carousel below to focus it, then use keyboard arrows to navigate:
+          </p>
+          <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+            aria-label="Live example demonstrating keyboard navigation with arrow keys">
             <div class="w-full h-64">
               <wally-carousel>
                 <div class="w-full h-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white flex flex-col items-center justify-center p-6">
-                  <h3 class="text-xl font-bold mb-2">Keyboard Accessible</h3>
+                  <h4 class="text-xl font-bold mb-2">Keyboard Accessible</h4>
                   <p class="text-center text-sm">Use ← → arrows when focused</p>
                 </div>
                 <div class="w-full h-full bg-gradient-to-r from-purple-600 to-pink-600 text-white flex flex-col items-center justify-center p-6">
-                  <h3 class="text-xl font-bold mb-2">Screen Reader Friendly</h3>
+                  <h4 class="text-xl font-bold mb-2">Screen Reader Friendly</h4>
                   <p class="text-center text-sm">Proper ARIA attributes included</p>
                 </div>
                 <div class="w-full h-full bg-gradient-to-r from-pink-600 to-rose-600 text-white flex flex-col items-center justify-center p-6">
-                  <h3 class="text-xl font-bold mb-2">WCAG Compliant</h3>
+                  <h4 class="text-xl font-bold mb-2">WCAG Compliant</h4>
                   <p class="text-center text-sm">WCAG accessibility standards</p>
                 </div>
               </wally-carousel>
             </div>
           </div>
-        </div>
-
+        </article>
       </div>
     </section>
 
     <!-- Properties -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Properties</h2>
-      <p class="text-gray-700 dark:text-gray-400 mb-4">
+    <section id="properties" class="mb-12" aria-labelledby="properties-heading">
+      <h2 id="properties-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Properties ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
         The carousel component accepts one optional input property and automatically manages its internal state.
       </p>
 
-      <div class="space-y-6">
-        <!-- Input Properties -->
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Input Properties</h3>
+      <div class="space-y-8">
+        <article aria-labelledby="input-properties-heading">
+          <h3 id="input-properties-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+            <span aria-hidden="true">&gt; </span>Input Properties
+          </h3>
           <div class="space-y-2">
-            <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-              <pre><code [innerHTML]="propertyIsNavigationIndicatorCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+            <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+              <pre><code [innerHTML]="propertyIsNavigationIndicatorCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
             </div>
-            <p class="text-sm text-gray-700 dark:text-gray-400">
+            <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
               Controls whether navigation indicators (dots) are displayed below the carousel.
             </p>
           </div>
-        </div>
+        </article>
 
-        <!-- Read-only Properties -->
-        <div>
-          <h3 class="text-md font-medium mb-3 text-[#0a0a0a] dark:text-white">Read-only Properties</h3>
+        <article aria-labelledby="readonly-properties-heading">
+          <h3 id="readonly-properties-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+            <span aria-hidden="true">&gt; </span>Read-only Properties
+          </h3>
           <div class="space-y-4">
             <div class="space-y-2">
-              <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-                <pre><code [innerHTML]="propertyTotalItemsCountCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+              <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+                <pre><code [innerHTML]="propertyTotalItemsCountCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
               </div>
-              <p class="text-sm text-gray-700 dark:text-gray-400">Automatically detected number of child elements in the carousel</p>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Automatically detected number of child elements in the carousel</p>
             </div>
 
             <div class="space-y-2">
-              <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-                <pre><code [innerHTML]="propertyCurrentVisibleItemIndexCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+              <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+                <pre><code [innerHTML]="propertyCurrentVisibleItemIndexCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
               </div>
-              <p class="text-sm text-gray-700 dark:text-gray-400">Zero-based index of the currently visible slide</p>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Zero-based index of the currently visible slide</p>
             </div>
 
             <div class="space-y-2">
-              <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-                <pre><code [innerHTML]="propertyNavigationIndicatorsArrayCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+              <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+                <pre><code [innerHTML]="propertyNavigationIndicatorsArrayCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
               </div>
-              <p class="text-sm text-gray-700 dark:text-gray-400">Auto-generated array used for rendering navigation indicators</p>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Auto-generated array used for rendering navigation indicators</p>
             </div>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
     <!-- API Methods -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">API Methods</h2>
-      <p class="text-gray-700 dark:text-gray-400 mb-4">
+    <section id="api-methods" class="mb-12" aria-labelledby="api-heading">
+      <h2 id="api-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ API Methods ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
         Public methods available for programmatic control of the carousel. Access these methods through a template reference or ViewChild.
       </p>
 
       <div class="overflow-x-auto">
-        <table class="w-full border-collapse border border-gray-200 dark:border-gray-700 rounded-lg">
+        <table class="w-full border-collapse border-2 border-neutral-300 dark:border-neutral-700">
           <thead>
-            <tr class="bg-gray-50 dark:bg-[#1a1a1a]">
-              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left text-sm font-semibold text-[#0a0a0a] dark:text-white">Method</th>
-              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left text-sm font-semibold text-[#0a0a0a] dark:text-white">Parameters</th>
-              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left text-sm font-semibold text-[#0a0a0a] dark:text-white">Return</th>
-              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left text-sm font-semibold text-[#0a0a0a] dark:text-white">Description</th>
+            <tr class="bg-neutral-100 dark:bg-[#1a1a1a]">
+              <th class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-left text-xs sm:text-sm font-bold text-[#0a0a0a] dark:text-white">Method</th>
+              <th class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-left text-xs sm:text-sm font-bold text-[#0a0a0a] dark:text-white">Parameters</th>
+              <th class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-left text-xs sm:text-sm font-bold text-[#0a0a0a] dark:text-white">Return</th>
+              <th class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-left text-xs sm:text-sm font-bold text-[#0a0a0a] dark:text-white">Description</th>
             </tr>
           </thead>
           <tbody>
             <!-- Navigation Methods -->
             <tr class="bg-blue-50 dark:bg-blue-900/20">
-              <td colspan="4" class="border border-gray-200 dark:border-gray-700 px-4 py-2 text-sm font-medium text-blue-900 dark:text-blue-100">Navigation Methods</td>
+              <td colspan="4" class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-2 text-xs sm:text-sm font-bold text-blue-900 dark:text-blue-100 uppercase">Navigation Methods</td>
             </tr>
             <tr>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm">
-                <code class="bg-gray-100 dark:bg-[#1a1a1a] dark:text-white px-2 py-1 rounded text-xs">navigateToNextItem()</code>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <code class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">navigateToNextItem()</code>
               </td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">None</td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">void</td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-700 dark:text-gray-300">Navigate to the next slide with circular navigation</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">None</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">void</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Navigate to the next slide with circular navigation</td>
             </tr>
             <tr>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm">
-                <code class="bg-gray-100 dark:bg-[#1a1a1a] dark:text-white px-2 py-1 rounded text-xs">navigateToPreviousItem()</code>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <code class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">navigateToPreviousItem()</code>
               </td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">None</td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">void</td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-700 dark:text-gray-300">Navigate to the previous slide with circular navigation</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">None</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">void</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Navigate to the previous slide with circular navigation</td>
             </tr>
             <tr>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm">
-                <code class="bg-gray-100 dark:bg-[#1a1a1a] dark:text-white px-2 py-1 rounded text-xs">navigateToSpecificItem()</code>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <code class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">navigateToSpecificItem()</code>
               </td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
                 <code class="text-xs">index: number</code>
               </td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">void</td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-700 dark:text-gray-300">Jump directly to a specific slide by index (0-based)</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">void</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Jump directly to a specific slide by index (0-based)</td>
             </tr>
 
             <!-- Calculation Methods -->
             <tr class="bg-green-50 dark:bg-green-900/20">
-              <td colspan="4" class="border border-gray-200 dark:border-gray-700 px-4 py-2 text-sm font-medium text-green-900 dark:text-green-100">Calculation Methods</td>
+              <td colspan="4" class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-2 text-xs sm:text-sm font-bold text-green-900 dark:text-green-100 uppercase">Calculation Methods</td>
             </tr>
             <tr>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm">
-                <code class="bg-gray-100 dark:bg-[#1a1a1a] dark:text-white px-2 py-1 rounded text-xs">calculateNextItemIndex()</code>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <code class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">calculateNextItemIndex()</code>
               </td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
                 <code class="text-xs">current: number</code>
               </td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">number</td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-700 dark:text-gray-300">Calculate the next index using circular buffer algorithm</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">number</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Calculate the next index using circular buffer algorithm</td>
             </tr>
             <tr>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm">
-                <code class="bg-gray-100 dark:bg-[#1a1a1a] dark:text-white px-2 py-1 rounded text-xs">calculatePreviousItemIndex()</code>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <code class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">calculatePreviousItemIndex()</code>
               </td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
                 <code class="text-xs">current: number</code>
               </td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">number</td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-700 dark:text-gray-300">Calculate the previous index using circular buffer algorithm</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">number</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Calculate the previous index using circular buffer algorithm</td>
             </tr>
 
             <!-- Positioning Methods -->
             <tr class="bg-purple-50 dark:bg-purple-900/20">
-              <td colspan="4" class="border border-gray-200 dark:border-gray-700 px-4 py-2 text-sm font-medium text-purple-900 dark:text-purple-100">Positioning Methods</td>
+              <td colspan="4" class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-2 text-xs sm:text-sm font-bold text-purple-900 dark:text-purple-100 uppercase">Positioning Methods</td>
             </tr>
             <tr>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm">
-                <code class="bg-gray-100 dark:bg-[#1a1a1a] dark:text-white px-2 py-1 rounded text-xs">updateItemElementPosition()</code>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <code class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">updateItemElementPosition()</code>
               </td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
                 <code class="text-xs">element: HTMLElement<br>index: number</code>
               </td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">void</td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-700 dark:text-gray-300">Update position of a specific carousel item element</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">void</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Update position of a specific carousel item element</td>
             </tr>
             <tr>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm">
-                <code class="bg-gray-100 dark:bg-[#1a1a1a] dark:text-white px-2 py-1 rounded text-xs">updateAllItemElementPositions()</code>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <code class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">updateAllItemElementPositions()</code>
               </td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">None</td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">void</td>
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-700 dark:text-gray-300">Update positions of all carousel item elements</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">None</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">void</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Update positions of all carousel item elements</td>
             </tr>
           </tbody>
         </table>
@@ -495,91 +559,100 @@
     </section>
 
     <!-- Keyboard Navigation -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Keyboard Navigation</h2>
-      <p class="text-gray-700 dark:text-gray-400 mb-4">
+    <section id="keyboard-navigation" class="mb-12" aria-labelledby="keyboard-heading">
+      <h2 id="keyboard-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Keyboard Navigation ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
         When the carousel has focus, users can navigate using these keyboard shortcuts.
       </p>
-      <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-        <pre><code [innerHTML]="keyboardShortcutsCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+        <pre><code [innerHTML]="keyboardShortcutsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
       </div>
     </section>
 
     <!-- Touch Gestures -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Touch & Mouse Gestures</h2>
-      <p class="text-gray-700 dark:text-gray-400 mb-4">
+    <section id="touch-gestures" class="mb-12" aria-labelledby="gestures-heading">
+      <h2 id="gestures-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Touch & Mouse Gestures ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
         Interactive gestures supported on both mobile and desktop devices.
       </p>
-      <div class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg">
-        <pre><code [innerHTML]="touchGesturesCode" class="text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+        <pre><code [innerHTML]="touchGesturesCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
       </div>
     </section>
 
     <!-- Features -->
-    <section class="mb-8">
-      <h2 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">Features</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="p-4 border rounded-lg bg-white dark:bg-[#121212]">
+    <!-- <section id="features" class="mb-12" aria-labelledby="features-heading">
+      <h2 id="features-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Features ]
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border-2 border-neutral-300 dark:border-neutral-700">
+        <article class="p-6 border-b-2 md:border-b-0 md:border-r-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]">
           <div class="flex items-center gap-3 mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5 text-blue-500">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
             </svg>
-            <h3 class="font-medium text-[#0a0a0a] dark:text-white">Touch & Swipe</h3>
+            <h3 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white uppercase">Touch & Swipe</h3>
           </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Full touch gesture support with configurable thresholds for distance and velocity detection.</p>
-        </div>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Full touch gesture support with configurable thresholds for distance and velocity detection.</p>
+        </article>
 
-        <div class="p-4 border rounded-lg bg-white dark:bg-[#121212]">
+        <article class="p-6 border-b-2 md:border-b-0 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]">
           <div class="flex items-center gap-3 mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5 text-green-500">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
-            <h3 class="font-medium text-[#0a0a0a] dark:text-white">Accessibility</h3>
+            <h3 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white uppercase">Accessibility</h3>
           </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">ARIA attributes, keyboard navigation (arrows, home, end), and screen reader support built-in.</p>
-        </div>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">ARIA attributes, keyboard navigation (arrows, home, end), and screen reader support built-in.</p>
+        </article>
 
-        <div class="p-4 border rounded-lg bg-white dark:bg-[#121212]">
+        <article class="p-6 border-b-2 md:border-b-0 md:border-r-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]">
           <div class="flex items-center gap-3 mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5 text-purple-500">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
             </svg>
-            <h3 class="font-medium text-[#0a0a0a] dark:text-white">100% Responsive</h3>
+            <h3 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white uppercase">100% Responsive</h3>
           </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Adapts to any container size automatically. Set parent dimensions and carousel fills completely.</p>
-        </div>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Adapts to any container size automatically. Set parent dimensions and carousel fills completely.</p>
+        </article>
 
-        <div class="p-4 border rounded-lg bg-white dark:bg-[#121212]">
+        <article class="p-6 border-b-2 md:border-b-0 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]">
           <div class="flex items-center gap-3 mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5 text-orange-500">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5 10 4.5m0 0L16.25 13.5M10 4.5V21" />
             </svg>
-            <h3 class="font-medium text-[#0a0a0a] dark:text-white">Performance</h3>
+            <h3 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white uppercase">Performance</h3>
           </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">GPU-accelerated animations, optimized event handling, and proper memory cleanup.</p>
-        </div>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">GPU-accelerated animations, optimized event handling, and proper memory cleanup.</p>
+        </article>
 
-        <div class="p-4 border rounded-lg bg-white dark:bg-[#121212]">
+        <article class="p-6 border-b-2 md:border-b-0 md:border-r-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]">
           <div class="flex items-center gap-3 mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5 text-indigo-500">
               <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
             </svg>
-            <h3 class="font-medium text-[#0a0a0a] dark:text-white">Infinite Loop</h3>
+            <h3 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white uppercase">Infinite Loop</h3>
           </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">Circular buffer algorithm provides seamless infinite navigation between slides.</p>
-        </div>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Circular buffer algorithm provides seamless infinite navigation between slides.</p>
+        </article>
 
-        <div class="p-4 border rounded-lg bg-white dark:bg-[#121212]">
+        <article class="p-6 bg-white dark:bg-[#0a0a0a]">
           <div class="flex items-center gap-3 mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5 text-red-500">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-6.364-.386 1.591-1.591M3 12h2.25m.386-6.364 1.591 1.591" />
             </svg>
-            <h3 class="font-medium text-[#0a0a0a] dark:text-white">Zero Config</h3>
+            <h3 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white uppercase">Zero Config</h3>
           </div>
-          <p class="text-sm text-gray-700 dark:text-gray-400">No configuration required. Just wrap your content and it works. Automatically detects child elements.</p>
-        </div>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">No configuration required. Just wrap your content and it works. Automatically detects child elements.</p>
+        </article>
       </div>
-    </section>
+    </section> -->
   </div>
-</div>
+</main>
