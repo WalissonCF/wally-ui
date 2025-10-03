@@ -1,164 +1,215 @@
-<main class="max-w-4xl mx-auto p-6 font-mono" role="main">
-  <nav class="mb-4" aria-label="Breadcrumb navigation">
-    <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
-  </nav>
+<main class="min-h-dvh bg-white dark:bg-[#0a0a0a] font-mono" role="main">
+  <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 md:px-8">
 
-  <header class="mb-6">
-    <h1 class="text-2xl font-bold text-[#0a0a0a] dark:text-white mb-4">
-      Documentation
-    </h1>
-    <p class="text-gray-700 dark:text-gray-400">
-      Welcome to Wally UI documentation. Learn how to get started and explore our component library.
-    </p>
-  </header>
+    <!-- Breadcrumb Navigation -->
+    <nav class="mb-8" aria-label="Breadcrumb navigation">
+      <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
+    </nav>
 
-  <section id="philosophy" class="mb-8" aria-labelledby="philosophy-heading">
-    <h2 id="philosophy-heading" class="text-lg font-semibold text-[#0a0a0a] dark:text-white mb-4">
-      A Modern Approach to Angular UI Components
-    </h2>
-    <p class="text-gray-700 dark:text-gray-400 mb-4">
-      Wally UI is a modern approach to building Angular interfaces, inspired by the success of shadcn/ui in React.
-      Unlike traditional libraries, it doesn't add heavy dependencies to your project: each component is generated
-      via npx and becomes your code, ready to edit, customize, and evolve as needed.
-    </p>
+    <!-- Header -->
+    <header class="mb-12" role="banner">
+      <h1 id="page-title" class="text-3xl sm:text-4xl font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+        <span aria-hidden="true">&gt;_ </span>Documentation
+      </h1>
+      <p class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4">
+        Welcome to Wally UI documentation. Learn how to get started, install components via CLI, and explore our production-ready Angular component library.
+      </p>
+    </header>
 
-    <div class="grid gap-3 md:grid-cols-2 mb-6" role="list" aria-label="Key features of Wally UI">
-      <article class="bg-gray-200 dark:bg-[#121212] p-3 rounded-lg" role="listitem">
-        <h3 class="text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">No External Dependencies</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400">
-          You control the code, without being tied to third-party updates.
-        </p>
-      </article>
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="mb-12" aria-labelledby="philosophy-heading">
+      <h2 id="philosophy-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Philosophy ]
+      </h2>
 
-      <article class="bg-gray-200 dark:bg-[#121212] p-3 rounded-lg" role="listitem">
-        <h3 class="text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">Total Customization</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400">
-          Since the component is yours, it can be adapted to any design system or business rules.
-        </p>
-      </article>
+      <h3 class="text-lg sm:text-xl font-bold text-[#0a0a0a] dark:text-white mb-4">
+        A Modern Approach to Angular UI Components
+      </h3>
 
-      <article class="bg-gray-200 dark:bg-[#121212] p-3 rounded-lg" role="listitem">
-        <h3 class="text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">Lightweight</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400">
-          Only what you actually add goes into the bundle, without loading dozens of unused components.
-        </p>
-      </article>
+      <p class="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 mb-6 leading-relaxed">
+        Wally UI is a modern approach to building Angular interfaces, inspired by the success of shadcn/ui in React.
+        Unlike traditional libraries, it doesn't add heavy dependencies to your project: each component is generated
+        via npx and becomes <strong class="text-[#0a0a0a] dark:text-white">your code</strong>, ready to edit, customize, and evolve as needed.
+      </p>
 
-      <article class="bg-gray-200 dark:bg-[#121212] p-3 rounded-lg" role="listitem">
-        <h3 class="text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">Tailwind Integrated</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400">
-          Modern, responsive, and consistent styles with the power of Tailwind CSS.
-        </p>
-      </article>
+      <div class="grid gap-0 md:grid-cols-2 border-2 border-neutral-300 dark:border-neutral-700 mb-6" role="list" aria-label="Key features of Wally UI">
+        <article class="p-4 border-b-2 md:border-b-0 md:border-r-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="listitem">
+          <h4 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-2 uppercase">
+            <span aria-hidden="true">[ </span>No External Dependencies<span aria-hidden="true"> ]</span>
+          </h4>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+            You control the code, without being tied to third-party updates.
+          </p>
+        </article>
 
-      <article class="bg-gray-200 dark:bg-[#121212] p-3 rounded-lg" role="listitem">
-        <h3 class="text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">Learning & Clarity</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400">
-          Each component serves as a practical example of Angular best practices.
-        </p>
-      </article>
+        <article class="p-4 border-b-2 md:border-b-0 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="listitem">
+          <h4 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-2 uppercase">
+            <span aria-hidden="true">[ </span>Total Customization<span aria-hidden="true"> ]</span>
+          </h4>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+            Since the component is yours, it can be adapted to any design system or business rules.
+          </p>
+        </article>
 
-      <article class="bg-gray-200 dark:bg-[#121212] p-3 rounded-lg" role="listitem">
-        <h3 class="text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">Standalone Components</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400">
-          Leverages Angular's latest features, reducing complexity and improving modularity.
-        </p>
-      </article>
-    </div>
+        <article class="p-4 border-b-2 md:border-b-0 md:border-r-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="listitem">
+          <h4 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-2 uppercase">
+            <span aria-hidden="true">[ </span>Lightweight<span aria-hidden="true"> ]</span>
+          </h4>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+            Only what you actually add goes into the bundle, without loading dozens of unused components.
+          </p>
+        </article>
 
-    <p class="text-gray-700 dark:text-gray-400">
-      With Wally UI, you gain agility to start projects, flexibility to shape your UI without limitations,
-      and simplicity to maintain code long-term. It's the most practical and modern way to build Angular interfaces.
-    </p>
-  </section>
+        <article class="p-4 border-b-2 md:border-b-0 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="listitem">
+          <h4 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-2 uppercase">
+            <span aria-hidden="true">[ </span>Tailwind Integrated<span aria-hidden="true"> ]</span>
+          </h4>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+            Modern, responsive, and consistent styles with the power of Tailwind CSS.
+          </p>
+        </article>
 
-  <section id="requirements" class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-6"
-    aria-labelledby="requirements-heading">
-    <h2 id="requirements-heading" class="text-sm font-semibold text-[#0a0a0a] dark:text-white mb-3">Requirements</h2>
+        <article class="p-4 border-b-2 md:border-b-0 md:border-r-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="listitem">
+          <h4 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-2 uppercase">
+            <span aria-hidden="true">[ </span>Learning & Clarity<span aria-hidden="true"> ]</span>
+          </h4>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+            Each component serves as a practical example of Angular best practices.
+          </p>
+        </article>
 
-    <div class="space-y-3" role="list" aria-label="System requirements for Wally UI">
-      <div role="listitem">
-        <h3 class="text-sm font-medium text-[#0a0a0a] dark:text-white mb-1">Angular Version</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400">
-          Angular 17+ required for standalone component support
-        </p>
+        <article class="p-4 bg-white dark:bg-[#0a0a0a]" role="listitem">
+          <h4 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-2 uppercase">
+            <span aria-hidden="true">[ </span>Standalone Components<span aria-hidden="true"> ]</span>
+          </h4>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+            Leverages Angular's latest features, reducing complexity and improving modularity.
+          </p>
+        </article>
       </div>
 
-      <div role="listitem">
-        <h3 class="text-sm font-medium text-[#0a0a0a] dark:text-white mb-1">Tailwind CSS</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-2">
-          Tailwind CSS v3 or v4 must be installed in your project.
-        </p>
-        <a href="https://tailwindcss.com/blog/tailwindcss-v4" target="_blank"
-          class="text-xs text-blue-500 underline hover:text-blue-700" rel="noopener noreferrer"
-          aria-label="Learn about Tailwind v4 (opens in new tab)">
-          Learn about Tailwind v4
-        </a>
+      <p class="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        With Wally UI, you gain agility to start projects, flexibility to shape your UI without limitations,
+        and simplicity to maintain code long-term. It's the most practical and modern way to build Angular interfaces.
+      </p>
+    </section>
+
+    <!-- Requirements Section -->
+    <section id="requirements" class="mb-12" aria-labelledby="requirements-heading">
+      <h2 id="requirements-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Requirements ]
+      </h2>
+
+      <div class="space-y-0 border-2 border-neutral-300 dark:border-neutral-700" role="list" aria-label="System requirements for Wally UI">
+        <div class="p-4 border-b-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="listitem">
+          <h3 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-2">
+            <span aria-hidden="true">&gt; </span>Angular Version
+          </h3>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+            Angular 17+ required for standalone component support
+          </p>
+        </div>
+
+        <div class="p-4 border-b-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="listitem">
+          <h3 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-2">
+            <span aria-hidden="true">&gt; </span>Tailwind CSS
+          </h3>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+            Tailwind CSS v3 or v4 must be installed in your project.
+          </p>
+          <a href="https://tailwindcss.com/blog/tailwindcss-v4" target="_blank"
+            class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 hover:text-[#0a0a0a] dark:hover:text-white underline underline-offset-4 transition-colors duration-200"
+            rel="noopener noreferrer"
+            aria-label="Learn about Tailwind CSS v4 documentation (opens in new tab)">
+            Learn about Tailwind v4 →
+          </a>
+        </div>
+
+        <div class="p-4 bg-white dark:bg-[#0a0a0a]" role="listitem">
+          <h3 class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-2">
+            <span aria-hidden="true">&gt; </span>Installation
+          </h3>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+            Components are standalone and can be installed individually:
+          </p>
+          <code class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white block bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+                aria-label="Installation command example">
+            $ npx wally-ui add &lt;component&gt;
+          </code>
+        </div>
       </div>
+    </section>
 
-      <div role="listitem">
-        <h3 class="text-sm font-medium text-[#0a0a0a] dark:text-white mb-1">Installation</h3>
-        <p class="text-sm text-gray-700 dark:text-gray-400 mb-2">
-          Components are standalone and can be installed individually:
-        </p>
-        <code class="text-sm text-[#0a0a0a] dark:text-white block" aria-label="Installation command example">
-          npx wally-ui add {{ '<' }}component{{ '>' }}
-        </code>
-      </div>
-    </div>
-  </section>
+    <!-- Warning Notice -->
+    <aside id="important-notice"
+      class="mb-12 bg-yellow-50 dark:bg-yellow-900/10 border-2 border-yellow-400 dark:border-yellow-700 p-4"
+      role="alert" aria-labelledby="experimental-heading">
+      <h2 id="experimental-heading" class="text-sm sm:text-base font-bold text-yellow-800 dark:text-yellow-300 mb-2 uppercase">
+        Experimental Project
+      </h2>
+      <p class="text-xs sm:text-sm text-yellow-700 dark:text-yellow-400">
+        Wally UI is currently in experimental development. Components may change and new features are being actively
+        developed. Use in production with caution.
+      </p>
+    </aside>
 
-  <aside id="important-notice"
-    class="bg-yellow-100 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700 p-4 rounded-lg mb-6"
-    role="alert" aria-labelledby="experimental-heading">
-    <h2 id="experimental-heading" class="text-sm font-semibold text-yellow-800 dark:text-yellow-200 mb-2">⚠️
-      Experimental Project</h2>
-    <p class="text-sm text-yellow-700 dark:text-yellow-300">
-      Wally UI is currently in experimental development. Components may change and new features are being actively
-      developed. Use in production with caution.
-    </p>
-  </aside>
+    <!-- CLI Commands Section -->
+    <section class="mb-12" aria-labelledby="cli-heading">
+      <h2 id="cli-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ CLI Commands ]
+      </h2>
 
-  <section id="list-components" class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-6"
-    aria-labelledby="list-heading">
-    <h2 id="list-heading" class="text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">List Available Components
-    </h2>
-    <code class="text-sm text-[#0a0a0a] dark:text-white" aria-label="Command to list available components">
-          npx wally-ui list
-    </code>
-  </section>
+      <div class="space-y-0 border-2 border-neutral-300 dark:border-neutral-700">
+        <!-- List Command -->
+        <div id="list-components" class="p-4 border-b-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" aria-labelledby="list-heading">
+          <h3 id="list-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+            <span aria-hidden="true">&gt; </span>List Available Components
+          </h3>
+          <code class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white block bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+                aria-label="Command to list available components">
+            $ npx wally-ui list
+          </code>
+        </div>
 
-  <section id="installation-structure" class="bg-gray-200 dark:bg-[#121212] p-4 rounded-lg mb-8"
-    aria-labelledby="structure-heading">
-    <h2 id="structure-heading" class="text-sm font-semibold text-[#0a0a0a] dark:text-white mb-3">Installation Structure
-    </h2>
-    <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
-      When installing a component, Wally UI will create the following folder structure:
-    </p>
-    <pre class="font-mono text-sm text-[#0a0a0a] dark:text-white leading-tight" role="img"
-      aria-label="File structure diagram showing component installation path">
-src/
+        <!-- Installation Structure -->
+        <div id="installation-structure" class="p-4 bg-white dark:bg-[#0a0a0a]" aria-labelledby="structure-heading">
+          <h3 id="structure-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+            <span aria-hidden="true">&gt; </span>Installation Structure
+          </h3>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+            When installing a component, Wally UI will create the following folder structure:
+          </p>
+          <pre class="font-mono text-xs sm:text-sm text-[#0a0a0a] dark:text-white leading-tight bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 overflow-x-auto" role="img"
+            aria-label="File structure diagram showing component installation path">src/
 └── app/
     └── components/
         └── wally-ui/
             └── button/
                 ├── button.ts
-                └── button.html
-    </pre>
-  </section>
+                └── button.html</pre>
+        </div>
+      </div>
+    </section>
 
-  <section class="space-y-4" aria-labelledby="explore-heading">
-    <h2 id="explore-heading" class="text-lg font-semibold text-[#0a0a0a] dark:text-white mb-4">Explore</h2>
+    <!-- Explore Section -->
+    <section class="mb-12" aria-labelledby="explore-heading">
+      <h2 id="explore-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Explore ]
+      </h2>
 
-    <article class="bg-gray-200 dark:bg-[#121212] rounded-lg p-4">
-      <h3 class="text-md font-semibold text-[#0a0a0a] dark:text-white mb-2">Components</h3>
-      <p class="text-sm text-gray-700 dark:text-gray-400 mb-3">
-        Browse our collection of reusable Angular components with examples and documentation.
-      </p>
-      <a [routerLink]="'/documentation/components'" class="text-blue-500 underline hover:text-blue-700 text-sm"
-        aria-label="Navigate to components documentation page">
-        View Components
-      </a>
-    </article>
-  </section>
+      <article class="group border-2 border-neutral-300 dark:border-neutral-700">
+        <a [routerLink]="'/documentation/components'"
+           class="block p-4 sm:p-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+           aria-label="Navigate to Components documentation page with examples and API reference">
+          <h3 class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] mb-2 uppercase tracking-wide transition-colors duration-150">
+            <span aria-hidden="true">&gt;_ </span>Components
+          </h3>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
+            Browse our collection of reusable Angular components with examples, code snippets, and comprehensive documentation.
+          </p>
+        </a>
+      </article>
+    </section>
+
+  </div>
 </main>
