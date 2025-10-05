@@ -1,161 +1,157 @@
 # Wally UI
 
-> A modern Angular component library built with standalone components, Tailwind CSS, and enterprise-grade accessibility.
+A modern Angular component library with individual component installation, Tailwind CSS styling, and enterprise-grade accessibility.
 
 [![npm version](https://img.shields.io/npm/v/wally-ui.svg)](https://www.npmjs.com/package/wally-ui)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-**[Live Demo & Documentation](https://wally-ui.com/)**
+**[Live Documentation](https://wally-ui.com/)**
 
-## Why Wally UI?
+## Installation
 
-- **Zero Configuration**: Install components individually - no bloated bundles
-- **Accessibility First**: Enterprise-grade a11y with ARIA support and screen reader compatibility
-- **Dark Mode Native**: Complete light/dark theme support out of the box
-- **SSR Ready**: Full Server-Side Rendering support for performance
-- **Tailwind Powered**: Beautiful, customizable styling with Tailwind CSS v3/v4
-
-## Requirements
-
-- **Tailwind CSS v3 or v4**
-- **Node.js 18+**
-
-## 📦 Available Components
-
-| Component | Status | Description |
-|-----------|--------|-------------|
-| **Input** | ✅ **New** | Full-featured input with validation, loading states, and FormGroup support |
-| **Button** | 🚧 Under Construction | Versatile button with loading states and notifications |
-| **Breadcrumb** | 🚧 Under Construction | Navigation breadcrumb component |
-
-## 🚀 Quick Start
-
-### 1. Install a component
+### List all available components
 ```bash
-# Install the Input component (recommended for forms)
-npx wally-ui add input
-
-# Install other components
-npx wally-ui add button
-
-# List all available components
 npx wally-ui list
 ```
 
-### 2. Import and use in your Angular component
+### Install a component
+```bash
+npx wally-ui add button
+npx wally-ui add input
+npx wally-ui add carousel
+npx wally-ui add breadcrumb
+```
+
+Components are installed directly into `src/app/components/wally-ui/{component}/`
+
+## Requirements
+
+- Tailwind CSS v3 or v4
+- Node.js 18+
+- Angular 17+
+
+## Available Components
+
+| Component | Status | Features |
+|-----------|--------|----------|
+| **Button** | Production | Variants (primary, secondary), loading states, ARIA support |
+| **Input** | Production | Form integration, validation, password toggle, loading states |
+| **Carousel** | Production | Touch gestures, keyboard navigation, circular buffer algorithm |
+| **Breadcrumb** | Production | Semantic HTML, ARIA navigation, responsive design |
+
+## Quick Start
+
+### Basic Usage
 ```typescript
 import { Component } from '@angular/core';
-import { Input } from './components/wally-ui/input/input';
+import { Button } from './components/wally-ui/button/button';
 
 @Component({
   selector: 'app-example',
-  imports: [Input], // Standalone component import
+  imports: [Button],
   template: `
-    <wally-input
-      label="Email Address"
-      type="email"
-      placeholder="Enter your email">
-    </wally-input>
+    <wally-button variant="primary">Click me</wally-button>
   `
 })
 export class ExampleComponent {}
 ```
 
-### 3. For reactive forms (recommended)
+### Reactive Forms Integration
 ```typescript
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Input } from './components/wally-ui/input/input';
 
 @Component({
+  selector: 'app-form',
   imports: [Input, ReactiveFormsModule],
   template: `
-    <form [formGroup]="userForm">
+    <form [formGroup]="form">
       <wally-input
         formControlName="email"
         label="Email"
-        type="email"
-        [valid]="isFieldValid('email')"
-        [errorMessage]="getFieldError('email')">
+        type="email">
       </wally-input>
     </form>
   `
 })
 export class FormComponent {
-  userForm = this.fb.group({
+  form = this.fb.group({
     email: ['', [Validators.required, Validators.email]]
   });
+
+  constructor(private fb: FormBuilder) {}
 }
 ```
 
-## Project Structure
+## Component Examples
 
-Components are installed directly into your project with zero dependencies:
-
-```
-src/app/components/wally-ui/
-├── input/
-│   ├── input.ts      # Component logic with Angular signals
-│   └── input.html    # Template with Tailwind styling
-└── button/
-    ├── button.ts
-    └── button.html
-```
-
-## Features Showcase
-
-### Input Component (v1.5.0)
+### Button Component
 ```html
-<!-- All input states supported -->
+<!-- Variants -->
+<wally-button variant="primary">Primary Button</wally-button>
+<wally-button variant="secondary">Secondary Button</wally-button>
+
+<!-- States -->
+<wally-button [loading]="true">Loading...</wally-button>
+<wally-button [disabled]="true">Disabled</wally-button>
+```
+
+### Input Component
+```html
+<!-- Basic input -->
 <wally-input label="Username" placeholder="Enter username"></wally-input>
-<wally-input [loading]="true" placeholder="Processing..."></wally-input>
-<wally-input [valid]="true" placeholder="Valid input"></wally-input>
-<wally-input errorMessage="Field is required"></wally-input>
-<wally-input [disabled]="true" placeholder="Disabled input"></wally-input>
 
 <!-- Password with toggle -->
 <wally-input type="password" label="Password"></wally-input>
 
-<!-- FormGroup integration -->
-<wally-input formControlName="email" type="email"></wally-input>
+<!-- States -->
+<wally-input [loading]="true"></wally-input>
+<wally-input [valid]="true"></wally-input>
+<wally-input errorMessage="Required field"></wally-input>
 ```
 
-**Features:**
-- ✅ Complete ControlValueAccessor implementation
-- ✅ Angular Signals architecture (Angular 20+ optimized)
-- ✅ Loading, valid, error, disabled states
-- ✅ Password visibility toggle
-- ✅ Full accessibility (ARIA attributes, screen readers)
-- ✅ Dark mode support
-- ✅ TypeScript interfaces
+### Carousel Component
+```html
+<wally-carousel>
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+</wally-carousel>
+```
 
-## AI Assistant Ready
+### Breadcrumb Component
+```html
+<wally-breadcrumb [items]="[
+  { label: 'Home', link: '/' },
+  { label: 'Components', link: '/components' },
+  { label: 'Button' }
+]"></wally-breadcrumb>
+```
 
-This library is designed to work seamlessly with AI coding assistants:
+## Project Structure
 
-- **Clear Documentation**: Comprehensive examples and API references
-- **Semantic Naming**: Intuitive component and property names
-- **Copy-Paste Ready**: All examples work out of the box
-- **IntelliSense**: Full TypeScript support for autocomplete
+Components install into:
+```
+src/app/components/wally-ui/{component}/
+├── {component}.ts      # Component logic
+└── {component}.html    # Template
+```
 
-## Documentation & Examples
+## Features
 
-- **[Complete Documentation](https://wally-ui.com/documentation)**
-- **[Component Examples](https://wally-ui.com/documentation/components)**
-- **[Live Playground](https://wally-ui.com/)**
+- Zero configuration - install only what you need
+- Enterprise-grade accessibility with ARIA support
+- Dark mode support out of the box
+- Server-Side Rendering compatible
+- Angular Signals architecture
+- TypeScript interfaces included
+- Copy-paste ready examples
 
-## Roadmap
+## Documentation
 
-- [ ] **Select Component** - Dropdown with search and multi-select
-- [ ] **Modal Component** - Overlay dialogs and popups
-- [ ] **Table Component** - Data tables with sorting and pagination
-- [ ] **Form Component** - Complete form wrapper with validation
-- [ ] **Card Component** - Content containers
-- [ ] **Badge Component** - Status indicators
+Full documentation and live examples: **[wally-ui.com](https://wally-ui.com/)**
 
 ## License
 
-MIT © [Walisson Carvalho](https://github.com/walissoncarvalho)
-
----
-
-**Built with for the Angular community**
+MIT
