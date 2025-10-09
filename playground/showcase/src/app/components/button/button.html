@@ -1,7 +1,11 @@
 <button [type]="type()" [disabled]="disabled() || loading()" [attr.aria-label]="ariaLabel() || null"
     [attr.aria-describedby]="ariaDescribedBy() || null" [attr.aria-pressed]="ariaPressed()" [attr.aria-busy]="loading()"
     (click)="handleClick()"
-    [class]="'group relative w-full flex items-center justify-center gap-2 text-sm font-medium text-white disabled:pointer-events-none p-2.5 rounded-md transition-all duration-300 ease-in-out antialiased cursor-pointer ' + variantClasses()">
+    [class]="'group relative w-full flex items-center justify-center gap-2 text-sm font-medium text-white disabled:pointer-events-none p-2.5 transition-all duration-300 ease-in-out antialiased cursor-pointer ' + variantClasses()"
+    [ngClass]="{
+      'rounded-md': !rounded(),
+      'rounded-full': rounded()
+    }">
 
     @if (showNotification()) {
     <span class="absolute top-0 right-0 -mt-1 -mr-1 flex size-3">

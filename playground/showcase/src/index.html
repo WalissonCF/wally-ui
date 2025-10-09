@@ -47,12 +47,15 @@
   </script>
 
   <script>
-    // Tailwind V4
+    // Tailwind V4 - Auto theme detection (ignores localStorage)
     function updateTheme() {
-      const isDark = localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches);
+      // Remove any cached theme preference from other projects
+      if (localStorage.theme) {
+        localStorage.removeItem('theme');
+      }
 
+      // Always use system preference
+      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       document.documentElement.classList.toggle("dark", isDark);
     }
 

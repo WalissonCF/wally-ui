@@ -21,6 +21,7 @@ export class Button {
   showNotification: InputSignal<boolean> = input<boolean>(false);
   variant: InputSignal<ButtonVariant> = input<ButtonVariant>('primary');
   href: InputSignal<string> = input<string>('');
+  rounded: InputSignal<boolean> = input<boolean>(false);
 
   // Accessibility properties
   ariaLabel: InputSignal<string> = input<string>('');

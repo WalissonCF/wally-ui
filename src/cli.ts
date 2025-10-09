@@ -43,6 +43,14 @@ program
     .command('add <component>')
     .description('Add a new component')
     .action(async (component) => {
+        // Block AI components (coming soon in Chat SDK)
+        if (component.startsWith('ai-')) {
+            console.log(chalk.yellowBright(`\n AI components (${component}) are part of the Chat SDK (coming soon).`));
+            console.log(chalk.blueBright('These components will be available via: ') + chalk.cyan('npx wally-ui add chat-sdk'));
+            console.log(chalk.gray('Visit https://wally-ui.com/documentation/chat-sdk for more info.\n'));
+            return;
+        }
+
         // Check if Angular project
         if (!fs.existsSync('angular.json')) {
             console.log(chalk.redBright('Not an Angular project. Run this in Angular project root.'));

@@ -1,0 +1,69 @@
+<div class="w-full flex flex-col" role="region" aria-label="AI message composer">
+    <!-- Selected Text Context -->
+    <div class="p-0.5">
+        <div
+            id="selected-context"
+            class="w-full flex items-center gap-1 justify-between border bg-neutral-100 border-neutral-300 dark:bg-[#121212] dark:border-neutral-700 rounded-t-3xl rounded-b-lg p-3"
+            role="status"
+            aria-live="polite">
+            <div class="w-full flex gap-4 items-center">
+                <svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                    class="size-5 text-[#0a0a0a] dark:text-white"
+                    aria-hidden="true">
+                    <path
+                        d="M12.5293 6.5293C12.7566 6.30203 13.1081 6.27383 13.3662 6.44434L13.4707 6.5293L17.4707 10.5293C17.7304 10.789 17.7304 11.211 17.4707 11.4707L13.4707 15.4707C13.211 15.7304 12.789 15.7304 12.5293 15.4707C12.2696 15.211 12.2696 14.789 12.5293 14.5293L15.3936 11.665H6C3.97588 11.665 2.33496 10.0241 2.33496 8V4.5C2.33496 4.13273 2.63273 3.83496 3 3.83496C3.36727 3.83496 3.66504 4.13273 3.66504 4.5V8C3.66504 9.28958 4.71042 10.335 6 10.335H15.3936L12.5293 7.4707L12.4443 7.36621C12.2738 7.10808 12.302 6.75657 12.5293 6.5293Z">
+                    </path>
+                </svg>
+
+                <p class="text-sm text-[#0a0a0a] dark:text-white" id="context-label">
+                    "Ask about"
+                </p>
+            </div>
+
+            <div>
+                <wally-button
+                    [variant]="'ghost'"
+                    [rounded]="true"
+                    [ariaLabel]="'Clear selected context'">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </wally-button>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full px-4 pt-4">
+        <wally-ai-prompt-input></wally-ai-prompt-input>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="w-full flex justify-between px-2 pb-2" role="toolbar" aria-label="Composer actions">
+        <div class="size-10">
+            <wally-tooltip [text]="'Add files and more'" position="bottom">
+                <wally-button
+                    [variant]="'ghost'"
+                    [rounded]="true"
+                    [ariaLabel]="'Add attachment or insert content'">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="size-5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                </wally-button>
+            </wally-tooltip>
+        </div>
+
+        <div class="size-10">
+            <wally-button
+                [variant]="'primary'"
+                [rounded]="true"
+                [ariaLabel]="'Send message'">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                    stroke="currentColor" class="size-5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+                </svg>
+            </wally-button>
+        </div>
+    </div>
+</div>

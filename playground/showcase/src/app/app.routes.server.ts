@@ -26,6 +26,14 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
   },
   {
+    path: 'documentation/components/tooltip',
+    renderMode: RenderMode.Prerender,
+  },
+  {
+    path: 'documentation/chat-sdk',
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: 'components',
     renderMode: RenderMode.Prerender,
   },

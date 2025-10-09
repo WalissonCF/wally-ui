@@ -1,0 +1,9 @@
+<div class="relative inline-block tooltip-wrapper " (mouseenter)="show()" (mouseleave)="hide()" (focus)="show()" (blur)="hide()">
+    <ng-content></ng-content>
+
+    @if (visible() && !disabled()) {
+        <div #tooltipElement [id]="tooltipId" [class]="tooltipClasses()" role="tooltip" [attr.aria-hidden]="!visible()">
+            {{ text() }}
+        </div>
+    }
+</div>

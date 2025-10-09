@@ -20,5 +20,9 @@ export const componentsRoutes: Routes = [
     {
         path: 'carousel',
         loadComponent: () => import('./carousel-docs/carousel-docs').then(m => m.CarouselDocs)
+    },
+    {
+        path: 'tooltip',
+        loadComponent: () => import('./tooltip-docs/tooltip-docs').then(m => m.TooltipDocs)
     }
 ];
