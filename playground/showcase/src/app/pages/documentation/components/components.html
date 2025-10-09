@@ -11,48 +11,114 @@
       <h1 id="page-title" class="text-3xl sm:text-4xl font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
         <span aria-hidden="true">&gt;_ </span>Components
       </h1>
-      <p class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4">
-        Explore our collection of production-ready Angular components. Copy-paste ready TypeScript with accessibility-first design.
+      <p
+        class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4">
+        Explore our collection of production-ready Angular components. Copy-paste ready TypeScript with
+        accessibility-first design.
       </p>
     </header>
 
     <!-- Status Notice -->
     <section class="mb-10" aria-labelledby="status-heading">
-      <h2 id="status-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-3">
+      <h2 id="status-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-3">
         [ Status ]
       </h2>
       <div class="bg-neutral-100 dark:bg-[#121212] border-2 border-neutral-300 dark:border-neutral-700 p-4">
         <p class="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">
-          More components are being built and will be added soon. All components include full TypeScript support, ARIA accessibility, and Angular SSR compatibility.
+          More components are being built and will be added soon. All components include full TypeScript support, ARIA
+          accessibility, and Angular SSR compatibility.
         </p>
       </div>
     </section>
 
     <!-- Available Components -->
     <section id="available-components" aria-labelledby="components-heading">
-      <h2 id="components-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+      <h2 id="components-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
         [ Available Components ]
       </h2>
 
       <div class="space-y-0 border-2 border-neutral-300 dark:border-neutral-700">
-
-        <!-- Button Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article" aria-labelledby="button-heading">
-          <a href="/documentation/components/button"
-             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-             aria-label="Navigate to Button component documentation with code examples, API reference, and accessibility features">
+        <!-- Breadcrumb Component -->
+        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
+          aria-labelledby="breadcrumb-heading">
+          <a href="/documentation/components/breadcrumb"
+            class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+            aria-label="Navigate to Breadcrumb component documentation with semantic HTML structure, ARIA attributes, and responsive design">
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="button-heading" class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3 id="breadcrumb-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                    <span aria-hidden="true">&gt;_ </span>Breadcrumb
+                  </h3>
+                  <span class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: Under Construction">
+                    UNDER CONSTRUCTION
+                  </span>
+                </div>
+                <p
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
+                  Semantic navigation breadcrumbs with proper HTML structure (ol/li), ARIA attributes, responsive
+                  design, and current page indication. Perfect for hierarchical navigation.
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Button Component -->
+        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
+          aria-labelledby="button-heading">
+          <a href="/documentation/components/button"
+            class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+            aria-label="Navigate to Button component documentation with code examples, API reference, and accessibility features">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <h3 id="button-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
                     <span aria-hidden="true">&gt;_ </span>Button
                   </h3>
-                  <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider" aria-label="Status: New Component">
+                  <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: New Component">
                     NEW
                   </span>
                 </div>
-                <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Versatile button with variants (primary, secondary), loading states, disabled support, and full ARIA accessibility. Production-ready with comprehensive TypeScript typing.
+                <p
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
+                  Versatile button with variants (primary, secondary), loading states, disabled support, and full ARIA
+                  accessibility. Production-ready with comprehensive TypeScript typing.
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
+
+
+        <!-- Carousel Component -->
+        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
+          aria-labelledby="carousel-heading">
+          <a href="/documentation/components/carousel"
+            class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+            aria-label="Navigate to Carousel component documentation with touch/swipe gestures, keyboard navigation, and circular buffer algorithm">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <h3 id="carousel-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                    <span aria-hidden="true">&gt;_ </span>Carousel
+                  </h3>
+                  <span class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: Under Construction">
+                    UNDER CONSTRUCTION
+                  </span>
+                </div>
+                <p
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
+                  Enterprise carousel with circular buffer algorithm, touch/swipe gestures, keyboard navigation (arrows,
+                  Home, End), dot indicators, and full ARIA compliance. GPU-accelerated transitions.
                 </p>
               </div>
             </div>
@@ -60,91 +126,56 @@
         </article>
 
         <!-- Input Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article" aria-labelledby="input-heading">
+        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
+          aria-labelledby="input-heading">
           <a href="/documentation/components/input"
-             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-             aria-label="Navigate to Input component documentation with FormGroup integration, validation states, and TypeScript examples">
+            class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+            aria-label="Navigate to Input component documentation with FormGroup integration, validation states, and TypeScript examples">
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="input-heading" class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3 id="input-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
                     <span aria-hidden="true">&gt;_ </span>Input
                   </h3>
-                  <span class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider" aria-label="Status: Under Construction">
+                  <span class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: Under Construction">
                     UNDER CONSTRUCTION
                   </span>
                 </div>
-                <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Full-featured input with FormGroup integration, validation states (loading, valid, error), password toggle, and type support (text, email, password). Enterprise-grade accessibility.
+                <p
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
+                  Full-featured input with FormGroup integration, validation states (loading, valid, error), password
+                  toggle, and type support (text, email, password). Enterprise-grade accessibility.
                 </p>
               </div>
             </div>
           </a>
         </article>
 
-        <!-- Carousel Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article" aria-labelledby="carousel-heading">
-          <a href="/documentation/components/carousel"
-             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-             aria-label="Navigate to Carousel component documentation with touch/swipe gestures, keyboard navigation, and circular buffer algorithm">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-2">
-                  <h3 id="carousel-heading" class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
-                    <span aria-hidden="true">&gt;_ </span>Carousel
-                  </h3>
-                  <span class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider" aria-label="Status: Under Construction">
-                    UNDER CONSTRUCTION
-                  </span>
-                </div>
-                <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Enterprise carousel with circular buffer algorithm, touch/swipe gestures, keyboard navigation (arrows, Home, End), dot indicators, and full ARIA compliance. GPU-accelerated transitions.
-                </p>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- Breadcrumb Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article" aria-labelledby="breadcrumb-heading">
-          <a href="/documentation/components/breadcrumb"
-             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-             aria-label="Navigate to Breadcrumb component documentation with semantic HTML structure, ARIA attributes, and responsive design">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-2">
-                  <h3 id="breadcrumb-heading" class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
-                    <span aria-hidden="true">&gt;_ </span>Breadcrumb
-                  </h3>
-                  <span class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider" aria-label="Status: Under Construction">
-                    UNDER CONSTRUCTION
-                  </span>
-                </div>
-                <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Semantic navigation breadcrumbs with proper HTML structure (ol/li), ARIA attributes, responsive design, and current page indication. Perfect for hierarchical navigation.
-                </p>
-              </div>
-            </div>
-          </a>
-        </article>
 
         <!-- Tooltip Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article" aria-labelledby="tooltip-heading">
+        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
+          aria-labelledby="tooltip-heading">
           <a href="/documentation/components/tooltip"
-             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-             aria-label="Navigate to Tooltip component documentation with smart auto-positioning, overflow detection, and accessibility features">
+            class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+            aria-label="Navigate to Tooltip component documentation with smart auto-positioning, overflow detection, and accessibility features">
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="tooltip-heading" class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3 id="tooltip-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
                     <span aria-hidden="true">&gt;_ </span>Tooltip
                   </h3>
-                  <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider" aria-label="Status: New Component">
+                  <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: New Component">
                     NEW
                   </span>
                 </div>
-                <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Smart tooltip with auto-positioning, overflow detection, and smooth animations. Wraps any element with full ARIA support and keyboard navigation. Rich content support coming in v2.0.
+                <p
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
+                  Smart tooltip with auto-positioning, overflow detection, and smooth animations. Wraps any element with
+                  full ARIA support and keyboard navigation. Rich content support coming in v2.0.
                 </p>
               </div>
             </div>
@@ -157,7 +188,8 @@
     <!-- Ad Space -->
     <aside class="mt-12" aria-label="Advertisement">
       <div class="w-auto h-auto">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4944285767597175"
+        <script async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4944285767597175"
           crossorigin="anonymous"></script>
         <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z"
           data-ad-client="ca-pub-4944285767597175" data-ad-slot="4427496130"></ins>
