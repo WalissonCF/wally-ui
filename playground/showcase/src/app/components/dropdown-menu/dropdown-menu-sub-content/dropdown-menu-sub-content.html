@@ -1,0 +1,9 @@
+@if (subService.isOpen()) {
+<div
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+  [class]="'absolute bg-white dark:bg-[#1b1b1b] rounded-xl shadow-2xl border border-neutral-300 dark:border-neutral-700 min-w-56 z-50 transition-all duration-200 ease-out ' + positionClasses()"
+  role="menu">
+  <ng-content></ng-content>
+</div>
+}

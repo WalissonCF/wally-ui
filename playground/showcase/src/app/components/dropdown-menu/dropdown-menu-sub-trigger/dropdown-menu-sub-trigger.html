@@ -1,0 +1,13 @@
+<div (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" class="p-1" role="menuitem" [attr.aria-haspopup]="true"
+  [attr.aria-expanded]="subService.isOpen()">
+
+  <div
+    class="flex justify-center items-center text-base text-[#0a0a0a] hover:bg-neutral-100 dark:hover:bg-neutral-700/50 dark:text-white py-2 px-4 rounded-lg cursor-pointer">
+    <ng-content></ng-content>
+
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+      class="size-4 ml-auto text-neutral-500 dark:text-neutral-400">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+    </svg>
+  </div>
+</div>

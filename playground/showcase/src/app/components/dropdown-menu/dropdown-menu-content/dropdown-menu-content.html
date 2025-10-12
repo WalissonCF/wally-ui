@@ -1,0 +1,9 @@
+@if (dropdownMenuService.isOpen()) {
+<div
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+    [class]="'absolute bg-white dark:bg-[#1b1b1b] dark:border-neutral-700 rounded-xl shadow-2xl border border-neutral-300 min-w-72 z-50 transition-all duration-200 ease-out ' + positionClasses()"
+    role="menu">
+    <ng-content></ng-content>
+</div>
+}

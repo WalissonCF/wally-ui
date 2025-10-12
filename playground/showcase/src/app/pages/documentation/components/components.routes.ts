@@ -24,5 +24,9 @@ export const componentsRoutes: Routes = [
     {
         path: 'tooltip',
         loadComponent: () => import('./tooltip-docs/tooltip-docs').then(m => m.TooltipDocs)
+    },
+    {
+        path: 'dropdown-menu',
+        loadComponent: () => import('./dropdown-menu-docs/dropdown-menu-docs').then(m => m.DropdownMenuDocs)
     }
 ];

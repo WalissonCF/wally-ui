@@ -1,0 +1,6 @@
+<div (click)="handleClick($event)" class="p-1" role="menuitem" tabindex="0">
+    <div class="text-base text-[#0a0a0a] hover:bg-neutral-100 dark:hover:bg-neutral-700/50 dark:text-white py-2 px-4 rounded-lg"
+    [ngClass]="{'text-neutral-400 dark:!text-white/50 pointer-events-none': disabled(), 'cursor-pointer': !disabled()}">
+        <ng-content></ng-content>
+    </div>
+</div>

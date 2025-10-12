@@ -33,10 +33,10 @@ export class Button {
   // Computed classes based on variant
   variantClasses: Signal<string> = computed(() => {
     const variantMap: Record<ButtonVariant, string> = {
-      primary: 'bg-[#0a0a0a] hover:bg-[#0a0a0a]/85 disabled:bg-[#0a0a0a]/85 dark:text-[#0a0a0a] dark:bg-white dark:hover:bg-white/85 dark:disabled:bg-white/85 dark:disabled:text-[#0a0a0a]/60',
-      secondary: '!text-[#0a0a0a] bg-neutral-200 hover:bg-neutral-200/60 disabled:bg-neutral-200/80 disabled:!text-neutral-400 dark:!text-white dark:bg-white/20 dark:hover:bg-white/10 dark:disabled:bg-white/5 dark:disabled:text-white/50',
-      destructive: 'dark:text-white bg-red-500 hover:bg-red-500/80 disabled:bg-red-500/80 disabled:text-white/80 dark:disabled:text-white/60',
-      outline: '!text-[#0a0a0a] bg-transparent border border-neutral-400 hover:bg-neutral-200/60 disabled:!text-neutral-500 dark:!text-white dark:border-neutral-500 dark:bg-neutral-500/10 dark:hover:bg-neutral-500/20 dark:disabled:!text-white/60',
+      primary: 'bg-[#0a0a0a] hover:bg-[#0a0a0a]/85 disabled:bg-[#0a0a0a]/85 dark:text-[#0a0a0a] dark:bg-white dark:hover:bg-white/85 dark:disabled:bg-white/85 dark:disabled:text-[#0a0a0a]/60 shadow',
+      secondary: '!text-[#0a0a0a] bg-neutral-200 hover:bg-neutral-200/60 disabled:bg-neutral-200/80 disabled:!text-neutral-400 dark:!text-white dark:bg-white/20 dark:hover:bg-white/10 dark:disabled:bg-white/5 dark:disabled:text-white/50 shadow',
+      destructive: 'dark:text-white bg-red-500 hover:bg-red-500/80 disabled:bg-red-500/80 disabled:text-white/80 dark:disabled:text-white/60 shadow',
+      outline: '!text-[#0a0a0a] bg-transparent border border-neutral-400 hover:bg-neutral-200/60 disabled:!text-neutral-500 dark:!text-white dark:border-neutral-500 dark:bg-neutral-500/10 dark:hover:bg-neutral-500/20 dark:disabled:!text-white/60 shadow',
       ghost: '!text-[#0a0a0a] bg-transparent hover:bg-neutral-100 disabled:!text-neutral-400 dark:!text-white dark:hover:bg-white/5 dark:disabled:!text-white/50',
       link: '!text-blue-600 bg-transparent underline-offset-4 hover:underline disabled:!text-blue-400 dark:!text-blue-600 dark:hover:!text-blue-500 dark:disabled:!text-blue-400'
     };

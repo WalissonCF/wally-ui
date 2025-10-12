@@ -74,12 +74,15 @@ program
         const playgroundPath = path.join(__dirname, '..', 'playground', 'showcase', 'src', 'app', 'components', component);
 
         try {
-            const typescriptFile = await fs.readFile(path.join(playgroundPath, `${component}.ts`), 'utf8');
-            const htmlFile = await fs.readFile(path.join(playgroundPath, `${component}.html`), 'utf8');
+            if (!await fs.pathExists(playgroundPath)) {
+                console.log(chalk.red(`Component '${component}' not found in playground`));
+                return;
+            }
 
-            await fs.ensureDir(componentPath);
-            await fs.writeFile(`${componentPath}/${component}.ts`, typescriptFile);
-            await fs.writeFile(`${componentPath}/${component}.html`, htmlFile);
+            await fs.copy(playgroundPath, componentPath, {
+                overwrite: true,
+                errorOnExist: false
+            });
 
             console.log(chalk.green('Template loaded successfully!'));
         } catch (error) {

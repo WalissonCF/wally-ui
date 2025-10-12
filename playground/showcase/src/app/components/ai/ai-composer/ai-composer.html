@@ -1,15 +1,12 @@
 <div class="w-full flex flex-col" role="region" aria-label="AI message composer">
     <!-- Selected Text Context -->
     <div class="p-0.5">
-        <div
-            id="selected-context"
+        <div id="selected-context"
             class="w-full flex items-center gap-1 justify-between border bg-neutral-100 border-neutral-300 dark:bg-[#121212] dark:border-neutral-700 rounded-t-3xl rounded-b-lg p-3"
-            role="status"
-            aria-live="polite">
+            role="status" aria-live="polite">
             <div class="w-full flex gap-4 items-center">
                 <svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                    class="size-5 text-[#0a0a0a] dark:text-white"
-                    aria-hidden="true">
+                    class="size-5 text-[#0a0a0a] dark:text-white" aria-hidden="true">
                     <path
                         d="M12.5293 6.5293C12.7566 6.30203 13.1081 6.27383 13.3662 6.44434L13.4707 6.5293L17.4707 10.5293C17.7304 10.789 17.7304 11.211 17.4707 11.4707L13.4707 15.4707C13.211 15.7304 12.789 15.7304 12.5293 15.4707C12.2696 15.211 12.2696 14.789 12.5293 14.5293L15.3936 11.665H6C3.97588 11.665 2.33496 10.0241 2.33496 8V4.5C2.33496 4.13273 2.63273 3.83496 3 3.83496C3.36727 3.83496 3.66504 4.13273 3.66504 4.5V8C3.66504 9.28958 4.71042 10.335 6 10.335H15.3936L12.5293 7.4707L12.4443 7.36621C12.2738 7.10808 12.302 6.75657 12.5293 6.5293Z">
                     </path>
@@ -21,10 +18,7 @@
             </div>
 
             <div>
-                <wally-button
-                    [variant]="'ghost'"
-                    [rounded]="true"
-                    [ariaLabel]="'Clear selected context'">
+                <wally-button [variant]="'ghost'" [rounded]="true" [ariaLabel]="'Clear selected context'">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-5" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -40,30 +34,169 @@
 
     <!-- Action Buttons -->
     <div class="w-full flex justify-between px-2 pb-2" role="toolbar" aria-label="Composer actions">
-        <div class="size-10">
-            <wally-tooltip [text]="'Add files and more'" position="bottom">
-                <wally-button
-                    [variant]="'ghost'"
-                    [rounded]="true"
-                    [ariaLabel]="'Add attachment or insert content'">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                        stroke="currentColor" class="size-5" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
+        <div class="w-full flex items-center gap-1">
+            <div class="size-10">
+                <wally-dropdown-menu>
+                    <wally-dropdown-menu-trigger>
+                        <wally-tooltip [text]="'Add files and more'" position="bottom">
+                            <wally-button [variant]="'ghost'" [rounded]="true"
+                                [ariaLabel]="'Add attachment or insert content'">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="size-5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </wally-button>
+                        </wally-tooltip>
+                    </wally-dropdown-menu-trigger>
+
+                    <wally-dropdown-menu-content [position]="'top'">
+                        <!-- Grupo 1: Configurações da conta -->
+                        <wally-dropdown-menu-group [ariaLabel]="'Account settings'">
+                            <wally-dropdown-menu-item (click)="onItemClick()">
+                                <div class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                                    </svg>
+
+                                    <span>
+                                        Think
+                                    </span>
+                                </div>
+                            </wally-dropdown-menu-item>
+
+                            <wally-dropdown-menu-item (click)="onItemClick()">
+                                <div class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15" />
+                                    </svg>
+
+                                    <span>
+                                        Upload File
+                                    </span>
+                                </div>
+                            </wally-dropdown-menu-item>
+
+                            <!-- Submenu -->
+                            <wally-dropdown-menu-sub>
+                                <wally-dropdown-menu-sub-trigger>
+                                    <div class="flex items-center gap-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                                        </svg>
+
+                                        <span>
+                                            More
+                                        </span>
+                                    </div>
+                                </wally-dropdown-menu-sub-trigger>
+
+                                <wally-dropdown-menu-sub-content>
+                                    <wally-dropdown-menu-item (click)="onItemClick()">
+                                        <div class="flex items-center gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+                                            </svg>
+
+                                            <span>
+                                                Search the web
+                                            </span>
+                                        </div>
+                                    </wally-dropdown-menu-item>
+                                    <wally-dropdown-menu-item (click)="onItemClick()">
+                                        <div class="flex items-center gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                                            </svg>
+
+                                            <span>
+                                                Study
+                                            </span>
+                                        </div>
+                                    </wally-dropdown-menu-item>
+                                    <!-- <wally-dropdown-menu-item (click)="onItemClick()">
+                                        Privacidade
+                                    </wally-dropdown-menu-item> -->
+                                </wally-dropdown-menu-sub-content>
+                            </wally-dropdown-menu-sub>
+                        </wally-dropdown-menu-group>
+
+                        <!-- <wally-dropdown-menu-separator></wally-dropdown-menu-separator> -->
+
+                        <!-- Item individual -->
+                        <!-- <wally-dropdown-menu-item (click)="onItemClick()">
+                            Sair
+                        </wally-dropdown-menu-item> -->
+                    </wally-dropdown-menu-content>
+
+                </wally-dropdown-menu>
+            </div>
+
+            <div>
+                <wally-button variant="ghost" [rounded]="true">
+                    <div class="group flex items-center gap-2">
+                        <div
+                            class="max-w-0 group-hover:max-w-6 overflow-hidden transition-all duration-300 ease-in-out">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor"
+                                class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 size-6 rounded-full p-0.5 bg-neutral-300/40 dark:bg-white/10"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+
+                        <svg class="size-5" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M0 500C0 444.772 44.772 400 100 400H200V500C200 555.228 155.228 600 100 600C44.772 600 0 555.228 0 500Z"
+                                fill="#24CB71" />
+                            <path d="M200 0V200H300C355.228 200 400 155.228 400 100C400 44.772 355.228 0 300 0H200Z"
+                                fill="#FF7237" />
+                            <path
+                                d="M299.167 400C354.395 400 399.167 355.228 399.167 300C399.167 244.772 354.395 200 299.167 200C243.939 200 199.167 244.772 199.167 300C199.167 355.228 243.939 400 299.167 400Z"
+                                fill="#00B6FF" />
+                            <path d="M0 100C0 155.228 44.772 200 100 200H200V0H100C44.772 0 0 44.772 0 100Z"
+                                fill="#FF3737" />
+                            <path d="M0 300C0 355.228 44.772 400 100 400H200V200H100C44.772 200 0 244.772 0 300Z"
+                                fill="#874FFF" />
+                        </svg>
+
+                        <span class="text-base">Figma</span>
+                    </div>
                 </wally-button>
-            </wally-tooltip>
+            </div>
         </div>
 
-        <div class="size-10">
-            <wally-button
-                [variant]="'primary'"
-                [rounded]="true"
-                [ariaLabel]="'Send message'">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                    stroke="currentColor" class="size-5" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
-                </svg>
-            </wally-button>
+        <div class="w-full size-10 flex gap-2 justify-end">
+            <div>
+                <wally-tooltip [text]="'Use voice input'" position="bottom">
+                    <wally-button [variant]="'ghost'" [rounded]="true" [ariaLabel]="'Send message'">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
+                        </svg>
+                    </wally-button>
+                </wally-tooltip>
+            </div>
+
+            <div>
+                <wally-button [variant]="'primary'" [rounded]="true" [ariaLabel]="'Send message'">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                        stroke="currentColor" class="size-5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+                    </svg>
+                </wally-button>
+            </div>
         </div>
     </div>
 </div>

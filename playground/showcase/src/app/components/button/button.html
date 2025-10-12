@@ -1,8 +1,6 @@
 <button [type]="type()" [disabled]="disabled() || loading()" [attr.aria-label]="ariaLabel() || null"
     [attr.aria-describedby]="ariaDescribedBy() || null" [attr.aria-pressed]="ariaPressed()" [attr.aria-busy]="loading()"
-    (click)="handleClick()"
-    [class]="'group relative w-full flex items-center justify-center gap-2 text-sm font-medium text-white disabled:pointer-events-none p-2.5 transition-all duration-300 ease-in-out antialiased cursor-pointer ' + variantClasses()"
-    [ngClass]="{
+    (click)="handleClick()" [class]="'group relative w-full flex items-center justify-center gap-2 text-sm font-medium text-white active:scale-95 disabled:pointer-events-none p-2.5 disabled:active:scale-100 transition-all duration-300 ease-in-out antialiased cursor-pointer ' + variantClasses()" [ngClass]="{
       'rounded-md': !rounded(),
       'rounded-full': rounded()
     }">
