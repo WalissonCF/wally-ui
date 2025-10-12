@@ -1,4 +1,4 @@
-@if (subService.isOpen()) {
+@if (subService.isOpen() && isPositioned()) {
 <div
   (mouseenter)="onMouseEnter()"
   (mouseleave)="onMouseLeave()"
