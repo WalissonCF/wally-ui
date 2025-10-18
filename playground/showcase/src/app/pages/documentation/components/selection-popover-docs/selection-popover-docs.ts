@@ -51,6 +51,7 @@ export class SelectionPopoverDocs {
   keyboardAccessibilityCode = getFormattedCode(SelectionPopoverCodeExamples.keyboardAccessibility, 'html');
   eventHandlingCode = getFormattedCode(SelectionPopoverCodeExamples.eventHandling, 'html');
   eventHandlingTsCode = getFormattedCode(SelectionPopoverCodeExamples.eventHandlingTs, 'typescript');
+  mobileSupportCode = getFormattedCode(SelectionPopoverCodeExamples.mobileSupport, 'html');
 
   // Full Example
   fullExampleCode = getFormattedCode(SelectionPopoverCodeExamples.fullExample, 'html');

@@ -168,6 +168,10 @@ export const SelectionPopoverCodeExamples = {
   </div>
 </wally-selection-popover>`,
 
+  // === MOBILE SUPPORT ===
+
+  mobileSupport: `<!-- Automatic mobile support -->\n<wally-selection-popover (textSelected)="onSelect($event)">\n  <!-- Works seamlessly on mobile devices:\n       - Touch event support (touchstart, touchend)\n       - Native selection menu prevention\n       - Viewport-aware positioning (avoids virtual keyboard)\n       - Larger touch targets on mobile (44x44px minimum)\n       - Touch scroll prevention on popover\n       - Adaptive delays for better touch detection\n  -->\n\n  <article>\n    <p>Try selecting text on mobile - the popover automatically adapts!</p>\n  </article>\n</wally-selection-popover>`,
+
   // === ADVANCED ===
 
   minSelectionLength: `<!-- Custom minimum selection length -->

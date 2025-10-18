@@ -49,43 +49,76 @@ export class SelectionPopover implements AfterViewInit {
   selectedText: WritableSignal<string> = signal<string>('');
 
   /**
+   * Detects if user is on mobile device
+   */
+  isMobile = computed(() => {
+    if (typeof window === 'undefined') return false;
+
+    return 'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.innerWidth < 768;
+  });
+
+  /**
    * Computes adjusted position with viewport constraints
    * Prevents popover from overflowing screen edges
+   * Mobile-aware: accounts for virtual keyboard and smaller screens
    */
   adjustedPosition = computed(() => {
     const position = this.popoverPosition();
     const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
 
-    // Get real popover width if available, otherwise estimate
+    // Get real popover dimensions if available, otherwise estimate
     const popoverWidth = this.popoverElement?.nativeElement?.offsetWidth || 200;
+    const popoverHeight = this.popoverElement?.nativeElement?.offsetHeight || 50;
 
     let left = position.left;
+    let top = position.top;
 
-    // Prevent overflow on the right edge
+    // Horizontal adjustment
     if (left + popoverWidth > viewportWidth) {
       left = viewportWidth - popoverWidth - 10;
     }
-
-    // Prevent overflow on the left edge
     if (left < 10) {
       left = 10;
     }
 
-    return {
-      top: position.top,
-      left: left
-    };
+    // Vertical adjustment for mobile (avoid keyboard and screen edges)
+    if (this.isMobile()) {
+      // If too close to top, position below selection instead
+      if (top < 80) {
+        const selection = window.getSelection();
+        if (selection && selection.rangeCount > 0) {
+          const range = selection.getRangeAt(0);
+          const rect = range.getBoundingClientRect();
+          top = rect.bottom + 10; // 10px below selection
+        }
+      }
+
+      // If too close to bottom (virtual keyboard area), keep visible
+      if (top + popoverHeight > viewportHeight - 100) {
+        top = viewportHeight - popoverHeight - 100;
+      }
+    }
+
+    return { top, left };
   });
 
   /**
-   * Handles mouseup event to detect text selection
-   * Uses setTimeout to ensure selection is complete
+   * Handles both mouse and touch selection events
+   * Mobile: touchend after long-press selection
+   * Desktop: mouseup after click-drag selection
    */
   @HostListener('mouseup', ['$event'])
-  onMouseUp(event: MouseEvent) {
+  @HostListener('touchend', ['$event'])
+  onMouseUp(event: MouseEvent | TouchEvent): void {
+    const isMobile = 'ontouchstart' in window;
+    const delay = isMobile ? 100 : 10;
+
     setTimeout(() => {
       this.handleTextSelection();
-    }, 10);
+    }, delay);
   }
 
   /**
@@ -109,6 +142,37 @@ export class SelectionPopover implements AfterViewInit {
   @HostListener('document:keydown.escape')
   onEscape(): void {
     this.hide();
+  }
+
+  /**
+  * Prevents native mobile selection menu from appearing
+  * This ensures only our custom popover is shown
+  */
+  @HostListener('selectionchange')
+  onNativeSelectionChange() {
+    const selection = window.getSelection();
+
+    if (selection && selection.toString().trim().length >= 3) {
+      // Prevent native menu only if valid selection exists
+      // and our popover will appear
+      event?.preventDefault?.();
+    }
+  }
+
+  /**
+   * Prevents scroll when touching the popover on mobile
+   * Ensures users can interact with actions without accidentally scrolling
+   */
+  @HostListener('touchmove', ['$event'])
+  onTouchMove(event: TouchEvent): void {
+    if (this.isVisible() && this.popoverElement) {
+      const target = event.target as Node;
+      const isPopoverTouch = this.popoverElement.nativeElement.contains(target);
+
+      if (isPopoverTouch) {
+        event.preventDefault();
+      }
+    }
   }
 
   /**
