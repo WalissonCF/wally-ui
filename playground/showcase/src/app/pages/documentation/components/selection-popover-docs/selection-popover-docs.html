@@ -1,0 +1,506 @@
+<main class="min-h-dvh bg-white dark:bg-[#0a0a0a] font-mono" role="main">
+  <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 md:px-8">
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="mb-8" aria-label="Breadcrumb navigation">
+      <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-12" role="banner">
+      <h1 id="page-title" class="text-3xl sm:text-4xl font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+        <span aria-hidden="true">&gt;_ </span>Selection Popover
+      </h1>
+      <p
+        class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4 leading-relaxed">
+        Floating action toolbar that appears above selected text, similar to Medium, Notion, and Google Docs. Built with
+        Selection API, viewport-aware positioning, and zero-flash rendering for seamless UX.
+      </p>
+    </header>
+
+    <!-- AI Assistant Links -->
+    <div class="flex flex-wrap gap-0 mt-6 mb-12 border-2 border-neutral-300 dark:border-neutral-700" role="list"
+      aria-label="Open documentation in AI coding assistants">
+      <a [href]="claudeUrl" target="_blank"
+        class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] border-b-2 sm:border-b-0 sm:border-r-2 border-neutral-300 dark:border-neutral-700 hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+        rel="noopener noreferrer" role="listitem"
+        aria-label="Open Selection Popover component documentation in Claude AI assistant (opens in new tab)">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+          viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor"
+            d="m4.714 15.956l4.718-2.648l.079-.23l-.08-.128h-.23l-.79-.048l-2.695-.073l-2.337-.097l-2.265-.122l-.57-.121l-.535-.704l.055-.353l.48-.321l.685.06l1.518.104l2.277.157l1.651.098l2.447.255h.389l.054-.158l-.133-.097l-.103-.098l-2.356-1.596l-2.55-1.688l-1.336-.972l-.722-.491L2 6.223l-.158-1.008l.656-.722l.88.06l.224.061l.893.686l1.906 1.476l2.49 1.833l.364.304l.146-.104l.018-.072l-.164-.274l-1.354-2.446l-1.445-2.49l-.644-1.032l-.17-.619a3 3 0 0 1-.103-.729L6.287.133L6.7 0l.995.134l.42.364l.619 1.415L9.735 4.14l1.555 3.03l.455.898l.243.832l.09.255h.159V9.01l.127-1.706l.237-2.095l.23-2.695l.08-.76l.376-.91l.747-.492l.583.28l.48.685l-.067.444l-.286 1.851l-.558 2.903l-.365 1.942h.213l.243-.242l.983-1.306l1.652-2.064l.728-.82l.85-.904l.547-.431h1.032l.759 1.129l-.34 1.166l-1.063 1.347l-.88 1.142l-1.263 1.7l-.79 1.36l.074.11l.188-.02l2.853-.606l1.542-.28l1.84-.315l.832.388l.09.395l-.327.807l-1.967.486l-2.307.462l-3.436.813l-.043.03l.049.061l1.548.146l.662.036h1.62l3.018.225l.79.522l.473.638l-.08.485l-1.213.62l-1.64-.389l-3.825-.91l-1.31-.329h-.183v.11l1.093 1.068l2.003 1.81l2.508 2.33l.127.578l-.321.455l-.34-.049l-2.204-1.657l-.85-.747l-1.925-1.62h-.127v.17l.443.649l2.343 3.521l.122 1.08l-.17.353l-.607.213l-.668-.122l-1.372-1.924l-1.415-2.168l-1.141-1.943l-.14.08l-.674 7.254l-.316.37l-.728.28l-.607-.461l-.322-.747l.322-1.476l.388-1.924l.316-1.53l.285-1.9l.17-.632l-.012-.042l-.14.018l-1.432 1.967l-2.18 2.945l-1.724 1.845l-.413.164l-.716-.37l.066-.662l.401-.589l2.386-3.036l1.439-1.882l.929-1.086l-.006-.158h-.055L4.138 18.56l-1.13.146l-.485-.456l.06-.746l.231-.243l1.907-1.312Z" />
+        </svg>
+        <span
+          class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150">
+          Open in Claude
+        </span>
+      </a>
+
+      <a [href]="chatGptUrl" target="_blank"
+        class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+        rel="noopener noreferrer" role="listitem"
+        aria-label="Open Selection Popover component documentation in ChatGPT AI assistant (opens in new tab)">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+          viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="M18.38 27.94v-14.4l11.19-6.46c6.2-3.58 17.3 5.25 12.64 13.33" />
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="m18.38 20.94l12.47-7.2l11.19 6.46c6.2 3.58 4.1 17.61-5.23 17.61" />
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="m24.44 17.44l12.47 7.2v12.93c0 7.16-13.2 12.36-17.86 4.28" />
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="M30.5 21.2v14.14L19.31 41.8c-6.2 3.58-17.3-5.25-12.64-13.33" />
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="m30.5 27.94l-12.47 7.2l-11.19-6.46c-6.21-3.59-4.11-17.61 5.22-17.61" />
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+            d="m24.44 31.44l-12.47-7.2V11.31c0-7.16 13.2-12.36 17.86-4.28" />
+        </svg>
+        <span
+          class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150">
+          Open in ChatGPT
+        </span>
+      </a>
+    </div>
+
+    <!-- Installation -->
+    <section id="installation" class="mb-12" aria-labelledby="installation-heading">
+      <h2 id="installation-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Installation ]
+      </h2>
+      <div
+        class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white block bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+        aria-label="Installation command for Selection Popover component">
+        <pre><code [innerHTML]="installationCode"></code></pre>
+      </div>
+    </section>
+
+    <!-- Import -->
+    <section id="import" class="mb-12" aria-labelledby="import-heading">
+      <h2 id="import-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Import ]
+      </h2>
+      <div class="space-y-3">
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="importCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="componentImportCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Basic Usage -->
+    <section id="basic-usage" class="mb-12" aria-labelledby="basic-usage-heading">
+      <h2 id="basic-usage-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Basic Usage ]
+      </h2>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+        <pre><code [innerHTML]="basicUsageCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+
+      <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+        aria-label="Live preview of basic selection popover">
+        <wally-selection-popover (textSelected)="onTextSelected($event)">
+          <article class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-bold text-[#0a0a0a] dark:text-white mb-2">Try It Out</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Select any text in this paragraph to see the popover appear above your selection. The component
+              automatically
+              detects text selection and positions the toolbar centered above the selected text. Try selecting text near
+              the edges of the screen to see automatic viewport adjustment.
+            </p>
+          </article>
+        </wally-selection-popover>
+
+        @if (actionMessage()) {
+        <p class="text-sm text-green-600 dark:text-green-400 mt-4 font-medium">
+          {{ actionMessage() }}
+        </p>
+        }
+      </div>
+    </section>
+
+    <!-- Custom Actions -->
+    <section id="custom-actions" class="mb-12" aria-labelledby="custom-actions-heading">
+      <h2 id="custom-actions-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Custom Actions ]
+      </h2>
+
+      <!-- Multiple Actions -->
+      <article class="mb-8" aria-labelledby="multiple-actions-heading">
+        <h3 id="multiple-actions-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Multiple Custom Actions
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
+          Add custom action buttons using the <span
+            class="bg-neutral-100 dark:bg-neutral-800 px-1 rounded">popoverActions</span> attribute.
+        </p>
+        <div class="space-y-3 mb-4">
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="customActionsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="customActionsTsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+        </div>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of selection popover with custom actions">
+          <wally-selection-popover (textSelected)="onTextSelected($event)">
+            <div popoverActions class="flex gap-1">
+              <button class="px-3 py-2 text-sm text-[#0a0a0a] dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors cursor-pointer">
+                Ask AI
+              </button>
+              <button class="px-3 py-2 text-sm text-[#0a0a0a] dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors cursor-pointer">
+                Copy
+              </button>
+              <button class="px-3 py-2 text-sm text-[#0a0a0a] dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors cursor-pointer">
+                Share
+              </button>
+            </div>
+
+            <article class="prose dark:prose-invert max-w-none">
+              <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                Select text to see custom actions: Ask AI, Copy, and Share buttons.
+              </p>
+            </article>
+          </wally-selection-popover>
+        </div>
+      </article>
+
+      <!-- With Wally Button -->
+      <article class="mb-8" aria-labelledby="wally-button-heading">
+        <h3 id="wally-button-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Using with Wally Button Component
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
+          Combine with the Button component for consistent styling and accessibility.
+        </p>
+        <div class="space-y-3 mb-4">
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="withWallyButtonCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="withWallyButtonTsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+        </div>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+          aria-label="Live preview of selection popover with Wally Button">
+          <wally-selection-popover (textSelected)="askAI($event)">
+            <div popoverActions>
+              <wally-button variant="ghost">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="size-4">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+                </svg>
+                Ask AI
+              </wally-button>
+            </div>
+
+            <article class="prose dark:prose-invert max-w-none">
+              <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                Select text and click "Ask AI" to trigger the custom action.
+              </p>
+            </article>
+          </wally-selection-popover>
+        </div>
+      </article>
+    </section>
+
+    <!-- Production Examples -->
+    <section id="production-examples" class="mb-12" aria-labelledby="production-heading">
+      <h2 id="production-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Production Examples ]
+      </h2>
+
+      <!-- Blog Article -->
+      <article class="mb-8" aria-labelledby="blog-example-heading">
+        <h3 id="blog-example-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Blog Article with Highlight & Comments
+        </h3>
+        <div class="space-y-3 mb-4">
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="blogExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="blogExampleTsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+        </div>
+      </article>
+
+      <!-- Documentation Site -->
+      <article class="mb-8" aria-labelledby="docs-example-heading">
+        <h3 id="docs-example-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Documentation with AI Explanations
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="documentationExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+
+      <!-- Reading Mode -->
+      <article class="mb-8" aria-labelledby="reading-example-heading">
+        <h3 id="reading-example-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Reading Mode with Assistance Tools
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="readingModeExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- Advanced Features -->
+    <section id="advanced-features" class="mb-12" aria-labelledby="advanced-heading">
+      <h2 id="advanced-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Advanced Features ]
+      </h2>
+
+      <!-- Minimum Selection Length -->
+      <article class="mb-8" aria-labelledby="min-length-heading">
+        <h3 id="min-length-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Minimum Selection Length
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
+          The component requires a minimum of 3 characters to be selected before showing the popover. This prevents
+          accidental triggers on short selections.
+        </p>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="minSelectionLengthCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+
+      <!-- Viewport-Aware Positioning -->
+      <article class="mb-8" aria-labelledby="positioning-heading">
+        <h3 id="positioning-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Viewport-Aware Positioning
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
+          The popover automatically adjusts its position to stay within viewport boundaries. It uses <span
+            class="bg-neutral-100 dark:bg-neutral-800 px-1 rounded">position: fixed</span> with <span
+            class="bg-neutral-100 dark:bg-neutral-800 px-1 rounded">getBoundingClientRect()</span> for accurate
+          positioning.
+        </p>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="positioningBehaviorCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+
+      <!-- Keyboard Accessibility -->
+      <article class="mb-8" aria-labelledby="keyboard-heading">
+        <h3 id="keyboard-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Keyboard Accessibility
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
+          Full keyboard support with ESC to close, click outside to dismiss, and proper ARIA dialog attributes.
+        </p>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="keyboardAccessibilityCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+
+      <!-- Event Handling -->
+      <article class="mb-8" aria-labelledby="events-heading">
+        <h3 id="events-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Event Handling
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">
+          The <span class="bg-neutral-100 dark:bg-neutral-800 px-1 rounded">textSelected</span> event fires when any
+          custom action is clicked. The popover automatically closes and clears selection after the event.
+        </p>
+        <div class="space-y-3">
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="eventHandlingCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="eventHandlingTsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- API Reference -->
+    <section id="api-reference" class="mb-12" aria-labelledby="api-heading">
+      <h2 id="api-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ API Reference ]
+      </h2>
+
+      <!-- Output Events -->
+      <article class="mb-8" aria-labelledby="output-events-heading">
+        <h3 id="output-events-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+          <span aria-hidden="true">&gt; </span>Output Events
+        </h3>
+        <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50 dark:bg-gray-900">
+                <tr>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Event</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Payload</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">textSelected</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Emitted when any custom action is clicked (or fallback button if no custom actions). Receives the
+                    selected text as payload. Popover automatically closes after this event.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Content Projection -->
+      <article class="mb-8" aria-labelledby="content-projection-heading">
+        <h3 id="content-projection-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+          <span aria-hidden="true">&gt; </span>Content Projection Slots
+        </h3>
+        <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50 dark:bg-gray-900">
+                <tr>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Selector</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">popoverActions</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Custom action buttons displayed in the popover. If provided, replaces the default fallback button.
+                    Use this attribute on a wrapper div containing your custom action buttons.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">(default)</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    The selectable content. Any child elements without specific attributes will be treated as selectable
+                    content.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Behavior & Features -->
+      <article class="mb-8" aria-labelledby="behavior-heading">
+        <h3 id="behavior-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+          <span aria-hidden="true">&gt; </span>Automatic Behavior
+        </h3>
+        <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50 dark:bg-gray-900">
+                <tr>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Feature</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">Minimum Selection</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Requires 3+ characters selected to show popover (prevents accidental triggers)
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">Zero-Flash Rendering</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Two-step positioning algorithm: renders invisible first, calculates real width, then fades in at
+                    correct position
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">Viewport Adjustment</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Automatically adjusts horizontal position to stay within viewport (10px padding from edges)
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">Positioning Strategy</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Uses position: fixed + getBoundingClientRect() for viewport-relative positioning (stays in place
+                    during scroll)
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">Auto-Close</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Closes on ESC key, click outside, or after action execution. Automatically clears browser text
+                    selection.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">ARIA Support</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Full accessibility with role="dialog" and aria-label="Selection actions"
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Complete Example -->
+    <section id="complete-example" class="mb-12" aria-labelledby="complete-heading">
+      <h2 id="complete-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Complete Example ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+        Full implementation with all features: custom actions, event handling, and content styling.
+      </p>
+      <div class="space-y-3">
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="fullExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="fullExampleTsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Styling -->
+    <section id="custom-styling" class="mb-12" aria-labelledby="styling-heading">
+      <h2 id="styling-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Custom Styling ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+        Customize popover action buttons using Tailwind CSS classes for complete design control.
+      </p>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+        <pre><code [innerHTML]="customStylingCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+    </section>
+
+  </div>
+</main>

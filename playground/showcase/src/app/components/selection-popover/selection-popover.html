@@ -1,0 +1,27 @@
+<div class="relative">
+  <!-- Original content (where user will select text) -->
+  <ng-content></ng-content>
+
+  <!-- Floating popover -->
+  @if (isVisible()) {
+  <div #popover
+    class="fixed z-50 bg-white dark:bg-neutral-900 shadow-lg rounded-xl border border-neutral-300 dark:border-neutral-700 p-1 transition-opacity duration-150"
+    [class.opacity-0]="!isPositioned()"
+    [class.opacity-100]="isPositioned()"
+    [style.top.px]="adjustedPosition().top" [style.left.px]="adjustedPosition().left" role="dialog"
+    aria-label="Selection actions"
+    (click)="onPopoverClick()">
+
+    <!-- Customizable content via content projection (always rendered) -->
+    <div #customActionsSlot [class.hidden]="!hasCustomActionsSignal()">
+      <ng-content select="[popoverActions]"></ng-content>
+    </div>
+
+    <!-- Fallback: default button (hidden if custom actions exist) -->
+    <button [class.hidden]="hasCustomActionsSignal()"
+      class="px-3 py-2 text-[#0a0a0a] text-sm font-mono hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-800 rounded transition-colors cursor-pointer">
+      Default Action
+    </button>
+  </div>
+  }
+</div>

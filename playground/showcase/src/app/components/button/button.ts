@@ -28,7 +28,7 @@ export class Button {
   ariaDescribedBy: InputSignal<string> = input<string>('');
   ariaPressed: InputSignal<boolean | undefined> = input<boolean | undefined>(undefined);
 
-  click: OutputEmitterRef<void> = output<void>();
+  buttonClick: OutputEmitterRef<void> = output<void>();
 
   // Computed classes based on variant
   variantClasses: Signal<string> = computed(() => {
@@ -44,7 +44,7 @@ export class Button {
     return variantMap[this.variant()] || variantMap.primary;
   });
 
-  handleClick(): void {
+  handleClick(event: MouseEvent): void {
     if (this.variant() === 'link' && this.href()) {
       if (this.href().startsWith('http://') || this.href().startsWith('https://')) {
         window.open(this.href(), '_blank');
@@ -53,6 +53,6 @@ export class Button {
       }
     }
 
-    this.click.emit();
+    this.buttonClick.emit();
   }
 }

@@ -34,6 +34,10 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
   },
   {
+    path: 'documentation/components/selection-popover',
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: 'documentation/chat-sdk',
     renderMode: RenderMode.Prerender,
   },

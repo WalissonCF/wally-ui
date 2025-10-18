@@ -79,7 +79,7 @@ export const ButtonCodeExamples = {
     <wally-button
       variant="secondary"
       type="button"
-      (click)="goToSignUp()">
+      (buttonClick)="goToSignUp()">
       Create Account
     </wally-button>
   </div>
@@ -109,14 +109,14 @@ export const ButtonCodeExamples = {
   <div class="flex gap-2 justify-end">
     <wally-button
       variant="ghost"
-      (click)="closeModal()">
+      (buttonClick)="closeModal()">
       Cancel
     </wally-button>
 
     <wally-button
       variant="destructive"
       [loading]="isDeleting()"
-      (click)="confirmDelete()">
+      (buttonClick)="confirmDelete()">
       Delete Account
     </wally-button>
   </div>
@@ -125,7 +125,7 @@ export const ButtonCodeExamples = {
   // Dashboard Actions
   dashboardExample: `<!-- Dashboard Actions -->
 <div class="dashboard-header">
-  <wally-button variant="outline" (click)="exportData()">
+  <wally-button variant="outline" (buttonClick)="exportData()">
     Export
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
          stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -134,7 +134,7 @@ export const ButtonCodeExamples = {
     </svg>
   </wally-button>
 
-  <wally-button (click)="createNew()">
+  <wally-button (buttonClick)="createNew()">
     Create New
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
          stroke-width="2" stroke="currentColor" class="size-5">
@@ -162,7 +162,7 @@ export const ButtonCodeExamples = {
 
   // === EVENTS ===
 
-  clickTemplate: `<wally-button (click)="handleClick()">Click Me</wally-button>`,
+  clickTemplate: `<wally-button (buttonClick)="handleClick()">Click Me</wally-button>`,
 
   clickMethod: `handleClick(): void {
   console.log('Button clicked!');
@@ -263,7 +263,7 @@ export const ButtonCodeExamples = {
 </wally-button>
 
 <!-- Programmatic navigation -->
-<wally-button (click)="navigateToProfile()">
+<wally-button (buttonClick)="navigateToProfile()">
   View Profile
 </wally-button>`,
 
@@ -312,18 +312,18 @@ export class MyComponent {
 <wally-button
   [loading]="isLoading()"
   [disabled]="isDisabled()"
-  (click)="handleSubmit()">
+  (buttonClick)="handleSubmit()">
   Submit
 </wally-button>`,
 
   // Button vs type="button"
   buttonTypeExplained: `<!-- GOOD: Explicit type prevents accidental form submission -->
-<wally-button type="button" (click)="openModal()">
+<wally-button type="button" (buttonClick)="openModal()">
   Open
 </wally-button>
 
 <!-- CAUTION: Default type="button" is safe, but explicit is better -->
-<wally-button (click)="openModal()">Open</wally-button>
+<wally-button (buttonClick)="openModal()">Open</wally-button>
 
 <!-- GOOD: Use type="submit" for form submission -->
 <form (ngSubmit)="save()">

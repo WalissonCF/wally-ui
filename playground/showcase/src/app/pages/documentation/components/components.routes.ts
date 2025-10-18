@@ -28,5 +28,9 @@ export const componentsRoutes: Routes = [
     {
         path: 'dropdown-menu',
         loadComponent: () => import('./dropdown-menu-docs/dropdown-menu-docs').then(m => m.DropdownMenuDocs)
+    },
+    {
+        path: 'selection-popover',
+        loadComponent: () => import('./selection-popover-docs/selection-popover-docs').then(m => m.SelectionPopoverDocs)
     }
 ];

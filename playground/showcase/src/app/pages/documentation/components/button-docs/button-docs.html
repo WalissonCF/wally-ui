@@ -484,7 +484,7 @@
       <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
         aria-label="Live preview of button click event handling with feedback message">
         <div class="flex flex-col gap-2 text-center">
-          <wally-button (click)="handleClick()">Click Me</wally-button>
+          <wally-button (buttonClick)="handleClick()">Click Me</wally-button>
           @if (clickMessage()) {
           <p class="text-sm text-green-600 dark:text-green-400 font-medium">
             {{ clickMessage() }}
@@ -753,7 +753,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">click</td>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">buttonClick</td>
                   <td class="p-4 font-mono text-purple-600 dark:text-purple-400">void</td>
                   <td class="p-4 text-gray-700 dark:text-gray-300">Emitted when button is clicked. Also handles
                     navigation for link variant</td>

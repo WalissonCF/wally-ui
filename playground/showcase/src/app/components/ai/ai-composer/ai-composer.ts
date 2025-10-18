@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 import { DropdownMenuSubTrigger } from '../../dropdown-menu/dropdown-menu-sub-trigger/dropdown-menu-sub-trigger';
 import { DropdownMenuSubContent } from '../../dropdown-menu/dropdown-menu-sub-content/dropdown-menu-sub-content';
@@ -35,6 +35,8 @@ import { Button } from '../../button/button';
   styleUrl: './ai-composer.css'
 })
 export class AiComposer {
+  textSelected = input<string>('');
+
   onItemClick(): void {
     console.log('Item clicked');
   }

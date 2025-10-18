@@ -1,5 +1,10 @@
-<div class="w-full border bg-white/50 border-neutral-300 dark:bg-[#1b1b1b] dark:border-neutral-700 shadow-lg rounded-4xl p-1">
+
+<div class="mb-2">
+    <wally-ai-message (textSelected)="handleTextSelected($event)"></wally-ai-message>
+</div>
+<div
+    class="w-full border bg-white/50 border-neutral-300 dark:bg-[#1b1b1b] dark:border-neutral-700 shadow-lg rounded-4xl p-1">
     <div class="w-full">
-        <wally-ai-composer></wally-ai-composer>
+        <wally-ai-composer [textSelected]="textSelected()"></wally-ai-composer>
     </div>
 </div>
