@@ -38,6 +38,10 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
   },
   {
+    path: 'documentation/components/audio-waveform',
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: 'documentation/chat-sdk',
     renderMode: RenderMode.Prerender,
   },

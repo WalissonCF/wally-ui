@@ -32,5 +32,9 @@ export const componentsRoutes: Routes = [
     {
         path: 'selection-popover',
         loadComponent: () => import('./selection-popover-docs/selection-popover-docs').then(m => m.SelectionPopoverDocs)
+    },
+    {
+        path: 'audio-waveform',
+        loadComponent: () => import('./audio-waveform-docs/audio-waveform-docs').then(m => m.AudioWaveformDocs)
     }
 ];

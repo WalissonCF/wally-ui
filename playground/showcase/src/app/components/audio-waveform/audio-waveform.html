@@ -1,0 +1,41 @@
+<div class="w-full flex flex-col items-center gap-4 p-3">
+
+    <!-- Waveform Bars Container -->
+    @if (isStartRecording()) {
+    <div class="flex items-center justify-center gap-1 h-11 w-full">
+        @if (audioWaveformService.isRecording()) {
+        <!-- Active Recording: Animated Bars -->
+        @for (barHeight of audioWaveformService.audioData(); track $index) {
+        <div class="flex-1 min-w-[2px] max-w-[7px] bg-[#0a0a0a] dark:bg-white rounded-full transition-all duration-200 ease-out"
+            [style.height.%]="barHeight || 5" [style.min-height.px]="4">
+        </div>
+        }
+        } 
+        
+    </div>
+    }
+
+    <!-- Recording Timer -->
+    @if (showTimer() && audioWaveformService.isRecording()) {
+    <div class="text-sm text-[#0a0a0a] dark:text-white">
+        {{ formattedTime }}
+    </div>
+    }
+
+    <!-- Controls -->
+    <!-- <div class="flex gap-2">
+        @if (!audioWaveformService.isRecording()) {
+        <button (click)="startRecording()"
+            class="px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
+            aria-label="Start recording">
+            Start Recording
+        </button>
+        } @else {
+        <button (click)="stopRecording()"
+            class="px-4 py-2 bg-neutral-500 text-white rounded-full  hover:bg-neutral-600 transition-colors"
+            aria-label="Stop recording">
+            Stop Recording
+        </button>
+        }
+    </div> -->
+</div>

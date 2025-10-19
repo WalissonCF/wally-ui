@@ -68,6 +68,21 @@
         <priority>0.8</priority>
     </url>
 
+    <url>
+        <loc>https://wally-ui.com/documentation/components/selection-popover</loc>
+        <lastmod>2025-10-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Audio Waveform Documentation -->
+    <url>
+        <loc>https://wally-ui.com/documentation/components/audio-waveform</loc>
+        <lastmod>2025-10-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- Chat SDK Documentation -->
     <url>
         <loc>https://wally-ui.com/documentation/chat-sdk</loc>

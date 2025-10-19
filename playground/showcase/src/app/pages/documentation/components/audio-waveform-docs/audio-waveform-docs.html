@@ -1,0 +1,576 @@
+<main class="min-h-dvh bg-white dark:bg-[#0a0a0a] font-mono" role="main">
+  <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 md:px-8">
+    <!-- Breadcrumb Navigation -->
+    <nav class="mb-8" aria-label="Breadcrumb navigation">
+      <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-12" role="banner">
+      <h1 id="page-title" class="text-3xl sm:text-4xl font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+        <span aria-hidden="true">&gt;_ </span>Audio Waveform
+      </h1>
+      <p class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4 leading-relaxed">
+        Real-time audio waveform visualizer component with microphone input, FFT frequency analysis, and automatic audio recording. Features responsive bar count, smooth 60fps animations, and built-in recording functionality with download support.
+      </p>
+
+      <!-- AI Assistant Links -->
+      <div class="flex flex-wrap gap-0 mt-6 border-2 border-neutral-300 dark:border-neutral-700" role="list"
+        aria-label="Open documentation in AI coding assistants">
+        <a [href]="claudeUrl" target="_blank"
+          class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] border-b-2 sm:border-b-0 sm:border-r-2 border-neutral-300 dark:border-neutral-700 hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+          rel="noopener noreferrer" role="listitem"
+          aria-label="Open Audio Waveform component documentation in Claude AI assistant (opens in new tab)">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor"
+              d="m4.714 15.956l4.718-2.648l.079-.23l-.08-.128h-.23l-.79-.048l-2.695-.073l-2.337-.097l-2.265-.122l-.57-.121l-.535-.704l.055-.353l.48-.321l.685.06l1.518.104l2.277.157l1.651.098l2.447.255h.389l.054-.158l-.133-.097l-.103-.098l-2.356-1.596l-2.55-1.688l-1.336-.972l-.722-.491L2 6.223l-.158-1.008l.656-.722l.88.06l.224.061l.893.686l1.906 1.476l2.49 1.833l.364.304l.146-.104l.018-.072l-.164-.274l-1.354-2.446l-1.445-2.49l-.644-1.032l-.17-.619a3 3 0 0 1-.103-.729L6.287.133L6.7 0l.995.134l.42.364l.619 1.415L9.735 4.14l1.555 3.03l.455.898l.243.832l.09.255h.159V9.01l.127-1.706l.237-2.095l.23-2.695l.08-.76l.376-.91l.747-.492l.583.28l.48.685l-.067.444l-.286 1.851l-.558 2.903l-.365 1.942h.213l.243-.242l.983-1.306l1.652-2.064l.728-.82l.85-.904l.547-.431h1.032l.759 1.129l-.34 1.166l-1.063 1.347l-.88 1.142l-1.263 1.7l-.79 1.36l.074.11l.188-.02l2.853-.606l1.542-.28l1.84-.315l.832.388l.09.395l-.327.807l-1.967.486l-2.307.462l-3.436.813l-.043.03l.049.061l1.548.146l.662.036h1.62l3.018.225l.79.522l.473.638l-.08.485l-1.213.62l-1.64-.389l-3.825-.91l-1.31-.329h-.183v.11l1.093 1.068l2.003 1.81l2.508 2.33l.127.578l-.321.455l-.34-.049l-2.204-1.657l-.85-.747l-1.925-1.62h-.127v.17l.443.649l2.343 3.521l.122 1.08l-.17.353l-.607.213l-.668-.122l-1.372-1.924l-1.415-2.168l-1.141-1.943l-.14.08l-.674 7.254l-.316.37l-.728.28l-.607-.461l-.322-.747l.322-1.476l.388-1.924l.316-1.53l.285-1.9l.17-.632l-.012-.042l-.14.018l-1.432 1.967l-2.18 2.945l-1.724 1.845l-.413.164l-.716-.37l.066-.662l.401-.589l2.386-3.036l1.439-1.882l.929-1.086l-.006-.158h-.055L4.138 18.56l-1.13.146l-.485-.456l.06-.746l.231-.243l1.907-1.312Z" />
+          </svg>
+          <span
+            class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150">
+            Open in Claude
+          </span>
+        </a>
+
+        <a [href]="chatGptUrl" target="_blank"
+          class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+          rel="noopener noreferrer" role="listitem"
+          aria-label="Open Audio Waveform component documentation in ChatGPT AI assistant (opens in new tab)">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+            viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="M18.38 27.94v-14.4l11.19-6.46c6.2-3.58 17.3 5.25 12.64 13.33" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m18.38 20.94l12.47-7.2l11.19 6.46c6.2 3.58 4.1 17.61-5.23 17.61" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m24.44 17.44l12.47 7.2v12.93c0 7.16-13.2 12.36-17.86 4.28" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="M30.5 21.2v14.14L19.31 41.8c-6.2 3.58-17.3-5.25-12.64-13.33" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m30.5 27.94l-12.47 7.2l-11.19-6.46c-6.21-3.59-4.11-17.61 5.22-17.61" />
+            <path fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+              d="m24.44 31.44l-12.47-7.2V11.31c0-7.16 13.2-12.36 17.86-4.28" />
+          </svg>
+          <span
+            class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150">
+            Open in ChatGPT
+          </span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Installation -->
+    <section id="installation" class="mb-12" aria-labelledby="installation-heading">
+      <h2 id="installation-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Installation ]
+      </h2>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+        <pre><code [innerHTML]="installationCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+    </section>
+
+    <!-- Preview -->
+    <section id="preview" class="mb-12" aria-labelledby="preview-heading">
+      <h2 id="preview-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Live Preview ]
+      </h2>
+      <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+           aria-label="Live interactive audio waveform visualizer demo">
+        <div class="flex flex-col gap-4">
+          <!-- Waveform Component -->
+          @if (isRecording()) {
+            <wally-audio-waveform
+              [isStartRecording]="isRecording()"
+              [isStopRecording]="!isRecording()"
+              [showTimer]="true">
+            </wally-audio-waveform>
+          }
+
+          <!-- Controls -->
+          <div class="flex gap-2 justify-center">
+            @if (!isRecording()) {
+              <wally-button
+                variant="destructive"
+                (buttonClick)="startRecording()"
+                ariaLabel="Start audio recording">
+                Start Recording
+              </wally-button>
+            } @else {
+              <wally-button
+                variant="secondary"
+                (buttonClick)="stopRecording()"
+                ariaLabel="Stop audio recording">
+                Stop Recording
+              </wally-button>
+            }
+          </div>
+        </div>
+      </div>
+      <aside class="mt-4 p-4 bg-amber-50 dark:bg-amber-900/10 border-2 border-amber-400 dark:border-amber-700" role="note">
+        <p class="text-xs sm:text-sm text-amber-700 dark:text-amber-400 leading-relaxed">
+          <strong>Tip:</strong> Click "Start Recording" to see the real-time waveform visualization. Allow microphone access when prompted. The component automatically adapts bar count for mobile (30 bars) and desktop (65 bars).
+        </p>
+      </aside>
+    </section>
+
+    <!-- Import -->
+    <section id="import" class="mb-12" aria-labelledby="import-heading">
+      <h2 id="import-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Import ]
+      </h2>
+      <div class="space-y-4">
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="importCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="componentImportCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Basic Usage -->
+    <section id="basic-usage" class="mb-12" aria-labelledby="basic-usage-heading">
+      <h2 id="basic-usage-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Basic Usage ]
+      </h2>
+
+      <!-- Minimal Example -->
+      <article class="mb-8" aria-labelledby="minimal-example-heading">
+        <h3 id="minimal-example-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Minimal Example
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="basicUsageCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+
+      <!-- With Timer -->
+      <article class="mb-8" aria-labelledby="with-timer-heading">
+        <h3 id="with-timer-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>With Recording Timer
+        </h3>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4">
+          <pre><code [innerHTML]="withTimerCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+
+      <!-- Complete Example -->
+      <article class="mb-8" aria-labelledby="complete-example-heading">
+        <h3 id="complete-example-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Complete Example with Controls
+        </h3>
+        <div class="space-y-4">
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="completeExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="completeExampleTsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Visual Examples -->
+    <section id="visual-examples" class="mb-12" aria-labelledby="visual-examples-heading">
+      <h2 id="visual-examples-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Visual Examples ]
+      </h2>
+
+      <!-- Without Timer -->
+      <article class="mb-8" aria-labelledby="without-timer-example-heading">
+        <h3 id="without-timer-example-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Without Timer
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+          Basic waveform visualization without recording timer display.
+        </p>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Audio waveform example without timer">
+          <div class="flex flex-col gap-4">
+            @if (isRecordingWithoutTimer()) {
+              <wally-audio-waveform
+                [isStartRecording]="isRecordingWithoutTimer()"
+                [isStopRecording]="!isRecordingWithoutTimer()"
+                [showTimer]="false">
+              </wally-audio-waveform>
+            }
+
+            <div class="flex gap-2 justify-center">
+              @if (!isRecordingWithoutTimer()) {
+                <wally-button
+                  variant="destructive"
+                  (buttonClick)="startRecordingWithoutTimer()"
+                  ariaLabel="Start recording without timer">
+                  Start Recording
+                </wally-button>
+              } @else {
+                <wally-button
+                  variant="secondary"
+                  (buttonClick)="stopRecordingWithoutTimer()"
+                  ariaLabel="Stop recording">
+                  Stop Recording
+                </wally-button>
+              }
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- With Timer -->
+      <article class="mb-8" aria-labelledby="with-timer-example-heading">
+        <h3 id="with-timer-example-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>With Timer
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+          Waveform visualization with recording timer in MM:SS format.
+        </p>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Audio waveform example with timer">
+          <div class="flex flex-col gap-4">
+            @if (isRecordingWithTimer()) {
+              <wally-audio-waveform
+                [isStartRecording]="isRecordingWithTimer()"
+                [isStopRecording]="!isRecordingWithTimer()"
+                [showTimer]="true">
+              </wally-audio-waveform>
+            }
+
+            <div class="flex gap-2 justify-center">
+              @if (!isRecordingWithTimer()) {
+                <wally-button
+                  variant="destructive"
+                  (buttonClick)="startRecordingWithTimer()"
+                  ariaLabel="Start recording with timer">
+                  Start Recording
+                </wally-button>
+              } @else {
+                <wally-button
+                  variant="secondary"
+                  (buttonClick)="stopRecordingWithTimer()"
+                  ariaLabel="Stop recording">
+                  Stop Recording
+                </wally-button>
+              }
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Download Example -->
+      <article class="mb-8" aria-labelledby="download-example-heading">
+        <h3 id="download-example-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>With Download Functionality
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+          Record audio and download the result as a WebM file.
+        </p>
+        <div class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]" role="img"
+             aria-label="Audio waveform with download functionality">
+          <div class="flex flex-col gap-4">
+            <wally-audio-waveform
+              #downloadWaveform
+              [isStartRecording]="isRecordingWithDownload()"
+              [isStopRecording]="!isRecordingWithDownload()"
+              [showTimer]="true">
+            </wally-audio-waveform>
+
+            <div class="flex gap-2 justify-center flex-wrap">
+              @if (!isRecordingWithDownload() && !downloadWaveform.audioWaveformService.recordedAudioUrl()) {
+                <wally-button
+                  variant="destructive"
+                  (buttonClick)="startRecordingWithDownload()"
+                  ariaLabel="Start recording">
+                  Start Recording
+                </wally-button>
+              }
+
+              @if (isRecordingWithDownload()) {
+                <wally-button
+                  variant="secondary"
+                  (buttonClick)="stopRecordingWithDownload()"
+                  ariaLabel="Stop recording">
+                  Stop Recording
+                </wally-button>
+              }
+
+              @if (downloadWaveform.audioWaveformService.recordedAudioUrl()) {
+                <wally-button
+                  variant="primary"
+                  (buttonClick)="downloadWaveform.audioWaveformService.downloadRecording('my-recording.webm')"
+                  ariaLabel="Download recording">
+                  Download Recording
+                </wally-button>
+                <wally-button
+                  variant="ghost"
+                  (buttonClick)="downloadWaveform.audioWaveformService.clearRecording()"
+                  ariaLabel="Clear recording">
+                  Clear
+                </wally-button>
+              }
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Service Integration -->
+    <section id="service-integration" class="mb-12" aria-labelledby="service-heading">
+      <h2 id="service-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Service Integration ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
+        Access the AudioWaveformService to download, retrieve, or clear recorded audio.
+      </p>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+        <pre><code [innerHTML]="serviceIntegrationCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="mb-12" aria-labelledby="how-it-works-heading">
+      <h2 id="how-it-works-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ How It Works ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+        The component uses the Web Audio API to analyze microphone input in real-time with FFT (Fast Fourier Transform) frequency analysis.
+      </p>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-6">
+        <pre><code [innerHTML]="webAudioConceptsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+
+      <article aria-labelledby="technical-flow-heading">
+        <h3 id="technical-flow-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Technical Flow
+        </h3>
+        <ol class="space-y-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed list-decimal list-inside">
+          <li><strong class="text-[#0a0a0a] dark:text-white">Microphone Access:</strong> getUserMedia() requests permission</li>
+          <li><strong class="text-[#0a0a0a] dark:text-white">Audio Context:</strong> Creates AudioContext for processing</li>
+          <li><strong class="text-[#0a0a0a] dark:text-white">Frequency Analysis:</strong> AnalyserNode performs FFT (256 samples → 128 frequencies)</li>
+          <li><strong class="text-[#0a0a0a] dark:text-white">Data Extraction:</strong> getByteFrequencyData() returns values 0-255</li>
+          <li><strong class="text-[#0a0a0a] dark:text-white">Bar Grouping:</strong> Averages frequencies into 30/65 bars (responsive)</li>
+          <li><strong class="text-[#0a0a0a] dark:text-white">Normalization:</strong> Converts to 0-100% for CSS heights</li>
+          <li><strong class="text-[#0a0a0a] dark:text-white">Animation Loop:</strong> requestAnimationFrame updates at 60fps</li>
+          <li><strong class="text-[#0a0a0a] dark:text-white">Recording:</strong> MediaRecorder saves audio as WebM Blob</li>
+        </ol>
+      </article>
+    </section>
+
+    <!-- Configuration -->
+    <section id="configuration" class="mb-12" aria-labelledby="configuration-heading">
+      <h2 id="configuration-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Configuration ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+        Service-level configuration (read-only constants for optimal performance).
+      </p>
+
+      <div class="space-y-4">
+        <div class="space-y-2">
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="configFFTSizeCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">FFT size for frequency analysis. Higher values provide more detail but use more CPU.</p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="configBarCountCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Automatically adjusts based on viewport width for optimal display.</p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="configSmoothingCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Smoothing constant for animation. 0 = no smoothing (choppy), 1 = max smoothing (laggy).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Properties -->
+    <section id="properties" class="mb-12" aria-labelledby="properties-heading">
+      <h2 id="properties-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Properties ]
+      </h2>
+
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse border-2 border-neutral-300 dark:border-neutral-700">
+          <thead>
+            <tr class="bg-neutral-100 dark:bg-[#1a1a1a]">
+              <th class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-left text-xs sm:text-sm font-bold text-[#0a0a0a] dark:text-white">Property</th>
+              <th class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-left text-xs sm:text-sm font-bold text-[#0a0a0a] dark:text-white">Type</th>
+              <th class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-left text-xs sm:text-sm font-bold text-[#0a0a0a] dark:text-white">Default</th>
+              <th class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-left text-xs sm:text-sm font-bold text-[#0a0a0a] dark:text-white">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Input Properties -->
+            <tr class="bg-blue-50 dark:bg-blue-900/20">
+              <td colspan="4" class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-2 text-xs sm:text-sm font-bold text-blue-900 dark:text-blue-100 uppercase">Input Properties</td>
+            </tr>
+            <tr>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <span class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">isStartRecording</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+                <span class="text-xs">InputSignal&lt;boolean&gt;</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+                <span class="text-xs">false</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Signal to start recording. Set to true to begin capturing audio</td>
+            </tr>
+            <tr>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <span class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">isStopRecording</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+                <span class="text-xs">InputSignal&lt;boolean&gt;</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+                <span class="text-xs">false</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Signal to stop recording. Set to true to stop capturing audio</td>
+            </tr>
+            <tr>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <span class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">showTimer</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+                <span class="text-xs">InputSignal&lt;boolean&gt;</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+                <span class="text-xs">false</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Controls visibility of recording timer (MM:SS format)</td>
+            </tr>
+
+            <!-- Service Signals -->
+            <tr class="bg-green-50 dark:bg-green-900/20">
+              <td colspan="4" class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-2 text-xs sm:text-sm font-bold text-green-900 dark:text-green-100 uppercase">Service Signals (Read-Only)</td>
+            </tr>
+            <tr>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <span class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">isRecording</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+                <span class="text-xs">WritableSignal&lt;boolean&gt;</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">-</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Current recording state (true = recording, false = stopped)</td>
+            </tr>
+            <tr>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <span class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">audioData</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+                <span class="text-xs">WritableSignal&lt;number[]&gt;</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">-</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Array of normalized bar heights (0-100%) updated at 60fps</td>
+            </tr>
+            <tr>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <span class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">recordedAudioBlob</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+                <span class="text-xs">WritableSignal&lt;Blob | null&gt;</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">-</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Recorded audio as a Blob (audio/webm format). Available after stopping recording</td>
+            </tr>
+            <tr>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm">
+                <span class="bg-neutral-100 dark:bg-[#1a1a1a] text-[#0a0a0a] dark:text-white px-2 py-1 text-xs">recordedAudioUrl</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+                <span class="text-xs">WritableSignal&lt;string | null&gt;</span>
+              </td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">-</td>
+              <td class="border-2 border-neutral-300 dark:border-neutral-700 px-4 py-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">Temporary URL for recorded audio. Use for playback or download</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Methods -->
+    <section id="methods" class="mb-12" aria-labelledby="methods-heading">
+      <h2 id="methods-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Service Methods ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+        Public methods available on AudioWaveformService for managing recorded audio.
+      </p>
+
+      <div class="space-y-4">
+        <div class="space-y-2">
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="methodDownloadRecordingCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Downloads the recorded audio file. Optionally specify custom filename.</p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="methodClearRecordingCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Clears recorded audio and revokes URL to free memory. Call after download or discard.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Future Features -->
+    <section id="future-features" class="mb-12" aria-labelledby="future-features-heading">
+      <h2 id="future-features-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Future Features ]
+      </h2>
+
+      <article aria-labelledby="transcription-heading">
+        <h3 id="transcription-heading" class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase">
+          <span aria-hidden="true">&gt; </span>Audio Transcription (Coming Soon)
+        </h3>
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+          Automatic speech-to-text transcription will be added in a future release. The API preview below shows the planned implementation.
+        </p>
+        <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <pre><code [innerHTML]="futureTranscriptionCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- Browser Support -->
+    <section id="browser-support" class="mb-12" aria-labelledby="browser-support-heading">
+      <h2 id="browser-support-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Browser Support ]
+      </h2>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+        <pre><code [innerHTML]="browserSupportCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+    </section>
+
+    <!-- Accessibility -->
+    <section id="accessibility" class="mb-12" aria-labelledby="accessibility-heading">
+      <h2 id="accessibility-heading" class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+        [ Accessibility ]
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+        The component follows accessibility best practices for audio recording interfaces.
+      </p>
+      <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-6">
+        <pre><code [innerHTML]="accessibilityExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+
+      <ul class="space-y-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc list-inside">
+        <li><strong class="text-[#0a0a0a] dark:text-white">Waveform Visualization:</strong> Decorative element (aria-hidden), not essential for understanding recording state</li>
+        <li><strong class="text-[#0a0a0a] dark:text-white">Recording Timer:</strong> Announced via ARIA live region when showTimer=true</li>
+        <li><strong class="text-[#0a0a0a] dark:text-white">Control Buttons:</strong> Use clear aria-label attributes (e.g., "Start audio recording")</li>
+        <li><strong class="text-[#0a0a0a] dark:text-white">Keyboard Support:</strong> All interactions keyboard-accessible via standard button controls</li>
+      </ul>
+    </section>
+  </div>
+</main>

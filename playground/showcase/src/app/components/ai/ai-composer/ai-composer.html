@@ -35,8 +35,16 @@
     </div>
     }
 
-    <div class="w-full px-4 pt-4">
+    <div class="w-full px-4 pt-4 transition-all duration-1000 ease-in-out overflow-hidden" [class.opacity-0]="isStartRecoding()" [class.opacity-100]="!isStartRecoding()"
+        [class.max-h-0]="isStartRecoding()" [class.max-h-96]="!isStartRecoding()">
         <wally-ai-prompt-input></wally-ai-prompt-input>
+    </div>
+
+    <div class="w-full transition-all duration-700 ease-in-out overflow-hidden" [class.opacity-0]="!isStartRecoding()"
+        [class.opacity-100]="isStartRecoding()" [class.scale-95]="!isStartRecoding()"
+        [class.scale-100]="isStartRecoding()" [class.max-h-0]="!isStartRecoding()" [class.max-h-32]="isStartRecoding()">
+        <wally-audio-waveform [isStartRecording]="isStartRecoding()" [isStopRecording]="isStopRecoding()">
+        </wally-audio-waveform>
     </div>
 
     <!-- Action Buttons -->
@@ -186,7 +194,8 @@
         <div class="w-full size-10 flex gap-2 justify-end">
             <div>
                 <wally-tooltip [text]="'Use voice input'" position="bottom">
-                    <wally-button [variant]="'ghost'" [rounded]="true" [ariaLabel]="'Send message'">
+                    <wally-button (buttonClick)="toggleInputVoice()" [variant]="'ghost'" [rounded]="true"
+                        [ariaLabel]="'Send message'">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                             stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
