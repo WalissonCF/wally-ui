@@ -1,4 +1,8 @@
-import { Component, input, InputSignal, signal, WritableSignal } from '@angular/core';
+import { Component, input, InputSignal, OnInit, signal, WritableSignal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
+import { debounce, debounceTime, distinctUntilChanged, Observable, tap } from 'rxjs';
 
 import { DropdownMenuSubTrigger } from '../../dropdown-menu/dropdown-menu-sub-trigger/dropdown-menu-sub-trigger';
 import { DropdownMenuSubContent } from '../../dropdown-menu/dropdown-menu-sub-content/dropdown-menu-sub-content';
@@ -15,9 +19,15 @@ import { DropdownMenu } from '../../dropdown-menu/dropdown-menu';
 import { Tooltip } from '../../tooltip/tooltip';
 import { Button } from '../../button/button';
 
+import { AiChatService } from '../ai-chat.service';
+import { AITools } from '../types/ai-tools.interface';
+import { DEFAULT_AI_TOOLS } from '../constants';
+import { getToolIcon } from '../utils/ai-tool.utils';
+
 @Component({
   selector: 'wally-ai-composer',
   imports: [
+    CommonModule,
     AiPromptInput,
     Tooltip,
     Button,
@@ -36,11 +46,47 @@ import { Button } from '../../button/button';
   templateUrl: './ai-composer.html',
   styleUrl: './ai-composer.css'
 })
-export class AiComposer {
+export class AiComposer implements OnInit {
   textSelected: InputSignal<string> = input<string>('');
+
+  isCurrentUserMessageValid$: Observable<boolean>;
 
   isStartRecoding: WritableSignal<boolean> = signal<boolean>(false);
   isStopRecoding: WritableSignal<boolean> = signal<boolean>(true);
+
+  enabledTools: WritableSignal<AITools[]> = signal<AITools[]>(
+    DEFAULT_AI_TOOLS.map(tool => ({
+      ...tool,
+      onClick: () => this.onToolClick(tool.id)
+    }))
+  );
+
+  private readonly TOOL_TRIGGERS: Record<string, string> = {
+    'comprar': 'shopping',
+    'recomendar': 'recommendation',
+    'recomendação': 'recommendation',
+    'análise': 'business-analytics',
+    'analisar': 'business-analytics',
+    'cotar': 'quote',
+    'cote': 'quote',
+  };
+
+  constructor(
+    public aiChatService: AiChatService,
+    private sanitizer: DomSanitizer
+  ) {
+    this.isCurrentUserMessageValid$ = this.aiChatService.isCurrentUserMessageValid$;
+  }
+
+  ngOnInit(): void {
+    this.aiChatService.currentUserMessage$
+      .pipe(
+        debounceTime(100),
+        distinctUntilChanged(),
+        tap((message: string) => this.detectAndActivateTool(message))
+      )
+      .subscribe();
+  }
 
   onItemClick(): void {
     console.log('Item clicked');
@@ -49,5 +95,68 @@ export class AiComposer {
   toggleInputVoice(): void {
     this.isStartRecoding.set(!this.isStartRecoding());
     this.isStopRecoding.set(!this.isStartRecoding());
+  }
+
+  /**
+   * Handler quando uma tool é clicada
+   * @param toolId - ID da tool (ex: 'figma', 'notion', 'github')
+   */
+  onToolClick(toolId: string): void {
+    console.log(`🔧 Tool clicked: ${toolId}`);
+    this.toggleTool(toolId);
+  }
+
+  /**
+   * Ativa/desativa uma tool
+   * @param toolId - ID da tool a ser toggleada
+   */
+  toggleTool(toolId: string): void {
+    this.enabledTools.update(tools =>
+      tools.map(tool =>
+        tool.id === toolId
+          ? { ...tool, enabled: !tool.enabled }
+          : tool
+      )
+    );
+  }
+
+  /**
+   * Retorna o ícone SVG da tool (sanitizado para segurança)
+   * @param iconName - Nome do ícone (ex: 'figma', 'notion')
+   * @returns SafeHtml SVG
+   */
+  getToolIcon(iconName: string): SafeHtml {
+    const svgString = getToolIcon(iconName);
+    return this.sanitizer.bypassSecurityTrustHtml(svgString);
+  }
+
+  private detectAndActivateTool(message: string): void {
+    const normalizedMessage: string = message.toLowerCase().trim();
+
+    // Se mensagem vazia, desativa todas as tools
+    if (!normalizedMessage) {
+      this.enabledTools.update(tools =>
+        tools.map(tool => ({ ...tool, enabled: false }))
+      );
+      return;
+    }
+
+    const firstWord: string = normalizedMessage.split(' ')[0];
+    const toolId = this.TOOL_TRIGGERS[firstWord];
+
+    if (toolId) {
+      // Ativa apenas a tool correspondente à palavra-chave
+      this.enabledTools.update(tools =>
+        tools.map(tool => ({
+          ...tool,
+          enabled: tool.id === toolId ? true : tool.enabled
+        }))
+      );
+    } else {
+      // Se não há trigger válido, desativa todas as tools
+      this.enabledTools.update(tools =>
+        tools.map(tool => ({ ...tool, enabled: false }))
+      );
+    }
   }
 }

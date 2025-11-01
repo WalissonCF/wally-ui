@@ -17,10 +17,10 @@ export class DropdownMenuSubContent {
     const position = this.calculatedPosition();
 
     const positionMap = {
-      right: 'top-0 left-full ml-1',
-      left: 'top-0 right-full mr-1',
-      bottom: 'left-0 top-full mt-1',
-      top: 'left-0 bottom-full mb-1'
+      right: 'top-0 left-full -ml-2',
+      left: 'top-0 right-full -mr-2',
+      bottom: 'left-0 top-full -mt-2',
+      top: 'left-0 bottom-full -mb-2'
     };
 
     return positionMap[position];

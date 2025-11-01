@@ -14,7 +14,7 @@ export class Tooltip implements OnDestroy {
 
   text: InputSignal<string> = input.required<string>();
   position: InputSignal<TooltipPosition> = input<TooltipPosition>('auto');
-  delay: InputSignal<number> = input<number>(200);
+  delay: InputSignal<number> = input<number>(50);
   disabled: InputSignal<boolean> = input<boolean>(false);
   offset: InputSignal<number> = input<number>(2);
 

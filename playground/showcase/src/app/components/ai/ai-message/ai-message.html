@@ -1,165 +1,241 @@
-<wally-selection-popover (textSelected)="onAskAbout($event)">
+@if (inputRole() === 'user') {
+<section class="flex flex-col">
+  <div class="w-full flex justify-end">
+    <div class="w-auto bg-neutral-100 dark:bg-[#1b1b1b] px-6 py-3 rounded-4xl">
+      <article class="prose dark:prose-invert lg:prose-lg prose-neutral w-full break-words">
+        <div [innerHTML]="currentMessage | markdown"></div>
+      </article>
+    </div>
+  </div>
+
+  <div class="w-full flex items-center justify-end sm:gap-1 mt-3">
+    <div class="size-10">
+      <wally-tooltip text="Copy to clipboard" [position]="'bottom'">
+        <wally-button variant="ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+          </svg>
+        </wally-button>
+      </wally-tooltip>
+    </div>
+
+    <div class="size-10">
+      <wally-tooltip text="Edit" [position]="'bottom'">
+        <wally-button variant="ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+          </svg>
+        </wally-button>
+      </wally-tooltip>
+    </div>
+
+    @if (hasMultipleVersions) {
+    <div class="flex items-center gap-2">
+      <!-- Botão para versão anterior -->
+      <wally-button [variant]="'ghost'" (buttonClick)="previousVersion()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+          class="size-3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+      </wally-button>
+
+      <!-- Indicador de versão atual -->
+      <span class="text-sm font-medium text-[#0a0a0a] dark:text-white">
+        {{ versionIndicator }}
+      </span>
+
+      <!-- Botão para próxima versão -->
+      <wally-button [variant]="'ghost'" (buttonClick)="nextVersion()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+          class="size-3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+      </wally-button>
+    </div>
+    }
+  </div>
+</section>
+}
+
+@if (inputRole() === 'assistant') {
+<section>
+  <span class="inline-block bg-gradient-to-r from-neutral-400 via-neutral-600 to-neutral-400 dark:from-neutral-500 dark:via-white dark:to-neutral-500 bg-[length:200%_100%] bg-clip-text text-transparent animate-pulse">
+    Thinking...
+  </span>
+
+  <wally-selection-popover (textSelected)="onAskAbout($event)">
     <!-- Ações customizadas do popover -->
     <div popoverActions class="flex gap-2">
-        <wally-button variant="ghost" (buttonClick)="askChat()">
-            <div class="flex items-center gap-2">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                    class="icon">
-                    <path
-                        d="M6.24992 11.0417C6.65578 11.0417 7.04227 10.9587 7.39339 10.809C7.05099 11.7065 6.35374 12.9827 5.29864 13.1333C4.84303 13.1985 4.52644 13.6206 4.59153 14.0762C4.65662 14.5318 5.07873 14.8484 5.53434 14.7832C7.66169 14.4794 8.93792 12.0592 9.30742 10.1591C9.50975 9.11833 9.48792 7.98412 9.04084 7.03938C8.53525 5.97097 7.43538 5.20335 6.23748 5.20834C4.63238 5.21504 3.33325 6.5183 3.33325 8.12498C3.33325 9.73583 4.63909 11.0417 6.24992 11.0417Z">
-                    </path>
-                    <path
-                        d="M13.4832 11.0417C13.889 11.0417 14.2755 10.9587 14.6267 10.809C14.2843 11.7065 13.587 12.9827 12.5319 13.1333C12.0763 13.1985 11.7597 13.6206 11.8248 14.0762C11.8899 14.5318 12.312 14.8484 12.7676 14.7832C14.8949 14.4794 16.1712 12.0592 16.5407 10.1591C16.743 9.11833 16.7212 7.98412 16.2741 7.03938C15.7685 5.97097 14.6687 5.20335 13.4708 5.20834C11.8656 5.21504 10.5665 6.5183 10.5665 8.12498C10.5665 9.73583 11.8724 11.0417 13.4832 11.0417Z">
-                    </path>
-                </svg>
+      <wally-button variant="ghost" (buttonClick)="askChat()">
+        <div class="flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            class="icon">
+            <path
+              d="M6.24992 11.0417C6.65578 11.0417 7.04227 10.9587 7.39339 10.809C7.05099 11.7065 6.35374 12.9827 5.29864 13.1333C4.84303 13.1985 4.52644 13.6206 4.59153 14.0762C4.65662 14.5318 5.07873 14.8484 5.53434 14.7832C7.66169 14.4794 8.93792 12.0592 9.30742 10.1591C9.50975 9.11833 9.48792 7.98412 9.04084 7.03938C8.53525 5.97097 7.43538 5.20335 6.23748 5.20834C4.63238 5.21504 3.33325 6.5183 3.33325 8.12498C3.33325 9.73583 4.63909 11.0417 6.24992 11.0417Z">
+            </path>
+            <path
+              d="M13.4832 11.0417C13.889 11.0417 14.2755 10.9587 14.6267 10.809C14.2843 11.7065 13.587 12.9827 12.5319 13.1333C12.0763 13.1985 11.7597 13.6206 11.8248 14.0762C11.8899 14.5318 12.312 14.8484 12.7676 14.7832C14.8949 14.4794 16.1712 12.0592 16.5407 10.1591C16.743 9.11833 16.7212 7.98412 16.2741 7.03938C15.7685 5.97097 14.6687 5.20335 13.4708 5.20834C11.8656 5.21504 10.5665 6.5183 10.5665 8.12498C10.5665 9.73583 11.8724 11.0417 13.4832 11.0417Z">
+            </path>
+          </svg>
 
-                <span class="text-base">
-                    Ask chat
-                </span>
-            </div>
-        </wally-button>
+          <span class="text-base">
+            Ask chat
+          </span>
+        </div>
+      </wally-button>
     </div>
 
     <article class="prose dark:prose-invert lg:prose-lg prose-neutral w-full break-words">
-        <h1>Garlic bread with cheese: What the science tells us</h1>
-        <h2>Garlic bread with cheese: What the science tells us</h2>
-        <p>
-            For years parents have espoused the health benefits of eating garlic bread with cheese to their children,
-            with
-            the
-            food earning such an iconic status in our culture that kids will often dress up as warm, cheesy loaf for
-            Halloween.
-        </p>
-        <p>
-            For years parents have espoused the health benefits of eating garlic bread with cheese to their children,
-            with
-            the
-            food earning such an iconic status in our culture that kids will often dress up as warm, cheesy loaf for
-            Halloween.
-        </p>
-        <p>
-            But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases springing
-            up
-            around
-            the country.
-        </p>
-
-        <div class="w-full flex gap-1">
-            <div class="size-10">
-                <wally-tooltip text="Copy to clipboard" [position]="'bottom'">
-                    <wally-button variant="ghost">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor" class="size-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
-                        </svg>
-                    </wally-button>
-                </wally-tooltip>
-            </div>
-
-            <div class="size-10">
-                <wally-tooltip text="Satisfactory answer" [position]="'bottom'">
-                    <wally-button variant="ghost">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor" class="size-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
-                        </svg>
-
-                    </wally-button>
-                </wally-tooltip>
-            </div>
-
-            <div class="size-10">
-                <wally-tooltip text="Unsatisfactory answer" [position]="'bottom'">
-                    <wally-button variant="ghost">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor" class="size-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M7.498 15.25H4.372c-1.026 0-1.945-.694-2.054-1.715a12.137 12.137 0 0 1-.068-1.285c0-2.848.992-5.464 2.649-7.521C5.287 4.247 5.886 4 6.504 4h4.016a4.5 4.5 0 0 1 1.423.23l3.114 1.04a4.5 4.5 0 0 0 1.423.23h1.294M7.498 15.25c.618 0 .991.724.725 1.282A7.471 7.471 0 0 0 7.5 19.75 2.25 2.25 0 0 0 9.75 22a.75.75 0 0 0 .75-.75v-.633c0-.573.11-1.14.322-1.672.304-.76.93-1.33 1.653-1.715a9.04 9.04 0 0 0 2.86-2.4c.498-.634 1.226-1.08 2.032-1.08h.384m-10.253 1.5H9.7m8.075-9.75c.01.05.027.1.05.148.593 1.2.925 2.55.925 3.977 0 1.487-.36 2.89-.999 4.125m.023-8.25c-.076-.365.183-.75.575-.75h.908c.889 0 1.713.518 1.972 1.368.339 1.11.521 2.287.521 3.507 0 1.553-.295 3.036-.831 4.398-.306.774-1.086 1.227-1.918 1.227h-1.053c-.472 0-.745-.556-.5-.96a8.95 8.95 0 0 0 .303-.54" />
-                        </svg>
-                    </wally-button>
-                </wally-tooltip>
-            </div>
-
-            <div class="size-10">
-                <wally-tooltip text="Share" [position]="'bottom'">
-                    <wally-button variant="ghost">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor" class="size-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                        </svg>
-                    </wally-button>
-                </wally-tooltip>
-            </div>
-
-            <div class="size-10">
-                <wally-tooltip text="Regenerate response" [position]="'bottom'">
-                    <wally-button variant="ghost">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor" class="size-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-                        </svg>
-                    </wally-button>
-                </wally-tooltip>
-            </div>
-
-            <div class="size-10">
-                <wally-dropdown-menu>
-                    <wally-dropdown-menu-trigger>
-                        <wally-tooltip text="More options" [position]="'bottom'">
-                            <wally-button variant="ghost">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                    stroke="currentColor" class="size-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                                </svg>
-                            </wally-button>
-                        </wally-tooltip>
-                    </wally-dropdown-menu-trigger>
-
-                    <wally-dropdown-menu-content>
-                        <wally-dropdown-menu-group>
-                            <wally-dropdown-menu-item>
-                                <div class="flex items-center gap-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2" stroke="currentColor" class="size-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-                                    </svg>
-
-                                    <span>
-                                        Read aloud
-                                    </span>
-                                </div>
-                            </wally-dropdown-menu-item>
-                        </wally-dropdown-menu-group>
-                    </wally-dropdown-menu-content>
-                </wally-dropdown-menu>
-            </div>
-
-            <div>
-                <wally-button variant="ghost" [rounded]="true">
-                    <div class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="size-5">
-                            <path fill="#FFC107"
-                                d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z" />
-                            <path fill="#FF3D00"
-                                d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z" />
-                            <path fill="#4CAF50"
-                                d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z" />
-                            <path fill="#1976D2"
-                                d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z" />
-                        </svg>
-
-                        <span>
-                            Sources
-                        </span>
-                    </div>
-                </wally-button>
-            </div>
-        </div>
+      <div [innerHTML]="currentMessage | markdown"></div>
     </article>
-</wally-selection-popover>
+
+  </wally-selection-popover>
+
+  <div class="w-full flex items-center sm:gap-1 mt-3">
+    <div class="size-10">
+      <wally-tooltip text="Copy to clipboard" [position]="'bottom'">
+        <wally-button variant="ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+          </svg>
+        </wally-button>
+      </wally-tooltip>
+    </div>
+
+    <div class="size-10">
+      <wally-tooltip text="Satisfactory answer" [position]="'bottom'">
+        <wally-button variant="ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
+          </svg>
+
+        </wally-button>
+      </wally-tooltip>
+    </div>
+
+    <div class="size-10">
+      <wally-tooltip text="Unsatisfactory answer" [position]="'bottom'">
+        <wally-button variant="ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M7.498 15.25H4.372c-1.026 0-1.945-.694-2.054-1.715a12.137 12.137 0 0 1-.068-1.285c0-2.848.992-5.464 2.649-7.521C5.287 4.247 5.886 4 6.504 4h4.016a4.5 4.5 0 0 1 1.423.23l3.114 1.04a4.5 4.5 0 0 0 1.423.23h1.294M7.498 15.25c.618 0 .991.724.725 1.282A7.471 7.471 0 0 0 7.5 19.75 2.25 2.25 0 0 0 9.75 22a.75.75 0 0 0 .75-.75v-.633c0-.573.11-1.14.322-1.672.304-.76.93-1.33 1.653-1.715a9.04 9.04 0 0 0 2.86-2.4c.498-.634 1.226-1.08 2.032-1.08h.384m-10.253 1.5H9.7m8.075-9.75c.01.05.027.1.05.148.593 1.2.925 2.55.925 3.977 0 1.487-.36 2.89-.999 4.125m.023-8.25c-.076-.365.183-.75.575-.75h.908c.889 0 1.713.518 1.972 1.368.339 1.11.521 2.287.521 3.507 0 1.553-.295 3.036-.831 4.398-.306.774-1.086 1.227-1.918 1.227h-1.053c-.472 0-.745-.556-.5-.96a8.95 8.95 0 0 0 .303-.54" />
+          </svg>
+        </wally-button>
+      </wally-tooltip>
+    </div>
+
+    <div class="size-10">
+      <wally-tooltip text="Share" [position]="'bottom'">
+        <wally-button variant="ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+          </svg>
+        </wally-button>
+      </wally-tooltip>
+    </div>
+
+    <div class="size-10">
+      <wally-tooltip text="Regenerate response" [position]="'bottom'">
+        <wally-button variant="ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+          </svg>
+        </wally-button>
+      </wally-tooltip>
+    </div>
+
+    <div class="size-10">
+      <wally-dropdown-menu>
+        <wally-dropdown-menu-trigger>
+          <wally-tooltip text="More options" [position]="'bottom'">
+            <wally-button variant="ghost">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+              </svg>
+            </wally-button>
+          </wally-tooltip>
+        </wally-dropdown-menu-trigger>
+
+        <wally-dropdown-menu-content>
+          <wally-dropdown-menu-group>
+            <wally-dropdown-menu-item>
+              <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                  stroke="currentColor" class="size-5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                </svg>
+
+                <span>
+                  Read aloud
+                </span>
+              </div>
+            </wally-dropdown-menu-item>
+          </wally-dropdown-menu-group>
+        </wally-dropdown-menu-content>
+      </wally-dropdown-menu>
+    </div>
+
+    <div>
+      <wally-button variant="ghost" [rounded]="true">
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="size-5">
+            <path fill="#FFC107"
+              d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z" />
+            <path fill="#FF3D00"
+              d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z" />
+            <path fill="#4CAF50"
+              d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z" />
+            <path fill="#1976D2"
+              d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z" />
+          </svg>
+
+          <span>
+            Sources
+          </span>
+        </div>
+      </wally-button>
+    </div>
+
+    @if (hasMultipleVersions) {
+    <div class="flex items-center gap-2">
+      <!-- Botão para versão anterior -->
+      <wally-button [variant]="'ghost'" (buttonClick)="previousVersion()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+          class="size-3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+      </wally-button>
+
+      <!-- Indicador de versão atual -->
+      <span class="text-sm font-medium text-[#0a0a0a] dark:text-white">
+        {{ versionIndicator }}
+      </span>
+
+      <!-- Botão para próxima versão -->
+      <wally-button [variant]="'ghost'" (buttonClick)="nextVersion()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+          class="size-3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+      </wally-button>
+    </div>
+    }
+  </div>
+</section>
+}

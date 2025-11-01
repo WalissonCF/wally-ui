@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarouselDocs } from './carousel-docs';
+import { AiMessageList } from './ai-message-list';
 
-describe('CarouselDocs', () => {
-  let component: CarouselDocs;
-  let fixture: ComponentFixture<CarouselDocs>;
+describe('AiMessageList', () => {
+  let component: AiMessageList;
+  let fixture: ComponentFixture<AiMessageList>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CarouselDocs]
+      imports: [AiMessageList]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CarouselDocs);
+    fixture = TestBed.createComponent(AiMessageList);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

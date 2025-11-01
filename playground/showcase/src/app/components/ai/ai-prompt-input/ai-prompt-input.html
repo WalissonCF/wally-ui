@@ -1,10 +1,12 @@
-<textarea #textarea id="ai-prompt-input" class="w-full h-auto max-h-48 text-base placeholder:text-neutral-400 dark:text-white dark:placeholder:text-neutral-500 resize-none focus:outline-none focus:ring-0 overflow-y-auto [&::-webkit-scrollbar]:w-2
+<textarea #textarea id="ai-prompt-input" [formControl]="messageControl" class="w-full h-auto max-h-48 text-base placeholder:text-neutral-400 dark:text-white dark:placeholder:text-neutral-500 resize-none focus:outline-none focus:ring-0 overflow-y-auto [&::-webkit-scrollbar]:w-2
       [&::-webkit-scrollbar-track]:bg-transparent
       [&::-webkit-scrollbar-thumb]:bg-neutral-300
       [&::-webkit-scrollbar-thumb]:rounded-full
       dark:[&::-webkit-scrollbar-thumb]:bg-neutral-700" name="ai-prompt" rows="1" placeholder="Ask something"
-    aria-label="AI prompt input" aria-describedby="ai-prompt-description" autocomplete="off" autocorrect="off"
-    aria-multiline="true" autocapitalize="sentences" spellcheck="true" (input)="onInput()"></textarea>
+  aria-label="AI prompt input" aria-describedby="ai-prompt-description" autocomplete="off" autocorrect="off"
+  aria-multiline="true" autocapitalize="sentences" spellcheck="true" (input)="onInput()"
+  (keydown)="onKeyDown($event)"></textarea>
+
 <span id="ai-prompt-description" class="sr-only">
-    Enter your message or prompt for the AI assistant. Press Enter to send, Shift+Enter for new line.
+  Enter your message or prompt for the AI assistant. Press Enter to send, Shift+Enter for new line.
 </span>
