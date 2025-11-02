@@ -21,7 +21,6 @@ import { Message } from '../types/message.interface';
   styleUrl: './ai-chat.css'
 })
 export class AiChat implements OnInit {
-  textSelected: WritableSignal<string> = signal<string>('');
 
   constructor(
     public aiChatService: AiChatService
@@ -37,14 +36,23 @@ export class AiChat implements OnInit {
     // =================================================================
 
     // O usuário envia a primeira versão da pergunta
-  this.aiChatService.addUserMessage({
-  message: `
+    this.aiChatService.addUserMessage({
+      message: `
 Aqui está um [link para o Google](https://www.google.com).
 
 E aqui está um link direto: https://www.angular.dev
   `,
-  role: 'user'
-});
+      role: 'user',
+      selectedContext: 'Aqui está um link para o Google.'
+    });
+
+    this.aiChatService.addAssistantMessage({
+      message: `
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:`,
+      role: 'assistant',
+      status: 'sending',
+      timeStamp: new Date()
+    })
 
     // A IA responde com streaming (primeira versão da resposta)
     const respostaCompleta = `Garlic bread with cheese: What the science tells us
@@ -120,11 +128,6 @@ Interessante notar que, apesar de ser chamado de "pão de alho italiano", na It�
     // if (isPlatformBrowser(this.platformId)) {
 
     // }
-  }
-
-  handleTextSelected(text: string): void {
-    console.log('📝 Texto selecionado:', text);
-    this.textSelected.set(text);
   }
 
   onMessageSubmitted(message: string): void {

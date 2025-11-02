@@ -1,4 +1,4 @@
-import { Component, input, InputSignal, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, computed, input, InputSignal, model, ModelSignal, OnInit, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
@@ -47,7 +47,7 @@ import { getToolIcon } from '../utils/ai-tool.utils';
   styleUrl: './ai-composer.css'
 })
 export class AiComposer implements OnInit {
-  textSelected: InputSignal<string> = input<string>('');
+  textSelected = computed(() => this.aiChatService.selectedTextContext());
 
   isCurrentUserMessageValid$: Observable<boolean>;
 
@@ -128,6 +128,10 @@ export class AiComposer implements OnInit {
   getToolIcon(iconName: string): SafeHtml {
     const svgString = getToolIcon(iconName);
     return this.sanitizer.bypassSecurityTrustHtml(svgString);
+  }
+
+  clearTextSelected(): void {
+    this.aiChatService.clearSelectedTextContext();
   }
 
   private detectAndActivateTool(message: string): void {

@@ -15,6 +15,8 @@ export class AiChatService {
     })
   );
 
+  selectedTextContext = signal<string | null>(null);
+
   /**
    * Array de conversas, onde cada conversa contém vários turnos.
    * Cada turno agrupa as mensagens do usuário com as respostas da IA.
@@ -40,16 +42,28 @@ export class AiChatService {
 
     const userMessage: Message = {
       message: message,
-      role: 'user'
+      role: 'user',
+      status: 'sending',
+      timeStamp: new Date(),
+      selectedContext: this.selectedTextContext() ?? undefined
     };
 
     this.addUserMessage(userMessage);
 
     this._currentUserMessage$.next('');
+    this.clearSelectedTextContext();
   }
 
   getCurrentUserMessage(): string {
     return this._currentUserMessage$.value;
+  }
+
+  setSelectedTextContext(text: string): void {
+    this.selectedTextContext.set(text);
+  }
+
+  clearSelectedTextContext(): void {
+    this.selectedTextContext.set(null);
   }
 
   /**
@@ -61,7 +75,12 @@ export class AiChatService {
       const updatedMessages: Turn[][] = [...currentMessages];
 
       const novoTurno: Turn = {
-        userMessages: [message],
+        userMessages: [
+          {
+            ...message,
+            status: 'sent',
+          }
+        ],
         assistantMessages: []
       }
 

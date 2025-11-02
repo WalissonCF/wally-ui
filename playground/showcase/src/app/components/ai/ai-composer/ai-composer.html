@@ -7,10 +7,10 @@
       role="status" aria-live="polite">
       <!-- Ícone Esquerda -->
       <div class="flex items-center shrink-0">
-        <svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-          class="size-5 text-[#0a0a0a] dark:text-white" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-[#0a0a0a] dark:text-white" fill="currentColor" stroke="currentColor"
+          stroke-width="2" viewBox="0 0 256 256">
           <path
-            d="M12.5293 6.5293C12.7566 6.30203 13.1081 6.27383 13.3662 6.44434L13.4707 6.5293L17.4707 10.5293C17.7304 10.789 17.7304 11.211 17.4707 11.4707L13.4707 15.4707C13.211 15.7304 12.789 15.7304 12.5293 15.4707C12.2696 15.211 12.2696 14.789 12.5293 14.5293L15.3936 11.665H6C3.97588 11.665 2.33496 10.0241 2.33496 8V4.5C2.33496 4.13273 2.63273 3.83496 3 3.83496C3.36727 3.83496 3.66504 4.13273 3.66504 4.5V8C3.66504 9.28958 4.71042 10.335 6 10.335H15.3936L12.5293 7.4707L12.4443 7.36621C12.2738 7.10808 12.302 6.75657 12.5293 6.5293Z">
+            d="M229.66,157.66l-48,48a8,8,0,0,1-11.32-11.32L204.69,160H128A104.11,104.11,0,0,1,24,56a8,8,0,0,1,16,0,88.1,88.1,0,0,0,88,88h76.69l-34.35-34.34a8,8,0,0,1,11.32-11.32l48,48A8,8,0,0,1,229.66,157.66Z">
           </path>
         </svg>
       </div>
@@ -24,7 +24,8 @@
 
       <!-- Botão Direita -->
       <div class="flex items-center h-5">
-        <wally-button [variant]="'ghost'" [rounded]="true" [ariaLabel]="'Clear selected context'">
+        <wally-button (buttonClick)="clearTextSelected()" [variant]="'ghost'" [rounded]="true"
+          [ariaLabel]="'Clear selected context'">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
             class="size-5" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -158,42 +159,53 @@
 
       <!-- Tools Dinâmicas -->
       @for (tool of enabledTools(); track tool.id) {
-        @if (tool.enabled) {
-          <div>
-            <wally-button variant="ghost" [rounded]="true" (buttonClick)="tool.onClick()">
-              <div class="group flex items-center gap-2">
-                <!-- Ícone de Remover (hover) -->
-                <div class="max-w-0 group-hover:max-w-6 overflow-hidden transition-all duration-300 ease-in-out">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor"
-                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 size-6 rounded-full p-0.5 bg-neutral-300/40 dark:bg-white/10"
-                    aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                  </svg>
-                </div>
+      @if (tool.enabled) {
+      <div>
+        <wally-button variant="ghost" [rounded]="true" (buttonClick)="tool.onClick()">
+          <div class="group flex items-center gap-2">
+            <!-- Ícone de Remover (hover) -->
+            <div class="max-w-0 group-hover:max-w-6 overflow-hidden transition-all duration-300 ease-in-out">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor"
+                class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 size-6 rounded-full p-0.5 bg-neutral-300/40 dark:bg-white/10"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </div>
 
-                <!-- Ícone da Tool -->
-                <div [innerHTML]="getToolIcon(tool.icon)"></div>
+            <!-- Ícone da Tool -->
+            <div [innerHTML]="getToolIcon(tool.icon)"></div>
 
-                <!-- Nome da Tool -->
-                <span class="text-base font-semibold">{{ tool.name }}</span>
-              </div>
-            </wally-button>
+            <!-- Nome da Tool -->
+            <span class="text-base font-semibold">{{ tool.name }}</span>
           </div>
-        }
+        </wally-button>
+      </div>
+      }
       }
     </div>
 
     <div class="w-full size-10 flex gap-2 justify-end">
       <div>
-        <wally-tooltip [text]="'Use voice input'" position="bottom">
+        <wally-tooltip [text]="isStartRecoding() ? 'Stop recording' : 'Use voice input'" position="bottom">
           <wally-button (buttonClick)="toggleInputVoice()" [variant]="'ghost'" [rounded]="true"
             [ariaLabel]="'Send message'">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-              stroke="currentColor" class="size-6">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
+            @if (isStartRecoding()) {
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" stroke="currentColor"
+              stroke-width="3" viewBox="0 0 256 256">
+              <path
+                d="M213.92,218.62l-160-176A8,8,0,0,0,42.08,53.38L80,95.09V128a48,48,0,0,0,69.11,43.12l11.1,12.2A63.41,63.41,0,0,1,128,192a64.07,64.07,0,0,1-64-64,8,8,0,0,0-16,0,80.11,80.11,0,0,0,72,79.6V240a8,8,0,0,0,16,0V207.59a78.83,78.83,0,0,0,35.16-12.22l30.92,34a8,8,0,1,0,11.84-10.76ZM128,160a32,32,0,0,1-32-32V112.69l41.66,45.82A32,32,0,0,1,128,160Zm57.52-3.91A63.32,63.32,0,0,0,192,128a8,8,0,0,1,16,0,79.16,79.16,0,0,1-8.11,35.12,8,8,0,0,1-7.19,4.49,7.88,7.88,0,0,1-3.51-.82A8,8,0,0,1,185.52,156.09ZM84,44.87A48,48,0,0,1,176,64v64a49.19,49.19,0,0,1-.26,5,8,8,0,0,1-8,7.17,8.13,8.13,0,0,1-.84,0,8,8,0,0,1-7.12-8.79c.11-1.1.17-2.24.17-3.36V64A32,32,0,0,0,98.64,51.25,8,8,0,1,1,84,44.87Z">
+              </path>
             </svg>
+            } @else {
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" stroke-width="3"
+              stroke="currentColor" viewBox="0 0 256 256">
+              <path
+                d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z">
+              </path>
+            </svg>
+            }
+
           </wally-button>
         </wally-tooltip>
       </div>

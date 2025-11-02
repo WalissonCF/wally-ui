@@ -7,14 +7,15 @@
     <!-- Mensagem do usuário -->
     @if (turn.userMessages.length > 0) {
     <wally-ai-message [inputRole]="'user'" [messageContent]="turn.userMessages[0].message"
-      [messageVersions]="turn.userMessages" [currentVersionIndex]="0" (textSelected)="handleTextSelected($event)">
+      [messageVersions]="turn.userMessages" [currentVersionIndex]="0">
     </wally-ai-message>
     }
 
     <!-- Resposta da IA -->
     @if (turn.assistantMessages.length > 0) {
-    <wally-ai-message [inputRole]="'assistant'" [messageContent]="turn.assistantMessages[0].message"
-      [messageVersions]="turn.assistantMessages" [currentVersionIndex]="0" (textSelected)="handleTextSelected($event)">
+    <wally-ai-message [inputRole]="'assistant'"
+      [messageContent]="turn.assistantMessages[0].message" [messageVersions]="turn.assistantMessages"
+      [currentVersionIndex]="0">
     </wally-ai-message>
     }
 
@@ -26,6 +27,6 @@
 <div
   class="w-full border bg-white/50 border-neutral-300 dark:bg-[#1b1b1b] dark:border-neutral-700 shadow-lg rounded-4xl p-1">
   <div class="w-full">
-    <wally-ai-composer [textSelected]="textSelected()"></wally-ai-composer>
+    <wally-ai-composer></wally-ai-composer>
   </div>
 </div>

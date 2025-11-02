@@ -1,17 +1,21 @@
-import { Component, input, InputSignal, OnInit, output, OutputEmitterRef, signal } from '@angular/core';
+import { Component, computed, input, InputSignal, OnInit, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
 
-import { Button } from '../../button/button';
-import { Tooltip } from '../../tooltip/tooltip';
-import { DropdownMenu } from '../../dropdown-menu/dropdown-menu';
 import { DropdownMenuContent } from '../../dropdown-menu/dropdown-menu-content/dropdown-menu-content';
 import { DropdownMenuTrigger } from '../../dropdown-menu/dropdown-menu-trigger/dropdown-menu-trigger';
 import { DropdownMenuItem } from '../../dropdown-menu/dropdown-menu-item/dropdown-menu-item';
 import { DropdownMenuGroup } from '../../dropdown-menu/dropdown-menu-group/dropdown-menu-group';
 import { SelectionPopover } from '../../selection-popover/selection-popover';
-import { role } from '../types/role.type';
-import { Message } from '../types/message.interface';
+import { DropdownMenu } from '../../dropdown-menu/dropdown-menu';
+import { Tooltip } from '../../tooltip/tooltip';
+import { Button } from '../../button/button';
+
+import { MessageStatus } from '../types/message-status.type';
 import { AITools } from '../types/ai-tools.interface';
+import { Message } from '../types/message.interface';
+import { role } from '../types/role.type';
+
 import { MarkdownPipe } from '../../../pipes/markdown/markdown-pipe';
+import { AiChatService } from '../ai-chat.service';
 
 @Component({
   selector: 'wally-ai-message',
@@ -30,8 +34,8 @@ import { MarkdownPipe } from '../../../pipes/markdown/markdown-pipe';
   styleUrl: './ai-message.css'
 })
 export class AiMessage implements OnInit {
-  inputRole: InputSignal<role> = input.required<role>();
   messageContent: InputSignal<string> = input.required<string>();
+  inputRole: InputSignal<role> = input.required<role>();
 
   // Array com todas as versões desta mensagem (para navegação entre versões)
   messageVersions: InputSignal<Message[]> = input<Message[]>([]);
@@ -41,14 +45,35 @@ export class AiMessage implements OnInit {
 
   // Signal interno que controla qual versão está sendo mostrada
   // Este é o estado que muda quando o usuário clica nas setas
-  displayedVersionIndex = signal<number>(0);
-
-  textSelected: OutputEmitterRef<string> = output<string>();
+  displayedVersionIndex: WritableSignal<number> = signal<number>(0);
 
   // messages = signal<Message[][]>([]);
 
+  currentMessageStatus = computed(() => {
+    const index: number = this.displayedVersionIndex();
+    const versions: Message[] = this.messageVersions();
+
+    return versions[index]?.status ?? 'sent';
+  });
+
+  isLoading = computed(() => {
+    const status: MessageStatus = this.currentMessageStatus();
+
+    return status === 'sending' || status === 'streaming';
+  });
+
+  hasError = computed(() => {
+    const status: MessageStatus = this.currentMessageStatus();
+
+    return status === 'error';
+  });
+
   tools: AITools[] = [];
   selectedTools: AITools[] = [];
+
+  constructor(
+    private aiChatService: AiChatService
+  ) {}
 
   ngOnInit(): void {
     // Inicializa com o índice passado como input
@@ -95,6 +120,33 @@ export class AiMessage implements OnInit {
     this.displayedVersionIndex.set(prevIndex);
   }
 
+  onAskAbout(text: string): void {
+    this.aiChatService.setSelectedTextContext(text);
+    // console.log('3 dimension array: ', this.messages);
+
+    // for (let i = 0; i < this.messages.length; i ++) {
+    //   console.log('i', this.messages[i]);
+
+    //   for (let j = 0; j < this.messages[i].length; j++) {
+    //     console.log('j', this.messages[i][j]);
+
+    //     for (let k = 0; k < this.messages[i][j].length; k++) {
+    //       console.log('k', this.messages[i][j][k]);
+    //     }
+    //   }
+    // }
+
+    // console.log('📝 Texto selecionado:', text);
+    // console.log('📏 Tamanho do texto:', text.length);
+    // Aqui você pode emitir um evento para o componente pai (ai-chat)
+    // ou chamar um serviço para adicionar a pergunta ao chat
+  }
+
+  askChat(): void {
+    console.log('🤖 Botão "Ask chat" clicado');
+    // Este método agora é redundante - o texto é emitido via textSelected
+  }
+
   /**
    * Retorna o conteúdo da mensagem que deve ser exibida atualmente.
    * Isso muda conforme o usuário navega entre as versões.
@@ -126,30 +178,10 @@ export class AiMessage implements OnInit {
     return `${current}/${total}`;
   }
 
-  onAskAbout(text: string): void {
-    // console.log('3 dimension array: ', this.messages);
+  get currentSelectedContext(): string | undefined {
+    const versions = this.messageVersions();
+    const index = this.displayedVersionIndex();
 
-    // for (let i = 0; i < this.messages.length; i ++) {
-    //   console.log('i', this.messages[i]);
-
-    //   for (let j = 0; j < this.messages[i].length; j++) {
-    //     console.log('j', this.messages[i][j]);
-
-    //     for (let k = 0; k < this.messages[i][j].length; k++) {
-    //       console.log('k', this.messages[i][j][k]);
-    //     }
-    //   }
-    // }
-
-    // console.log('📝 Texto selecionado:', text);
-    // console.log('📏 Tamanho do texto:', text.length);
-    this.textSelected.emit(text);
-    // Aqui você pode emitir um evento para o componente pai (ai-chat)
-    // ou chamar um serviço para adicionar a pergunta ao chat
-  }
-
-  askChat(): void {
-    // console.log('🤖 Botão "Ask chat" clicado');
-    // Este método agora é redundante - o texto é emitido via textSelected
+    return versions[index]?.selectedContext;
   }
 }

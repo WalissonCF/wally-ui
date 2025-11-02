@@ -1,5 +1,18 @@
 @if (inputRole() === 'user') {
 <section class="flex flex-col">
+  @if (currentSelectedContext) {
+    <div class="w-full flex items-center justify-end gap-2 text-[#0a0a0a] dark:text-neutral-500 mb-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-5 flex-shrink-0" fill="currentColor" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 256 256">
+        <path
+          d="M229.66,157.66l-48,48a8,8,0,0,1-11.32-11.32L204.69,160H128A104.11,104.11,0,0,1,24,56a8,8,0,0,1,16,0,88.1,88.1,0,0,0,88,88h76.69l-34.35-34.34a8,8,0,0,1,11.32-11.32l48,48A8,8,0,0,1,229.66,157.66Z">
+        </path>
+      </svg>
+
+      <span>{{ currentSelectedContext }}</span>
+    </div>
+  }
+
   <div class="w-full flex justify-end">
     <div class="w-auto bg-neutral-100 dark:bg-[#1b1b1b] px-6 py-3 rounded-4xl">
       <article class="prose dark:prose-invert lg:prose-lg prose-neutral w-full break-words">
@@ -63,9 +76,12 @@
 
 @if (inputRole() === 'assistant') {
 <section>
-  <span class="inline-block bg-gradient-to-r from-neutral-400 via-neutral-600 to-neutral-400 dark:from-neutral-500 dark:via-white dark:to-neutral-500 bg-[length:200%_100%] bg-clip-text text-transparent animate-pulse">
+  @if (isLoading()) {
+  <span
+    class="inline-block bg-gradient-to-r from-neutral-400 via-neutral-600 to-neutral-400 dark:from-neutral-500 dark:via-white dark:to-neutral-500 bg-[length:200%_100%] bg-clip-text text-transparent animate-pulse">
     Thinking...
   </span>
+  }
 
   <wally-selection-popover (textSelected)="onAskAbout($event)">
     <!-- Ações customizadas do popover -->
