@@ -6,16 +6,15 @@
 
     <!-- Mensagem do usuário -->
     @if (turn.userMessages.length > 0) {
-    <wally-ai-message [inputRole]="'user'" [messageContent]="turn.userMessages[0].message"
-      [messageVersions]="turn.userMessages" [currentVersionIndex]="0">
+    <wally-ai-message [inputRole]="'user'" [turnIndex]="turnIndex" [messageContent]="turn.userMessages[0].message"
+      [messageVersions]="turn.userMessages" [currentVersionIndex]="0" (editedMessage)="onEditMessageSubmitted($event)">
     </wally-ai-message>
     }
 
     <!-- Resposta da IA -->
     @if (turn.assistantMessages.length > 0) {
-    <wally-ai-message [inputRole]="'assistant'"
-      [messageContent]="turn.assistantMessages[0].message" [messageVersions]="turn.assistantMessages"
-      [currentVersionIndex]="0">
+    <wally-ai-message [inputRole]="'assistant'" [turnIndex]="turnIndex" [messageContent]="turn.assistantMessages[0].message"
+      [messageVersions]="turn.assistantMessages" [currentVersionIndex]="0">
     </wally-ai-message>
     }
 

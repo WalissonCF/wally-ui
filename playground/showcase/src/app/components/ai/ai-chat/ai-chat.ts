@@ -6,6 +6,7 @@ import { AiChatService } from '../ai-chat.service';
 import { AiMessage } from '../ai-message/ai-message';
 
 import { Message } from '../types/message.interface';
+import { EditMessageInterface } from '../types/edit-message.interface';
 
 @Component({
   selector: 'wally-ai-chat',
@@ -137,5 +138,11 @@ Interessante notar que, apesar de ser chamado de "p√£o de alho italiano", na It√
     };
 
     this.aiChatService.addUserMessage(userMessage);
+  }
+
+  onEditMessageSubmitted(editedMessage: EditMessageInterface): void {
+    this.aiChatService.addUserMessageVersion(editedMessage.conversationIndex, editedMessage.turnoIndex, {
+      ...editedMessage.message
+    });
   }
 }

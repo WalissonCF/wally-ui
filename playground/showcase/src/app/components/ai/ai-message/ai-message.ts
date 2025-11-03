@@ -16,6 +16,10 @@ import { role } from '../types/role.type';
 
 import { MarkdownPipe } from '../../../pipes/markdown/markdown-pipe';
 import { AiChatService } from '../ai-chat.service';
+import { copyToClipboard } from '../utils/clipboard.utils';
+import { AutoResizeTextarea } from '../../../directives/auto-resize-textarea';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { EditMessageInterface } from '../types/edit-message.interface';
 
 @Component({
   selector: 'wally-ai-message',
@@ -28,13 +32,16 @@ import { AiChatService } from '../ai-chat.service';
     DropdownMenuGroup,
     DropdownMenuItem,
     SelectionPopover,
-    MarkdownPipe
+    MarkdownPipe,
+    AutoResizeTextarea,
+    ReactiveFormsModule
   ],
   templateUrl: './ai-message.html',
   styleUrl: './ai-message.css'
 })
 export class AiMessage implements OnInit {
   messageContent: InputSignal<string> = input.required<string>();
+  turnIndex: InputSignal<number> = input.required<number>();
   inputRole: InputSignal<role> = input.required<role>();
 
   // Array com todas as versões desta mensagem (para navegação entre versões)
@@ -47,7 +54,15 @@ export class AiMessage implements OnInit {
   // Este é o estado que muda quando o usuário clica nas setas
   displayedVersionIndex: WritableSignal<number> = signal<number>(0);
 
-  // messages = signal<Message[][]>([]);
+  copiedRole: WritableSignal<role | null> = signal<role | null>(null);
+  isEditing = signal<boolean>(false);
+  editedMessageControl = new FormControl('', {
+    nonNullable: true,
+    validators: [
+      Validators.minLength(1)
+    ]
+  });
+  editedMessage = output<EditMessageInterface>();
 
   currentMessageStatus = computed(() => {
     const index: number = this.displayedVersionIndex();
@@ -73,23 +88,11 @@ export class AiMessage implements OnInit {
 
   constructor(
     private aiChatService: AiChatService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Inicializa com o índice passado como input
     this.displayedVersionIndex.set(this.currentVersionIndex());
-    // this.messages.push(
-    //   [
-    //     [
-    //       { message: 'test', role: 'user'},
-    //       { message: 'test', role: 'user'}
-    //     ],
-    //     [
-    //       { message: 'test', role: 'assistant'},
-    //       { message: 'test 2', role: 'assistant'}
-    //     ]
-    //   ]
-    // );
   }
 
   /**
@@ -142,9 +145,63 @@ export class AiMessage implements OnInit {
     // ou chamar um serviço para adicionar a pergunta ao chat
   }
 
+  startEditing(): void {
+    this.editedMessageControl.setValue(this.currentMessage);
+    this.isEditing.set(true);
+  }
+
+  cancelEditing(): void {
+    this.isEditing.set(false);
+  }
+
+  saveEdit(): void {
+    const newMessage = this.editedMessageControl.value;
+
+    console.log('newMessage', newMessage);
+
+    this.editedMessage.emit({
+      message: {
+        message: newMessage,
+        role: this.inputRole(),
+        status: 'sent',
+        timeStamp: new Date()
+      },
+      conversationIndex: this.currentVersionIndex(),
+      turnoIndex: this.turnIndex()
+    });
+
+    setTimeout(() => {
+      this.displayedVersionIndex.set(this.messageVersions().length - 1);
+    }, 0);
+
+    // if (newMessage.trim()) {
+    //   this.messageEdited.emit(newMessage);
+      this.isEditing.set(false);
+    // }
+
+    console.log(this.messageVersions()[this.displayedVersionIndex()].message)
+    console.log('currentVersionIndex', this.currentVersionIndex(), 'displayedVersionIndex', this.displayedVersionIndex());
+  }
+
   askChat(): void {
     console.log('🤖 Botão "Ask chat" clicado');
     // Este método agora é redundante - o texto é emitido via textSelected
+  }
+
+  copyToClipboard(message: string): void {
+    copyToClipboard(message).then((success) => {
+      if (success) {
+        this.copiedRole.set(this.inputRole());
+
+        setTimeout(() => {
+          this.copiedRole.set(null);
+        }, 2000);
+      }
+    });
+  }
+
+  isCopied(): boolean {
+    return this.copiedRole() === this.inputRole();
   }
 
   /**

@@ -1,7 +1,7 @@
 import { MessageStatus } from "./message-status.type";
 import { role } from "./role.type";
 
-export interface Message {
+export interface Message{
     message: string;
     role: role;
     status?: MessageStatus;
