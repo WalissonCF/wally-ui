@@ -11,7 +11,6 @@ import { Button } from '../../button/button';
 
 import { MessageStatus } from '../types/message-status.type';
 import { AITools } from '../types/ai-tools.interface';
-import { Message } from '../types/message.interface';
 import { role } from '../types/role.type';
 
 import { MarkdownPipe } from '../../../pipes/markdown/markdown-pipe';
@@ -20,6 +19,7 @@ import { copyToClipboard } from '../utils/clipboard.utils';
 import { AutoResizeTextarea } from '../../../directives/auto-resize-textarea';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EditMessageInterface } from '../types/edit-message.interface';
+import { isUserMessage, Message } from '../types/message.type';
 
 @Component({
   selector: 'wally-ai-message',
@@ -63,6 +63,8 @@ export class AiMessage implements OnInit {
     ]
   });
   editedMessage = output<EditMessageInterface>();
+
+  regenerateMessage = output<EditMessageInterface>();
 
   currentMessageStatus = computed(() => {
     const index: number = this.displayedVersionIndex();
@@ -167,7 +169,8 @@ export class AiMessage implements OnInit {
         timeStamp: new Date()
       },
       conversationIndex: this.currentVersionIndex(),
-      turnoIndex: this.turnIndex()
+      turnoIndex: this.turnIndex(),
+      displayedVersionIndex: this.displayedVersionIndex()
     });
 
     setTimeout(() => {
@@ -181,6 +184,19 @@ export class AiMessage implements OnInit {
 
     console.log(this.messageVersions()[this.displayedVersionIndex()].message)
     console.log('currentVersionIndex', this.currentVersionIndex(), 'displayedVersionIndex', this.displayedVersionIndex());
+  }
+
+  regenerate(): void {
+    this.regenerateMessage.emit({
+      message: {
+        message: this.currentMessage,
+        role: this.inputRole(),
+        status: 'sending',
+        timeStamp: new Date()
+      },
+      conversationIndex: this.currentVersionIndex(),
+      turnoIndex: this.turnIndex()
+    });
   }
 
   askChat(): void {
@@ -238,7 +254,12 @@ export class AiMessage implements OnInit {
   get currentSelectedContext(): string | undefined {
     const versions = this.messageVersions();
     const index = this.displayedVersionIndex();
+    const message = versions[index];
 
-    return versions[index]?.selectedContext;
+    if (message && isUserMessage(message)) {
+      return message.selectedContext;
+    }
+
+    return undefined;
   }
 }

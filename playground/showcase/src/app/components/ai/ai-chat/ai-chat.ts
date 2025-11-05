@@ -5,8 +5,11 @@ import { AiComposer } from '../ai-composer/ai-composer';
 import { AiChatService } from '../ai-chat.service';
 import { AiMessage } from '../ai-message/ai-message';
 
-import { Message } from '../types/message.interface';
 import { EditMessageInterface } from '../types/edit-message.interface';
+import { Turn } from '../types/turn.interface';
+import { isUserMessage, Message } from '../types/message.type';
+import { AssistantMessage } from '../types/assistant-message.interface';
+import { UserMessage } from '../types/user-message.interface';
 
 @Component({
   selector: 'wally-ai-chat',
@@ -52,7 +55,8 @@ E aqui está um link direto: https://www.angular.dev
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:`,
       role: 'assistant',
       status: 'sending',
-      timeStamp: new Date()
+      timeStamp: new Date(),
+      sourceUserMessageIndex: 0
     })
 
     // A IA responde com streaming (primeira versão da resposta)
@@ -62,7 +66,7 @@ For years parents have espoused the health benefits of eating garlic bread with 
 
 But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases springing up around the country.`;
 
-    this.aiChatService.streamAssistantMessage(respostaCompleta, 20);
+    this.aiChatService.streamAssistantMessage(respostaCompleta, 0, 20);
 
     // Depois de um tempo, o usuário decide editar a pergunta original
     // Vamos simular isso com um setTimeout para dar tempo do streaming terminar
@@ -109,7 +113,8 @@ Note que você precisa *chamar* o signal como uma função para ler seu valor. I
 Sua origem remonta à culinária italiana, onde o pão com alho já era um acompanhamento comum. A adição do queijo tornou o prato ainda mais popular, especialmente em pizzarias e restaurantes italianos ao redor do mundo.
 
 O preparo geralmente envolve fatias de pão, manteiga, alho picado ou em pó, e queijos como mussarela ou parmesão. O conjunto é assado até que o queijo derreta e o pão fique crocante.`,
-        role: 'assistant'
+        role: 'assistant',
+        sourceUserMessageIndex: 2
       });
 
       this.aiChatService.addAssistantMessageVersion(0, 0, {
@@ -141,8 +146,59 @@ Interessante notar que, apesar de ser chamado de "pão de alho italiano", na It�
   }
 
   onEditMessageSubmitted(editedMessage: EditMessageInterface): void {
-    this.aiChatService.addUserMessageVersion(editedMessage.conversationIndex, editedMessage.turnoIndex, {
-      ...editedMessage.message
-    });
+    if (isUserMessage(editedMessage.message)) {
+      this.aiChatService.addUserMessageVersion(
+        editedMessage.conversationIndex,
+        editedMessage.turnoIndex,
+        { ...editedMessage.message }
+      );
+
+      const userMessages = this.aiChatService.messages()
+      [editedMessage.conversationIndex]
+      [editedMessage.turnoIndex]
+        .userMessages;
+
+      const newUserMessageIndex = userMessages.length - 1;
+      // última
+      // versão adicionada
+
+      // 3. TODO: Chamar a IA com a nova mensagem
+      // 4. Quando receber a resposta, adicionar com userMessageIndex
+      // correto
+      this.aiChatService.addAssistantMessageVersion(
+        editedMessage.conversationIndex,
+        editedMessage.turnoIndex,
+        {
+          message: 'Resposta da IA aqui',
+          role: 'assistant',
+          sourceUserMessageIndex: newUserMessageIndex // ← Link correto
+        }
+      );
+    }
+  }
+
+  onMessageRegenerated(editedMessage: EditMessageInterface): void {
+    const assistantMessages: AssistantMessage[] = this.aiChatService.messages()
+    [editedMessage.conversationIndex]
+    [editedMessage.turnoIndex]
+      .assistantMessages;
+
+    const currentAssistantMessage: AssistantMessage = assistantMessages[editedMessage.displayedVersionIndex ?? assistantMessages.length - 1];
+
+    const userMessageIndex: number = currentAssistantMessage.sourceUserMessageIndex ?? 0;
+
+    const userMessage: UserMessage = this.aiChatService.messages()[editedMessage.conversationIndex][editedMessage.turnoIndex].userMessages[userMessageIndex];
+
+    this.aiChatService.addAssistantMessageVersion(
+      editedMessage.conversationIndex,
+      editedMessage.turnoIndex,
+      {
+        message: userMessage.message,
+        role: 'assistant',
+        status: 'sending',
+        timeStamp: new Date(),
+        sourceUserMessageIndex: userMessageIndex
+      }
+    );
   }
 }

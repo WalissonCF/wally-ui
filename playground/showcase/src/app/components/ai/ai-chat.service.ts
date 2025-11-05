@@ -1,8 +1,10 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 
-import { Message } from './types/message.interface';
 import { Turn } from './types/turn.interface';
 import { BehaviorSubject, map, Observable } from 'rxjs';
+import { UserMessage } from './types/user-message.interface';
+import { Message } from './types/message.type';
+import { AssistantMessage } from './types/assistant-message.interface';
 
 @Injectable()
 export class AiChatService {
@@ -40,7 +42,7 @@ export class AiChatService {
 
     if (message.trim().length === 0) return;
 
-    const userMessage: Message = {
+    const userMessage: UserMessage = {
       message: message,
       role: 'user',
       status: 'sending',
@@ -70,7 +72,7 @@ export class AiChatService {
    * Adiciona uma nova mensagem do usuário, criando um novo turno de conversa.
    * O turno inicia com a mensagem do usuário e um array vazio esperando a resposta da IA.
    */
-  addUserMessage(message: Message): void {
+  addUserMessage(message: UserMessage): void {
     this.messages.update((currentMessages) => {
       const updatedMessages: Turn[][] = [...currentMessages];
 
@@ -101,7 +103,7 @@ export class AiChatService {
    * Adiciona uma resposta da IA ao último turno criado.
    * Este método deve ser chamado depois de addUserMessage().
    */
-  addAssistantMessage(message: Message): void {
+  addAssistantMessage(message: AssistantMessage): void {
     this.messages.update((currentMessages) => {
       if (currentMessages.length === 0) {
         throw new Error('Não há conversas criadas. Adicione uma mensagem do usuário primeiro.');
@@ -135,7 +137,7 @@ export class AiChatService {
    * @param turnoIndex - Índice do turno que será editado
    * @param message - A nova versão da mensagem
    */
-  addUserMessageVersion(conversationIndex: number, turnoIndex: number, message: Message): void {
+  addUserMessageVersion(conversationIndex: number, turnoIndex: number, message: UserMessage): void {
     this.messages.update((currentMessages) => {
       const updatedMessages: Turn[][] = [...currentMessages];
 
@@ -162,7 +164,7 @@ export class AiChatService {
    * @param turnoIndex - Índice do turno onde a resposta será regenerada
    * @param message - A nova versão da resposta
    */
-  addAssistantMessageVersion(conversationIndex: number, turnoIndex: number, message: Message): void {
+  addAssistantMessageVersion(conversationIndex: number, turnoIndex: number, message: AssistantMessage): void {
     this.messages.update((currentMessages) => {
       const updatedMessages: Turn[][] = [...currentMessages];
 
@@ -218,7 +220,7 @@ export class AiChatService {
    * @param fullMessage - O texto completo que será exibido gradualmente
    * @param speedMs - Velocidade em milissegundos entre cada caractere (padrão: 20ms)
    */
-  streamAssistantMessage(fullMessage: string, speedMs: number = 20): void {
+  streamAssistantMessage(fullMessage: string, userMessageIndex: number, speedMs: number = 20): void {
     // Marca que o streaming começou (útil para mostrar indicadores visuais)
     this.isStreaming.set(true);
 
@@ -226,7 +228,7 @@ export class AiChatService {
     let currentIndex = 0;
 
     // Adiciona uma mensagem vazia que será preenchida gradualmente
-    this.addAssistantMessage({ message: '', role: 'assistant' });
+    this.addAssistantMessage({ message: '', role: 'assistant', sourceUserMessageIndex: userMessageIndex });
 
     // Cria um intervalo que adiciona um caractere por vez
     const intervalId = setInterval(() => {

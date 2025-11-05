@@ -1,4 +1,5 @@
-import { Message } from './message.interface';
+import { AssistantMessage } from './assistant-message.interface';
+import { UserMessage } from './user-message.interface';
 
 /**
  * Representa um turno completo de conversa.
@@ -7,6 +8,6 @@ import { Message } from './message.interface';
  * - Respostas da IA (incluindo todas as versões regeneradas)
  */
 export interface Turn {
-    userMessages: Message[];      // Todas as versões da pergunta do usuário
-    assistantMessages: Message[]; // Todas as versões da resposta da IA
+    userMessages: UserMessage[];      // Todas as versões da pergunta do usuário
+    assistantMessages: AssistantMessage[]; // Todas as versões da resposta da IA
 }

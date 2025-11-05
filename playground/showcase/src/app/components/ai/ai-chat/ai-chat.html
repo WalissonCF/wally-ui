@@ -14,7 +14,7 @@
     <!-- Resposta da IA -->
     @if (turn.assistantMessages.length > 0) {
     <wally-ai-message [inputRole]="'assistant'" [turnIndex]="turnIndex" [messageContent]="turn.assistantMessages[0].message"
-      [messageVersions]="turn.assistantMessages" [currentVersionIndex]="0">
+      [messageVersions]="turn.assistantMessages" [currentVersionIndex]="0" (regenerateMessage)="onMessageRegenerated($event)">
     </wally-ai-message>
     }
 
