@@ -1,4 +1,5 @@
 import { Component, computed, input, InputSignal, OnInit, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
+import { JsonPipe } from '@angular/common';
 
 import { DropdownMenuContent } from '../../dropdown-menu/dropdown-menu-content/dropdown-menu-content';
 import { DropdownMenuTrigger } from '../../dropdown-menu/dropdown-menu-trigger/dropdown-menu-trigger';
@@ -20,6 +21,7 @@ import { AutoResizeTextarea } from '../../../directives/auto-resize-textarea';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EditMessageInterface } from '../types/edit-message.interface';
 import { isUserMessage, Message } from '../types/message.type';
+import { CotacaoResponse, Oferta } from '../temp-cotacao-schema'; // TODO: TEMPORARIO
 
 @Component({
   selector: 'wally-ai-message',
@@ -34,7 +36,8 @@ import { isUserMessage, Message } from '../types/message.type';
     SelectionPopover,
     MarkdownPipe,
     AutoResizeTextarea,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JsonPipe // TODO: TEMPORARIO
   ],
   templateUrl: './ai-message.html',
   styleUrl: './ai-message.css'
@@ -231,6 +234,40 @@ export class AiMessage implements OnInit {
     // Se o índice for válido, retorna a mensagem daquela versão
     // Senão, retorna o messageContent padrão (fallback)
     return versions[index]?.message || this.messageContent();
+  }
+
+  /**
+   * Retorna os dados estruturados da mensagem atual (se existir).
+   * TODO: TEMPORARIO
+   */
+  get currentStructuredData(): CotacaoResponse | null {
+    const versions = this.messageVersions();
+    const index = this.displayedVersionIndex();
+
+    // Verifica se a mensagem tem structuredData
+    const message = versions[index];
+    return message && 'structuredData' in message ? (message as any).structuredData : null;
+  }
+
+  // TODO: TEMPORARIO - State para checkboxes das ofertas
+  selectedOfertas = signal<Set<number>>(new Set());
+
+  // TODO: TEMPORARIO - Toggle checkbox
+  toggleOferta(index: number): void {
+    this.selectedOfertas.update(selected => {
+      const newSet = new Set(selected);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  }
+
+  // TODO: TEMPORARIO - Verifica se está selecionado
+  isOfertaSelected(index: number): boolean {
+    return this.selectedOfertas().has(index);
   }
 
   /**

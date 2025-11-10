@@ -5,6 +5,7 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 import { UserMessage } from './types/user-message.interface';
 import { Message } from './types/message.type';
 import { AssistantMessage } from './types/assistant-message.interface';
+import { CotacaoResponseSchema, type CotacaoResponse } from './temp-cotacao-schema'; // TODO: TEMPORARIO
 
 @Injectable()
 export class AiChatService {
@@ -54,6 +55,9 @@ export class AiChatService {
 
     this._currentUserMessage$.next('');
     this.clearSelectedTextContext();
+
+    // Chama a API de streaming
+    this.callStreamingAPI(message);
   }
 
   getCurrentUserMessage(): string {
@@ -220,34 +224,34 @@ export class AiChatService {
    * @param fullMessage - O texto completo que será exibido gradualmente
    * @param speedMs - Velocidade em milissegundos entre cada caractere (padrão: 20ms)
    */
-  streamAssistantMessage(fullMessage: string, userMessageIndex: number, speedMs: number = 20): void {
-    // Marca que o streaming começou (útil para mostrar indicadores visuais)
-    this.isStreaming.set(true);
+  // streamAssistantMessage(fullMessage: string, userMessageIndex: number, speedMs: number = 20): void {
+  //   // Marca que o streaming começou (útil para mostrar indicadores visuais)
+  //   this.isStreaming.set(true);
 
-    let currentText = '';
-    let currentIndex = 0;
+  //   let currentText = '';
+  //   let currentIndex = 0;
 
-    // Adiciona uma mensagem vazia que será preenchida gradualmente
-    this.addAssistantMessage({ message: '', role: 'assistant', sourceUserMessageIndex: userMessageIndex });
+  //   // Adiciona uma mensagem vazia que será preenchida gradualmente
+  //   this.addAssistantMessage({ message: '', role: 'assistant', sourceUserMessageIndex: userMessageIndex });
 
-    // Cria um intervalo que adiciona um caractere por vez
-    const intervalId = setInterval(() => {
-      // Quando terminar de mostrar toda a mensagem, para o intervalo
-      if (currentIndex >= fullMessage.length) {
-        clearInterval(intervalId);
-        this.isStreaming.set(false);
-        return;
-      }
+  //   // Cria um intervalo que adiciona um caractere por vez
+  //   const intervalId = setInterval(() => {
+  //     // Quando terminar de mostrar toda a mensagem, para o intervalo
+  //     if (currentIndex >= fullMessage.length) {
+  //       clearInterval(intervalId);
+  //       this.isStreaming.set(false);
+  //       return;
+  //     }
 
-      // Adiciona o próximo caractere ao texto atual
-      currentText += fullMessage[currentIndex];
-      currentIndex++;
+  //     // Adiciona o próximo caractere ao texto atual
+  //     currentText += fullMessage[currentIndex];
+  //     currentIndex++;
 
-      // Atualiza a mensagem no Signal com o texto expandido
-      this.updateLastAssistantMessage(currentText);
+  //     // Atualiza a mensagem no Signal com o texto expandido
+  //     this.updateLastAssistantMessage(currentText);
 
-    }, speedMs);
-  }
+  //   }, speedMs);
+  // }
 
   /**
    * Atualiza o texto da última resposta da IA na conversa ativa.
@@ -255,22 +259,225 @@ export class AiChatService {
    *
    * @param newText - O texto atualizado a ser exibido
    */
-  private updateLastAssistantMessage(newText: string): void {
+  // private updateLastAssistantMessage(newText: string): void {
+  //   this.messages.update((currentMessages) => {
+  //     if (currentMessages.length === 0) return currentMessages;
+
+  //     const updatedMessages: Turn[][] = [...currentMessages];
+
+  //     // Pega a última conversa
+  //     const ultimaConversa = [...updatedMessages[updatedMessages.length - 1]];
+
+  //     if (ultimaConversa.length === 0) return currentMessages;
+
+  //     // Pega o último turno dessa conversa
+  //     const ultimoTurnoIndex = ultimaConversa.length - 1;
+  //     const ultimoTurno: Turn = { ...ultimaConversa[ultimoTurnoIndex] };
+
+  //     // Atualiza a última resposta da IA com o novo texto
+  //     const respostas = [...ultimoTurno.assistantMessages];
+  //     if (respostas.length === 0) return currentMessages;
+
+  //     const ultimaRespostaIndex = respostas.length - 1;
+  //     respostas[ultimaRespostaIndex] = {
+  //       ...respostas[ultimaRespostaIndex],
+  //       message: newText
+  //     };
+
+  //     ultimoTurno.assistantMessages = respostas;
+  //     ultimaConversa[ultimoTurnoIndex] = ultimoTurno;
+  //     updatedMessages[updatedMessages.length - 1] = ultimaConversa;
+
+  //     return updatedMessages;
+  //   });
+  // }
+
+  /**
+   * Inicia uma nova conversa vazia.
+   * Útil quando o usuário quer começar um chat completamente novo.
+   */
+  // startNewConversation(): void {
+  //   this.messages.update((currentMessages) => {
+  //     const updatedMessages: Turn[][] = [...currentMessages];
+  //     updatedMessages.push([]);
+  //     return updatedMessages;
+  //   });
+  // }
+
+  /**
+   * Retorna a conversa ativa atual (a última conversa no array).
+   */
+  // getCurrentConversation(): Turn[] {
+  //   const allConversations = this.messages();
+  //   if (allConversations.length === 0) return [];
+  //   return allConversations[allConversations.length - 1];
+  // }
+
+  /**
+   * Retorna o número total de turnos na conversa ativa.
+   */
+  // getTotalTurns(): number {
+  //   return this.getCurrentConversation().length;
+  // }
+
+  // ---------------------------------------------------------------------------
+  // MÉTODOS TEMPORÁRIOS PARA API STREAMING
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Chama a API de streaming e processa os eventos SSE usando RxJS.
+   * TODO: TEMPORARIO
+   */
+  private callStreamingAPI(message: string): void {
+    this.isStreaming.set(true);
+
+    // Adiciona mensagem do assistente vazia
+    const assistantMessage: AssistantMessage = {
+      message: '',
+      role: 'assistant',
+      status: 'sending',
+      timeStamp: new Date()
+    };
+    this.addAssistantMessage(assistantMessage);
+
+    // Cria Observable para processar o SSE stream do POST
+    const streamObservable = this.createSSEObservable('http://localhost:3000/api/chat/stream', {
+      mensagem: message
+    });
+
+    // TODO: TEMPORARIO - Subscreve e vai acumulando o texto ou processando dados estruturados
+    let accumulatedText = '';
+    streamObservable.subscribe({
+      next: (event) => {
+        if (event.type === 'text') {
+          accumulatedText += event.data;
+          this.updateLastAssistantMessageText(accumulatedText);
+        } else if (event.type === 'result') {
+          // Adiciona dados estruturados à mensagem
+          this.updateLastAssistantMessageStructuredData(event.data);
+        }
+      },
+      error: (error) => {
+        console.error('❌ Erro ao chamar API:', error);
+        this.isStreaming.set(false);
+      },
+      complete: () => {
+        console.log('✅ Stream finalizado');
+        this.isStreaming.set(false);
+      }
+    });
+  }
+
+  /**
+   * Cria um Observable que faz POST e processa SSE stream usando RxJS.
+   * TODO: TEMPORARIO
+   */
+  private createSSEObservable(url: string, body: any): Observable<{ type: 'text' | 'result', data: any }> {
+    return new Observable<{ type: 'text' | 'result', data: any }>(observer => {
+      let aborted = false;
+      let currentEvent = '';
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body)
+      })
+        .then(async response => {
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
+
+          if (!response.body) {
+            throw new Error('Response body is null');
+          }
+
+          const reader = response.body.getReader();
+          const decoder = new TextDecoder();
+          let buffer = '';
+
+          while (!aborted) {
+            const { done, value } = await reader.read();
+
+            if (done) {
+              observer.complete();
+              break;
+            }
+
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split('\n');
+            buffer = lines.pop() || '';
+
+            for (const line of lines) {
+              if (line.startsWith('event:')) {
+                currentEvent = line.substring(6).trim();
+                console.log('📌 Evento recebido:', currentEvent); // TODO: TEMPORARIO - Debug
+                continue;
+              }
+
+              if (line.startsWith('data:')) {
+                try {
+                  const data = JSON.parse(line.substring(5).trim());
+                  console.log('📦 Data recebido:', currentEvent, data); // TODO: TEMPORARIO - Debug
+
+                  // TODO: TEMPORARIO - Processa eventos diferentes
+                  if (currentEvent === 'message' && data.text) {
+                    observer.next({ type: 'text', data: data.text });
+                  }
+
+                  if (currentEvent === 'result') {
+                    console.log('✅ Processando result:', data); // TODO: TEMPORARIO - Debug
+
+                    // TODO: TEMPORARIO - Valida com Zod
+                    const validated = CotacaoResponseSchema.safeParse(data);
+                    if (validated.success) {
+                      console.log('✅ Validação Zod passou!', validated.data);
+                      observer.next({ type: 'result', data: validated.data });
+                    } else {
+                      console.warn('⚠️ Validação Zod falhou:', validated.error);
+                      observer.next({ type: 'result', data }); // Envia mesmo assim
+                    }
+                  }
+
+                  if (data.error) {
+                    observer.error(new Error(data.error));
+                  }
+                } catch (e) {
+                  console.warn('⚠️ Erro ao parsear data:', line, e); // TODO: TEMPORARIO - Debug
+                }
+              }
+            }
+          }
+        })
+        .catch(error => {
+          if (!aborted) {
+            observer.error(error);
+          }
+        });
+
+      return () => {
+        aborted = true;
+      };
+    });
+  }
+
+  /**
+   * Atualiza o texto da última mensagem do assistente.
+   * TODO: TEMPORARIO
+   */
+  private updateLastAssistantMessageText(newText: string): void {
     this.messages.update((currentMessages) => {
       if (currentMessages.length === 0) return currentMessages;
 
       const updatedMessages: Turn[][] = [...currentMessages];
-
-      // Pega a última conversa
       const ultimaConversa = [...updatedMessages[updatedMessages.length - 1]];
 
       if (ultimaConversa.length === 0) return currentMessages;
 
-      // Pega o último turno dessa conversa
       const ultimoTurnoIndex = ultimaConversa.length - 1;
       const ultimoTurno: Turn = { ...ultimaConversa[ultimoTurnoIndex] };
 
-      // Atualiza a última resposta da IA com o novo texto
       const respostas = [...ultimoTurno.assistantMessages];
       if (respostas.length === 0) return currentMessages;
 
@@ -289,30 +496,35 @@ export class AiChatService {
   }
 
   /**
-   * Inicia uma nova conversa vazia.
-   * Útil quando o usuário quer começar um chat completamente novo.
+   * Atualiza os dados estruturados da última mensagem do assistente.
+   * TODO: TEMPORARIO
    */
-  startNewConversation(): void {
+  private updateLastAssistantMessageStructuredData(structuredData: any): void {
     this.messages.update((currentMessages) => {
+      if (currentMessages.length === 0) return currentMessages;
+
       const updatedMessages: Turn[][] = [...currentMessages];
-      updatedMessages.push([]);
+      const ultimaConversa = [...updatedMessages[updatedMessages.length - 1]];
+
+      if (ultimaConversa.length === 0) return currentMessages;
+
+      const ultimoTurnoIndex = ultimaConversa.length - 1;
+      const ultimoTurno: Turn = { ...ultimaConversa[ultimoTurnoIndex] };
+
+      const respostas = [...ultimoTurno.assistantMessages];
+      if (respostas.length === 0) return currentMessages;
+
+      const ultimaRespostaIndex = respostas.length - 1;
+      respostas[ultimaRespostaIndex] = {
+        ...respostas[ultimaRespostaIndex],
+        structuredData
+      };
+
+      ultimoTurno.assistantMessages = respostas;
+      ultimaConversa[ultimoTurnoIndex] = ultimoTurno;
+      updatedMessages[updatedMessages.length - 1] = ultimaConversa;
+
       return updatedMessages;
     });
-  }
-
-  /**
-   * Retorna a conversa ativa atual (a última conversa no array).
-   */
-  getCurrentConversation(): Turn[] {
-    const allConversations = this.messages();
-    if (allConversations.length === 0) return [];
-    return allConversations[allConversations.length - 1];
-  }
-
-  /**
-   * Retorna o número total de turnos na conversa ativa.
-   */
-  getTotalTurns(): number {
-    return this.getCurrentConversation().length;
   }
 }

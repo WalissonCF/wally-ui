@@ -141,6 +141,95 @@
       <div [innerHTML]="currentMessage | markdown"></div>
     </article>
 
+    <!-- TODO: TEMPORARIO - Renderiza dados estruturados como tabela -->
+    @if (currentStructuredData) {
+    <div class="mt-4 p-4 bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-700">
+      <!-- Informações do produto -->
+      <div class="mb-4">
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-white mb-2">
+          {{ currentStructuredData.produto.descricao }}
+        </h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400">
+          EAN: {{ currentStructuredData.produto.ean }}
+        </p>
+      </div>
+
+      <!-- Resumo -->
+      <div class="mb-4 p-3 bg-neutral-50 dark:bg-neutral-800 rounded">
+        <p class="text-sm text-neutral-700 dark:text-neutral-300">
+          <strong>Total de ofertas:</strong> {{ currentStructuredData.resumo.totalOfertas }} |
+          <strong>Melhor preço:</strong> R$ {{ currentStructuredData.resumo.melhorPreco.toFixed(2) }} |
+          <strong>Distribuidor:</strong> {{ currentStructuredData.resumo.distribuidorMelhorPreco }}
+        </p>
+      </div>
+
+      <!-- Tabela de ofertas -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left">
+          <thead class="text-xs uppercase bg-neutral-100 dark:bg-neutral-800">
+            <tr>
+              <th class="px-3 py-2">
+                <input type="checkbox" class="rounded border-neutral-300 dark:border-neutral-600">
+              </th>
+              <th class="px-3 py-2">Distribuidor</th>
+              <th class="px-3 py-2">Preço</th>
+              <th class="px-3 py-2">Estoque</th>
+              <th class="px-3 py-2">Desconto</th>
+              <th class="px-3 py-2">Prazo</th>
+              <th class="px-3 py-2">Mín</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (oferta of currentStructuredData.ofertas; track $index) {
+            <tr class="border-b border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+              <td class="px-3 py-2">
+                <input
+                  type="checkbox"
+                  [checked]="isOfertaSelected($index)"
+                  (change)="toggleOferta($index)"
+                  class="rounded border-neutral-300 dark:border-neutral-600 cursor-pointer">
+              </td>
+              <td class="px-3 py-2 font-medium text-neutral-900 dark:text-white">
+                {{ oferta.distribuidor }}
+              </td>
+              <td class="px-3 py-2 text-green-600 dark:text-green-400 font-semibold">
+                R$ {{ oferta.precoFinal.toFixed(2) }}
+              </td>
+              <td class="px-3 py-2">
+                <span class="px-2 py-1 text-xs rounded-full"
+                  [class.bg-green-100]="oferta.estoque === 'ALTO'"
+                  [class.text-green-800]="oferta.estoque === 'ALTO'"
+                  [class.dark:bg-green-900]="oferta.estoque === 'ALTO'"
+                  [class.dark:text-green-200]="oferta.estoque === 'ALTO'">
+                  {{ oferta.estoque }}
+                </span>
+              </td>
+              <td class="px-3 py-2 text-neutral-700 dark:text-neutral-300">
+                {{ oferta.desconto.toFixed(1) }}%
+              </td>
+              <td class="px-3 py-2 text-neutral-700 dark:text-neutral-300">
+                {{ oferta.prazoPagamento }} dias
+              </td>
+              <td class="px-3 py-2 text-neutral-700 dark:text-neutral-300">
+                R$ {{ oferta.valorMinimo }}
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Ações com ofertas selecionadas -->
+      @if (selectedOfertas().size > 0) {
+      <div class="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-200 dark:border-blue-800">
+        <p class="text-sm text-blue-700 dark:text-blue-300">
+          {{ selectedOfertas().size }} oferta(s) selecionada(s)
+        </p>
+      </div>
+      }
+    </div>
+    }
+
   </wally-selection-popover>
 
   <div class="w-full flex items-center sm:gap-1 mt-3">
