@@ -1,4 +1,4 @@
-import { MessageStatus } from "./message-status.type";
+import { MessageStatus } from "../../types/message-status.type";
 
 export interface BaseMessage {
   message: string;

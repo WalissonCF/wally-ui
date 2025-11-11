@@ -20,7 +20,7 @@ import { Tooltip } from '../../tooltip/tooltip';
 import { Button } from '../../button/button';
 
 import { AiChatService } from '../ai-chat.service';
-import { AITools } from '../types/ai-tools.interface';
+import { AITools } from '../models/ai-tools.interface';
 import { DEFAULT_AI_TOOLS } from '../constants';
 import { getToolIcon } from '../utils/ai-tool.utils';
 

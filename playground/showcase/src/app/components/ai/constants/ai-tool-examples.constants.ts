@@ -1,4 +1,4 @@
-import { AITools } from '../types/ai-tools.interface';
+import { AITools } from '../models/ai-tools.interface';
 
 /**
  * Example tool configurations

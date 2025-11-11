@@ -1,5 +1,5 @@
-import { AssistantMessage } from "./assistant-message.interface";
-import { UserMessage } from "./user-message.interface";
+import { AssistantMessage } from "../models/messages/assistant-message.interface";
+import { UserMessage } from "../models/messages/user-message.interface";
 
 export type Message = UserMessage | AssistantMessage;
 

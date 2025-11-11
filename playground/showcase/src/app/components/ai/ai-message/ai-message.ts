@@ -1,4 +1,4 @@
-import { Component, computed, input, InputSignal, OnInit, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
+import { Component, computed, input, InputSignal, OnInit, output, effect, signal, WritableSignal } from '@angular/core';
 import { JsonPipe } from '@angular/common';
 
 import { DropdownMenuContent } from '../../dropdown-menu/dropdown-menu-content/dropdown-menu-content';
@@ -11,7 +11,7 @@ import { Tooltip } from '../../tooltip/tooltip';
 import { Button } from '../../button/button';
 
 import { MessageStatus } from '../types/message-status.type';
-import { AITools } from '../types/ai-tools.interface';
+import { AITools } from '../models/ai-tools.interface';
 import { role } from '../types/role.type';
 
 import { MarkdownPipe } from '../../../pipes/markdown/markdown-pipe';
@@ -19,9 +19,9 @@ import { AiChatService } from '../ai-chat.service';
 import { copyToClipboard } from '../utils/clipboard.utils';
 import { AutoResizeTextarea } from '../../../directives/auto-resize-textarea';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EditMessageInterface } from '../types/edit-message.interface';
-import { isUserMessage, Message } from '../types/message.type';
+import { EditMessageInterface } from '../models/messages/edit-message.interface';
 import { CotacaoResponse, Oferta } from '../temp-cotacao-schema'; // TODO: TEMPORARIO
+import { isUserMessage, Message } from '../types/message.type';
 
 @Component({
   selector: 'wally-ai-message',
@@ -93,7 +93,22 @@ export class AiMessage implements OnInit {
 
   constructor(
     private aiChatService: AiChatService
-  ) { }
+  ) {
+    effect(() => {
+      const versions = this.messageVersions();
+      const currentIndex = this.displayedVersionIndex();
+
+      if (versions.length > 0 && currentIndex < versions.length - 1) {
+        // Verifica se a nova versão (última) está com status 'sending' ou 'streaming'
+        const lastVersion = versions[versions.length - 1];
+
+        if (lastVersion?.status === 'sending' || lastVersion?.status === 'streaming') {
+          // Nova versão sendo gerada, mostra ela automaticamente
+          this.displayedVersionIndex.set(versions.length - 1);
+        }
+      }
+    });
+  }
 
   ngOnInit(): void {
     // Inicializa com o índice passado como input
@@ -182,7 +197,7 @@ export class AiMessage implements OnInit {
 
     // if (newMessage.trim()) {
     //   this.messageEdited.emit(newMessage);
-      this.isEditing.set(false);
+    this.isEditing.set(false);
     // }
 
     console.log(this.messageVersions()[this.displayedVersionIndex()].message)
@@ -198,7 +213,8 @@ export class AiMessage implements OnInit {
         timeStamp: new Date()
       },
       conversationIndex: this.currentVersionIndex(),
-      turnoIndex: this.turnIndex()
+      turnoIndex: this.turnIndex(),
+      displayedVersionIndex: this.displayedVersionIndex()
     });
   }
 
@@ -231,9 +247,11 @@ export class AiMessage implements OnInit {
     const versions = this.messageVersions();
     const index = this.displayedVersionIndex();
 
-    // Se o índice for válido, retorna a mensagem daquela versão
-    // Senão, retorna o messageContent padrão (fallback)
-    return versions[index]?.message || this.messageContent();
+    // Verifica se existe a versão no índice
+    const version = versions[index];
+
+    // Se existir, retorna a mensagem (mesmo vazia), senão fallback
+    return version !== undefined ? version.message : this.messageContent();
   }
 
   /**

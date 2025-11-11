@@ -1,14 +1,15 @@
-import { afterNextRender, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { AiMessageList } from '../ai-message-list/ai-message-list';
 import { AiComposer } from '../ai-composer/ai-composer';
 import { AiMessage } from '../ai-message/ai-message';
 import { AiChatService } from '../ai-chat.service';
 
-import { AssistantMessage } from '../types/assistant-message.interface';
-import { EditMessageInterface } from '../types/edit-message.interface';
-import { isUserMessage, Message } from '../types/message.type';
-import { UserMessage } from '../types/user-message.interface';
+import { AssistantMessage } from '../models/messages/assistant-message.interface';
+import { EditMessageInterface } from '../models/messages/edit-message.interface';
+import { UserMessage } from '../models/messages/user-message.interface';
+
+import { isUserMessage } from '../types/message.type';
 
 @Component({
   selector: 'wally-ai-chat',
@@ -27,20 +28,7 @@ export class AiChat {
 
   constructor(
     public aiChatService: AiChatService
-  ) {
-    // afterNextRender(() => {
-    //   this.inicializarConversa();
-    // });
-  }
-
-  // onMessageSubmitted(message: string): void {
-  //   const userMessage: Message = {
-  //     message: message,
-  //     role: 'user'
-  //   };
-
-  //   this.aiChatService.addUserMessage(userMessage);
-  // }
+  ) { }
 
   onEditMessageSubmitted(editedMessage: EditMessageInterface): void {
     if (isUserMessage(editedMessage.message)) {
@@ -66,10 +54,18 @@ export class AiChat {
         editedMessage.conversationIndex,
         editedMessage.turnoIndex,
         {
-          message: 'Resposta da IA aqui',
+          message: '',
           role: 'assistant',
-          sourceUserMessageIndex: newUserMessageIndex // ← Link correto
+          status: 'sending',
+          timeStamp: new Date(),
+          sourceUserMessageIndex: newUserMessageIndex
         }
+      );
+
+      this.aiChatService.regenerateResponse(
+        editedMessage.conversationIndex,
+        editedMessage.turnoIndex,
+        editedMessage.message.message  // ← Mensagem editada do usuário
       );
     }
   }
@@ -90,12 +86,18 @@ export class AiChat {
       editedMessage.conversationIndex,
       editedMessage.turnoIndex,
       {
-        message: userMessage.message,
+        message: '',
         role: 'assistant',
         status: 'sending',
         timeStamp: new Date(),
         sourceUserMessageIndex: userMessageIndex
       }
+    );
+
+    this.aiChatService.regenerateResponse(
+      editedMessage.conversationIndex,
+      editedMessage.turnoIndex,
+      userMessage.message
     );
   }
 }

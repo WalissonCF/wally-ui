@@ -1,11 +1,13 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 
-import { Turn } from './types/turn.interface';
-import { BehaviorSubject, map, Observable } from 'rxjs';
-import { UserMessage } from './types/user-message.interface';
-import { Message } from './types/message.type';
-import { AssistantMessage } from './types/assistant-message.interface';
+import { Turn } from './models/messages/turn.interface';
+import { audit, auditTime, BehaviorSubject, filter, map, mergeMap, Observable, scan } from 'rxjs';
+import { UserMessage } from './models/messages/user-message.interface';
+import { AssistantMessage } from './models/messages/assistant-message.interface';
 import { CotacaoResponseSchema, type CotacaoResponse } from './temp-cotacao-schema'; // TODO: TEMPORARIO
+import { SSEEvent, SSERawData, SSERequestConfig } from './models/sse.types';
+import { error } from 'console';
+import { MessageStatus } from './types/message-status.type';
 
 @Injectable()
 export class AiChatService {
@@ -56,8 +58,7 @@ export class AiChatService {
     this._currentUserMessage$.next('');
     this.clearSelectedTextContext();
 
-    // Chama a API de streaming
-    this.callStreamingAPI(message);
+    this.streamAssistantResponse(userMessage);
   }
 
   getCurrentUserMessage(): string {
@@ -94,7 +95,6 @@ export class AiChatService {
         return [[novoTurno]];
       }
 
-      // -1 pois o lenght pode ser 3 porém o indice é 2 já que começa de 0
       const ultimaConversa: Turn[] = [...updatedMessages[updatedMessages.length - 1]];
       ultimaConversa.push(novoTurno);
       updatedMessages[updatedMessages.length - 1] = ultimaConversa;
@@ -189,149 +189,155 @@ export class AiChatService {
     });
   }
 
-  /**
-   * Retorna todas as mensagens do usuário de um turno específico.
-   * Útil para templates que precisam acessar as versões das mensagens.
-   */
-  // getUserMessages(conversationIndex: number, turnIndex: number): Message[] {
-  //     const conversation = this.messages()[conversationIndex];
-  //     if (!conversation) return [];
+  private updateLastAssistantMessageText(
+    assistantMessage: string,
+    conversationIndex?: number,
+    turnoIndex?: number
+  ): void {
+    this.messages.update((currentMessages) => {
+       if (currentMessages.length === 0) return currentMessages;
 
-  //     const turn = conversation[turnIndex];
-  //     return turn?.userMessages || [];
-  // }
+      const updatedMessages: Turn[][] = [...currentMessages];
 
-  /**
-   * Retorna todas as respostas da IA de um turno específico.
-   * Útil para templates que precisam acessar as versões das respostas.
-   */
-  // getAssistantMessages(conversationIndex: number, turnIndex: number): Message[] {
-  //     const conversation = this.messages()[conversationIndex];
-  //     if (!conversation) return [];
+      // Se não passar, usa última conversa
+      const convIdx = conversationIndex ?? updatedMessages.length - 1;
+      const conversation = [...updatedMessages[convIdx]];
 
-  //     const turn = conversation[turnIndex];
-  //     return turn?.assistantMessages || [];
-  // }
+      if (conversation.length === 0) return currentMessages;
 
-  // ---------------------------------------------------------------------------
-  // MÉTODOS DE STREAMING
-  // ---------------------------------------------------------------------------
+      // Se não passar, usa último turno
+      const turnIdx = turnoIndex ?? conversation.length - 1;
+      const turn: Turn = { ...conversation[turnIdx] };
 
-  /**
-   * Simula o streaming de uma resposta da IA, revelando o texto caractere por caractere.
-   * Este método cria uma experiência mais natural, como se a IA estivesse "digitando".
-   *
-   * @param fullMessage - O texto completo que será exibido gradualmente
-   * @param speedMs - Velocidade em milissegundos entre cada caractere (padrão: 20ms)
-   */
-  // streamAssistantMessage(fullMessage: string, userMessageIndex: number, speedMs: number = 20): void {
-  //   // Marca que o streaming começou (útil para mostrar indicadores visuais)
-  //   this.isStreaming.set(true);
+      const assistantMessages = [...turn.assistantMessages];
 
-  //   let currentText = '';
-  //   let currentIndex = 0;
+      if (assistantMessages.length === 0) return currentMessages;
 
-  //   // Adiciona uma mensagem vazia que será preenchida gradualmente
-  //   this.addAssistantMessage({ message: '', role: 'assistant', sourceUserMessageIndex: userMessageIndex });
+      // SEMPRE atualiza última versão da resposta
+      const lastMessageIndex = assistantMessages.length - 1;
 
-  //   // Cria um intervalo que adiciona um caractere por vez
-  //   const intervalId = setInterval(() => {
-  //     // Quando terminar de mostrar toda a mensagem, para o intervalo
-  //     if (currentIndex >= fullMessage.length) {
-  //       clearInterval(intervalId);
-  //       this.isStreaming.set(false);
-  //       return;
-  //     }
+      assistantMessages[lastMessageIndex] = {
+        ...assistantMessages[lastMessageIndex],
+        message: assistantMessage
+      };
 
-  //     // Adiciona o próximo caractere ao texto atual
-  //     currentText += fullMessage[currentIndex];
-  //     currentIndex++;
+      turn.assistantMessages = assistantMessages;
+      conversation[turnIdx] = turn;
+      updatedMessages[convIdx] = conversation;
 
-  //     // Atualiza a mensagem no Signal com o texto expandido
-  //     this.updateLastAssistantMessage(currentText);
-
-  //   }, speedMs);
-  // }
+      return updatedMessages;
+    });
+  }
 
   /**
-   * Atualiza o texto da última resposta da IA na conversa ativa.
-   * Este é um método auxiliar usado pelo streaming para ir construindo o texto gradualmente.
-   *
-   * @param newText - O texto atualizado a ser exibido
-   */
-  // private updateLastAssistantMessage(newText: string): void {
-  //   this.messages.update((currentMessages) => {
-  //     if (currentMessages.length === 0) return currentMessages;
+ * Adiciona dados estruturados (tool results) à última mensagem
+ * Exemplo: resultado da cotação, dados de produto, etc.
+ */
+  private updateLastAssistantMessageStructuredData(structuredData: any): void {
+    this.messages.update((currentMessages) => {
+      // === ETAPA 1 a 4: Mesma lógica do método anterior ===
+      if (currentMessages.length === 0) return currentMessages;
 
-  //     const updatedMessages: Turn[][] = [...currentMessages];
+      const updatedMessages: Turn[][] = [...currentMessages];
+      const lastConversationIndex = updatedMessages.length - 1;
+      const lastConversation = [...updatedMessages[lastConversationIndex]];
 
-  //     // Pega a última conversa
-  //     const ultimaConversa = [...updatedMessages[updatedMessages.length - 1]];
+      if (lastConversation.length === 0) return currentMessages;
 
-  //     if (ultimaConversa.length === 0) return currentMessages;
+      const lastTurnIndex = lastConversation.length - 1;
+      const lastTurn: Turn = { ...lastConversation[lastTurnIndex] };
 
-  //     // Pega o último turno dessa conversa
-  //     const ultimoTurnoIndex = ultimaConversa.length - 1;
-  //     const ultimoTurno: Turn = { ...ultimaConversa[ultimoTurnoIndex] };
+      const assistantMessages = [...lastTurn.assistantMessages];
 
-  //     // Atualiza a última resposta da IA com o novo texto
-  //     const respostas = [...ultimoTurno.assistantMessages];
-  //     if (respostas.length === 0) return currentMessages;
+      if (assistantMessages.length === 0) return currentMessages;
 
-  //     const ultimaRespostaIndex = respostas.length - 1;
-  //     respostas[ultimaRespostaIndex] = {
-  //       ...respostas[ultimaRespostaIndex],
-  //       message: newText
-  //     };
+      const lastMessageIndex = assistantMessages.length - 1;
 
-  //     ultimoTurno.assistantMessages = respostas;
-  //     ultimaConversa[ultimoTurnoIndex] = ultimoTurno;
-  //     updatedMessages[updatedMessages.length - 1] = ultimaConversa;
+      // === ETAPA 5: Adicionar dados estruturados ===
+      assistantMessages[lastMessageIndex] = {
+        ...assistantMessages[lastMessageIndex],
+        structuredData  // ← AQUI adiciona os dados da tool
+      };
 
-  //     return updatedMessages;
-  //   });
-  // }
+      // === ETAPA 6: Remontar estrutura ===
+      lastTurn.assistantMessages = assistantMessages;
+      lastConversation[lastTurnIndex] = lastTurn;
+      updatedMessages[lastConversationIndex] = lastConversation;
 
-  /**
-   * Inicia uma nova conversa vazia.
-   * Útil quando o usuário quer começar um chat completamente novo.
-   */
-  // startNewConversation(): void {
-  //   this.messages.update((currentMessages) => {
-  //     const updatedMessages: Turn[][] = [...currentMessages];
-  //     updatedMessages.push([]);
-  //     return updatedMessages;
-  //   });
-  // }
+      return updatedMessages;
+    });
+  }
 
   /**
-   * Retorna a conversa ativa atual (a última conversa no array).
-   */
-  // getCurrentConversation(): Turn[] {
-  //   const allConversations = this.messages();
-  //   if (allConversations.length === 0) return [];
-  //   return allConversations[allConversations.length - 1];
-  // }
+  * Atualiza o status da última mensagem do assistente
+  */
+  private updateLastAssistantMessageStatus(
+    newStatus: MessageStatus,
+    conversationIndex?: number,
+    turnoIndex?: number
+  ): void {
+    this.messages.update((currentMessages) => {
+      if (currentMessages.length === 0) return currentMessages;
+
+      const updatedMessages: Turn[][] = [...currentMessages];
+
+      // Se não passar conversationIndex, usa a última conversa
+      const convIdx = conversationIndex ?? updatedMessages.length - 1;
+      const conversation = [...updatedMessages[convIdx]];
+
+      if (conversation.length === 0) return currentMessages;
+
+      // Se não passar turnoIndex, usa o último turno
+      const turnIdx = turnoIndex ?? conversation.length - 1;
+      const turn: Turn = { ...conversation[turnIdx] };
+
+      const assistantMessages = [...turn.assistantMessages];
+
+      if (assistantMessages.length === 0) return currentMessages;
+
+      // Sempre atualiza a ÚLTIMA VERSÃO da resposta do assistente
+      const lastMessageIndex = assistantMessages.length - 1;
+
+      assistantMessages[lastMessageIndex] = {
+        ...assistantMessages[lastMessageIndex],
+        status: newStatus
+      };
+
+      turn.assistantMessages = assistantMessages;
+      conversation[turnIdx] = turn;
+      updatedMessages[convIdx] = conversation;
+
+      return updatedMessages;
+    });
+  }
 
   /**
-   * Retorna o número total de turnos na conversa ativa.
+   * Regenera resposta para uma mensagem específica
+   * A nova versão já deve ter sido adicionada antes de chamar este método
    */
-  // getTotalTurns(): number {
-  //   return this.getCurrentConversation().length;
-  // }
-
-  // ---------------------------------------------------------------------------
-  // MÉTODOS TEMPORÁRIOS PARA API STREAMING
-  // ---------------------------------------------------------------------------
-
-  /**
-   * Chama a API de streaming e processa os eventos SSE usando RxJS.
-   * TODO: TEMPORARIO
-   */
-  private callStreamingAPI(message: string): void {
+  public regenerateResponse(
+    conversationIndex: number,
+    turnoIndex: number,
+    userMessage: string
+  ): void {
     this.isStreaming.set(true);
 
-    // Adiciona mensagem do assistente vazia
+    const config: SSERequestConfig = {
+      url: 'http://localhost:3000/api/chat/stream',
+      body: { mensagem: userMessage }
+    };
+
+    const stream$ = this.createSSEObservable(config);
+
+    this.handleSSEStream(stream$, conversationIndex, turnoIndex);
+  }
+
+  // ------------------------------- MELHORADO ------------------------
+  private streamAssistantResponse(userMessage: UserMessage): void {
+    // 1. Marcar que está streamando
+    this.isStreaming.set(true);
+
+    // 2. Criando mensagem vazia do assistente para loading
     const assistantMessage: AssistantMessage = {
       message: '',
       role: 'assistant',
@@ -340,191 +346,206 @@ export class AiChatService {
     };
     this.addAssistantMessage(assistantMessage);
 
-    // Cria Observable para processar o SSE stream do POST
-    const streamObservable = this.createSSEObservable('http://localhost:3000/api/chat/stream', {
-      mensagem: message
-    });
+    const config: SSERequestConfig = {
+      url: 'http://localhost:3000/api/chat/stream',
+      body: { mensagem: userMessage.message + ' ' + userMessage.selectedContext }
+    };
 
-    // TODO: TEMPORARIO - Subscreve e vai acumulando o texto ou processando dados estruturados
-    let accumulatedText = '';
-    streamObservable.subscribe({
-      next: (event) => {
-        if (event.type === 'text') {
-          accumulatedText += event.data;
-          this.updateLastAssistantMessageText(accumulatedText);
-        } else if (event.type === 'result') {
-          // Adiciona dados estruturados à mensagem
-          this.updateLastAssistantMessageStructuredData(event.data);
-        }
-      },
-      error: (error) => {
-        console.error('❌ Erro ao chamar API:', error);
-        this.isStreaming.set(false);
-      },
-      complete: () => {
-        console.log('✅ Stream finalizado');
-        this.isStreaming.set(false);
-      }
-    });
+    // 4. Criar stream
+    const stream$: Observable<SSEEvent> = this.createSSEObservable(config);
+
+    this.handleSSEStream(stream$);
   }
 
   /**
-   * Cria um Observable que faz POST e processa SSE stream usando RxJS.
-   * TODO: TEMPORARIO
+   * Processa stream SSE
+   * Se não passar índices, atualiza última mensagem (novo envio)
+   * Se passar índices, atualiza mensagem específica (regenerate)
    */
-  private createSSEObservable(url: string, body: any): Observable<{ type: 'text' | 'result', data: any }> {
-    return new Observable<{ type: 'text' | 'result', data: any }>(observer => {
-      let aborted = false;
-      let currentEvent = '';
+  private handleSSEStream(
+    stream$: Observable<SSEEvent>,
+    conversationIndex?: number,
+    turnoIndex?: number
+  ): void {
+    let accumulatedText: string = '';
 
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body)
-      })
-        .then(async response => {
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    let hasReceivedData = false;
+
+    stream$
+      .subscribe({
+        next: (event: SSEEvent) => {
+          if (!hasReceivedData) {
+            this.updateLastAssistantMessageStatus('streaming', conversationIndex, turnoIndex);
+            hasReceivedData = true;
           }
 
-          if (!response.body) {
-            throw new Error('Response body is null');
-          }
-
-          const reader = response.body.getReader();
-          const decoder = new TextDecoder();
-          let buffer = '';
-
-          while (!aborted) {
-            const { done, value } = await reader.read();
-
-            if (done) {
-              observer.complete();
+          switch (event.type) {
+            case 'text':
+              accumulatedText += event.text;
+              this.updateLastAssistantMessageText(accumulatedText);
               break;
-            }
 
-            buffer += decoder.decode(value, { stream: true });
-            const lines = buffer.split('\n');
-            buffer = lines.pop() || '';
+            case 'tool_call':
+              console.log(`🔧 Tool chamada: ${event.name}`, event.args);
+              // TODO: Feedback visual futuro
+              break;
 
-            for (const line of lines) {
-              if (line.startsWith('event:')) {
-                currentEvent = line.substring(6).trim();
-                console.log('📌 Evento recebido:', currentEvent); // TODO: TEMPORARIO - Debug
-                continue;
-              }
+            case 'tool_result':
+              this.updateLastAssistantMessageStructuredData(event.result);
+              break;
 
-              if (line.startsWith('data:')) {
-                try {
-                  const data = JSON.parse(line.substring(5).trim());
-                  console.log('📦 Data recebido:', currentEvent, data); // TODO: TEMPORARIO - Debug
-
-                  // TODO: TEMPORARIO - Processa eventos diferentes
-                  if (currentEvent === 'message' && data.text) {
-                    observer.next({ type: 'text', data: data.text });
-                  }
-
-                  if (currentEvent === 'result') {
-                    console.log('✅ Processando result:', data); // TODO: TEMPORARIO - Debug
-
-                    // TODO: TEMPORARIO - Valida com Zod
-                    const validated = CotacaoResponseSchema.safeParse(data);
-                    if (validated.success) {
-                      console.log('✅ Validação Zod passou!', validated.data);
-                      observer.next({ type: 'result', data: validated.data });
-                    } else {
-                      console.warn('⚠️ Validação Zod falhou:', validated.error);
-                      observer.next({ type: 'result', data }); // Envia mesmo assim
-                    }
-                  }
-
-                  if (data.error) {
-                    observer.error(new Error(data.error));
-                  }
-                } catch (e) {
-                  console.warn('⚠️ Erro ao parsear data:', line, e); // TODO: TEMPORARIO - Debug
-                }
-              }
-            }
+            case 'error':
+              console.error('❌ Erro SSE:', event.error);
+              // TODO: Atualizar status da mensagem
+              break;
           }
-        })
-        .catch(error => {
-          if (!aborted) {
-            observer.error(error);
+        },
+        error: (error) => {
+          console.error('❌ Erro no stream:', error);
+          this.isStreaming.set(false);
+        },
+        complete: () => {
+          console.log('✅ Stream finalizado');
+          if (accumulatedText) {
+            this.updateLastAssistantMessageText(accumulatedText, conversationIndex, turnoIndex);
           }
-        });
+          this.updateLastAssistantMessageStatus('sent', conversationIndex, turnoIndex);
+          this.isStreaming.set(false);
+        }
+      });
+  }
 
+  /**
+  * Cria Observable que consome SSE stream via POST
+  */
+  private createSSEObservable(config: SSERequestConfig): Observable<SSEEvent> {
+    return new Observable<SSEEvent>(observer => {
+      // Flag para cancelamento
+      let cancelled = false;
+
+      // Processa o stream (async)
+      this.processSSEStream(config, observer, () => cancelled)
+        .catch(error => observer.error(error));
+
+      // Cleanup
       return () => {
-        aborted = true;
+        cancelled = true;
       };
     });
   }
 
-  /**
-   * Atualiza o texto da última mensagem do assistente.
-   * TODO: TEMPORARIO
-   */
-  private updateLastAssistantMessageText(newText: string): void {
-    this.messages.update((currentMessages) => {
-      if (currentMessages.length === 0) return currentMessages;
-
-      const updatedMessages: Turn[][] = [...currentMessages];
-      const ultimaConversa = [...updatedMessages[updatedMessages.length - 1]];
-
-      if (ultimaConversa.length === 0) return currentMessages;
-
-      const ultimoTurnoIndex = ultimaConversa.length - 1;
-      const ultimoTurno: Turn = { ...ultimaConversa[ultimoTurnoIndex] };
-
-      const respostas = [...ultimoTurno.assistantMessages];
-      if (respostas.length === 0) return currentMessages;
-
-      const ultimaRespostaIndex = respostas.length - 1;
-      respostas[ultimaRespostaIndex] = {
-        ...respostas[ultimaRespostaIndex],
-        message: newText
-      };
-
-      ultimoTurno.assistantMessages = respostas;
-      ultimaConversa[ultimoTurnoIndex] = ultimoTurno;
-      updatedMessages[updatedMessages.length - 1] = ultimaConversa;
-
-      return updatedMessages;
+  private async processSSEStream(
+    config: SSERequestConfig,
+    observer: { next: (e: SSEEvent) => void; complete: () => void },
+    isCancelled: () => boolean
+  ): Promise<void> {
+    // 1. Fazer request
+    const response = await fetch(config.url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...config.headers },
+      body: JSON.stringify(config.body)
     });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+
+    if (!response.body) {
+      throw new Error('Response body é null');
+    }
+
+    // 2. Setup stream reader
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+
+    let buffer = '';
+    let currentEvent = '';
+
+    // 3. Ler chunks
+    while (!isCancelled()) {
+      const { done, value } = await reader.read();
+
+      if (done) break;
+
+      // 4. Decodificar e acumular
+      buffer += decoder.decode(value, { stream: true });
+
+      // 5. Processar linhas completas
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+
+      for (const line of lines) {
+        if (line.trim() === '') continue;
+
+        // 6. Parsear linha SSE
+        const parsed = this.parseSSELine(line);
+        if (!parsed) continue;
+
+        // 7. Atualizar evento atual
+        if (parsed.type === 'event') {
+          currentEvent = parsed.content;
+          continue;
+        }
+
+        // 8. Processar data
+        if (parsed.type === 'data') {
+          try {
+            const rawData: SSERawData = JSON.parse(parsed.content);
+            const event = this.transformToSSEEvent(currentEvent, rawData);
+
+            if (event) {
+              observer.next(event);
+            }
+          } catch (error) {
+            console.warn('⚠️ Erro ao parsear data:', error);
+          }
+        }
+      }
+    }
+
+    observer.complete();
   }
 
   /**
-   * Atualiza os dados estruturados da última mensagem do assistente.
-   * TODO: TEMPORARIO
+   * Parseia linha SSE (event: ou data:)
    */
-  private updateLastAssistantMessageStructuredData(structuredData: any): void {
-    this.messages.update((currentMessages) => {
-      if (currentMessages.length === 0) return currentMessages;
+  private parseSSELine(line: string): { type: 'event' | 'data'; content: string } |
+    null {
+    if (line.startsWith('event:')) {
+      return { type: 'event', content: line.substring(6).trim() };
+    }
 
-      const updatedMessages: Turn[][] = [...currentMessages];
-      const ultimaConversa = [...updatedMessages[updatedMessages.length - 1]];
+    if (line.startsWith('data:')) {
+      return { type: 'data', content: line.substring(5).trim() };
+    }
 
-      if (ultimaConversa.length === 0) return currentMessages;
+    return null;
+  }
 
-      const ultimoTurnoIndex = ultimaConversa.length - 1;
-      const ultimoTurno: Turn = { ...ultimaConversa[ultimoTurnoIndex] };
+  /**
+  * Transforma dados brutos em evento tipado
+  */
+  private transformToSSEEvent(eventType: string, rawData: SSERawData): SSEEvent | null {
+    // Evento de texto
+    if (eventType === 'message' && rawData.text) {
+      return { type: 'text', text: rawData.text };
+    }
 
-      const respostas = [...ultimoTurno.assistantMessages];
-      if (respostas.length === 0) return currentMessages;
+    // Tool call
+    if (rawData.type === 'tool_call' && rawData.name && rawData.args) {
+      return { type: 'tool_call', name: rawData.name, args: rawData.args };
+    }
 
-      const ultimaRespostaIndex = respostas.length - 1;
-      respostas[ultimaRespostaIndex] = {
-        ...respostas[ultimaRespostaIndex],
-        structuredData
-      };
+    // Tool result
+    if (rawData.type === 'tool_result' && rawData.result !== undefined) {
+      return { type: 'tool_result', result: rawData.result };
+    }
 
-      ultimoTurno.assistantMessages = respostas;
-      ultimaConversa[ultimoTurnoIndex] = ultimoTurno;
-      updatedMessages[updatedMessages.length - 1] = ultimaConversa;
+    // Error
+    if (rawData.type === 'error' && rawData.error) {
+      return { type: 'error', error: rawData.error };
+    }
 
-      return updatedMessages;
-    });
+    return null;
   }
 }
