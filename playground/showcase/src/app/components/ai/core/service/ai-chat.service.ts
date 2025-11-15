@@ -2,20 +2,16 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
-import { AssistantMessage } from './models/messages/assistant-message.interface';
-import { SSEEvent, SSERawData, SSERequestConfig } from './models/sse.types';
-import { UserMessage } from './models/messages/user-message.interface';
-import { Turn } from './models/messages/turn.interface';
+import { AssistantMessage } from '../models/messages/assistant-message.interface';
+import { SSEEvent, SSERawData, SSERequestConfig } from '../models/sse.types';
+import { UserMessage } from '../models/messages/user-message.interface';
+import { Turn } from '../models/messages/turn.interface';
 
-import { MessageStatus } from './types/message-status.type';
-import { StructuredToolData } from './types/tool-result.type';
+import { StructuredToolData } from '../types/tool-result.type';
+import { MassegeHistory } from '../types/masse-history.type';
+import { MessageStatus } from '../types/message-status.type';
 
-import { TOOL_SCHEMAS, ToolName } from './constants';
-
-type ChatTurn = {
-  role: 'user' | 'model';
-  parts: Array<{ text: string }>;
-};
+import { TOOL_SCHEMAS, ToolName } from '../../constants';
 
 @Injectable()
 export class AiChatService {
@@ -450,7 +446,6 @@ export class AiChatService {
     return new Observable<SSEEvent>(observer => {
       // Flag para cancelamento
       let cancelled = false;
-      let currentToolName: ToolName | null = null;
 
       // Processa o stream (async)
       this.processSSEStream(config, observer, () => cancelled).catch(error => observer.error(error));
@@ -625,13 +620,13 @@ export class AiChatService {
     return null;
   }
 
-  private formatHistoryForApi(): ChatTurn[] {
+  private formatHistoryForApi(): MassegeHistory[] {
     const allConversations = this.messages();
 
     // Assumimos que a primeira conversa é a ativa
     const activeConversation = allConversations.length > 0 ? allConversations[0] : [];
 
-    const apiTurns: ChatTurn[] = [];
+    const apiTurns: MassegeHistory[] = [];
 
     for (const turn of activeConversation) {
 

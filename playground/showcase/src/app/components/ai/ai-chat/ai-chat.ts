@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 import { AiMessageList } from '../ai-message-list/ai-message-list';
 import { AiComposer } from '../ai-composer/ai-composer';
 import { AiMessage } from '../ai-message/ai-message';
-import { AiChatService } from '../ai-chat.service';
+import { AiChatService } from '../core/service/ai-chat.service';
 
-import { AssistantMessage } from '../models/messages/assistant-message.interface';
-import { EditMessageInterface } from '../models/messages/edit-message.interface';
-import { UserMessage } from '../models/messages/user-message.interface';
+import { AssistantMessage } from '../core/models/messages/assistant-message.interface';
+import { EditMessageInterface } from '../core/models/messages/edit-message.interface';
+import { UserMessage } from '../core/models/messages/user-message.interface';
 
-import { isUserMessage } from '../types/message.type';
+import { isUserMessage } from '../core/types/message.type';
 
 @Component({
   selector: 'wally-ai-chat',

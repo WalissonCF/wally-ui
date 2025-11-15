@@ -1,4 +1,4 @@
-import { ToolName } from "../constants";
+import { ToolName } from "../../constants";
 
 import { CotacaoToolResultInferred } from "../schemas/tools/quote";
 import { OffersToolResult } from "../schemas/tools/offers";

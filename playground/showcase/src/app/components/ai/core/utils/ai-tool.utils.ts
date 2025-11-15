@@ -1,4 +1,4 @@
-import { AI_TOOL_ICONS } from '../constants';
+import { AI_TOOL_ICONS } from '../../constants';
 
 /**
  * Utility functions for AI tools

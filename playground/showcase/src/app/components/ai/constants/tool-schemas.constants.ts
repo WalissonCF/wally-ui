@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { CotacaoToolResultSchema } from '../schemas/tools/quote';
-import { OffersToolResultSchema } from '../schemas/tools/offers';
+import { CotacaoToolResultSchema } from '../core/schemas/tools/quote';
+import { OffersToolResultSchema } from '../core/schemas/tools/offers';
 
 // Mapa que associa nome da tool ao seu schema
 export const TOOL_SCHEMAS = {

@@ -1,4 +1,5 @@
 import { Component, computed, input, InputSignal, OnInit, output, effect, signal, WritableSignal } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 
 import { DropdownMenuContent } from '../../dropdown-menu/dropdown-menu-content/dropdown-menu-content';
@@ -6,23 +7,25 @@ import { DropdownMenuTrigger } from '../../dropdown-menu/dropdown-menu-trigger/d
 import { DropdownMenuItem } from '../../dropdown-menu/dropdown-menu-item/dropdown-menu-item';
 import { DropdownMenuGroup } from '../../dropdown-menu/dropdown-menu-group/dropdown-menu-group';
 import { SelectionPopover } from '../../selection-popover/selection-popover';
+import { MarkdownPipe } from '../../../pipes/markdown/markdown-pipe';
 import { DropdownMenu } from '../../dropdown-menu/dropdown-menu';
 import { Tooltip } from '../../tooltip/tooltip';
 import { Button } from '../../button/button';
 
-import { MessageStatus } from '../types/message-status.type';
-import { AITools } from '../models/ai-tools.interface';
-import { role } from '../types/role.type';
+import { isUserMessage, isAssistantMessage, Message } from '../core/types/message.type';
+import { MessageStatus } from '../core/types/message-status.type';
+import { role } from '../core/types/role.type';
 
-import { MarkdownPipe } from '../../../pipes/markdown/markdown-pipe';
-import { AiChatService } from '../ai-chat.service';
-import { copyToClipboard } from '../utils/clipboard.utils';
+import { AITools } from '../core/models/ai-tools.interface';
+
+import { EditMessageInterface } from '../core/models/messages/edit-message.interface';
+
+import { AiChatService } from '../core/service/ai-chat.service';
+
+import { isOffersResult, isQuoteResult } from '../core/utils/tool-type-guards.utils';
+import { copyToClipboard } from '../core/utils/clipboard.utils';
+
 import { AutoResizeTextarea } from '../../../directives/auto-resize-textarea';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EditMessageInterface } from '../models/messages/edit-message.interface';
-import { CotacaoResponse, Oferta } from '../temp-cotacao-schema'; // TODO: TEMPORARIO
-import { isUserMessage, isAssistantMessage, Message } from '../types/message.type';
-import { isOffersResult, isQuoteResult } from '../utils/tool-type-guards.utils';
 
 @Component({
   selector: 'wally-ai-message',
@@ -180,24 +183,6 @@ export class AiMessage implements OnInit {
 
   onAskAbout(text: string): void {
     this.aiChatService.setSelectedTextContext(text);
-    // console.log('3 dimension array: ', this.messages);
-
-    // for (let i = 0; i < this.messages.length; i ++) {
-    //   console.log('i', this.messages[i]);
-
-    //   for (let j = 0; j < this.messages[i].length; j++) {
-    //     console.log('j', this.messages[i][j]);
-
-    //     for (let k = 0; k < this.messages[i][j].length; k++) {
-    //       console.log('k', this.messages[i][j][k]);
-    //     }
-    //   }
-    // }
-
-    // console.log('📝 Texto selecionado:', text);
-    // console.log('📏 Tamanho do texto:', text.length);
-    // Aqui você pode emitir um evento para o componente pai (ai-chat)
-    // ou chamar um serviço para adicionar a pergunta ao chat
   }
 
   startEditing(): void {
@@ -230,13 +215,7 @@ export class AiMessage implements OnInit {
       this.displayedVersionIndex.set(this.messageVersions().length - 1);
     }, 0);
 
-    // if (newMessage.trim()) {
-    //   this.messageEdited.emit(newMessage);
     this.isEditing.set(false);
-    // }
-
-    console.log(this.messageVersions()[this.displayedVersionIndex()].message)
-    console.log('currentVersionIndex', this.currentVersionIndex(), 'displayedVersionIndex', this.displayedVersionIndex());
   }
 
   regenerate(): void {
