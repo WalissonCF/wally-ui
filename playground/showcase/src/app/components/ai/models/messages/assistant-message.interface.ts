@@ -1,8 +1,9 @@
 import { BaseMessage } from "./base-message.interface";
-import { CotacaoResponse } from "../../temp-cotacao-schema"; // TODO: TEMPORARIO
+
+import { StructuredToolData } from "../../types/tool-result.type";
 
 export interface AssistantMessage extends BaseMessage {
   role: "assistant";
   sourceUserMessageIndex?: number;
-  structuredData?: CotacaoResponse;
+  structuredData?: StructuredToolData;
 }

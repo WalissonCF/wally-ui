@@ -1,3 +1,14 @@
-import { ToolName, ToolResultRegistry } from "../models/tools";
+import { ToolName } from "../constants";
 
-export type ToolResult<T extends ToolName = ToolName> = ToolResultRegistry[T];
+import { CotacaoToolResultInferred } from "../schemas/tools/quote";
+import { OffersToolResult } from "../schemas/tools/offers";
+
+export type AnyToolResult =
+  | CotacaoToolResultInferred
+  | OffersToolResult;
+
+// Estrutura que armazena resultado + metadados
+export interface StructuredToolData {
+  toolName: ToolName;
+  data: AnyToolResult;
+}

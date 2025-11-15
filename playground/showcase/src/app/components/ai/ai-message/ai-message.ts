@@ -21,7 +21,8 @@ import { AutoResizeTextarea } from '../../../directives/auto-resize-textarea';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EditMessageInterface } from '../models/messages/edit-message.interface';
 import { CotacaoResponse, Oferta } from '../temp-cotacao-schema'; // TODO: TEMPORARIO
-import { isUserMessage, Message } from '../types/message.type';
+import { isUserMessage, isAssistantMessage, Message } from '../types/message.type';
+import { isOffersResult, isQuoteResult } from '../utils/tool-type-guards.utils';
 
 @Component({
   selector: 'wally-ai-message',
@@ -87,6 +88,40 @@ export class AiMessage implements OnInit {
 
     return status === 'error';
   });
+
+  currentVersion = computed(() => {
+    const versions = this.messageVersions();
+    const index = this.displayedVersionIndex();
+    return versions[index];
+  });
+
+  currentStructuredData = computed(() => {
+    const currentVersion = this.currentVersion();
+
+    if (!currentVersion || !isAssistantMessage(currentVersion)) {
+      return undefined;
+    }
+
+    return currentVersion.structuredData;
+  });
+
+  hasToolResult = computed(() => {
+    return this.currentStructuredData() !== undefined;
+  });
+
+  // Computed específicos para cada tipo de tool (type-safe)
+  offersData = computed(() => {
+    const data = this.currentStructuredData();
+    return isOffersResult(data) ? data.data.data : undefined;
+  });
+
+  quoteData = computed(() => {
+    const data = this.currentStructuredData();
+    return isQuoteResult(data) ? data.data : undefined;
+  });
+
+  protected readonly isQuoteResult = isQuoteResult;
+  protected readonly isOffersResult = isOffersResult;
 
   tools: AITools[] = [];
   selectedTools: AITools[] = [];
@@ -252,40 +287,6 @@ export class AiMessage implements OnInit {
 
     // Se existir, retorna a mensagem (mesmo vazia), senão fallback
     return version !== undefined ? version.message : this.messageContent();
-  }
-
-  /**
-   * Retorna os dados estruturados da mensagem atual (se existir).
-   * TODO: TEMPORARIO
-   */
-  get currentStructuredData(): CotacaoResponse | null {
-    const versions = this.messageVersions();
-    const index = this.displayedVersionIndex();
-
-    // Verifica se a mensagem tem structuredData
-    const message = versions[index];
-    return message && 'structuredData' in message ? (message as any).structuredData : null;
-  }
-
-  // TODO: TEMPORARIO - State para checkboxes das ofertas
-  selectedOfertas = signal<Set<number>>(new Set());
-
-  // TODO: TEMPORARIO - Toggle checkbox
-  toggleOferta(index: number): void {
-    this.selectedOfertas.update(selected => {
-      const newSet = new Set(selected);
-      if (newSet.has(index)) {
-        newSet.delete(index);
-      } else {
-        newSet.add(index);
-      }
-      return newSet;
-    });
-  }
-
-  // TODO: TEMPORARIO - Verifica se está selecionado
-  isOfertaSelected(index: number): boolean {
-    return this.selectedOfertas().has(index);
   }
 
   /**

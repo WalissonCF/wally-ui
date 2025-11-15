@@ -1,13 +1,21 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 
-import { Turn } from './models/messages/turn.interface';
-import { audit, auditTime, BehaviorSubject, filter, map, mergeMap, Observable, scan } from 'rxjs';
-import { UserMessage } from './models/messages/user-message.interface';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+
 import { AssistantMessage } from './models/messages/assistant-message.interface';
-import { CotacaoResponseSchema, type CotacaoResponse } from './temp-cotacao-schema'; // TODO: TEMPORARIO
 import { SSEEvent, SSERawData, SSERequestConfig } from './models/sse.types';
-import { error } from 'console';
+import { UserMessage } from './models/messages/user-message.interface';
+import { Turn } from './models/messages/turn.interface';
+
 import { MessageStatus } from './types/message-status.type';
+import { StructuredToolData } from './types/tool-result.type';
+
+import { TOOL_SCHEMAS, ToolName } from './constants';
+
+type ChatTurn = {
+  role: 'user' | 'model';
+  parts: Array<{ text: string }>;
+};
 
 @Injectable()
 export class AiChatService {
@@ -195,7 +203,7 @@ export class AiChatService {
     turnoIndex?: number
   ): void {
     this.messages.update((currentMessages) => {
-       if (currentMessages.length === 0) return currentMessages;
+      if (currentMessages.length === 0) return currentMessages;
 
       const updatedMessages: Turn[][] = [...currentMessages];
 
@@ -233,7 +241,7 @@ export class AiChatService {
  * Adiciona dados estruturados (tool results) à última mensagem
  * Exemplo: resultado da cotação, dados de produto, etc.
  */
-  private updateLastAssistantMessageStructuredData(structuredData: any): void {
+  private updateLastAssistantMessageStructuredData(structuredData: StructuredToolData): void {
     this.messages.update((currentMessages) => {
       // === ETAPA 1 a 4: Mesma lógica do método anterior ===
       if (currentMessages.length === 0) return currentMessages;
@@ -322,9 +330,12 @@ export class AiChatService {
   ): void {
     this.isStreaming.set(true);
 
+    const fullConversationHistory = this.formatHistoryForApi()
+
     const config: SSERequestConfig = {
       url: 'http://localhost:3000/api/chat/stream',
-      body: { mensagem: userMessage }
+      // body: { mensagem: userMessage }
+      body: { conversation: fullConversationHistory }
     };
 
     const stream$ = this.createSSEObservable(config);
@@ -346,9 +357,12 @@ export class AiChatService {
     };
     this.addAssistantMessage(assistantMessage);
 
+    const fullConversationHistory = this.formatHistoryForApi();
+
     const config: SSERequestConfig = {
       url: 'http://localhost:3000/api/chat/stream',
-      body: { mensagem: userMessage.message + ' ' + userMessage.selectedContext }
+      // body: { mensagem: [userMessage.message, userMessage.selectedContext].filter(Boolean).join(' ') }
+      body: { conversation: fullConversationHistory }
     };
 
     // 4. Criar stream
@@ -368,19 +382,23 @@ export class AiChatService {
     turnoIndex?: number
   ): void {
     let accumulatedText: string = '';
-
     let hasReceivedData = false;
+    let hasError = false; // ← ADICIONAR FLAG DE ERRO
 
     stream$
       .subscribe({
         next: (event: SSEEvent) => {
+          console.log('🔵 Evento recebido:', event);
+
           if (!hasReceivedData) {
+            console.log('🔵 Primeira vez recebendo dados, marcando como streaming');
             this.updateLastAssistantMessageStatus('streaming', conversationIndex, turnoIndex);
             hasReceivedData = true;
           }
 
           switch (event.type) {
             case 'text':
+              console.log('📝 Texto recebido:', event.text);
               accumulatedText += event.text;
               this.updateLastAssistantMessageText(accumulatedText);
               break;
@@ -391,25 +409,35 @@ export class AiChatService {
               break;
 
             case 'tool_result':
-              this.updateLastAssistantMessageStructuredData(event.result);
+              console.log('📊 Tool result recebido:', event.result);
+              this.updateLastAssistantMessageStructuredData(event.result as StructuredToolData);
               break;
 
             case 'error':
-              console.error('❌ Erro SSE:', event.error);
-              // TODO: Atualizar status da mensagem
+              console.error('❌ Erro SSE recebido:', event.error);
+              console.log('🔴 Atualizando status para error');
+              hasError = true; // ← MARCAR QUE DEU ERRO
+              this.updateLastAssistantMessageStatus('error', conversationIndex, turnoIndex);
+              console.log('🔴 Status atualizado');
               break;
           }
         },
         error: (error) => {
           console.error('❌ Erro no stream:', error);
+          this.updateLastAssistantMessageStatus('error', conversationIndex, turnoIndex);
           this.isStreaming.set(false);
         },
         complete: () => {
           console.log('✅ Stream finalizado');
-          if (accumulatedText) {
-            this.updateLastAssistantMessageText(accumulatedText, conversationIndex, turnoIndex);
+
+          // Só marca como 'sent' se NÃO teve erro
+          if (!hasError) {
+            if (accumulatedText) {
+              this.updateLastAssistantMessageText(accumulatedText, conversationIndex, turnoIndex);
+            }
+            this.updateLastAssistantMessageStatus('sent', conversationIndex, turnoIndex);
           }
-          this.updateLastAssistantMessageStatus('sent', conversationIndex, turnoIndex);
+
           this.isStreaming.set(false);
         }
       });
@@ -422,10 +450,10 @@ export class AiChatService {
     return new Observable<SSEEvent>(observer => {
       // Flag para cancelamento
       let cancelled = false;
+      let currentToolName: ToolName | null = null;
 
       // Processa o stream (async)
-      this.processSSEStream(config, observer, () => cancelled)
-        .catch(error => observer.error(error));
+      this.processSSEStream(config, observer, () => cancelled).catch(error => observer.error(error));
 
       // Cleanup
       return () => {
@@ -460,6 +488,7 @@ export class AiChatService {
 
     let buffer = '';
     let currentEvent = '';
+    const currentToolNameRef = { value: null as ToolName | null };
 
     // 3. Ler chunks
     while (!isCancelled()) {
@@ -491,7 +520,7 @@ export class AiChatService {
         if (parsed.type === 'data') {
           try {
             const rawData: SSERawData = JSON.parse(parsed.content);
-            const event = this.transformToSSEEvent(currentEvent, rawData);
+            const event = this.transformToSSEEvent(currentEvent, rawData, currentToolNameRef);
 
             if (event) {
               observer.next(event);
@@ -525,27 +554,119 @@ export class AiChatService {
   /**
   * Transforma dados brutos em evento tipado
   */
-  private transformToSSEEvent(eventType: string, rawData: SSERawData): SSEEvent | null {
+  private transformToSSEEvent(
+    eventType: string,
+    rawData: SSERawData,
+    currentToolNameRef: { value: ToolName | null }
+  ): SSEEvent | null {
+    console.log('🔍 transformToSSEEvent chamado:', { eventType, rawData });
+
     // Evento de texto
     if (eventType === 'message' && rawData.text) {
       return { type: 'text', text: rawData.text };
     }
 
-    // Tool call
-    if (rawData.type === 'tool_call' && rawData.name && rawData.args) {
+    // Tool call - pode vir de duas formas:
+    // 1. event: tool_call + data: { name: "...", args: {...} }
+    // 2. data: { type: 'tool_call', name: "...", args: {...} }
+    if (eventType === 'tool_call' && rawData.name && rawData.args !== undefined) {
+      currentToolNameRef.value = rawData.name as ToolName;
+      console.log(`🔧 Tool detectada: ${rawData.name}`);
+      return { type: 'tool_call', name: rawData.name, args: rawData.args };
+    }
+
+    if (rawData.type === 'tool_call' && rawData.name && rawData.args !== undefined) {
+      currentToolNameRef.value = rawData.name as ToolName;
+      console.log(`🔧 Tool detectada: ${rawData.name}`);
       return { type: 'tool_call', name: rawData.name, args: rawData.args };
     }
 
     // Tool result
-    if (rawData.type === 'tool_result' && rawData.result !== undefined) {
-      return { type: 'tool_result', result: rawData.result };
+    if (eventType === 'result') {
+      const toolName = currentToolNameRef.value;
+
+      if (toolName && TOOL_SCHEMAS[toolName]) {
+        const schema = TOOL_SCHEMAS[toolName];
+        const validation = schema.safeParse(rawData);
+
+        if (validation.success) {
+          console.log(`✅ Tool result validado: ${toolName}`);
+
+          const structuredData: StructuredToolData = {
+            toolName,
+            data: validation.data
+          };
+
+          currentToolNameRef.value = null; // Reset
+
+          return { type: 'tool_result', result: structuredData };
+        } else {
+          console.error(`❌ Validação falhou para ${toolName}:`, validation.error);
+          currentToolNameRef.value = null;
+        }
+      } else {
+        console.warn('⚠️ Tool result sem tool_call anterior ou schema não encontrado');
+      }
+
+      return null;
     }
 
-    // Error
+    // Error - pode vir de duas formas:
+    // 1. event: error + data: { error: "..." }
+    // 2. data: { type: 'error', error: "..." }
+    if (eventType === 'error' && rawData.error) {
+      return { type: 'error', error: rawData.error };
+    }
+
     if (rawData.type === 'error' && rawData.error) {
       return { type: 'error', error: rawData.error };
     }
 
     return null;
+  }
+
+  private formatHistoryForApi(): ChatTurn[] {
+    const allConversations = this.messages();
+
+    // Assumimos que a primeira conversa é a ativa
+    const activeConversation = allConversations.length > 0 ? allConversations[0] : [];
+
+    const apiTurns: ChatTurn[] = [];
+
+    for (const turn of activeConversation) {
+
+      // 1. Extrair a ÚLTIMA versão da mensagem do usuário
+      const latestUserMessage = turn.userMessages[turn.userMessages.length - 1];
+
+      if (latestUserMessage) {
+        // Incluir contexto (se houver) na mensagem do usuário que será enviada
+        const fullUserText = [latestUserMessage.message, latestUserMessage.selectedContext]
+          .filter((part): part is string => !!part)
+          .join(' ');
+
+        apiTurns.push({
+          role: 'user',
+          parts: [{ text: fullUserText }]
+        });
+      }
+
+      // 2. Extrair a ÚLTIMA versão da resposta do modelo
+      const latestAssistantMessage = turn.assistantMessages[turn.assistantMessages.length - 1];
+
+      // Incluímos a resposta do modelo SOMENTE se ela estiver COMPLETA ('sent').
+      // Isso exclui placeholders e respostas em stream.
+      if (latestAssistantMessage &&
+        latestAssistantMessage.message &&
+        latestAssistantMessage.status === 'sent') {
+
+        apiTurns.push({
+          role: 'model',
+          parts: [{ text: latestAssistantMessage.message }]
+        });
+      }
+    }
+
+    // O array apiTurns agora contém o histórico completo, pronto para ser enviado.
+    return apiTurns;
   }
 }
