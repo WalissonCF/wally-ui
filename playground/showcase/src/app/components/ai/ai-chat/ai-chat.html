@@ -1,28 +1,82 @@
 <div class="mb-16">
   <wally-ai-message-list>
+    <!--
+      Outer loop: Iterate through all conversations
+      @param conversation - Array of turns in this conversation
+      @param conversationIndex - Unique index for conversation tracking
+    -->
     @for (conversation of aiChatService.messages(); track conversationIndex; let conversationIndex = $index) {
+      <!--
+        Inner loop: Iterate through all turns in current conversation
+        @param turn - Single turn containing user and assistant message arrays
+        @param turnIndex - Index for turn tracking and message association
 
-    @for (turn of conversation; track turnIndex; let turnIndex = $index) {
+        Turn Structure:
+        {
+          userMessages: UserMessage[],      // All versions of user message
+          assistantMessages: AssistantMessage[]  // All versions of assistant response
+        }
+      -->
+      @for (turn of conversation; track turnIndex; let turnIndex = $index) {
+        <!--
+          User Message Component
 
-    <!-- Mensagem do usuário -->
-    @if (turn.userMessages.length > 0) {
-    <wally-ai-message [inputRole]="'user'" [turnIndex]="turnIndex" [messageContent]="turn.userMessages[0].message"
-      [messageVersions]="turn.userMessages" [currentVersionIndex]="0" (editedMessage)="onEditMessageSubmitted($event)">
-    </wally-ai-message>
-    }
+          Only renders if turn has at least one user message.
+          Always displays first version ([0]) by default.
 
-    <!-- Resposta da IA -->
-    @if (turn.assistantMessages.length > 0) {
-    <wally-ai-message [inputRole]="'assistant'" [turnIndex]="turnIndex" [messageContent]="turn.assistantMessages[0].message"
-      [messageVersions]="turn.assistantMessages" [currentVersionIndex]="0" (regenerateMessage)="onMessageRegenerated($event)">
-    </wally-ai-message>
-    }
+          @input inputRole - Message role identifier ('user')
+          @input turnIndex - Turn position for tracking
+          @input messageContent - Text content to display
+          @input messageVersions - All versions for version navigation
+          @input currentVersionIndex - Which version to display (0 = first)
+          @output editedMessage - Emits when user edits message, triggers new AI response
+        -->
+        @if (turn.userMessages.length > 0) {
+          <wally-ai-message [inputRole]="'user'" [turnIndex]="turnIndex" [messageContent]="turn.userMessages[0].message"
+            [messageVersions]="turn.userMessages" [currentVersionIndex]="0" (editedMessage)="onEditMessageSubmitted($event)">
+          </wally-ai-message>
+        }
 
-    }
+        <!--
+          Assistant Message Component
+
+          Only renders if turn has at least one assistant response.
+          Always displays first version ([0]) by default.
+
+          @input inputRole - Message role identifier ('assistant')
+          @input turnIndex - Turn position for tracking
+          @input messageContent - AI response text to display
+          @input messageVersions - All versions for version navigation
+          @input currentVersionIndex - Which version to display (0 = first)
+          @output regenerateMessage - Emits when user requests new AI response
+        -->
+        @if (turn.assistantMessages.length > 0) {
+          <wally-ai-message [inputRole]="'assistant'" [turnIndex]="turnIndex"
+            [messageContent]="turn.assistantMessages[0].message" [messageVersions]="turn.assistantMessages"
+            [currentVersionIndex]="0" (regenerateMessage)="onMessageRegenerated($event)">
+          </wally-ai-message>
+        }
+      }
     }
   </wally-ai-message-list>
 </div>
 
+<!--
+  Message Composer (Input Area)
+
+  Fixed at bottom of chat interface.
+  Styled with wally-ui design system:
+    - Glassmorphism effect (bg-white/50)
+    - Dark mode support
+    - Rounded corners (rounded-4xl)
+    - Shadow and border
+
+  Contains:
+    - Text input area (ai-prompt-input)
+    - Voice recording button
+    - Audio transcription (when recording)
+    - Tool selection dropdown
+-->
 <div
   class="w-full border bg-white/50 border-neutral-300 dark:bg-[#1b1b1b] dark:border-neutral-700 shadow-lg rounded-4xl p-1">
   <div class="w-full">
