@@ -1,5 +1,7 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 
+import { SpeechRecognitionService } from './speech-recognition.service';
+
 @Injectable()
 export class AudioWaveformService {
   isRecording: WritableSignal<boolean> = signal<boolean>(false);
@@ -8,6 +10,17 @@ export class AudioWaveformService {
   // Recorded audio signals
   recordedAudioBlob: WritableSignal<Blob | null> = signal<Blob | null>(null);
   recordedAudioUrl: WritableSignal<string | null> = signal<string | null>(null);
+
+  // Transcription signals (exposed from SpeechRecognitionService)
+  get transcribedText() {
+    return this.speechRecognitionService.transcribedText;
+  }
+  get isTranscribing() {
+    return this.speechRecognitionService.isTranscribing;
+  }
+  get transcriptionError() {
+    return this.speechRecognitionService.error;
+  }
 
   // Audio API references
   private audioContext: AudioContext | null = null;
@@ -30,7 +43,9 @@ export class AudioWaveformService {
   private mediaRecorder: MediaRecorder | null = null;
   private audioChunks: Blob[] = [];
 
-  async startRecording(): Promise<void> {
+  constructor(private speechRecognitionService: SpeechRecognitionService) {}
+
+  async startRecording(enableTranscription: boolean = false, language: string = 'pt-BR'): Promise<void> {
     try {
       // Request microphone access
       this.stream = await navigator.mediaDevices.getUserMedia({
@@ -73,6 +88,11 @@ export class AudioWaveformService {
 
       this.mediaRecorder.start();
 
+      // Start transcription if enabled
+      if (enableTranscription) {
+        this.speechRecognitionService.start(language);
+      }
+
       // Start animation loop
       this.isRecording.set(true);
       this.updateWaveForm();
@@ -91,6 +111,11 @@ export class AudioWaveformService {
 
     if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
       this.mediaRecorder.stop();
+    }
+
+    // Stop transcription
+    if (this.speechRecognitionService.isTranscribing()) {
+      this.speechRecognitionService.stop();
     }
 
     // Disconnect audio nodes
@@ -138,6 +163,16 @@ export class AudioWaveformService {
     this.recordedAudioBlob.set(null);
     this.recordedAudioUrl.set(null);
     this.audioChunks = [];
+
+    // Reset transcription
+    this.speechRecognitionService.reset();
+  }
+
+  /**
+   * Get full transcribed text (final + interim)
+   */
+  getFullTranscribedText(): string {
+    return this.speechRecognitionService.getFullText();
   }
 
   private updateWaveForm(): void {

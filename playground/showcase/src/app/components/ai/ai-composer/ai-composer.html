@@ -42,10 +42,40 @@
     <wally-ai-prompt-input></wally-ai-prompt-input>
   </div>
 
+  <!-- Transcription Badge -->
+  @if (isTranscribing()) {
+  <div class="w-full px-4 pb-2 transition-all duration-300 ease-in-out animate-in fade-in slide-in-from-top-2">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5
+                bg-white/90 dark:bg-neutral-900/90
+                backdrop-blur-md shadow-lg
+                border border-neutral-200/50 dark:border-neutral-700/50
+                rounded-full transition-all duration-300">
+      <!-- Waveform animation (3 bars) -->
+      <div class="flex items-center gap-0.5 h-3.5">
+        <span class="w-[2px] bg-blue-500 rounded-full animate-pulse"
+              style="height: 55%; animation-duration: 0.8s; animation-delay: 0ms;"></span>
+        <span class="w-[1.5px] bg-blue-500 rounded-full animate-pulse"
+              style="height: 72%; animation-duration: 0.8s; animation-delay: 150ms;"></span>
+        <span class="w-[2px] bg-blue-500 rounded-full animate-pulse"
+              style="height: 55%; animation-duration: 0.8s; animation-delay: 300ms;"></span>
+      </div>
+      <span class="text-xs font-medium text-neutral-700 dark:text-neutral-300">
+        Listening...
+      </span>
+    </div>
+  </div>
+  }
+
   <div class="w-full transition-all duration-700 ease-in-out overflow-hidden" [class.opacity-0]="!isStartRecoding()"
     [class.opacity-100]="isStartRecoding()" [class.scale-95]="!isStartRecoding()" [class.scale-100]="isStartRecoding()"
     [class.max-h-0]="!isStartRecoding()" [class.max-h-32]="isStartRecoding()">
-    <wally-audio-waveform [isStartRecording]="isStartRecoding()" [isStopRecording]="isStopRecoding()">
+    <wally-audio-waveform
+      [isStartRecording]="isStartRecoding()"
+      [isStopRecording]="isStopRecoding()"
+      [enableTranscription]="true"
+      [transcriptionLanguage]="'pt-BR'"
+      (transcriptionText)="onTranscriptionUpdate($event)"
+      (transcriptionStateChange)="onTranscriptionStateChange($event)">
     </wally-audio-waveform>
   </div>
 

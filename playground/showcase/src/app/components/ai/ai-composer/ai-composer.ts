@@ -53,6 +53,7 @@ export class AiComposer implements OnInit {
 
   isStartRecoding: WritableSignal<boolean> = signal<boolean>(false);
   isStopRecoding: WritableSignal<boolean> = signal<boolean>(true);
+  isTranscribing: WritableSignal<boolean> = signal<boolean>(false);
 
   enabledTools: WritableSignal<AITools[]> = signal<AITools[]>(
     DEFAULT_AI_TOOLS.map(tool => ({
@@ -132,6 +133,22 @@ export class AiComposer implements OnInit {
 
   clearTextSelected(): void {
     this.aiChatService.clearSelectedTextContext();
+  }
+
+  /**
+   * Handler para transcrição em tempo real
+   * @param text - Texto transcrito do áudio
+   */
+  onTranscriptionUpdate(text: string): void {
+    this.aiChatService.updateCurrentUserMessage(text);
+  }
+
+  /**
+   * Handler para mudança de estado da transcrição
+   * @param isTranscribing - Se está transcrevendo ou não
+   */
+  onTranscriptionStateChange(isTranscribing: boolean): void {
+    this.isTranscribing.set(isTranscribing);
   }
 
   private detectAndActivateTool(message: string): void {
