@@ -3,7 +3,7 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { debounceTime, distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 
-import { AiChatService } from '../core/service/ai-chat.service';
+import { AiChatService } from '../lib/service/ai-chat.service';
 
 @Component({
   selector: 'wally-ai-prompt-input',

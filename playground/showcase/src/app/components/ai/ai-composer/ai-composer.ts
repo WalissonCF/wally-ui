@@ -19,10 +19,10 @@ import { DropdownMenu } from '../../dropdown-menu/dropdown-menu';
 import { Tooltip } from '../../tooltip/tooltip';
 import { Button } from '../../button/button';
 
-import { AiChatService } from '../core/service/ai-chat.service';
-import { AITools } from '../core/models/ai-tools.interface';
-import { DEFAULT_AI_TOOLS } from '../core/constants';
-import { getToolIcon } from '../core/utils/ai-tool.utils';
+import { AiChatService } from '../lib/service/ai-chat.service';
+import { AITools } from '../lib/models/ai-tools.interface';
+import { DEFAULT_AI_TOOLS } from '../lib/constants';
+import { getToolIcon } from '../lib/utils/ai-tool.utils';
 
 @Component({
   selector: 'wally-ai-composer',

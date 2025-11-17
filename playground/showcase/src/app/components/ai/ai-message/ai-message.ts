@@ -12,18 +12,18 @@ import { DropdownMenu } from '../../dropdown-menu/dropdown-menu';
 import { Tooltip } from '../../tooltip/tooltip';
 import { Button } from '../../button/button';
 
-import { isUserMessage, isAssistantMessage, Message } from '../core/types/message.type';
-import { MessageStatus } from '../core/types/message-status.type';
-import { role } from '../core/types/role.type';
+import { isUserMessage, isAssistantMessage, Message } from '../lib/types/message.type';
+import { MessageStatus } from '../lib/types/message-status.type';
+import { role } from '../lib/types/role.type';
 
-import { AITools } from '../core/models/ai-tools.interface';
+import { AITools } from '../lib/models/ai-tools.interface';
 
-import { EditMessageInterface } from '../core/models/messages/edit-message.interface';
+import { EditMessageInterface } from '../lib/models/messages/edit-message.interface';
 
-import { AiChatService } from '../core/service/ai-chat.service';
+import { AiChatService } from '../lib/service/ai-chat.service';
 
-import { isOffersResult, isQuoteResult } from '../core/utils/tool-type-guards.utils';
-import { copyToClipboard } from '../core/utils/clipboard.utils';
+import { isOffersResult, isQuoteResult } from '../lib/utils/tool-type-guards.utils';
+import { copyToClipboard } from '../lib/utils/clipboard.utils';
 
 import { AutoResizeTextarea } from '../../../directives/auto-resize-textarea';
 
