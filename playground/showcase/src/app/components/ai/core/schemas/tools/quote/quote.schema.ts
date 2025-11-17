@@ -1,4 +1,4 @@
-import z from "zod";
+import { z } from "zod";
 
 export const ProdutoSchema = z.object({
   ean: z.string().length(13, 'EAN deve ter 13 dígitos'),

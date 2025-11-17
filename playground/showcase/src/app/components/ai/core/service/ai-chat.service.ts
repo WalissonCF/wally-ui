@@ -3,15 +3,15 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
 import { AssistantMessage } from '../models/messages/assistant-message.interface';
-import { SSEEvent, SSERawData, SSERequestConfig } from '../models/sse.types';
+import { SSEEvent, SSERawData, SSERequestConfig } from '../models/sse/sse-event.interface';
 import { UserMessage } from '../models/messages/user-message.interface';
 import { Turn } from '../models/messages/turn.interface';
 
 import { StructuredToolData } from '../types/tool-result.type';
-import { MassegeHistory } from '../types/masse-history.type';
+import { MessageHistory } from '../types/message-history.type';
 import { MessageStatus } from '../types/message-status.type';
 
-import { TOOL_SCHEMAS, ToolName } from '../../constants';
+import { TOOL_SCHEMAS, ToolName } from '../constants';
 
 @Injectable()
 export class AiChatService {
@@ -620,13 +620,13 @@ export class AiChatService {
     return null;
   }
 
-  private formatHistoryForApi(): MassegeHistory[] {
+  private formatHistoryForApi(): MessageHistory[] {
     const allConversations = this.messages();
 
     // Assumimos que a primeira conversa é a ativa
     const activeConversation = allConversations.length > 0 ? allConversations[0] : [];
 
-    const apiTurns: MassegeHistory[] = [];
+    const apiTurns: MessageHistory[] = [];
 
     for (const turn of activeConversation) {
 

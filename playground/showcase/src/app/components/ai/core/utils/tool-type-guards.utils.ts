@@ -1,6 +1,7 @@
 
-import { OffersToolResult } from '../schemas/tools/offers';
 import { CotacaoToolResultInferred } from '../schemas/tools/quote';
+import { OffersToolResult } from '../schemas/tools/offers';
+
 import type { StructuredToolData } from '../types/tool-result.type';
 
 /**

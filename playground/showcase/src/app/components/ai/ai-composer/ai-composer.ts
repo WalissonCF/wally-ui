@@ -21,7 +21,7 @@ import { Button } from '../../button/button';
 
 import { AiChatService } from '../core/service/ai-chat.service';
 import { AITools } from '../core/models/ai-tools.interface';
-import { DEFAULT_AI_TOOLS } from '../constants';
+import { DEFAULT_AI_TOOLS } from '../core/constants';
 import { getToolIcon } from '../core/utils/ai-tool.utils';
 
 @Component({

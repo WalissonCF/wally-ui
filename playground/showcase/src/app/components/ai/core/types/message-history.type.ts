@@ -1,4 +1,4 @@
-export type MassegeHistory = {
+export type MessageHistory = {
   role: 'user' | 'model';
   parts: Array<{ text: string }>;
 };
