@@ -1,28 +1,24 @@
 <div class="w-full flex flex-col" role="region" aria-label="AI message composer">
-  <!-- Selected Text Context -->
   @if (textSelected()) {
   <div class="p-0.5">
     <div id="selected-context"
       class="w-full max-h-36 overflow-auto flex items-start gap-4 justify-between border bg-neutral-100 border-neutral-300 dark:bg-[#121212] dark:border-neutral-700 rounded-t-3xl rounded-b-lg px-3 py-4"
       role="status" aria-live="polite">
-      <!-- Ícone Esquerda -->
       <div class="flex items-center shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-[#0a0a0a] dark:text-white" fill="currentColor" stroke="currentColor"
-          stroke-width="2" viewBox="0 0 256 256">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-[#0a0a0a] dark:text-white" fill="currentColor"
+          stroke="currentColor" stroke-width="2" viewBox="0 0 256 256">
           <path
             d="M229.66,157.66l-48,48a8,8,0,0,1-11.32-11.32L204.69,160H128A104.11,104.11,0,0,1,24,56a8,8,0,0,1,16,0,88.1,88.1,0,0,0,88,88h76.69l-34.35-34.34a8,8,0,0,1,11.32-11.32l48,48A8,8,0,0,1,229.66,157.66Z">
           </path>
         </svg>
       </div>
 
-      <!-- Texto Central -->
       <div class="flex-1 flex items-center">
         <p class="text-sm text-[#0a0a0a] dark:text-white line-clamp-2" id="context-label">
           "{{ textSelected() }}"
         </p>
       </div>
 
-      <!-- Botão Direita -->
       <div class="flex items-center h-5">
         <wally-button (buttonClick)="clearTextSelected()" [variant]="'ghost'" [rounded]="true"
           [ariaLabel]="'Clear selected context'">
@@ -42,7 +38,6 @@
     <wally-ai-prompt-input></wally-ai-prompt-input>
   </div>
 
-  <!-- Transcription Badge -->
   @if (isTranscribing()) {
   <div class="w-full px-4 pb-2 transition-all duration-300 ease-in-out animate-in fade-in slide-in-from-top-2">
     <div class="inline-flex items-center gap-2 px-3 py-1.5
@@ -50,15 +45,16 @@
                 backdrop-blur-md shadow-lg
                 border border-neutral-200/50 dark:border-neutral-700/50
                 rounded-full transition-all duration-300">
-      <!-- Waveform animation (3 bars) -->
+
       <div class="flex items-center gap-0.5 h-3.5">
         <span class="w-[1.5px] bg-blue-500 rounded-full animate-pulse"
-              style="height: 55%; animation-duration: 0.8s; animation-delay: 0ms;"></span>
+          style="height: 55%; animation-duration: 0.8s; animation-delay: 0ms;"></span>
         <span class="w-[1.5px] bg-blue-500 rounded-full animate-pulse"
-              style="height: 72%; animation-duration: 0.8s; animation-delay: 150ms;"></span>
+          style="height: 72%; animation-duration: 0.8s; animation-delay: 150ms;"></span>
         <span class="w-[1.5px] bg-blue-500 rounded-full animate-pulse"
-              style="height: 55%; animation-duration: 0.8s; animation-delay: 300ms;"></span>
+          style="height: 55%; animation-duration: 0.8s; animation-delay: 300ms;"></span>
       </div>
+
       <span class="text-xs font-medium text-neutral-700 dark:text-neutral-300">
         Listening...
       </span>
@@ -69,17 +65,12 @@
   <div class="w-full transition-all duration-700 ease-in-out overflow-hidden" [class.opacity-0]="!isStartRecoding()"
     [class.opacity-100]="isStartRecoding()" [class.scale-95]="!isStartRecoding()" [class.scale-100]="isStartRecoding()"
     [class.max-h-0]="!isStartRecoding()" [class.max-h-32]="isStartRecoding()">
-    <wally-audio-waveform
-      [isStartRecording]="isStartRecoding()"
-      [isStopRecording]="isStopRecoding()"
-      [enableTranscription]="true"
-      [transcriptionLanguage]="'pt-BR'"
-      (transcriptionText)="onTranscriptionUpdate($event)"
+    <wally-audio-waveform [isStartRecording]="isStartRecoding()" [isStopRecording]="isStopRecoding()"
+      [enableTranscription]="true" [transcriptionLanguage]="'pt-BR'" (transcriptionText)="onTranscriptionUpdate($event)"
       (transcriptionStateChange)="onTranscriptionStateChange($event)">
     </wally-audio-waveform>
   </div>
 
-  <!-- Action Buttons -->
   <div class="w-full flex items-center justify-between p-1" role="toolbar" aria-label="Composer actions">
     <div class="w-full flex items-center gap-1">
       <div class="size-10">
@@ -96,7 +87,6 @@
           </wally-dropdown-menu-trigger>
 
           <wally-dropdown-menu-content [position]="'top'">
-            <!-- Grupo 1: Configurações da conta -->
             <wally-dropdown-menu-group [ariaLabel]="'Account settings'">
               <wally-dropdown-menu-item (click)="onItemClick()">
                 <div class="flex items-center gap-3">
@@ -126,7 +116,6 @@
                 </div>
               </wally-dropdown-menu-item>
 
-              <!-- Submenu -->
               <wally-dropdown-menu-sub>
                 <wally-dropdown-menu-sub-trigger>
                   <div class="flex items-center gap-3">
@@ -169,31 +158,18 @@
                       </span>
                     </div>
                   </wally-dropdown-menu-item>
-                  <!-- <wally-dropdown-menu-item (click)="onItemClick()">
-                                        Privacidade
-                                    </wally-dropdown-menu-item> -->
                 </wally-dropdown-menu-sub-content>
               </wally-dropdown-menu-sub>
             </wally-dropdown-menu-group>
-
-            <!-- <wally-dropdown-menu-separator></wally-dropdown-menu-separator> -->
-
-            <!-- Item individual -->
-            <!-- <wally-dropdown-menu-item (click)="onItemClick()">
-                            Sair
-                        </wally-dropdown-menu-item> -->
           </wally-dropdown-menu-content>
-
         </wally-dropdown-menu>
       </div>
 
-      <!-- Tools Dinâmicas -->
       @for (tool of enabledTools(); track tool.id) {
       @if (tool.enabled) {
       <div>
         <wally-button variant="ghost" [rounded]="true" (buttonClick)="tool.onClick()">
           <div class="group flex items-center gap-2">
-            <!-- Ícone de Remover (hover) -->
             <div class="max-w-0 group-hover:max-w-6 overflow-hidden transition-all duration-300 ease-in-out">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor"
@@ -203,10 +179,8 @@
               </svg>
             </div>
 
-            <!-- Ícone da Tool -->
             <div [innerHTML]="getToolIcon(tool.icon)"></div>
 
-            <!-- Nome da Tool -->
             <span class="text-base font-semibold">{{ tool.name }}</span>
           </div>
         </wally-button>

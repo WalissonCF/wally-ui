@@ -129,9 +129,8 @@
   }
 
   <wally-selection-popover (textSelected)="onAskAbout($event)">
-    <!-- Ações customizadas do popover -->
     <div popoverActions class="flex gap-2">
-      <wally-button variant="ghost" (buttonClick)="askChat()">
+      <wally-button variant="ghost">
         <div class="flex items-center gap-2">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
             class="icon">
@@ -200,7 +199,7 @@
         Cotação de Produto
       </h3>
       <p class="text-neutral-600 dark:text-neutral-400">TODO: Adicionar tabela de cotação aqui</p>
-      <pre class="text-xs mt-2">{{ quote | json }}</pre>
+      <!-- <pre class="text-xs mt-2">{{ quote | json }}</pre> -->
     </div>
     }
 

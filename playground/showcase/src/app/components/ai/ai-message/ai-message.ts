@@ -1,6 +1,5 @@
 import { Component, computed, input, InputSignal, OnInit, output, effect, signal, WritableSignal } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
 
 import { DropdownMenuContent } from '../../dropdown-menu/dropdown-menu-content/dropdown-menu-content';
 import { DropdownMenuTrigger } from '../../dropdown-menu/dropdown-menu-trigger/dropdown-menu-trigger';
@@ -13,19 +12,14 @@ import { Tooltip } from '../../tooltip/tooltip';
 import { Button } from '../../button/button';
 
 import { isUserMessage, isAssistantMessage, Message } from '../lib/types/message.type';
-import { MessageStatus } from '../lib/types/message-status.type';
-import { role } from '../lib/types/role.type';
-
-import { AITools } from '../lib/models/ai-tools.interface';
-
 import { EditMessageInterface } from '../lib/models/messages/edit-message.interface';
-
-import { AiChatService } from '../lib/service/ai-chat.service';
-
 import { isOffersResult, isQuoteResult } from '../lib/utils/tool-type-guards.utils';
-import { copyToClipboard } from '../lib/utils/clipboard.utils';
-
 import { AutoResizeTextarea } from '../../../directives/auto-resize-textarea';
+import { MessageStatus } from '../lib/types/message-status.type';
+import { AiChatService } from '../lib/service/ai-chat.service';
+import { copyToClipboard } from '../lib/utils/clipboard.utils';
+import { AITools } from '../lib/models/ai-tools.interface';
+import { role } from '../lib/types/role.type';
 
 @Component({
   selector: 'wally-ai-message',
@@ -41,54 +35,66 @@ import { AutoResizeTextarea } from '../../../directives/auto-resize-textarea';
     MarkdownPipe,
     AutoResizeTextarea,
     ReactiveFormsModule,
-    JsonPipe // TODO: TEMPORARIO
   ],
   templateUrl: './ai-message.html',
   styleUrl: './ai-message.css'
 })
 export class AiMessage implements OnInit {
+  /**
+   * The content of the message to display.
+   * @required
+   */
   messageContent: InputSignal<string> = input.required<string>();
+
+  /**
+   * The index of this message turn in the conversation.
+   * Used for tracking position in the chat history.
+   * @required
+   */
   turnIndex: InputSignal<number> = input.required<number>();
+
+  /**
+   * The role of the message sender ('user' or 'assistant').
+   * @required
+   */
   inputRole: InputSignal<role> = input.required<role>();
 
-  // Array com todas as versões desta mensagem (para navegação entre versões)
+  /**
+   * Array containing all versions of this message.
+   * Each time a message is regenerated, a new version is added.
+   */
   messageVersions: InputSignal<Message[]> = input<Message[]>([]);
-
-  // Índice da versão atual sendo exibida (para o controle 1/2, 2/2)
   currentVersionIndex: InputSignal<number> = input<number>(0);
 
-  // Signal interno que controla qual versão está sendo mostrada
-  // Este é o estado que muda quando o usuário clica nas setas
+  /**
+   * Internal signal controlling which version is displayed.
+   * Changes when user navigates with arrows.
+   */
   displayedVersionIndex: WritableSignal<number> = signal<number>(0);
 
   copiedRole: WritableSignal<role | null> = signal<role | null>(null);
   isEditing = signal<boolean>(false);
   editedMessageControl = new FormControl('', {
     nonNullable: true,
-    validators: [
-      Validators.minLength(1)
-    ]
+    validators: [Validators.minLength(1)]
   });
-  editedMessage = output<EditMessageInterface>();
 
+  editedMessage = output<EditMessageInterface>();
   regenerateMessage = output<EditMessageInterface>();
 
   currentMessageStatus = computed(() => {
     const index: number = this.displayedVersionIndex();
     const versions: Message[] = this.messageVersions();
-
     return versions[index]?.status ?? 'sent';
   });
 
   isLoading = computed(() => {
     const status: MessageStatus = this.currentMessageStatus();
-
     return status === 'sending' || status === 'streaming';
   });
 
   hasError = computed(() => {
     const status: MessageStatus = this.currentMessageStatus();
-
     return status === 'error';
   });
 
@@ -98,6 +104,12 @@ export class AiMessage implements OnInit {
     return versions[index];
   });
 
+  /**
+   * Extracts structured data from the current assistant message.
+   * Returns undefined if the message is from user or has no structured data.
+   *
+   * @returns Structured data object containing quotes, offers, etc., or undefined
+   */
   currentStructuredData = computed(() => {
     const currentVersion = this.currentVersion();
 
@@ -112,12 +124,23 @@ export class AiMessage implements OnInit {
     return this.currentStructuredData() !== undefined;
   });
 
-  // Computed específicos para cada tipo de tool (type-safe)
+  /**
+   * Type-safe extraction of offers data from structured data.
+   * Uses type guard to ensure data is OffersResult before accessing nested properties.
+   *
+   * @returns Offers array or undefined if data is not an OffersResult
+   */
   offersData = computed(() => {
     const data = this.currentStructuredData();
     return isOffersResult(data) ? data.data.data : undefined;
   });
 
+  /**
+   * Type-safe extraction of quote data from structured data.
+   * Uses type guard to ensure data is QuoteResult before accessing properties.
+   *
+   * @returns Quote object or undefined if data is not a QuoteResult
+   */
   quoteData = computed(() => {
     const data = this.currentStructuredData();
     return isQuoteResult(data) ? data.data : undefined;
@@ -132,16 +155,25 @@ export class AiMessage implements OnInit {
   constructor(
     private aiChatService: AiChatService
   ) {
+    /**
+     * Effect that automatically switches to new versions when they start streaming.
+     *
+     * Logic:
+     * 1. Watches messageVersions and displayedVersionIndex for changes
+     * 2. If user is viewing an old version (not the last one)
+     * 3. And a new version starts generating (status 'sending' or 'streaming')
+     * 4. Automatically jump to the new version to show real-time streaming
+     *
+     * This ensures users see new regenerated responses as they stream in.
+     */
     effect(() => {
       const versions = this.messageVersions();
       const currentIndex = this.displayedVersionIndex();
 
       if (versions.length > 0 && currentIndex < versions.length - 1) {
-        // Verifica se a nova versão (última) está com status 'sending' ou 'streaming'
         const lastVersion = versions[versions.length - 1];
 
         if (lastVersion?.status === 'sending' || lastVersion?.status === 'streaming') {
-          // Nova versão sendo gerada, mostra ela automaticamente
           this.displayedVersionIndex.set(versions.length - 1);
         }
       }
@@ -149,17 +181,19 @@ export class AiMessage implements OnInit {
   }
 
   ngOnInit(): void {
-    // Inicializa com o índice passado como input
     this.displayedVersionIndex.set(this.currentVersionIndex());
   }
 
   /**
-   * Navega para a próxima versão da mensagem.
-   * Quando chega na última versão, volta para a primeira (comportamento circular).
+   * Navigates to the next message version with circular navigation.
+   * When reaching the last version, wraps back to the first.
+   *
+   * @example
+   * versions = [v1, v2, v3], current = v3 → goes to v1
    */
   nextVersion(): void {
     const versions = this.messageVersions();
-    if (versions.length <= 1) return; // Não faz nada se só tem uma versão
+    if (versions.length <= 1) return;
 
     const currentIndex = this.displayedVersionIndex();
     const nextIndex = (currentIndex + 1) % versions.length;
@@ -168,12 +202,15 @@ export class AiMessage implements OnInit {
   }
 
   /**
-   * Navega para a versão anterior da mensagem.
-   * Quando está na primeira versão, vai para a última (comportamento circular).
+   * Navigates to the previous message version with circular navigation.
+   * When at the first version, wraps to the last.
+   *
+   * @example
+   * versions = [v1, v2, v3], current = v1 → goes to v3
    */
   previousVersion(): void {
     const versions = this.messageVersions();
-    if (versions.length <= 1) return; // Não faz nada se só tem uma versão
+    if (versions.length <= 1) return;
 
     const currentIndex = this.displayedVersionIndex();
     const prevIndex = currentIndex === 0 ? versions.length - 1 : currentIndex - 1;
@@ -194,10 +231,18 @@ export class AiMessage implements OnInit {
     this.isEditing.set(false);
   }
 
+  /**
+   * Saves the edited message and creates a new version.
+   *
+   * Flow:
+   * 1. Emits edited message with all context (turn index, version index, etc.)
+   * 2. Parent adds new version to messageVersions array
+   * 3. setTimeout ensures we wait for the new version to be added
+   * 4. Automatically switches to the newest version to show the edit
+   * 5. Exits edit mode
+   */
   saveEdit(): void {
     const newMessage = this.editedMessageControl.value;
-
-    console.log('newMessage', newMessage);
 
     this.editedMessage.emit({
       message: {
@@ -232,19 +277,11 @@ export class AiMessage implements OnInit {
     });
   }
 
-  askChat(): void {
-    console.log('🤖 Botão "Ask chat" clicado');
-    // Este método agora é redundante - o texto é emitido via textSelected
-  }
-
   copyToClipboard(message: string): void {
     copyToClipboard(message).then((success) => {
       if (success) {
         this.copiedRole.set(this.inputRole());
-
-        setTimeout(() => {
-          this.copiedRole.set(null);
-        }, 2000);
+        setTimeout(() => this.copiedRole.set(null), 2000);
       }
     });
   }
@@ -253,35 +290,26 @@ export class AiMessage implements OnInit {
     return this.copiedRole() === this.inputRole();
   }
 
-  /**
-   * Retorna o conteúdo da mensagem que deve ser exibida atualmente.
-   * Isso muda conforme o usuário navega entre as versões.
-   */
   get currentMessage(): string {
     const versions = this.messageVersions();
     const index = this.displayedVersionIndex();
-
-    // Verifica se existe a versão no índice
     const version = versions[index];
-
-    // Se existir, retorna a mensagem (mesmo vazia), senão fallback
     return version !== undefined ? version.message : this.messageContent();
   }
 
-  /**
-   * Verifica se há múltiplas versões disponíveis.
-   * Controla a visibilidade dos controles de navegação.
-   */
   get hasMultipleVersions(): boolean {
     return this.messageVersions().length > 1;
   }
 
   /**
-   * Retorna o texto do indicador de versão no formato "2/5".
+   * Generates version indicator text in format "2/5".
+   * Converts 0-based index to 1-based display (user sees 1-5, not 0-4).
+   *
+   * @returns Formatted string like "2/5", or empty string if only one version
    */
   get versionIndicator(): string {
     if (!this.hasMultipleVersions) return '';
-    const current = this.displayedVersionIndex() + 1; // +1 porque mostramos de 1 a N, não de 0 a N-1
+    const current = this.displayedVersionIndex() + 1;
     const total = this.messageVersions().length;
     return `${current}/${total}`;
   }
