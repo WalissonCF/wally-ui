@@ -156,40 +156,14 @@
 
   <!-- Tool Results -->
   @if (hasToolResult()) {
-  <div class="mt-6 border-t border-neutral-200 dark:border-neutral-800 pt-6">
+  <div class="">
 
     <!-- Offers Tool Result -->
     @if (offersData(); as offers) {
-    <div class="offers-tool-result">
-      <h3 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">
-        Ofertas Disponíveis
-      </h3>
-
-      <div class="overflow-x-auto rounded-lg border border-neutral-200 dark:border-neutral-800">
-        <table class="w-full text-sm">
-          <thead class="bg-neutral-100 dark:bg-neutral-900">
-            <tr class="text-left">
-              <th class="px-4 py-3 font-semibold text-neutral-700 dark:text-neutral-300">Distribuidora</th>
-              <th class="px-4 py-3 font-semibold text-neutral-700 dark:text-neutral-300">Oferta</th>
-              <th class="px-4 py-3 font-semibold text-neutral-700 dark:text-neutral-300">Valor Mínimo</th>
-              <th class="px-4 py-3 font-semibold text-neutral-700 dark:text-neutral-300">Qtd Mínima</th>
-              <th class="px-4 py-3 font-semibold text-neutral-700 dark:text-neutral-300">Prazo</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-neutral-200 dark:divide-neutral-800">
-            @for (offer of offers; track offer.id) {
-            <tr class="hover:bg-neutral-50 dark:hover:bg-neutral-900/50 transition-colors">
-              <td class="px-4 py-3 text-neutral-900 dark:text-neutral-100 font-medium">{{ offer.nomeDistribuidora }}</td>
-              <td class="px-4 py-3 text-neutral-900 dark:text-neutral-100">{{ offer.nomeOferta }}</td>
-              <td class="px-4 py-3 text-neutral-900 dark:text-neutral-100">R$ {{ offer.valorMinimo }}</td>
-              <td class="px-4 py-3 text-neutral-900 dark:text-neutral-100 text-center">{{ offer.quantidadeMinima }}</td>
-              <td class="px-4 py-3 text-neutral-900 dark:text-neutral-100 text-center">{{ offer.prazo }} dias</td>
-            </tr>
-            }
-          </tbody>
-        </table>
-      </div>
-    </div>
+      <wally-offers-result
+        [data]="offers"
+        [isLoading]="isLoading()"
+        (offerSelected)="onOfferSelected($event)" />
     }
 
     <!-- Quote Tool Result -->

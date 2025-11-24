@@ -20,6 +20,7 @@ import { AiChatService } from '../lib/service/ai-chat.service';
 import { copyToClipboard } from '../lib/utils/clipboard.utils';
 import { AITools } from '../lib/models/ai-tools.interface';
 import { role } from '../lib/types/role.type';
+import { OffersResult } from './tool-results/offers-result/offers-result';
 
 @Component({
   selector: 'wally-ai-message',
@@ -35,6 +36,7 @@ import { role } from '../lib/types/role.type';
     MarkdownPipe,
     AutoResizeTextarea,
     ReactiveFormsModule,
+    OffersResult,
   ],
   templateUrl: './ai-message.html',
   styleUrl: './ai-message.css'
@@ -324,5 +326,14 @@ export class AiMessage implements OnInit {
     }
 
     return undefined;
+  }
+
+  /**
+   * Handles when a user selects an offer from the offers-result component
+   */
+  onOfferSelected(offer: any): void {
+    console.log('Oferta selecionada:', offer);
+    // TODO: Implementar ação quando oferta for selecionada
+    // Pode enviar para o chat, salvar em um estado, etc.
   }
 }

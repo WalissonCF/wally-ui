@@ -27,6 +27,16 @@ export class AiChatService {
   selectedTextContext = signal<string | null>(null);
 
   /**
+   * CNPJ do usuário para enviar na requisição
+   */
+  cnpj = signal<string | null>("47963806000149");
+
+  /**
+   * Token de autorização para o header
+   */
+  token = signal<string | null>('eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRYQXUzY3BQUFFyWnlRRjdZV2dwUSJ9.eyJodHRwczovL3Jtc2Fhcy5jby9ncm91cHMiOlsicGhhcm1hZGFzaDppbnRlcm5vOmRhc2hib2FyZCIsInBoYXJtYWRhc2g6aW50ZXJubzpmaWxlbWFuYWdlciIsInBoYXJtYWRhc2g6aW50ZXJubzpjZXJ0aWZpY2F0ZSIsInBoYXJtYWRhc2g6aW50ZXJubzpwYm0iLCJwaGFybWFkYXNoOmludGVybm86YnJpY2siLCJwaGFybWFkYXNoOmludGVybm86c21hcnRwZWQiLCJwaGFybWFkYXNoOmludGVybm86c2hvcHBpbmciLCJwaGFybWFkYXNoOmludGVybm86YmlsbGluZyIsInBoYXJtYWRhc2g6aW50ZXJubyIsInBoYXJtYWRhc2g6aW50ZXJubzp0ZXJtIiwicGhhcm1hZGFzaDppbnRlcm5vOmNoYXQiLCJwaGFybWFkYXNoOmludGVybm86cHJlY2lmaWNhdGlvbiIsInBoYXJtYWRhc2g6aW50ZXJubzpwcmVkaWN0aW9uIiwicGhhcm1hZGFzaDppbnRlcm5vOnJlY29tZW5kYXRpb24iLCJwaGFybWFkYXNoOmludGVybm86bWFya2V0LWFuYWx5c2lzIiwicGhhcm1hZGFzaDppbnRlcm5vOmdvYWwiXSwiaHR0cHM6Ly9ybXNhYXMuY28vaW50ZXJjb21faG1hYyI6ImE4MzQ0ZjZhOGQ3YWNmODgxM2EzODQ0YmY0YmM1MjdjNDAzMTdlN2YwOTU4YzZjYTJlMTJlZTNlNzkxYjQwM2QiLCJodHRwczovL3Jtc2Fhcy5jby9pbnRlcmNvbV9jcmVhdGVkX2F0IjoxNzM2MzQyMDc2LCJnaXZlbl9uYW1lIjoiV2FsaXNzb24iLCJmYW1pbHlfbmFtZSI6IkZlcnJlaXJhIiwibmlja25hbWUiOiJ3YWxpc3Nvbi5mZXJyZWlyYSIsIm5hbWUiOiJXYWxpc3NvbiBGZXJyZWlyYSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NKUEVubUdqbzB1ajB5UjJyUGduQlRUZXI5dzExSThuWXVEMDlpRGdQVDh4Qy1Ycnc9czk2LWMiLCJ1cGRhdGVkX2F0IjoiMjAyNS0xMS0yNFQwMjowNzo1Mi43NDFaIiwiZW1haWwiOiJ3YWxpc3Nvbi5mZXJyZWlyYUBoaXBlcnNhdWRlLmNvbS5iciIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL3JtLWZhcm1hLXByb2QudXMuYXV0aDAuY29tLyIsImF1ZCI6IkZ2dm9GTUs3RTNucFlvS3FzYWJ3QVpwU3FiOXB4SHd1Iiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTAxMTEwODIwMjcyNTcxNDAzNjIiLCJpYXQiOjE3NjM5NTAwNzUsImV4cCI6MTc2Mzk4NjA3NSwic2lkIjoiVDVDRHF6UGdkNXlOc0dvcGVHSW1QNDdHZHZtSVdGOGwiLCJub25jZSI6IlUxVk1iR2xSVFRrMlFrWjNjMDlKUkhwaWJUZFVMWFF4TkhKNU9UWldURVpOTmtGUk0zbHNUMFJuZEE9PSJ9.WiaVcgTSZVLXWfHKVehR7I_di7WBxeKvXFKbT3I0RLdS28dsWEH-nRElbvs1lWY4XIP__1AzEgFr4BWaWxUYXwCvxMZP2AIUCy7FuK1k0Wcn3bfMWRQyaTw-nizD91jO5munjWpGxothNKaGY8Zh4qk3V91ghPlVz3_i-iOhfVKIGOe2zFAGufzTkKlOsXhdAQJwsfwWyqUYdwsC6p1DxcAlRFCvji3MeJWGqzZTXBFU7tglFEWApL-SPay_7Io92S3qtWG7Nw5fljowzr2EN5eA7easd0p7_-6PaGjdkVQK8n01630dzP07KMC8lp4NwooPZiHMA24QHU59wBcqnw');
+
+  /**
    * Array de conversas, onde cada conversa contém vários turnos.
    * Cada turno agrupa as mensagens do usuário com as respostas da IA.
    */
@@ -75,6 +85,14 @@ export class AiChatService {
 
   clearSelectedTextContext(): void {
     this.selectedTextContext.set(null);
+  }
+
+  setCnpj(cnpj: string): void {
+    this.cnpj.set(cnpj);
+  }
+
+  setToken(token: string): void {
+    this.token.set(token);
   }
 
   /**
@@ -329,9 +347,12 @@ export class AiChatService {
     const fullConversationHistory = this.formatHistoryForApi()
 
     const config: SSERequestConfig = {
-      url: 'http://localhost:3000/api/chat/stream',
-      // body: { mensagem: userMessage }
-      body: { conversation: fullConversationHistory }
+      url: 'http://localhost:3000/api/ahri/conversation',
+      body: {
+        cnpj: this.cnpj(),
+        conversation: fullConversationHistory
+      },
+      headers: this.token() ? { 'Authorization': `Bearer ${this.token()}` } : undefined
     };
 
     const stream$ = this.createSSEObservable(config);
@@ -356,9 +377,12 @@ export class AiChatService {
     const fullConversationHistory = this.formatHistoryForApi();
 
     const config: SSERequestConfig = {
-      url: 'http://localhost:3000/api/chat/stream',
-      // body: { mensagem: [userMessage.message, userMessage.selectedContext].filter(Boolean).join(' ') }
-      body: { conversation: fullConversationHistory }
+      url: 'http://localhost:3000/api/ahri/conversation',
+      body: {
+        cnpj: this.cnpj(),
+        conversation: fullConversationHistory
+      },
+      headers: this.token() ? { 'Authorization': `Bearer ${this.token()}` } : undefined
     };
 
     // 4. Criar stream
@@ -463,9 +487,14 @@ export class AiChatService {
     isCancelled: () => boolean
   ): Promise<void> {
     // 1. Fazer request
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      ...config.headers
+    };
+
     const response = await fetch(config.url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', ...config.headers },
+      headers,
       body: JSON.stringify(config.body)
     });
 
