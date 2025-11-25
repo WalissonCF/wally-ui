@@ -1,4 +1,6 @@
 import { z } from 'zod';
+
+import { recommendationResultSchema } from '../schemas/tools/recommendation';
 import { CotacaoToolResultSchema } from '../schemas/tools/quote';
 import { OffersToolResultSchema } from '../schemas/tools/offers';
 
@@ -6,6 +8,7 @@ import { OffersToolResultSchema } from '../schemas/tools/offers';
 export const TOOL_SCHEMAS = {
   'cotar_produto_por_distribuidora': CotacaoToolResultSchema,
   'listar_ofertas_disponiveis': OffersToolResultSchema,
+  'recomendacao_de_compra': recommendationResultSchema
 } as const;
 
 // Type helper para nomes de tools

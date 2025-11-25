@@ -13,7 +13,7 @@ import { Button } from '../../button/button';
 
 import { isUserMessage, isAssistantMessage, Message } from '../lib/types/message.type';
 import { EditMessageInterface } from '../lib/models/messages/edit-message.interface';
-import { isOffersResult, isQuoteResult } from '../lib/utils/tool-type-guards.utils';
+import { isOffersResult, isQuoteResult, isRecommendationResult } from '../lib/utils/tool-type-guards.utils';
 import { AutoResizeTextarea } from '../../../directives/auto-resize-textarea';
 import { MessageStatus } from '../lib/types/message-status.type';
 import { AiChatService } from '../lib/service/ai-chat.service';
@@ -21,6 +21,7 @@ import { copyToClipboard } from '../lib/utils/clipboard.utils';
 import { AITools } from '../lib/models/ai-tools.interface';
 import { role } from '../lib/types/role.type';
 import { OffersResult } from './tool-results/offers-result/offers-result';
+import { RecommendationResult } from './tool-results/recommendation-result/recommendation-result';
 
 @Component({
   selector: 'wally-ai-message',
@@ -37,6 +38,7 @@ import { OffersResult } from './tool-results/offers-result/offers-result';
     AutoResizeTextarea,
     ReactiveFormsModule,
     OffersResult,
+    RecommendationResult,
   ],
   templateUrl: './ai-message.html',
   styleUrl: './ai-message.css'
@@ -148,8 +150,20 @@ export class AiMessage implements OnInit {
     return isQuoteResult(data) ? data.data : undefined;
   });
 
+  /**
+   * Type-safe extraction of recommendation data from structured data.
+   * Uses type guard to ensure data is RecommendationResult before accessing properties.
+   *
+   * @returns Recommendation object or undefined if data is not a RecommendationResult
+   */
+  recommendationData = computed(() => {
+    const data = this.currentStructuredData();
+    return isRecommendationResult(data) ? data.data : undefined;
+  });
+
   protected readonly isQuoteResult = isQuoteResult;
   protected readonly isOffersResult = isOffersResult;
+  protected readonly isRecommendationResult = isRecommendationResult;
 
   tools: AITools[] = [];
   selectedTools: AITools[] = [];
@@ -335,5 +349,23 @@ export class AiMessage implements OnInit {
     console.log('Oferta selecionada:', offer);
     // TODO: Implementar ação quando oferta for selecionada
     // Pode enviar para o chat, salvar em um estado, etc.
+  }
+
+  /**
+   * Handles when the selection changes in the recommendation-result component
+   */
+  onRecommendationSelectionChanged(selectedItems: any[]): void {
+    console.log('Seleção de recomendações alterada:', selectedItems);
+    // TODO: Implementar ação quando seleção mudar
+    // Pode enviar para o chat, salvar em um estado, etc.
+  }
+
+  /**
+   * Handles when the user clicks "Quote items" button in recommendation-result
+   */
+  onQuoteRequested(selectedItems: any[]): void {
+    console.log('Cotação solicitada para os itens:', selectedItems);
+    // TODO: Implementar lógica de cotação
+    // Pode enviar para API, abrir modal, ou enviar mensagem para o chat
   }
 }

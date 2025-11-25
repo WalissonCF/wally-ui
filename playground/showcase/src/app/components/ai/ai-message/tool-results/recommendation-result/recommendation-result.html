@@ -1,0 +1,372 @@
+<!-- Container Principal -->
+<div class="w-full">
+  <!-- Mensagem de Recomendações Encontradas -->
+  @if (!isLoading()) {
+  <div class="mb-3 text-sm text-neutral-600 dark:text-neutral-400">
+    <p>{{ data().message }}</p>
+  </div>
+
+  }
+
+
+  <!-- Tabela de Recomendações -->
+  <div class="w-full border border-neutral-200 dark:border-neutral-800 rounded-lg overflow-hidden">
+    <!-- Skeleton Loading -->
+    @if (isLoading()) {
+    <table class="w-full">
+      <thead>
+        <tr class="border-b border-neutral-200 dark:border-neutral-800">
+          <th class="w-10 px-6 py-3 border-r border-neutral-200 dark:border-neutral-800"></th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">Produto</th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">Custo Unit.</th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">Qtd.</th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">Preço Venda</th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">ROI</th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500">Lucro Est.</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white dark:bg-neutral-950">
+        @for (item of skeletonItems; track item) {
+        <tr class="border-b border-neutral-200 dark:border-neutral-800 animate-pulse">
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="w-4 h-4 bg-neutral-200 dark:bg-neutral-800 rounded"></div>
+          </td>
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="space-y-2">
+              <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-48"></div>
+              <div class="h-3 bg-neutral-200 dark:bg-neutral-800 rounded w-32"></div>
+            </div>
+          </td>
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-20 ml-auto"></div>
+          </td>
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-12 ml-auto"></div>
+          </td>
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-20 ml-auto"></div>
+          </td>
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-16 ml-auto"></div>
+          </td>
+          <td class="px-6 py-4">
+            <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-24 ml-auto"></div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+
+    <!-- Tabela Real -->
+    @if (!isLoading() && data().recommendations.length > 0) {
+    <table class="w-full">
+      <!-- Headers -->
+      <thead>
+        <tr class="border-b border-neutral-200 dark:border-neutral-800">
+          <th class="w-10 px-6 py-3 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="flex items-center justify-center">
+              <input type="checkbox"
+                [checked]="allSelected()"
+                [indeterminate]="someSelected()"
+                (change)="toggleAll()"
+                id="select-all-recommendations"
+                class="w-4 h-4 cursor-pointer appearance-none rounded border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-950 checked:border-blue-500 dark:checked:border-blue-400 checked:bg-blue-500 dark:checked:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-950
+                  relative
+                  checked:after:content-['✓']
+                  checked:after:absolute
+                  checked:after:text-white
+                  checked:after:text-xs
+                  checked:after:top-1/2
+                  checked:after:left-1/2
+                  checked:after:-translate-x-1/2
+                  checked:after:-translate-y-1/2
+                  indeterminate:bg-blue-500
+                  indeterminate:border-blue-500
+                  indeterminate:after:content-['−']
+                  indeterminate:after:absolute
+                  indeterminate:after:text-white
+                  indeterminate:after:text-xs
+                  indeterminate:after:top-1/2
+                  indeterminate:after:left-1/2
+                  indeterminate:after:-translate-x-1/2
+                  indeterminate:after:-translate-y-1/2" />
+            </div>
+          </th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">
+            Produto
+          </th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">
+            Custo Unit.
+          </th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">
+            Qtd.
+          </th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">
+            Preço Venda
+          </th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">
+            ROI
+          </th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500">
+            Lucro Est.
+          </th>
+        </tr>
+      </thead>
+
+      <!-- Body -->
+      <tbody class="bg-white dark:bg-neutral-950">
+        @for (recommendation of visibleRecommendations(); track recommendation.ean) {
+        <tr [class.bg-neutral-50]="isSelected(recommendation.ean)"
+          [class.dark:bg-neutral-900/30]="isSelected(recommendation.ean)"
+          class="border-b border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900/20 transition-colors">
+          <!-- Checkbox -->
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="flex items-center">
+              <input type="checkbox" [checked]="isSelected(recommendation.ean)"
+                [id]="'rec-' + recommendation.ean" (change)="toggleSelection(recommendation)"
+                class="w-4 h-4 cursor-pointer appearance-none rounded border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-950 checked:border-blue-500 dark:checked:border-blue-400 checked:bg-blue-500 dark:checked:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-950
+                  relative
+                  checked:after:content-['✓']
+                  checked:after:absolute
+                  checked:after:text-white
+                  checked:after:text-xs
+                  checked:after:top-1/2
+                  checked:after:left-1/2
+                  checked:after:-translate-x-1/2
+                  checked:after:-translate-y-1/2" />
+            </div>
+          </td>
+
+          <!-- Produto -->
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="flex flex-col">
+              <span class="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+                {{ recommendation.product }}
+              </span>
+              <span class="text-xs text-neutral-500 dark:text-neutral-500">
+                {{ recommendation.manufacturer }} · {{ recommendation.group }}
+              </span>
+              <span class="text-xs text-neutral-400 dark:text-neutral-600 font-mono mt-0.5">
+                EAN: {{ recommendation.ean }}
+              </span>
+            </div>
+          </td>
+
+          <!-- Custo Unitário -->
+          <td class="px-6 py-4 text-right border-r border-neutral-200 dark:border-neutral-800">
+            <span class="text-sm text-neutral-700 dark:text-neutral-300 tabular-nums">
+              R$ {{ formatCurrency(recommendation.unitCost) }}
+            </span>
+          </td>
+
+          <!-- Quantidade -->
+          <td class="px-6 py-4 text-right border-r border-neutral-200 dark:border-neutral-800">
+            <span class="text-sm font-medium text-neutral-900 dark:text-neutral-100 tabular-nums">
+              {{ recommendation.itemsToBuy }}
+            </span>
+          </td>
+
+          <!-- Preço Venda Sugerido -->
+          <td class="px-6 py-4 text-right border-r border-neutral-200 dark:border-neutral-800">
+            <span class="text-sm text-neutral-700 dark:text-neutral-300 tabular-nums">
+              R$ {{ formatCurrency(recommendation.suggestedSalePrice) }}
+            </span>
+          </td>
+
+          <!-- ROI -->
+          <td class="px-6 py-4 text-right border-r border-neutral-200 dark:border-neutral-800">
+            <span class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 tabular-nums">
+              {{ formatPercentage(recommendation.roi) }}
+            </span>
+          </td>
+
+          <!-- Lucro Estimado -->
+          <td class="px-6 py-4 text-right whitespace-nowrap">
+            <span class="text-sm font-medium text-neutral-900 dark:text-neutral-100 tabular-nums">
+              R$ {{ formatCurrency(recommendation.estimatedProfit) }}
+            </span>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+
+    <!-- Botão Ver Todas -->
+    @if (hasMoreRecommendations() && !isExpanded()) {
+    <div class="border-t border-neutral-200 dark:border-neutral-800 py-2 flex justify-center">
+      <button type="button" (click)="expandRecommendations()"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors focus:outline-none">
+        Ver todas ({{ remainingRecommendationsCount() }})
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="m6 9 6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    }
+
+    <!-- Botão Fechar Tabela -->
+    @if (isExpanded()) {
+    <div class="border-t border-neutral-200 dark:border-neutral-800 py-2 flex justify-center">
+      <button type="button" (click)="collapseRecommendations()"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors focus:outline-none">
+        Fechar tabela
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="m18 15-6-6-6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    }
+    }
+
+    <!-- Empty State -->
+    @if (!isLoading() && data().recommendations.length === 0) {
+    <div class="p-12 text-center">
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">Nenhuma recomendação encontrada</p>
+    </div>
+    }
+  </div>
+
+  <!-- Badge de Selecionados -->
+  @if (selectedCount() > 0 && !isLoading()) {
+  <div class="mt-3 p-3 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-neutral-600 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+        </svg>
+        <span class="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+          {{ selectedCount() }} {{ selectedCount() === 1 ? 'produto selecionado' : 'produtos selecionados' }}
+        </span>
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <div>
+          <span class="text-neutral-600 dark:text-neutral-400">Investimento: </span>
+          <span class="font-semibold text-neutral-900 dark:text-neutral-100">R$ {{ formatCurrency(selectedInvestment()) }}</span>
+        </div>
+        <div>
+          <span class="text-neutral-600 dark:text-neutral-400">Lucro Est.: </span>
+          <span class="font-semibold text-neutral-900 dark:text-neutral-100">R$ {{ formatCurrency(selectedProfit()) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- Thread estilo Twitter (Itens Selecionados) -->
+  @if (selectedItems().length > 0 && !isLoading()) {
+  <div class="mt-6 space-y-0">
+    @for (item of visibleThreadItems(); track item.ean; let isLast = $last) {
+    <div class="flex items-start gap-3 relative">
+      <!-- Linha vertical conectando os avatares -->
+      @if (!isLast || hasMoreThreadItems()) {
+      <div class="absolute left-4 top-10 bottom-0 w-0.5 bg-neutral-200 dark:bg-neutral-800"></div>
+      }
+
+      <!-- Seta de Resposta (apenas no primeiro) -->
+      @if ($first) {
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"
+        class="size-6 flex-shrink-0 text-neutral-400 dark:text-neutral-600 mt-0.5">
+        <path
+          d="M229.66,157.66l-48,48a8,8,0,0,1-11.32-11.32L204.69,160H128A104.11,104.11,0,0,1,24,56a8,8,0,0,1,16,0,88.1,88.1,0,0,0,88,88h76.69l-34.35-34.34a8,8,0,0,1,11.32-11.32l48,48A8,8,0,0,1,229.66,157.66Z">
+        </path>
+      </svg>
+      }
+
+      <!-- Espaço vazio nos demais itens -->
+      @if (!$first) {
+      <div class="size-6 flex-shrink-0"></div>
+      }
+
+      <!-- Avatar Notionists (sempre Ryan) -->
+      <div class="flex-shrink-0 z-10 bg-white dark:bg-neutral-950">
+        <img src="https://api.dicebear.com/9.x/notionists/svg?seed=Ryan" alt="Ryan avatar" class="w-8 h-8 rounded-full" />
+      </div>
+
+      <!-- Conteúdo da Mensagem -->
+      <div class="flex-1 min-w-0 pb-6">
+        <p class="text-sm text-neutral-700 dark:text-neutral-300">
+          Legal! Você selecionou
+          <span class="font-semibold text-neutral-900 dark:text-neutral-100">{{ item.product }}</span>
+          da
+          <span class="font-medium text-neutral-900 dark:text-neutral-100">{{ item.manufacturer }}</span>.
+          Quantidade recomendada:
+          <span class="font-bold text-neutral-900 dark:text-neutral-100">{{ item.itemsToBuy }} unidades</span>.
+        </p>
+        <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
+          EAN: <span class="font-mono">{{ item.ean }}</span>
+        </p>
+      </div>
+    </div>
+    }
+
+    <!-- Botão Ver Mais/Ver Menos Thread -->
+    @if (hasMoreThreadItems()) {
+    <div class="flex items-start gap-3">
+      <!-- Espaço para alinhamento -->
+      <div class="size-6 flex-shrink-0"></div>
+
+      <!-- Botão centralizado na linha -->
+      <div class="flex items-center justify-center flex-1 py-2">
+        @if (!isThreadExpanded()) {
+        <button type="button" (click)="expandThread()"
+          class="inline-flex items-center gap-1.5 px-3 py-1 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors focus:outline-none">
+          Ver mais {{ remainingThreadItemsCount() }} {{ remainingThreadItemsCount() === 1 ? 'item' : 'itens' }}
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        } @else {
+        <button type="button" (click)="collapseThread()"
+          class="inline-flex items-center gap-1.5 px-3 py-1 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors focus:outline-none">
+          Ver menos
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="m18 15-6-6-6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        }
+      </div>
+    </div>
+    }
+
+    <!-- Mensagem e Botão de Ação -->
+    <div class="flex items-start gap-3 mt-6">
+      <!-- Espaço para alinhamento com avatar -->
+      <div class="size-6 flex-shrink-0"></div>
+
+      <!-- Avatar Ryan -->
+      <div class="flex-shrink-0">
+        <img src="https://api.dicebear.com/9.x/notionists/svg?seed=Ryan" alt="Iza avatar" class="w-8 h-8 rounded-full" />
+      </div>
+
+      <!-- Conteúdo -->
+      <div class="flex-1 min-w-0">
+        <!-- Mensagem amigável e profissional -->
+        <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-2">
+          Excelente escolha! Você selecionou {{ selectedCount() }} {{ selectedCount() === 1 ? 'produto' : 'produtos' }}
+          que representam uma oportunidade estratégica para o seu negócio.
+        </p>
+
+        <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-3">
+          <span class="font-medium text-neutral-900 dark:text-neutral-100">Investimento estimado:</span> R$ {{ formatCurrency(selectedInvestment()) }} ·
+          <span class="font-medium text-neutral-900 dark:text-neutral-100">Retorno projetado:</span> R$ {{ formatCurrency(selectedProfit()) }}
+        </p>
+
+        <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-4">
+          Que tal buscar as melhores condições comerciais e preços nas distribuidoras parceiras?
+        </p>
+
+        <!-- Botão wally-button -->
+        <wally-button (buttonClick)="requestQuote()" variant="primary">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+            <span class="px-2">Buscar cotações</span>
+          </div>
+        </wally-button>
+      </div>
+    </div>
+  </div>
+  }
+</div>

@@ -1,0 +1,17 @@
+/* Estilos customizados para recommendation-result */
+/* A maior parte dos estilos usa Tailwind CSS inline */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* Suavizar transição do checkbox */
+input[type="checkbox"] {
+  transition: all 0.15s ease-in-out;
+}
+
+/* Números tabulares para melhor alinhamento */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}

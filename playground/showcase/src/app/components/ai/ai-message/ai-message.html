@@ -177,6 +177,14 @@
     </div>
     }
 
+    <!-- Recommendation Tool Result -->
+    @if (recommendationData(); as recommendation) {
+      <wally-recommendation-result
+        [data]="recommendation"
+        [isLoading]="isLoading()"
+        (selectionChanged)="onRecommendationSelectionChanged($event)"
+        (quoteRequested)="onQuoteRequested($event)" />
+    }
   </div>
   }
 
