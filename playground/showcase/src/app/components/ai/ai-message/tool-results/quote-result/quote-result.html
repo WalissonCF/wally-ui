@@ -1,0 +1,434 @@
+<!-- Container Principal -->
+<div class="w-full">
+  <!-- Mensagem -->
+  @if (!isLoading()) {
+  <div class="mb-3 text-sm text-neutral-600 dark:text-neutral-400">
+    <p>{{ data().message }}</p>
+  </div>
+  }
+
+  <!-- Tabela de Ofertas -->
+  <div class="w-full border border-neutral-200 dark:border-neutral-800 rounded-lg overflow-hidden">
+    <!-- Skeleton Loading -->
+    @if (isLoading()) {
+    <table class="w-full">
+      <thead>
+        <tr class="border-b border-neutral-200 dark:border-neutral-800">
+          <th class="w-10 px-4 py-3 border-r border-neutral-200 dark:border-neutral-800"></th>
+          <th class="w-10 px-4 py-3 border-r border-neutral-200 dark:border-neutral-800"></th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">Distribuidor</th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">Preço Un.</th>
+          <th class="px-6 py-3 text-center text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">Qtd.</th>
+          <th class="px-6 py-3 text-center text-xs font-medium text-neutral-500 dark:text-neutral-500">Estoque</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white dark:bg-neutral-950">
+        @for (item of skeletonItems; track item) {
+        <tr class="border-b border-neutral-200 dark:border-neutral-800 animate-pulse">
+          <td class="px-4 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="flex items-center justify-center">
+              <div class="w-4 h-4 bg-neutral-200 dark:bg-neutral-800 rounded"></div>
+            </div>
+          </td>
+          <td class="px-4 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="flex items-center justify-center">
+              <div class="h-8 w-8 bg-neutral-200 dark:bg-neutral-800 rounded"></div>
+            </div>
+          </td>
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-32"></div>
+          </td>
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-20 ml-auto"></div>
+          </td>
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="flex items-center justify-center">
+              <div class="h-8 w-16 bg-neutral-200 dark:bg-neutral-800 rounded"></div>
+            </div>
+          </td>
+          <td class="px-6 py-4">
+            <div class="flex justify-center">
+              <div class="h-6 bg-neutral-200 dark:bg-neutral-800 rounded-full w-24"></div>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+
+    <!-- Tabela Real -->
+    @if (!isLoading() && data().offers && data().offers!.length > 0) {
+    <table class="w-full">
+      <!-- Headers -->
+      <thead>
+        <tr class="border-b border-neutral-200 dark:border-neutral-800">
+          <th class="w-10 px-4 py-3 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="flex items-center justify-center">
+              <input type="checkbox"
+                [checked]="allSelected()"
+                [indeterminate]="someSelected()"
+                (change)="toggleAll()"
+                id="select-all-quotes"
+                class="w-4 h-4 cursor-pointer appearance-none rounded border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-950 checked:border-blue-500 dark:checked:border-blue-400 checked:bg-blue-500 dark:checked:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-950
+                  relative
+                  checked:after:content-['✓']
+                  checked:after:absolute
+                  checked:after:text-white
+                  checked:after:text-xs
+                  checked:after:top-1/2
+                  checked:after:left-1/2
+                  checked:after:-translate-x-1/2
+                  checked:after:-translate-y-1/2
+                  indeterminate:bg-blue-500
+                  indeterminate:border-blue-500
+                  indeterminate:after:content-['−']
+                  indeterminate:after:absolute
+                  indeterminate:after:text-white
+                  indeterminate:after:text-xs
+                  indeterminate:after:top-1/2
+                  indeterminate:after:left-1/2
+                  indeterminate:after:-translate-x-1/2
+                  indeterminate:after:-translate-y-1/2" />
+            </div>
+          </th>
+          <th class="w-10 px-4 py-3 border-r border-neutral-200 dark:border-neutral-800"></th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">
+            Distribuidor
+          </th>
+          <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">
+            Preço Un.
+          </th>
+          <th class="px-6 py-3 text-center text-xs font-medium text-neutral-500 dark:text-neutral-500 border-r border-neutral-200 dark:border-neutral-800">
+            Qtd.
+          </th>
+          <th class="px-6 py-3 text-center text-xs font-medium text-neutral-500 dark:text-neutral-500">
+            Estoque
+          </th>
+        </tr>
+      </thead>
+
+      <!-- Body -->
+      <tbody class="bg-white dark:bg-neutral-950">
+        @for (offer of visibleOfertas(); track offer.distributor) {
+        <!-- Linha Principal -->
+        <tr [class.bg-neutral-50]="isSelected(offer.distributor)"
+          [class.dark:bg-neutral-900/30]="isSelected(offer.distributor)"
+          class="border-b border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900/20 transition-colors">
+          <!-- Checkbox -->
+          <td class="px-4 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="flex items-center justify-center">
+              <input type="checkbox" [checked]="isSelected(offer.distributor)"
+                [id]="'quote-' + offer.distributor" (change)="toggleSelection(offer)"
+                class="w-4 h-4 cursor-pointer appearance-none rounded border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-950 checked:border-blue-500 dark:checked:border-blue-400 checked:bg-blue-500 dark:checked:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-950
+                  relative
+                  checked:after:content-['✓']
+                  checked:after:absolute
+                  checked:after:text-white
+                  checked:after:text-xs
+                  checked:after:top-1/2
+                  checked:after:left-1/2
+                  checked:after:-translate-x-1/2
+                  checked:after:-translate-y-1/2" />
+            </div>
+          </td>
+
+          <!-- Botão Expandir -->
+          <td class="px-4 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <button type="button" (click)="toggleRowExpansion(offer.distributor)"
+              class="flex items-center justify-center w-8 h-8 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+              @if (isRowExpanded(offer.distributor)) {
+              <svg class="w-4 h-4 text-neutral-600 dark:text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+              </svg>
+              } @else {
+              <svg class="w-4 h-4 text-neutral-600 dark:text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+              }
+            </button>
+          </td>
+
+          <!-- Distribuidor -->
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <span class="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+              {{ offer.distributor }}
+            </span>
+          </td>
+
+          <!-- Preço Unitário -->
+          <td class="px-6 py-4 text-right border-r border-neutral-200 dark:border-neutral-800">
+            <span class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 tabular-nums">
+              {{ formatCurrency(offer.finalPrice) }}
+            </span>
+          </td>
+
+          <!-- Quantidade -->
+          <td class="px-6 py-4 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="flex items-center justify-center">
+              <input
+                type="number"
+                [value]="getQuantity(offer.distributor)"
+                (change)="updateQuantity(offer.distributor, +$any($event.target).value)"
+                min="1"
+                class="w-16 px-2 py-1 text-center text-sm bg-transparent text-neutral-900 dark:text-neutral-100 focus:outline-none"
+              />
+            </div>
+          </td>
+
+          <!-- Estoque -->
+          <td class="px-6 py-4">
+            <div class="flex justify-center">
+              <span [class]="getStockBadgeColor(offer.stock)"
+                class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium">
+                {{ offer.stock }}
+              </span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Linha Expandida com Detalhes -->
+        @if (isRowExpanded(offer.distributor)) {
+        <tr class="bg-neutral-50 dark:bg-neutral-900/50 border-b border-neutral-200 dark:border-neutral-800">
+          <td colspan="6" class="px-6 py-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <!-- Condição -->
+              <div>
+                <p class="text-xs text-neutral-500 dark:text-neutral-500 mb-1">Condição</p>
+                <p class="text-sm text-neutral-900 dark:text-neutral-100">
+                  {{ offer.condition || '—' }}
+                </p>
+              </div>
+
+              <!-- Prazo -->
+              <div>
+                <p class="text-xs text-neutral-500 dark:text-neutral-500 mb-1">Prazo</p>
+                <p class="text-sm text-neutral-900 dark:text-neutral-100">
+                  {{ offer.paymentTerm || '—' }}
+                </p>
+              </div>
+
+              <!-- Desconto -->
+              <div>
+                <p class="text-xs text-neutral-500 dark:text-neutral-500 mb-1">Desconto</p>
+                @if (offer.discount && offer.discount > 0) {
+                <p class="text-sm font-medium text-green-600 dark:text-green-400 flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd" />
+                  </svg>
+                  {{ formatPercentage(offer.discount) }}
+                </p>
+                } @else {
+                <p class="text-sm text-neutral-500 dark:text-neutral-500">—</p>
+                }
+              </div>
+
+              <!-- Valor Mínimo de Compra -->
+              <div>
+                <p class="text-xs text-neutral-500 dark:text-neutral-500 mb-1">Valor Mínimo de Compra</p>
+                @if (offer.minimumValue) {
+                <p class="text-sm text-neutral-900 dark:text-neutral-100 tabular-nums">
+                  {{ formatCurrency(offer.minimumValue) }}
+                </p>
+                } @else {
+                <p class="text-sm text-neutral-500 dark:text-neutral-500">—</p>
+                }
+              </div>
+            </div>
+          </td>
+        </tr>
+        }
+        }
+      </tbody>
+    </table>
+
+    <!-- Botão Ver Todas -->
+    @if (hasMoreOfertas() && !isExpanded()) {
+    <div class="border-t border-neutral-200 dark:border-neutral-800 py-2 flex justify-center">
+      <button type="button" (click)="expandOfertas()"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors focus:outline-none">
+        Ver todas ({{ remainingOfertasCount() }})
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="m6 9 6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    }
+
+    <!-- Botão Fechar Tabela -->
+    @if (isExpanded()) {
+    <div class="border-t border-neutral-200 dark:border-neutral-800 py-2 flex justify-center">
+      <button type="button" (click)="collapseOfertas()"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors focus:outline-none">
+        Fechar tabela
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="m18 15-6-6-6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    }
+    }
+
+    <!-- Empty State -->
+    @if (!isLoading() && (!data().offers || data().offers!.length === 0)) {
+    <div class="p-12 text-center">
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">Nenhuma oferta encontrada</p>
+    </div>
+    }
+  </div>
+
+  <!-- Badge de Selecionados (Resumo do Carrinho) -->
+  @if (selectedCount() > 0 && !isLoading()) {
+  <div class="mt-3 p-3 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-neutral-600 dark:text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span class="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+          {{ selectedCount() }} {{ selectedCount() === 1 ? 'oferta selecionada' : 'ofertas selecionadas' }}
+        </span>
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <div>
+          <span class="text-neutral-600 dark:text-neutral-400">Qtd. Itens: </span>
+          <span class="font-semibold text-neutral-900 dark:text-neutral-100">{{ totalItems() }}</span>
+        </div>
+        <div>
+          <span class="text-neutral-600 dark:text-neutral-400">Total: </span>
+          <span class="font-semibold text-neutral-900 dark:text-neutral-100">{{ formatCurrency(cartTotal()) }}</span>
+        </div>
+        @if (totalDiscount() > 0) {
+        <div>
+          <span class="text-neutral-600 dark:text-neutral-400">Economia: </span>
+          <span class="font-semibold text-green-600 dark:text-green-400">{{ formatCurrency(totalDiscount()) }}</span>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- Thread/Carrinho (Ofertas Selecionadas) -->
+  @if (cartItems().length > 0 && !isLoading()) {
+  <div class="mt-6 space-y-0">
+    @for (item of visibleCartItems(); track item.distributor; let isLast = $last) {
+    <div class="flex items-start gap-3 relative">
+      <!-- Linha vertical conectando os avatares -->
+      @if (!isLast || hasMoreCartItems()) {
+      <div class="absolute left-4 top-10 bottom-0 w-0.5 bg-neutral-200 dark:bg-neutral-800"></div>
+      }
+
+      <!-- Seta de Resposta (apenas no primeiro) -->
+      @if ($first) {
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"
+        class="size-6 flex-shrink-0 text-neutral-400 dark:text-neutral-600 mt-0.5">
+        <path
+          d="M229.66,157.66l-48,48a8,8,0,0,1-11.32-11.32L204.69,160H128A104.11,104.11,0,0,1,24,56a8,8,0,0,1,16,0,88.1,88.1,0,0,0,88,88h76.69l-34.35-34.34a8,8,0,0,1,11.32-11.32l48,48A8,8,0,0,1,229.66,157.66Z">
+        </path>
+      </svg>
+      }
+
+      <!-- Espaço vazio nos demais itens -->
+      @if (!$first) {
+      <div class="size-6 flex-shrink-0"></div>
+      }
+
+      <!-- Avatar Notionists (sempre Ryan) -->
+      <div class="flex-shrink-0 z-10 bg-white dark:bg-neutral-950">
+        <img src="https://api.dicebear.com/9.x/notionists/svg?seed=Ryan" alt="Ryan avatar" class="w-8 h-8 rounded-full" />
+      </div>
+
+      <!-- Conteúdo da Mensagem -->
+      <div class="flex-1 min-w-0 pb-6">
+        <p class="text-sm text-neutral-700 dark:text-neutral-300">
+          Adicionando ao carrinho
+          <span class="font-bold text-neutral-900 dark:text-neutral-100">{{ item.quantity }} {{ item.quantity === 1 ? 'unidade' : 'unidades' }}</span>
+          da oferta de
+          <span class="font-semibold text-neutral-900 dark:text-neutral-100">{{ item.distributor }}</span>
+          por <span class="font-bold text-neutral-900 dark:text-neutral-100">{{ formatCurrency(item.finalPrice) }}</span>
+          cada.
+          <span [class]="getStockBadgeColor(item.stock)"
+            class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ml-1">
+            {{ item.stock }}
+          </span>
+        </p>
+        <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
+          Subtotal: <span class="font-semibold">{{ formatCurrency(item.finalPrice * item.quantity) }}</span> ·
+          {{ item.condition || 'Condição não informada' }} · {{ item.paymentTerm || 'Prazo não informado' }}
+          @if (item.discount && item.discount > 0) {
+          · <span class="text-green-600 dark:text-green-400 font-medium">{{ formatPercentage(item.discount) }} de desconto</span>
+          }
+        </p>
+      </div>
+    </div>
+    }
+
+    <!-- Botão Ver Mais/Ver Menos Carrinho -->
+    @if (hasMoreCartItems()) {
+    <div class="flex items-start gap-3">
+      <!-- Espaço para alinhamento -->
+      <div class="size-6 flex-shrink-0"></div>
+
+      <!-- Botão centralizado na linha -->
+      <div class="flex items-center justify-center flex-1 py-2">
+        @if (!isCartExpanded()) {
+        <button type="button" (click)="expandCart()"
+          class="inline-flex items-center gap-1.5 px-3 py-1 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors focus:outline-none">
+          Ver mais {{ remainingCartItemsCount() }} {{ remainingCartItemsCount() === 1 ? 'item' : 'itens' }}
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        } @else {
+        <button type="button" (click)="collapseCart()"
+          class="inline-flex items-center gap-1.5 px-3 py-1 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors focus:outline-none">
+          Ver menos
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="m18 15-6-6-6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        }
+      </div>
+    </div>
+    }
+
+    <!-- Mensagem Final e Botão de Ação -->
+    <div class="flex items-start gap-3 mt-6">
+      <!-- Espaço para alinhamento com avatar -->
+      <div class="size-6 flex-shrink-0"></div>
+
+      <!-- Avatar Ryan -->
+      <div class="flex-shrink-0">
+        <img src="https://api.dicebear.com/9.x/notionists/svg?seed=Ryan" alt="Ryan avatar" class="w-8 h-8 rounded-full" />
+      </div>
+
+      <!-- Conteúdo -->
+      <div class="flex-1 min-w-0">
+        <!-- Mensagem amigável -->
+        <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-2">
+          Ótimo! Seu carrinho está montado com {{ selectedCount() }} {{ selectedCount() === 1 ? 'oferta' : 'ofertas' }} e {{ totalItems() }} {{ totalItems() === 1 ? 'item' : 'itens' }}.
+        </p>
+
+        <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-3">
+          <span class="font-medium text-neutral-900 dark:text-neutral-100">Valor total:</span> {{ formatCurrency(cartTotal()) }}
+          @if (totalDiscount() > 0) {
+          · <span class="font-medium text-green-600 dark:text-green-400">Economia:</span> {{ formatCurrency(totalDiscount()) }}
+          }
+        </p>
+
+        <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-4">
+          Pronto para finalizar seu pedido? Você pode confirmar a compra destes itens ou continuar explorando outras opções.
+        </p>
+
+        <!-- Botão wally-button -->
+        <wally-button (buttonClick)="addToCart()" variant="primary">
+          <div class="flex items-center gap-2">
+            <span class="px-2">Comprar</span>
+          </div>
+        </wally-button>
+      </div>
+    </div>
+  </div>
+  }
+</div>

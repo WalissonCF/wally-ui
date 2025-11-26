@@ -22,6 +22,18 @@ import { AITools } from '../lib/models/ai-tools.interface';
 import { role } from '../lib/types/role.type';
 import { OffersResult } from './tool-results/offers-result/offers-result';
 import { RecommendationResult } from './tool-results/recommendation-result/recommendation-result';
+import { QuoteResult } from './tool-results/quote-result/quote-result';
+
+/**
+ * Represents a selected item from recommendation component
+ */
+interface SelectedItem {
+  ean: string;
+  product: string;
+  manufacturer: string;
+  itemsToBuy: number;
+  timestamp: Date;
+}
 
 @Component({
   selector: 'wally-ai-message',
@@ -39,6 +51,7 @@ import { RecommendationResult } from './tool-results/recommendation-result/recom
     ReactiveFormsModule,
     OffersResult,
     RecommendationResult,
+    QuoteResult,
   ],
   templateUrl: './ai-message.html',
   styleUrl: './ai-message.css'
@@ -361,11 +374,36 @@ export class AiMessage implements OnInit {
   }
 
   /**
-   * Handles when the user clicks "Quote items" button in recommendation-result
+   * Handles when the user clicks "Cotar" button in recommendation-result
+   * Automatically sends a quote request message with selected EANs to the chat
    */
-  onQuoteRequested(selectedItems: any[]): void {
-    console.log('Cotação solicitada para os itens:', selectedItems);
-    // TODO: Implementar lógica de cotação
-    // Pode enviar para API, abrir modal, ou enviar mensagem para o chat
+  onQuoteRequested(selectedItems: SelectedItem[]): void {
+    if (selectedItems.length === 0) {
+      return;
+    }
+
+    // Extract EAN codes
+    const eans = selectedItems.map(item => item.ean);
+
+    // Format message based on quantity
+    let message: string;
+    if (eans.length === 1) {
+      message = `Iza, realize a cotação para esse EAN: ${eans[0]}`;
+    } else {
+      message = `Iza, realize a cotação para esses EANs: ${eans.join(', ')}`;
+    }
+
+    // Auto-send to chat
+    this.aiChatService.updateCurrentUserMessage(message);
+    this.aiChatService.sendMessage();
+  }
+
+  /**
+   * Handles when the user clicks "Add to cart" button in quote-result
+   */
+  onAddToCartRequested(cartItems: any[]): void {
+    console.log('Adicionar ao carrinho solicitado:', cartItems);
+    // TODO: Implementar lógica de adicionar ao carrinho
+    // Pode enviar para API, atualizar estado global, ou enviar mensagem para o chat
   }
 }

@@ -34,7 +34,7 @@ export class AiChatService {
   /**
    * Token de autorização para o header
    */
-  token = signal<string | null>('eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRYQXUzY3BQUFFyWnlRRjdZV2dwUSJ9.eyJodHRwczovL3Jtc2Fhcy5jby9ncm91cHMiOlsicGhhcm1hZGFzaDppbnRlcm5vOmRhc2hib2FyZCIsInBoYXJtYWRhc2g6aW50ZXJubzpmaWxlbWFuYWdlciIsInBoYXJtYWRhc2g6aW50ZXJubzpjZXJ0aWZpY2F0ZSIsInBoYXJtYWRhc2g6aW50ZXJubzpwYm0iLCJwaGFybWFkYXNoOmludGVybm86YnJpY2siLCJwaGFybWFkYXNoOmludGVybm86c21hcnRwZWQiLCJwaGFybWFkYXNoOmludGVybm86c2hvcHBpbmciLCJwaGFybWFkYXNoOmludGVybm86YmlsbGluZyIsInBoYXJtYWRhc2g6aW50ZXJubyIsInBoYXJtYWRhc2g6aW50ZXJubzp0ZXJtIiwicGhhcm1hZGFzaDppbnRlcm5vOmNoYXQiLCJwaGFybWFkYXNoOmludGVybm86cHJlY2lmaWNhdGlvbiIsInBoYXJtYWRhc2g6aW50ZXJubzpwcmVkaWN0aW9uIiwicGhhcm1hZGFzaDppbnRlcm5vOnJlY29tZW5kYXRpb24iLCJwaGFybWFkYXNoOmludGVybm86bWFya2V0LWFuYWx5c2lzIiwicGhhcm1hZGFzaDppbnRlcm5vOmdvYWwiXSwiaHR0cHM6Ly9ybXNhYXMuY28vaW50ZXJjb21faG1hYyI6ImE4MzQ0ZjZhOGQ3YWNmODgxM2EzODQ0YmY0YmM1MjdjNDAzMTdlN2YwOTU4YzZjYTJlMTJlZTNlNzkxYjQwM2QiLCJodHRwczovL3Jtc2Fhcy5jby9pbnRlcmNvbV9jcmVhdGVkX2F0IjoxNzM2MzQyMDc2LCJnaXZlbl9uYW1lIjoiV2FsaXNzb24iLCJmYW1pbHlfbmFtZSI6IkZlcnJlaXJhIiwibmlja25hbWUiOiJ3YWxpc3Nvbi5mZXJyZWlyYSIsIm5hbWUiOiJXYWxpc3NvbiBGZXJyZWlyYSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NKUEVubUdqbzB1ajB5UjJyUGduQlRUZXI5dzExSThuWXVEMDlpRGdQVDh4Qy1Ycnc9czk2LWMiLCJ1cGRhdGVkX2F0IjoiMjAyNS0xMS0yNFQwMjowNzo1Mi43NDFaIiwiZW1haWwiOiJ3YWxpc3Nvbi5mZXJyZWlyYUBoaXBlcnNhdWRlLmNvbS5iciIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL3JtLWZhcm1hLXByb2QudXMuYXV0aDAuY29tLyIsImF1ZCI6IkZ2dm9GTUs3RTNucFlvS3FzYWJ3QVpwU3FiOXB4SHd1Iiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTAxMTEwODIwMjcyNTcxNDAzNjIiLCJpYXQiOjE3NjM5NTAwNzUsImV4cCI6MTc2Mzk4NjA3NSwic2lkIjoiVDVDRHF6UGdkNXlOc0dvcGVHSW1QNDdHZHZtSVdGOGwiLCJub25jZSI6IlUxVk1iR2xSVFRrMlFrWjNjMDlKUkhwaWJUZFVMWFF4TkhKNU9UWldURVpOTmtGUk0zbHNUMFJuZEE9PSJ9.WiaVcgTSZVLXWfHKVehR7I_di7WBxeKvXFKbT3I0RLdS28dsWEH-nRElbvs1lWY4XIP__1AzEgFr4BWaWxUYXwCvxMZP2AIUCy7FuK1k0Wcn3bfMWRQyaTw-nizD91jO5munjWpGxothNKaGY8Zh4qk3V91ghPlVz3_i-iOhfVKIGOe2zFAGufzTkKlOsXhdAQJwsfwWyqUYdwsC6p1DxcAlRFCvji3MeJWGqzZTXBFU7tglFEWApL-SPay_7Io92S3qtWG7Nw5fljowzr2EN5eA7easd0p7_-6PaGjdkVQK8n01630dzP07KMC8lp4NwooPZiHMA24QHU59wBcqnw');
+  token = signal<string | null>('eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRYQXUzY3BQUFFyWnlRRjdZV2dwUSJ9.eyJodHRwczovL3Jtc2Fhcy5jby9ncm91cHMiOlsicGhhcm1hZGFzaDppbnRlcm5vOmRhc2hib2FyZCIsInBoYXJtYWRhc2g6aW50ZXJubzpmaWxlbWFuYWdlciIsInBoYXJtYWRhc2g6aW50ZXJubzpjZXJ0aWZpY2F0ZSIsInBoYXJtYWRhc2g6aW50ZXJubzpwYm0iLCJwaGFybWFkYXNoOmludGVybm86YnJpY2siLCJwaGFybWFkYXNoOmludGVybm86c21hcnRwZWQiLCJwaGFybWFkYXNoOmludGVybm86c2hvcHBpbmciLCJwaGFybWFkYXNoOmludGVybm86YmlsbGluZyIsInBoYXJtYWRhc2g6aW50ZXJubyIsInBoYXJtYWRhc2g6aW50ZXJubzp0ZXJtIiwicGhhcm1hZGFzaDppbnRlcm5vOmNoYXQiLCJwaGFybWFkYXNoOmludGVybm86cHJlY2lmaWNhdGlvbiIsInBoYXJtYWRhc2g6aW50ZXJubzpwcmVkaWN0aW9uIiwicGhhcm1hZGFzaDppbnRlcm5vOnJlY29tZW5kYXRpb24iLCJwaGFybWFkYXNoOmludGVybm86bWFya2V0LWFuYWx5c2lzIiwicGhhcm1hZGFzaDppbnRlcm5vOmdvYWwiXSwiaHR0cHM6Ly9ybXNhYXMuY28vaW50ZXJjb21faG1hYyI6ImE4MzQ0ZjZhOGQ3YWNmODgxM2EzODQ0YmY0YmM1MjdjNDAzMTdlN2YwOTU4YzZjYTJlMTJlZTNlNzkxYjQwM2QiLCJodHRwczovL3Jtc2Fhcy5jby9pbnRlcmNvbV9jcmVhdGVkX2F0IjoxNzM2MzQyMDc2LCJnaXZlbl9uYW1lIjoiV2FsaXNzb24iLCJmYW1pbHlfbmFtZSI6IkZlcnJlaXJhIiwibmlja25hbWUiOiJ3YWxpc3Nvbi5mZXJyZWlyYSIsIm5hbWUiOiJXYWxpc3NvbiBGZXJyZWlyYSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NKUEVubUdqbzB1ajB5UjJyUGduQlRUZXI5dzExSThuWXVEMDlpRGdQVDh4Qy1Ycnc9czk2LWMiLCJ1cGRhdGVkX2F0IjoiMjAyNS0xMS0yNVQyMTozNTowOS4zMjJaIiwiZW1haWwiOiJ3YWxpc3Nvbi5mZXJyZWlyYUBoaXBlcnNhdWRlLmNvbS5iciIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL3JtLWZhcm1hLXByb2QudXMuYXV0aDAuY29tLyIsImF1ZCI6IkZ2dm9GTUs3RTNucFlvS3FzYWJ3QVpwU3FiOXB4SHd1Iiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTAxMTEwODIwMjcyNTcxNDAzNjIiLCJpYXQiOjE3NjQxMDY1MTEsImV4cCI6MTc2NDE0MjUxMSwic2lkIjoiclk0QzRwNl9pQjZDbXNoQl9LekRTM1ZSMnhYSXY4SXIiLCJub25jZSI6IlQwTnBUa1ZPVHpGcFUxUkdaRE50V1hjMWRGOVNhMnRuY0VGSVUybFFOV2RsUm1OVVZTMHlNMEpWUlE9PSJ9.Uu4PZu3HU3NRK8iYQdotVnnOMvDngMjhiU_MuMW1M40EldeaN8IbpDOZUObDDhXyq4rXMOFwXliSEXcXPG4aevecXRTau_7WBVvZZoOLPPTYVeiEciybFPf7pvniBITxjI7IefW693sPlwicMCTaAo_ceJGPouyT-w0dYjmizJZPIVqj9sbGTtHH7ERmv68p5XrTkXgfPRSF_nViRH7TtQ_lWbhOncZQwb48EugPahAM_RL1ta_HDcmlX6EIkGDGLNcCB7NjDpDgq3cBtpy930Z_TZTb_KX3zFpQ0cTM48y2_aPf3eDigp4vv1vENYlvZ80JCOjDjp-mgFbKB4np9w');
 
   /**
    * Array de conversas, onde cada conversa contém vários turnos.
@@ -657,6 +657,8 @@ export class AiChatService {
 
     const apiTurns: MessageHistory[] = [];
 
+    console.log('🔍 DEBUG formatHistoryForApi - Total de turnos:', activeConversation.length);
+
     for (const turn of activeConversation) {
 
       // 1. Extrair a ÚLTIMA versão da mensagem do usuário
@@ -677,18 +679,37 @@ export class AiChatService {
       // 2. Extrair a ÚLTIMA versão da resposta do modelo
       const latestAssistantMessage = turn.assistantMessages[turn.assistantMessages.length - 1];
 
+      console.log('🔍 Assistant message:', {
+        hasMessage: !!latestAssistantMessage?.message,
+        status: latestAssistantMessage?.status,
+        hasStructuredData: !!latestAssistantMessage?.structuredData,
+        structuredData: latestAssistantMessage?.structuredData
+      });
+
       // Incluímos a resposta do modelo SOMENTE se ela estiver COMPLETA ('sent').
       // Isso exclui placeholders e respostas em stream.
+      // Aceita se tiver message OU structuredData
       if (latestAssistantMessage &&
-        latestAssistantMessage.message &&
+        (latestAssistantMessage.message || latestAssistantMessage.structuredData) &&
         latestAssistantMessage.status === 'sent') {
+
+        let textContent = latestAssistantMessage.message || '';
+
+        // Se tiver structuredData, concatena como string
+        if (latestAssistantMessage.structuredData) {
+          console.log('✅ Adicionando structuredData ao histórico:', latestAssistantMessage.structuredData);
+          const structStr = JSON.stringify(latestAssistantMessage.structuredData);
+          textContent = textContent ? textContent + '\n' + structStr : structStr;
+        }
 
         apiTurns.push({
           role: 'model',
-          parts: [{ text: latestAssistantMessage.message }]
+          parts: [{ text: textContent }]
         });
       }
     }
+
+    console.log('🔍 DEBUG apiTurns final:', JSON.stringify(apiTurns, null, 2));
 
     // O array apiTurns agora contém o histórico completo, pronto para ser enviado.
     return apiTurns;

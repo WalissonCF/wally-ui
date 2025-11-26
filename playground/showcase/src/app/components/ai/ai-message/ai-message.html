@@ -168,13 +168,10 @@
 
     <!-- Quote Tool Result -->
     @if (quoteData(); as quote) {
-    <div class="quote-tool-result">
-      <h3 class="text-lg font-semibold mb-4 text-[#0a0a0a] dark:text-white">
-        Cotação de Produto
-      </h3>
-      <p class="text-neutral-600 dark:text-neutral-400">TODO: Adicionar tabela de cotação aqui</p>
-      <!-- <pre class="text-xs mt-2">{{ quote | json }}</pre> -->
-    </div>
+      <wally-quote-result
+        [data]="quote"
+        [isLoading]="isLoading()"
+        (addToCartRequested)="onAddToCartRequested($event)" />
     }
 
     <!-- Recommendation Tool Result -->
