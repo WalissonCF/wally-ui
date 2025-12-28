@@ -36,5 +36,9 @@ export const componentsRoutes: Routes = [
     {
         path: 'audio-waveform',
         loadComponent: () => import('./audio-waveform-docs/audio-waveform-docs').then(m => m.AudioWaveformDocs)
+    },
+    {
+      path: 'combobox',
+      loadComponent: () => import('./combobox-docs/combobox-docs.component').then(m => m.ComboboxDocsComponent)
     }
 ];

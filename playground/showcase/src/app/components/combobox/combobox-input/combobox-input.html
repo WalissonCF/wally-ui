@@ -1,0 +1,71 @@
+<div
+  class="flex items-center gap-2 w-full px-3 py-2 bg-white dark:bg-[#1b1b1b] border border-neutral-300 dark:border-neutral-700 rounded-lg focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-200 min-h-[42px]"
+  [class.opacity-50]="comboboxService.disabled()"
+>
+  <!-- Left side: chips + input (can wrap) -->
+  <div class="flex flex-wrap gap-1.5 items-center flex-1 min-w-0">
+    <!-- Selected chips (multi-select mode) -->
+    @if (comboboxService.multiSelect()) {
+      @for (item of comboboxService.selectedItems(); track item.value) {
+        <div class="flex items-center gap-1 px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-md text-sm">
+          <span class="text-[#0a0a0a] dark:text-white">{{ item.label }}</span>
+          <button
+            type="button"
+            class="hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-full p-0.5 transition-colors"
+            (click)="removeChip(item.value, $event)"
+            [attr.aria-label]="'Remove ' + item.label"
+          >
+            <svg class="w-3 h-3 text-neutral-600 dark:text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      }
+    }
+
+    <!-- Input field -->
+    <input
+      #inputElement
+      type="text"
+      class="flex-1 min-w-[120px] outline-none bg-transparent text-[#0a0a0a] dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 text-sm"
+      [placeholder]="comboboxService.selectedItems().length === 0 ? comboboxService.placeholder() : ''"
+      [value]="comboboxService.searchQuery()"
+      [disabled]="comboboxService.disabled()"
+      (focus)="onInputFocus()"
+      (click)="onInputClick()"
+      (input)="onInput($event)"
+      role="combobox"
+      [attr.aria-expanded]="comboboxService.isOpen()"
+      [attr.aria-controls]="'combobox-listbox'"
+      autocomplete="off"
+    />
+  </div>
+
+  <!-- Right side: icons (always fixed at the end) -->
+  <div class="flex items-center gap-1 flex-shrink-0">
+    <!-- Clear button -->
+    @if (comboboxService.selectedItems().length > 0) {
+      <button
+        type="button"
+        class="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-full transition-colors"
+        (click)="clearAll(inputElement)"
+        aria-label="Clear all"
+      >
+        <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    }
+
+    <!-- Dropdown indicator -->
+    <svg
+      class="w-4 h-4 text-neutral-500 transition-transform duration-200"
+      [class.rotate-180]="comboboxService.isOpen()"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </div>
+</div>

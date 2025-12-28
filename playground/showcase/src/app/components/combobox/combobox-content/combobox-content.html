@@ -1,0 +1,41 @@
+@if (comboboxService.isOpen()) {
+  <div
+    [class]="'absolute bg-white dark:bg-[#1b1b1b] dark:border-neutral-700 rounded-xl shadow-2xl border border-neutral-300 w-full z-50 transition-all duration-200 ease-out ' + positionClasses()"
+    id="combobox-listbox"
+    role="listbox"
+    [attr.aria-multiselectable]="comboboxService.multiSelect()"
+  >
+    <!-- Search (só no custom trigger mode) -->
+    @if (comboboxService.triggerMode() === 'custom') {
+      <wally-combobox-search></wally-combobox-search>
+    }
+
+    <div class="p-1">
+      @if (comboboxService.filteredData().length === 0) {
+        <wally-combobox-empty></wally-combobox-empty>
+      } @else if (comboboxService.groupedData(); as groups) {
+        <!-- Itens agrupados -->
+        @for (group of groups; track group.label; let groupIdx = $index) {
+          <wally-combobox-group [label]="group.label">
+            @for (item of group.items; track item.value; let itemIdx = $index) {
+              <wally-combobox-item
+                [item]="item"
+                [focused]="comboboxService.focusedIndex() === getGlobalIndex(groupIdx, itemIdx)"
+                [selected]="comboboxService.isSelected(item.value)"
+              ></wally-combobox-item>
+            }
+          </wally-combobox-group>
+        }
+      } @else {
+        <!-- Itens normais -->
+        @for (item of comboboxService.filteredData(); track item.value; let idx = $index) {
+          <wally-combobox-item
+            [item]="item"
+            [focused]="comboboxService.focusedIndex() === idx"
+            [selected]="comboboxService.isSelected(item.value)"
+          ></wally-combobox-item>
+        }
+      }
+    </div>
+  </div>
+}

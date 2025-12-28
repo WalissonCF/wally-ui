@@ -42,6 +42,10 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
   },
   {
+    path: 'documentation/components/combobox',
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: 'documentation/chat-sdk',
     renderMode: RenderMode.Prerender,
   },

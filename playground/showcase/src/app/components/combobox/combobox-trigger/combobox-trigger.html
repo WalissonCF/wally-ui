@@ -1,0 +1,8 @@
+<div
+  class="w-full"
+  [attr.tabindex]="comboboxService.triggerMode() === 'custom' ? 0 : undefined"
+  [attr.role]="comboboxService.triggerMode() === 'custom' ? 'button' : undefined"
+  [attr.aria-expanded]="comboboxService.triggerMode() === 'custom' ? comboboxService.isOpen() : undefined"
+>
+  <ng-content></ng-content>
+</div>
