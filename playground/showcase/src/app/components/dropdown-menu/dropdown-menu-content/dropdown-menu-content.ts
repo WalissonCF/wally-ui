@@ -19,9 +19,15 @@ export class DropdownMenuContent {
     const position = this.calculatedPosition();
     const scrollClasses = 'max-h-96 overflow-visible';
 
+    // Detectar se trigger está na metade direita da viewport
+    const triggerElement = this.elementRef.nativeElement.parentElement;
+    const isRightSide = triggerElement
+      ? triggerElement.getBoundingClientRect().left > window.innerWidth / 2
+      : false;
+
     const positionMap = {
-      bottom: 'top-full mt-1 left-0',
-      top: 'bottom-full mb-1 left-0',
+      bottom: isRightSide ? 'top-full mt-1 right-0' : 'top-full mt-1 left-0',
+      top: isRightSide ? 'bottom-full mb-1 right-0' : 'bottom-full mb-1 left-0',
       right: 'left-full ml-1 top-0',
       left: 'right-full mr-1 top-0'
     };
@@ -35,10 +41,10 @@ export class DropdownMenuContent {
   ) {
     effect(() => {
       if (this.dropdownMenuService.isOpen()) {
-        setTimeout(() => {
+        requestAnimationFrame(() => {
           const bestPosition = this.calculateBestPosition();
           this.calculatedPosition.set(bestPosition);
-        }, 0);
+        });
       }
     });
   }
@@ -49,8 +55,10 @@ export class DropdownMenuContent {
   @HostListener('window:resize')
   onResize(): void {
     if (this.dropdownMenuService.isOpen()) {
-      const bestPosition = this.calculateBestPosition();
-      this.calculatedPosition.set(bestPosition);
+      requestAnimationFrame(() => {
+        const bestPosition = this.calculateBestPosition();
+        this.calculatedPosition.set(bestPosition);
+      });
     }
   }
 
