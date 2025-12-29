@@ -30,7 +30,7 @@ export class ComboboxContent {
 
   positionClasses = computed(() => {
     const position = this.calculatedPosition();
-    const scrollClasses = 'max-h-96 overflow-y-auto';
+    const scrollClasses = 'max-h-60 sm:max-h-80 md:max-h-96 overflow-y-auto';
 
     const positionMap = {
       bottom: 'top-full mt-2 left-0',

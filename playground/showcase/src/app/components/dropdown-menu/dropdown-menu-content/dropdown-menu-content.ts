@@ -1,4 +1,4 @@
-import { Component, computed, effect, ElementRef, input, signal } from '@angular/core';
+import { Component, computed, effect, ElementRef, HostListener, input, signal } from '@angular/core';
 
 import { DropdownMenuService } from '../dropdown-menu.service';
 
@@ -41,6 +41,17 @@ export class DropdownMenuContent {
         }, 0);
       }
     });
+  }
+
+  /**
+   * Recalculates position on window resize to maintain optimal placement
+   */
+  @HostListener('window:resize')
+  onResize(): void {
+    if (this.dropdownMenuService.isOpen()) {
+      const bestPosition = this.calculateBestPosition();
+      this.calculatedPosition.set(bestPosition);
+    }
   }
 
   /**
@@ -135,7 +146,7 @@ export class DropdownMenuContent {
     if (!menuElement) {
       return {
         height: 200,
-        width: 224
+        width: Math.min(224, window.innerWidth - 32)
       };
     }
 

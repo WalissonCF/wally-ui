@@ -17,10 +17,10 @@ export class DropdownMenuSubContent {
     const position = this.calculatedPosition();
 
     const positionMap = {
-      right: 'top-0 left-full ml-1',
-      left: 'top-0 right-full mr-1',
-      bottom: 'left-0 top-full mt-1',
-      top: 'left-0 bottom-full mb-1'
+      right: 'top-0 left-full',
+      left: 'top-0 right-full',
+      bottom: 'left-0 top-full',
+      top: 'left-0 bottom-full'
     };
 
     return positionMap[position];
@@ -111,7 +111,7 @@ export class DropdownMenuSubContent {
     if (!menuElement) {
       return {
         height: 200,
-        width: 224
+        width: Math.min(224, window.innerWidth - 32)
       };
     }
 
@@ -125,7 +125,6 @@ export class DropdownMenuSubContent {
 
   onMouseEnter(): void {
     this.subService.setHoveringContent(true);
-    this.subService.open();
   }
 
   onMouseLeave(): void {

@@ -60,6 +60,7 @@ export class DropdownMenuDocs {
   componentTsCode = getFormattedCode(DropdownMenuCodeExamples.componentTs, 'typescript');
   realWorldExampleCode = getFormattedCode(DropdownMenuCodeExamples.realWorldExample, 'html');
   nestedSubmenuExampleCode = getFormattedCode(DropdownMenuCodeExamples.nestedSubmenuExample, 'html');
+  centeredPositionCode = getFormattedCode(DropdownMenuCodeExamples.centeredPosition, 'html');
 
   constructor(
     private aiPromptService: AiPromptService

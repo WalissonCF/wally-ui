@@ -1,0 +1,33 @@
+[role="listbox"] {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d4 transparent;
+}
+
+[role="listbox"]::-webkit-scrollbar {
+  width: 8px;
+}
+
+[role="listbox"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+[role="listbox"]::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 4px;
+}
+
+.dark [role="listbox"] {
+  scrollbar-color: #525252 #1b1b1b;
+}
+
+.dark [role="listbox"]::-webkit-scrollbar-track {
+  background: #1b1b1b;
+}
+
+.dark [role="listbox"]::-webkit-scrollbar-thumb {
+  background: #525252;
+}
+
+.dark [role="listbox"]::-webkit-scrollbar-thumb:hover {
+  background: #737373;
+}

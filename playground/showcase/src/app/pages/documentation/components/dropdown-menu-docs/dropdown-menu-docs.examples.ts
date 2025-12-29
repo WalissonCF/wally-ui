@@ -400,5 +400,27 @@ export class ExampleComponent {
       Close
     </wally-dropdown-menu-item>
   </wally-dropdown-menu-content>
-</wally-dropdown-menu>`
+</wally-dropdown-menu>`,
+
+  centeredPosition: `<!-- Centralized trigger to test responsive positioning -->
+<div class="flex justify-center items-center min-h-[400px]">
+  <wally-dropdown-menu>
+    <wally-dropdown-menu-trigger>
+      <wally-button variant="outline">Centered Menu</wally-button>
+    </wally-dropdown-menu-trigger>
+
+    <wally-dropdown-menu-content>
+      <wally-dropdown-menu-item (click)="onProfile()">
+        Profile
+      </wally-dropdown-menu-item>
+      <wally-dropdown-menu-item (click)="onSettings()">
+        Settings
+      </wally-dropdown-menu-item>
+      <wally-dropdown-menu-separator></wally-dropdown-menu-separator>
+      <wally-dropdown-menu-item (click)="onLogout()">
+        Log out
+      </wally-dropdown-menu-item>
+    </wally-dropdown-menu-content>
+  </wally-dropdown-menu>
+</div>`
 };
