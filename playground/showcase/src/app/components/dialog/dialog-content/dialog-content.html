@@ -1,0 +1,15 @@
+@if (dialogService.isOpen()) {
+  <div
+    class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-all duration-200"
+    (click)="onBackdropClick($event)"
+    role="dialog"
+    aria-modal="true">
+    <div class="flex min-h-screen items-center justify-center p-4">
+      <div
+        class="relative w-full max-w-lg bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-700 rounded-xl shadow-2xl transition-all duration-200 ease-out"
+        (click)="$event.stopPropagation()">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+}

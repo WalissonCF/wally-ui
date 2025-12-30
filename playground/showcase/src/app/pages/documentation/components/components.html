@@ -1,6 +1,5 @@
 <main class="min-h-dvh bg-white dark:bg-[#0a0a0a] font-mono" role="main">
   <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 md:px-8">
-
     <!-- Breadcrumb Navigation -->
     <nav class="mb-8" aria-label="Breadcrumb navigation">
       <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
@@ -8,59 +7,87 @@
 
     <!-- Header -->
     <header class="mb-12" role="banner">
-      <h1 id="page-title" class="text-3xl sm:text-4xl font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase">
+      <h1
+        id="page-title"
+        class="text-3xl sm:text-4xl font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase"
+      >
         <span aria-hidden="true">&gt;_ </span>Components
       </h1>
       <p
-        class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4">
-        Explore our collection of production-ready Angular components. Copy-paste ready TypeScript with
-        accessibility-first design.
+        class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4"
+      >
+        Explore our collection of production-ready Angular components.
+        Copy-paste ready TypeScript with accessibility-first design.
       </p>
     </header>
 
     <!-- Status Notice -->
     <section class="mb-10" aria-labelledby="status-heading">
-      <h2 id="status-heading"
-        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-3">
+      <h2
+        id="status-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-3"
+      >
         [ Status ]
       </h2>
-      <div class="bg-neutral-100 dark:bg-[#121212] border-2 border-neutral-300 dark:border-neutral-700 p-4">
+      <div
+        class="bg-neutral-100 dark:bg-[#121212] border-2 border-neutral-300 dark:border-neutral-700 p-4"
+      >
         <p class="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">
-          More components are being built and will be added soon. All components include full TypeScript support, ARIA
-          accessibility, and Angular SSR compatibility.
+          More components are being built and will be added soon. All components
+          include full TypeScript support, ARIA accessibility, and Angular SSR
+          compatibility.
         </p>
       </div>
     </section>
 
     <!-- Available Components -->
     <section id="available-components" aria-labelledby="components-heading">
-      <h2 id="components-heading"
-        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4">
+      <h2
+        id="components-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
         [ Available Components ]
       </h2>
 
-      <div class="space-y-0 border-2 border-neutral-300 dark:border-neutral-700">
+      <div
+        class="space-y-0 border-2 border-neutral-300 dark:border-neutral-700"
+      >
         <!-- Audio Waveform Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
-          aria-labelledby="audio-waveform-heading">
-          <a href="/documentation/components/audio-waveform"
+        <article
+          class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0"
+          role="article"
+          aria-labelledby="audio-waveform-heading"
+        >
+          <a
+            href="/documentation/components/audio-waveform"
             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-            aria-label="Navigate to Audio Waveform component documentation with real-time FFT analysis, responsive bar count, and audio recording">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            aria-label="Navigate to Audio Waveform component documentation with real-time FFT analysis, responsive bar count, and audio recording"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+            >
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="audio-waveform-heading"
-                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3
+                    id="audio-waveform-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150"
+                  >
                     <span aria-hidden="true">&gt;_ </span>Audio Waveform
                   </h3>
-                  <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
-                    aria-label="Status: New Component">
+                  <span
+                    class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: New Component"
+                  >
                     NEW
                   </span>
                 </div>
                 <p
-                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Real-time audio visualizer with Web Audio API, FFT frequency analysis, responsive bar count (mobile/desktop), 60fps animations, and automatic recording to WebM. Audio transcription coming soon.
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150"
+                >
+                  Real-time audio visualizer with Web Audio API, FFT frequency
+                  analysis, responsive bar count (mobile/desktop), 60fps
+                  animations, and automatic recording to WebM. Audio
+                  transcription coming soon.
                 </p>
               </div>
             </div>
@@ -68,27 +95,40 @@
         </article>
 
         <!-- Breadcrumb Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
-          aria-labelledby="breadcrumb-heading">
-          <a href="/documentation/components/breadcrumb"
+        <article
+          class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0"
+          role="article"
+          aria-labelledby="breadcrumb-heading"
+        >
+          <a
+            href="/documentation/components/breadcrumb"
             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-            aria-label="Navigate to Breadcrumb component documentation with semantic HTML structure, ARIA attributes, and responsive design">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            aria-label="Navigate to Breadcrumb component documentation with semantic HTML structure, ARIA attributes, and responsive design"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+            >
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="breadcrumb-heading"
-                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3
+                    id="breadcrumb-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150"
+                  >
                     <span aria-hidden="true">&gt;_ </span>Breadcrumb
                   </h3>
-                  <span class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider"
-                    aria-label="Status: Under Construction">
+                  <span
+                    class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: Under Construction"
+                  >
                     UNDER CONSTRUCTION
                   </span>
                 </div>
                 <p
-                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Semantic navigation breadcrumbs with proper HTML structure (ol/li), ARIA attributes, responsive
-                  design, and current page indication. Perfect for hierarchical navigation.
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150"
+                >
+                  Semantic navigation breadcrumbs with proper HTML structure
+                  (ol/li), ARIA attributes, responsive design, and current page
+                  indication. Perfect for hierarchical navigation.
                 </p>
               </div>
             </div>
@@ -96,56 +136,82 @@
         </article>
 
         <!-- Button Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
-          aria-labelledby="button-heading">
-          <a href="/documentation/components/button"
+        <article
+          class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0"
+          role="article"
+          aria-labelledby="button-heading"
+        >
+          <a
+            href="/documentation/components/button"
             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-            aria-label="Navigate to Button component documentation with code examples, API reference, and accessibility features">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            aria-label="Navigate to Button component documentation with code examples, API reference, and accessibility features"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+            >
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="button-heading"
-                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3
+                    id="button-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150"
+                  >
                     <span aria-hidden="true">&gt;_ </span>Button
                   </h3>
-                  <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
-                    aria-label="Status: New Component">
+                  <span
+                    class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: New Component"
+                  >
                     NEW
                   </span>
                 </div>
                 <p
-                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Versatile button with variants (primary, secondary), loading states, disabled support, and full ARIA
-                  accessibility. Production-ready with comprehensive TypeScript typing.
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150"
+                >
+                  Versatile button with variants (primary, secondary), loading
+                  states, disabled support, and full ARIA accessibility.
+                  Production-ready with comprehensive TypeScript typing.
                 </p>
               </div>
             </div>
           </a>
         </article>
 
-
         <!-- Carousel Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
-          aria-labelledby="carousel-heading">
-          <a href="/documentation/components/carousel"
+        <article
+          class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0"
+          role="article"
+          aria-labelledby="carousel-heading"
+        >
+          <a
+            href="/documentation/components/carousel"
             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-            aria-label="Navigate to Carousel component documentation with touch/swipe gestures, keyboard navigation, and circular buffer algorithm">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            aria-label="Navigate to Carousel component documentation with touch/swipe gestures, keyboard navigation, and circular buffer algorithm"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+            >
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="carousel-heading"
-                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3
+                    id="carousel-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150"
+                  >
                     <span aria-hidden="true">&gt;_ </span>Carousel
                   </h3>
-                  <span class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider"
-                    aria-label="Status: Under Construction">
+                  <span
+                    class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: Under Construction"
+                  >
                     UNDER CONSTRUCTION
                   </span>
                 </div>
                 <p
-                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Enterprise carousel with circular buffer algorithm, touch/swipe gestures, keyboard navigation (arrows,
-                  Home, End), dot indicators, and full ARIA compliance. GPU-accelerated transitions.
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150"
+                >
+                  Enterprise carousel with circular buffer algorithm,
+                  touch/swipe gestures, keyboard navigation (arrows, Home, End),
+                  dot indicators, and full ARIA compliance. GPU-accelerated
+                  transitions.
                 </p>
               </div>
             </div>
@@ -153,26 +219,83 @@
         </article>
 
         <!-- Combobox Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
-          aria-labelledby="combobox-heading">
-          <a href="/documentation/components/combobox"
+        <article
+          class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0"
+          role="article"
+          aria-labelledby="combobox-heading"
+        >
+          <a
+            href="/documentation/components/combobox"
             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-            aria-label="Navigate to Combobox component documentation with search, multi-select support, keyboard navigation, and intelligent viewport-aware positioning">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            aria-label="Navigate to Combobox component documentation with search, multi-select support, keyboard navigation, and intelligent viewport-aware positioning"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+            >
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="combobox-heading"
-                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3
+                    id="combobox-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150"
+                  >
                     <span aria-hidden="true">&gt;_ </span>Combobox
                   </h3>
-                  <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
-                    aria-label="Status: New Component">
+                  <span
+                    class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: New Component"
+                  >
                     NEW
                   </span>
                 </div>
                 <p
-                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Flexible combobox with search, multi-select support, keyboard navigation, and intelligent viewport-aware positioning. Features input and custom trigger modes, item grouping, virtual scrolling, and zero external dependencies.
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150"
+                >
+                  Flexible combobox with search, multi-select support, keyboard
+                  navigation, and intelligent viewport-aware positioning.
+                  Features input and custom trigger modes, item grouping,
+                  virtual scrolling, and zero external dependencies.
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Dialog Component -->
+        <article
+          class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0"
+          role="article"
+          aria-labelledby="dialog-heading"
+        >
+          <a
+            href="/documentation/components/dialog"
+            class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+            aria-label="Navigate to Dialog component documentation with glass blur backdrop, composable architecture, and customizable close behavior"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+            >
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <h3
+                    id="dialog-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150"
+                  >
+                    <span aria-hidden="true">&gt;_ </span>Dialog
+                  </h3>
+                  <span
+                    class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: New Component"
+                  >
+                    NEW
+                  </span>
+                </div>
+                <p
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150"
+                >
+                  Modal dialog with glass blur backdrop, composable architecture
+                  (header, footer, title, description), customizable close
+                  behavior (backdrop click, ESC key), and full ARIA
+                  accessibility. Inspired by shadcn/ui.
                 </p>
               </div>
             </div>
@@ -180,26 +303,40 @@
         </article>
 
         <!-- Dropdown Menu Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
-          aria-labelledby="dropdown-menu-heading">
-          <a href="/documentation/components/dropdown-menu"
+        <article
+          class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0"
+          role="article"
+          aria-labelledby="dropdown-menu-heading"
+        >
+          <a
+            href="/documentation/components/dropdown-menu"
             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-            aria-label="Navigate to Dropdown Menu component documentation with composable architecture, nested submenus, and viewport-aware positioning">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            aria-label="Navigate to Dropdown Menu component documentation with composable architecture, nested submenus, and viewport-aware positioning"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+            >
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="dropdown-menu-heading"
-                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3
+                    id="dropdown-menu-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150"
+                  >
                     <span aria-hidden="true">&gt;_ </span>Dropdown Menu
                   </h3>
-                  <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
-                    aria-label="Status: New Component">
+                  <span
+                    class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: New Component"
+                  >
                     NEW
                   </span>
                 </div>
                 <p
-                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Composable dropdown menu with nested submenus, click/hover modes, viewport-aware positioning, smooth animations, and full ARIA accessibility. Inspired by Radix UI and shadcn/ui.
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150"
+                >
+                  Composable dropdown menu with nested submenus, click/hover
+                  modes, viewport-aware positioning, smooth animations, and full
+                  ARIA accessibility. Inspired by Radix UI and shadcn/ui.
                 </p>
               </div>
             </div>
@@ -207,55 +344,83 @@
         </article>
 
         <!-- Input Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
-          aria-labelledby="input-heading">
-          <a href="/documentation/components/input"
+        <article
+          class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0"
+          role="article"
+          aria-labelledby="input-heading"
+        >
+          <a
+            href="/documentation/components/input"
             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-            aria-label="Navigate to Input component documentation with FormGroup integration, validation states, and TypeScript examples">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            aria-label="Navigate to Input component documentation with FormGroup integration, validation states, and TypeScript examples"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+            >
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="input-heading"
-                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3
+                    id="input-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150"
+                  >
                     <span aria-hidden="true">&gt;_ </span>Input
                   </h3>
-                  <span class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider"
-                    aria-label="Status: Under Construction">
+                  <span
+                    class="text-[10px] font-bold bg-yellow-500 text-black px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: Under Construction"
+                  >
                     UNDER CONSTRUCTION
                   </span>
                 </div>
                 <p
-                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Full-featured input with FormGroup integration, validation states (loading, valid, error), password
-                  toggle, and type support (text, email, password). Enterprise-grade accessibility.
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150"
+                >
+                  Full-featured input with FormGroup integration, validation
+                  states (loading, valid, error), password toggle, and type
+                  support (text, email, password). Enterprise-grade
+                  accessibility.
                 </p>
               </div>
             </div>
           </a>
         </article>
 
-
         <!-- Selection Popover Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
-          aria-labelledby="selection-popover-heading">
-          <a href="/documentation/components/selection-popover"
+        <article
+          class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0"
+          role="article"
+          aria-labelledby="selection-popover-heading"
+        >
+          <a
+            href="/documentation/components/selection-popover"
             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-            aria-label="Navigate to Selection Popover component documentation with text selection detection, viewport-aware positioning, and zero-flash rendering">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            aria-label="Navigate to Selection Popover component documentation with text selection detection, viewport-aware positioning, and zero-flash rendering"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+            >
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="selection-popover-heading"
-                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3
+                    id="selection-popover-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150"
+                  >
                     <span aria-hidden="true">&gt;_ </span>Selection Popover
                   </h3>
-                  <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
-                    aria-label="Status: New Component">
+                  <span
+                    class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: New Component"
+                  >
                     NEW
                   </span>
                 </div>
                 <p
-                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Floating action toolbar that appears above selected text (Medium/Notion-style). Features Selection API integration, viewport-aware positioning, zero-flash rendering, and custom actions via content projection.
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150"
+                >
+                  Floating action toolbar that appears above selected text
+                  (Medium/Notion-style). Features Selection API integration,
+                  viewport-aware positioning, zero-flash rendering, and custom
+                  actions via content projection.
                 </p>
               </div>
             </div>
@@ -263,49 +428,68 @@
         </article>
 
         <!-- Tooltip Component -->
-        <article class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0" role="article"
-          aria-labelledby="tooltip-heading">
-          <a href="/documentation/components/tooltip"
+        <article
+          class="group border-b-2 border-neutral-300 dark:border-neutral-700 last:border-b-0"
+          role="article"
+          aria-labelledby="tooltip-heading"
+        >
+          <a
+            href="/documentation/components/tooltip"
             class="block px-4 py-4 sm:py-5 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
-            aria-label="Navigate to Tooltip component documentation with smart auto-positioning, overflow detection, and accessibility features">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            aria-label="Navigate to Tooltip component documentation with smart auto-positioning, overflow detection, and accessibility features"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+            >
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 id="tooltip-heading"
-                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150">
+                  <h3
+                    id="tooltip-heading"
+                    class="text-base sm:text-lg font-bold text-[#0a0a0a] dark:text-white group-hover:text-white dark:group-hover:text-[#0a0a0a] uppercase tracking-wide transition-colors duration-150"
+                  >
                     <span aria-hidden="true">&gt;_ </span>Tooltip
                   </h3>
-                  <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
-                    aria-label="Status: New Component">
+                  <span
+                    class="text-[10px] font-bold bg-blue-500 text-white px-2 py-1 uppercase tracking-wider"
+                    aria-label="Status: New Component"
+                  >
                     NEW
                   </span>
                 </div>
                 <p
-                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150">
-                  Smart tooltip with auto-positioning, overflow detection, and smooth animations. Wraps any element with
-                  full ARIA support and keyboard navigation. Rich content support coming in v2.0.
+                  class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-600 transition-colors duration-150"
+                >
+                  Smart tooltip with auto-positioning, overflow detection, and
+                  smooth animations. Wraps any element with full ARIA support
+                  and keyboard navigation. Rich content support coming in v2.0.
                 </p>
               </div>
             </div>
           </a>
         </article>
-
       </div>
     </section>
 
     <!-- Ad Space -->
     <aside class="mt-12" aria-label="Advertisement">
       <div class="w-auto h-auto">
-        <script async
+        <script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4944285767597175"
-          crossorigin="anonymous"></script>
-        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z"
-          data-ad-client="ca-pub-4944285767597175" data-ad-slot="4427496130"></ins>
+          crossorigin="anonymous"
+        ></script>
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-format="fluid"
+          data-ad-layout-key="-gw-3+1f-3d+2z"
+          data-ad-client="ca-pub-4944285767597175"
+          data-ad-slot="4427496130"
+        ></ins>
         <script>
           (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
       </div>
     </aside>
-
   </div>
 </main>

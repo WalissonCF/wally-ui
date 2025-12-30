@@ -1,0 +1,701 @@
+<main class="min-h-dvh bg-white dark:bg-[#0a0a0a] font-mono" role="main">
+  <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 md:px-8">
+    <!-- Breadcrumb Navigation -->
+    <nav class="mb-8" aria-label="Breadcrumb navigation">
+      <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-12" role="banner">
+      <h1
+        id="page-title"
+        class="text-3xl sm:text-4xl font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase"
+      >
+        <span aria-hidden="true">&gt;_ </span>Dialog
+      </h1>
+      <p
+        class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4 leading-relaxed"
+      >
+        A composable modal dialog component inspired by shadcn/ui. Features
+        glass blur backdrop, customizable close behavior, keyboard navigation,
+        and full accessibility support.
+      </p>
+    </header>
+
+    <!-- AI Assistant Links -->
+    <div
+      class="flex flex-wrap gap-0 mt-6 mb-12 border-2 border-neutral-300 dark:border-neutral-700"
+      role="list"
+      aria-label="Open documentation in AI coding assistants"
+    >
+      <a
+        [href]="claudeUrl"
+        target="_blank"
+        class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] border-b-2 sm:border-b-0 sm:border-r-2 border-neutral-300 dark:border-neutral-700 hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+        rel="noopener noreferrer"
+        role="listitem"
+        aria-label="Open Dialog component documentation in Claude AI assistant (opens in new tab)"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="m4.714 15.956l4.718-2.648l.079-.23l-.08-.128h-.23l-.79-.048l-2.695-.073l-2.337-.097l-2.265-.122l-.57-.121l-.535-.704l.055-.353l.48-.321l.685.06l1.518.104l2.277.157l1.651.098l2.447.255h.389l.054-.158l-.133-.097l-.103-.098l-2.356-1.596l-2.55-1.688l-1.336-.972l-.722-.491L2 6.223l-.158-1.008l.656-.722l.88.06l.224.061l.893.686l1.906 1.476l2.49 1.833l.364.304l.146-.104l.018-.072l-.164-.274l-1.354-2.446l-1.445-2.49l-.644-1.032l-.17-.619a3 3 0 0 1-.103-.729L6.287.133L6.7 0l.995.134l.42.364l.619 1.415L9.735 4.14l1.555 3.03l.455.898l.243.832l.09.255h.159V9.01l.127-1.706l.237-2.095l.23-2.695l.08-.76l.376-.91l.747-.492l.583.28l.48.685l-.067.444l-.286 1.851l-.558 2.903l-.365 1.942h.213l.243-.242l.983-1.306l1.652-2.064l.728-.82l.85-.904l.547-.431h1.032l.759 1.129l-.34 1.166l-1.063 1.347l-.88 1.142l-1.263 1.7l-.79 1.36l.074.11l.188-.02l2.853-.606l1.542-.28l1.84-.315l.832.388l.09.395l-.327.807l-1.967.486l-2.307.462l-3.436.813l-.043.03l.049.061l1.548.146l.662.036h1.62l3.018.225l.79.522l.473.638l-.08.485l-1.213.62l-1.64-.389l-3.825-.91l-1.31-.329h-.183v.11l1.093 1.068l2.003 1.81l2.508 2.33l.127.578l-.321.455l-.34-.049l-2.204-1.657l-.85-.747l-1.925-1.62h-.127v.17l.443.649l2.343 3.521l.122 1.08l-.17.353l-.607.213l-.668-.122l-1.372-1.924l-1.415-2.168l-1.141-1.943l-.14.08l-.674 7.254l-.316.37l-.728.28l-.607-.461l-.322-.747l.322-1.476l.388-1.924l.316-1.53l.285-1.9l.17-.632l-.012-.042l-.14.018l-1.432 1.967l-2.18 2.945l-1.724 1.845l-.413.164l-.716-.37l.066-.662l.401-.589l2.386-3.036l1.439-1.882l.929-1.086l-.006-.158h-.055L4.138 18.56l-1.13.146l-.485-.456l.06-.746l.231-.243l1.907-1.312Z"
+          />
+        </svg>
+        <span
+          class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+        >
+          Open in Claude
+        </span>
+      </a>
+
+      <a
+        [href]="chatGptUrl"
+        target="_blank"
+        class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+        rel="noopener noreferrer"
+        role="listitem"
+        aria-label="Open Dialog component documentation in ChatGPT AI assistant (opens in new tab)"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+          viewBox="0 0 48 48"
+          aria-hidden="true"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="M18.38 27.94v-14.4l11.19-6.46c6.2-3.58 17.3 5.25 12.64 13.33"
+          />
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="m18.38 20.94l12.47-7.2l11.19 6.46c6.2 3.58 4.1 17.61-5.23 17.61"
+          />
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="m24.44 17.44l12.47 7.2v12.93c0 7.16-13.2 12.36-17.86 4.28"
+          />
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="M30.5 21.2v14.14L19.31 41.8c-6.2 3.58-17.3-5.25-12.64-13.33"
+          />
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="m30.5 27.94l-12.47 7.2l-11.19-6.46c-6.21-3.59-4.11-17.61 5.22-17.61"
+          />
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="m24.44 31.44l-12.47-7.2V11.31c0-7.16 13.2-12.36 17.86-4.28"
+          />
+        </svg>
+        <span
+          class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+        >
+          Open in ChatGPT
+        </span>
+      </a>
+    </div>
+
+    <!-- Installation -->
+    <section
+      id="installation"
+      class="mb-12"
+      aria-labelledby="installation-heading"
+    >
+      <h2
+        id="installation-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Installation ]
+      </h2>
+      <div
+        class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+      >
+        <pre><code [innerHTML]="installationCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+    </section>
+
+    <!-- Import -->
+    <section id="import" class="mb-12" aria-labelledby="import-heading">
+      <h2
+        id="import-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Import ]
+      </h2>
+      <div class="space-y-3">
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+        >
+          <pre><code [innerHTML]="importCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+        >
+          <pre><code [innerHTML]="componentImportCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Basic Usage -->
+    <section
+      id="basic-usage"
+      class="mb-12"
+      aria-labelledby="basic-usage-heading"
+    >
+      <h2
+        id="basic-usage-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Basic Usage ]
+      </h2>
+      <div
+        class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+      >
+        <pre><code [innerHTML]="basicUsageCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+      <div
+        class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        role="img"
+        aria-label="Live preview of basic dialog"
+      >
+        <wally-dialog>
+          <wally-dialog-trigger>
+            <wally-button variant="outline">Open Dialog</wally-button>
+          </wally-dialog-trigger>
+
+          <wally-dialog-content>
+            <wally-dialog-close>
+              <button
+                type="button"
+                class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none dark:ring-offset-[#1b1b1b] text-[#0a0a0a] dark:text-white cursor-pointer"
+                aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </wally-dialog-close>
+
+            <wally-dialog-header>
+              <wally-dialog-title>Dialog Title</wally-dialog-title>
+              <wally-dialog-description>
+                This is a basic dialog example with a title and description.
+              </wally-dialog-description>
+            </wally-dialog-header>
+
+            <wally-dialog-footer>
+              <wally-dialog-close>
+                <wally-button variant="outline">Cancel</wally-button>
+              </wally-dialog-close>
+              <wally-button>Confirm</wally-button>
+            </wally-dialog-footer>
+          </wally-dialog-content>
+        </wally-dialog>
+      </div>
+    </section>
+
+    <!-- Confirmation Dialog -->
+    <section
+      id="confirmation-dialog"
+      class="mb-12"
+      aria-labelledby="confirmation-dialog-heading"
+    >
+      <h2
+        id="confirmation-dialog-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Confirmation Dialog ]
+      </h2>
+      <div
+        class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+      >
+        <pre><code [innerHTML]="confirmationDialogCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+      <div
+        class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        role="img"
+        aria-label="Live preview of confirmation dialog"
+      >
+        <wally-dialog>
+          <wally-dialog-trigger>
+            <wally-button variant="destructive">Delete Account</wally-button>
+          </wally-dialog-trigger>
+
+          <wally-dialog-content>
+            <wally-dialog-close>
+              <button
+                type="button"
+                class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none dark:ring-offset-[#1b1b1b] text-[#0a0a0a] dark:text-white cursor-pointer"
+                aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </wally-dialog-close>
+
+            <wally-dialog-header>
+              <wally-dialog-title>Are you absolutely sure?</wally-dialog-title>
+              <wally-dialog-description>
+                This action cannot be undone. This will permanently delete your
+                account and remove your data from our servers.
+              </wally-dialog-description>
+            </wally-dialog-header>
+
+            <wally-dialog-footer>
+              <wally-dialog-close>
+                <wally-button variant="outline">Cancel</wally-button>
+              </wally-dialog-close>
+              <wally-button variant="destructive" (click)="onDelete()"
+                >Delete</wally-button
+              >
+            </wally-dialog-footer>
+          </wally-dialog-content>
+        </wally-dialog>
+      </div>
+    </section>
+
+    <!-- With Form -->
+    <section id="with-form" class="mb-12" aria-labelledby="with-form-heading">
+      <h2
+        id="with-form-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ With Form ]
+      </h2>
+      <div
+        class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+      >
+        <pre><code [innerHTML]="withFormCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+      <div
+        class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        role="img"
+        aria-label="Live preview of dialog with form"
+      >
+        <wally-dialog>
+          <wally-dialog-trigger>
+            <wally-button>Edit Profile</wally-button>
+          </wally-dialog-trigger>
+
+          <wally-dialog-content>
+            <wally-dialog-close>
+              <button
+                type="button"
+                class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none dark:ring-offset-[#1b1b1b] text-[#0a0a0a] dark:text-white cursor-pointer"
+                aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </wally-dialog-close>
+
+            <wally-dialog-header>
+              <wally-dialog-title>Edit Profile</wally-dialog-title>
+              <wally-dialog-description>
+                Make changes to your profile here. Click save when you're done.
+              </wally-dialog-description>
+            </wally-dialog-header>
+
+            <div class="px-6 py-4 space-y-4">
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium text-[#0a0a0a] dark:text-white"
+                >
+                  Name
+                </label>
+                <wally-input
+                  type="text"
+                  placeholder="Enter your name"
+                ></wally-input>
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium text-[#0a0a0a] dark:text-white"
+                >
+                  Email
+                </label>
+                <wally-input
+                  type="email"
+                  placeholder="Enter your email"
+                ></wally-input>
+              </div>
+            </div>
+
+            <wally-dialog-footer>
+              <wally-dialog-close>
+                <wally-button variant="outline">Cancel</wally-button>
+              </wally-dialog-close>
+              <wally-button (click)="onSave()">Save Changes</wally-button>
+            </wally-dialog-footer>
+          </wally-dialog-content>
+        </wally-dialog>
+      </div>
+    </section>
+
+    <!-- Custom Content -->
+    <section
+      id="custom-content"
+      class="mb-12"
+      aria-labelledby="custom-content-heading"
+    >
+      <h2
+        id="custom-content-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Custom Content ]
+      </h2>
+      <div
+        class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+      >
+        <pre><code [innerHTML]="customContentCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+      <div
+        class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        role="img"
+        aria-label="Live preview of dialog with custom content"
+      >
+        <wally-dialog>
+          <wally-dialog-trigger>
+            <wally-button variant="outline">View Details</wally-button>
+          </wally-dialog-trigger>
+
+          <wally-dialog-content>
+            <wally-dialog-close>
+              <button
+                type="button"
+                class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none dark:ring-offset-[#1b1b1b] text-[#0a0a0a] dark:text-white cursor-pointer"
+                aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </wally-dialog-close>
+
+            <wally-dialog-header>
+              <wally-dialog-title>Product Details</wally-dialog-title>
+            </wally-dialog-header>
+
+            <div class="px-6 py-4">
+              <img
+                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"
+                alt="Product"
+                class="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3
+                class="text-lg font-semibold text-[#0a0a0a] dark:text-white mb-2"
+              >
+                Premium Headphones
+              </h3>
+              <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
+                High-quality wireless headphones with noise cancellation and
+                premium sound quality. Perfect for music lovers and
+                professionals.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-bold text-[#0a0a0a] dark:text-white">
+                  $299.99
+                </span>
+                <span class="text-sm text-green-600 dark:text-green-400">
+                  In Stock
+                </span>
+              </div>
+            </div>
+
+            <wally-dialog-footer>
+              <wally-dialog-close>
+                <wally-button variant="outline">Close</wally-button>
+              </wally-dialog-close>
+              <wally-button (click)="onAddToCart()">Add to Cart</wally-button>
+            </wally-dialog-footer>
+          </wally-dialog-content>
+        </wally-dialog>
+      </div>
+    </section>
+
+    <!-- Disable Backdrop Click -->
+    <section
+      id="disable-backdrop-click"
+      class="mb-12"
+      aria-labelledby="disable-backdrop-click-heading"
+    >
+      <h2
+        id="disable-backdrop-click-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Disable Backdrop Click ]
+      </h2>
+      <div
+        class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+      >
+        <pre><code [innerHTML]="disableBackdropClickCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+      <div
+        class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        role="img"
+        aria-label="Live preview of dialog with disabled backdrop click"
+      >
+        <wally-dialog [closeOnBackdropClick]="false">
+          <wally-dialog-trigger>
+            <wally-button variant="outline"
+              >Open (No Backdrop Close)</wally-button
+            >
+          </wally-dialog-trigger>
+
+          <wally-dialog-content>
+            <wally-dialog-close>
+              <button
+                type="button"
+                class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none dark:ring-offset-[#1b1b1b] text-[#0a0a0a] dark:text-white cursor-pointer"
+                aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </wally-dialog-close>
+
+            <wally-dialog-header>
+              <wally-dialog-title>Important Action Required</wally-dialog-title>
+              <wally-dialog-description>
+                This dialog cannot be closed by clicking outside. You must make
+                a choice.
+              </wally-dialog-description>
+            </wally-dialog-header>
+
+            <wally-dialog-footer>
+              <wally-dialog-close>
+                <wally-button variant="outline">Decline</wally-button>
+              </wally-dialog-close>
+              <wally-button (click)="onAccept()">Accept</wally-button>
+            </wally-dialog-footer>
+          </wally-dialog-content>
+        </wally-dialog>
+      </div>
+    </section>
+
+    <!-- API Reference -->
+    <section id="api-reference" class="mb-12" aria-labelledby="api-heading">
+      <h2
+        id="api-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ API Reference ]
+      </h2>
+
+      <!-- Dialog Props -->
+      <article class="mb-8" aria-labelledby="dialog-props-heading">
+        <h3
+          id="dialog-props-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Dialog Props
+        </h3>
+        <div
+          class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50 dark:bg-gray-900">
+                <tr>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Property
+                  </th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Type
+                  </th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Default
+                  </th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Description
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    closeOnBackdropClick
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    boolean
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    true
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Whether clicking the backdrop closes the dialog
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    closeOnEsc
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    boolean
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    true
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Whether pressing ESC key closes the dialog
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Components -->
+      <article class="mb-8" aria-labelledby="components-heading">
+        <h3
+          id="components-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Components
+        </h3>
+        <div
+          class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50 dark:bg-gray-900">
+                <tr>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Component
+                  </th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Description
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    Dialog
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Root component that provides dialog state and service
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    DialogTrigger
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Wrapper for the element that opens the dialog on click
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    DialogContent
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Container for dialog content with glass blur backdrop
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    DialogHeader
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Container for title and description with proper spacing
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    DialogFooter
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Container for action buttons with responsive layout
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    DialogTitle
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Styled heading for the dialog title
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    DialogDescription
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Styled text for the dialog description
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    DialogClose
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Close button (X) positioned in top-right corner
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Component TypeScript -->
+    <section
+      id="component-ts"
+      class="mb-12"
+      aria-labelledby="component-ts-heading"
+    >
+      <h2
+        id="component-ts-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Component TypeScript ]
+      </h2>
+      <div
+        class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+      >
+        <pre><code [innerHTML]="componentTsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+    </section>
+  </div>
+</main>
