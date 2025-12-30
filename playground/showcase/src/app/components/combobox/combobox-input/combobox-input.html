@@ -27,7 +27,7 @@
     <input
       #inputElement
       type="text"
-      class="flex-1 min-w-[120px] outline-none bg-transparent text-[#0a0a0a] dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 text-sm"
+      class="flex-1 min-w-[120px] outline-none bg-transparent text-[#0a0a0a] dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 text-base md:text-sm"
       [placeholder]="comboboxService.selectedItems().length === 0 ? comboboxService.placeholder() : ''"
       [value]="comboboxService.searchQuery()"
       [disabled]="comboboxService.disabled()"
