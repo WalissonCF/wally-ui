@@ -1,0 +1,719 @@
+<main class="min-h-dvh bg-white dark:bg-[#0a0a0a]" role="main">
+  <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 md:px-8">
+    <!-- Breadcrumb Navigation -->
+    <nav class="mb-8" aria-label="Breadcrumb navigation">
+      <wally-breadcrumb [items]="breadcrumbItems"></wally-breadcrumb>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-12" role="banner">
+      <h1
+        id="page-title"
+        class="text-3xl sm:text-4xl font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase"
+      >
+        <span aria-hidden="true">&gt;_ </span>Toast
+      </h1>
+      <p
+        class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 border-l-2 border-neutral-300 dark:border-neutral-700 pl-4 leading-relaxed"
+      >
+        Toast notification system inspired by Sonner. Features 5 toast types, 9
+        positioning options, stacking with hover expansion, and smooth
+        animations. Built with Angular Signals.
+      </p>
+    </header>
+
+    <!-- AI Assistant Links -->
+    <div
+      class="flex flex-wrap gap-0 mt-6 mb-12 border-2 border-neutral-300 dark:border-neutral-700"
+      role="list"
+      aria-label="Open documentation in AI coding assistants"
+    >
+      <a
+        [href]="claudeUrl"
+        target="_blank"
+        class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] border-b-2 sm:border-b-0 sm:border-r-2 border-neutral-300 dark:border-neutral-700 hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+        rel="noopener noreferrer"
+        role="listitem"
+        aria-label="Open Toast component documentation in Claude AI assistant (opens in new tab)"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="m4.714 15.956l4.718-2.648l.079-.23l-.08-.128h-.23l-.79-.048l-2.695-.073l-2.337-.097l-2.265-.122l-.57-.121l-.535-.704l.055-.353l.48-.321l.685.06l1.518.104l2.277.157l1.651.098l2.447.255h.389l.054-.158l-.133-.097l-.103-.098l-2.356-1.596l-2.55-1.688l-1.336-.972l-.722-.491L2 6.223l-.158-1.008l.656-.722l.88.06l.224.061l.893.686l1.906 1.476l2.49 1.833l.364.304l.146-.104l.018-.072l-.164-.274l-1.354-2.446l-1.445-2.49l-.644-1.032l-.17-.619a3 3 0 0 1-.103-.729L6.287.133L6.7 0l.995.134l.42.364l.619 1.415L9.735 4.14l1.555 3.03l.455.898l.243.832l.09.255h.159V9.01l.127-1.706l.237-2.095l.23-2.695l.08-.76l.376-.91l.747-.492l.583.28l.48.685l-.067.444l-.286 1.851l-.558 2.903l-.365 1.942h.213l.243-.242l.983-1.306l1.652-2.064l.728-.82l.85-.904l.547-.431h1.032l.759 1.129l-.34 1.166l-1.063 1.347l-.88 1.142l-1.263 1.7l-.79 1.36l.074.11l.188-.02l2.853-.606l1.542-.28l1.84-.315l.832.388l.09.395l-.327.807l-1.967.486l-2.307.462l-3.436.813l-.043.03l.049.061l1.548.146l.662.036h1.62l3.018.225l.79.522l.473.638l-.08.485l-1.213.62l-1.64-.389l-3.825-.91l-1.31-.329h-.183v.11l1.093 1.068l2.003 1.81l2.508 2.33l.127.578l-.321.455l-.34-.049l-2.204-1.657l-.85-.747l-1.925-1.62h-.127v.17l.443.649l2.343 3.521l.122 1.08l-.17.353l-.607.213l-.668-.122l-1.372-1.924l-1.415-2.168l-1.141-1.943l-.14.08l-.674 7.254l-.316.37l-.728.28l-.607-.461l-.322-.747l.322-1.476l.388-1.924l.316-1.53l.285-1.9l.17-.632l-.012-.042l-.14.018l-1.432 1.967l-2.18 2.945l-1.724 1.845l-.413.164l-.716-.37l.066-.662l.401-.589l2.386-3.036l1.439-1.882l.929-1.086l-.006-.158h-.055L4.138 18.56l-1.13.146l-.485-.456l.06-.746l.231-.243l1.907-1.312Z"
+          />
+        </svg>
+        <span
+          class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+        >
+          Open in Claude
+        </span>
+      </a>
+
+      <a
+        [href]="chatGptUrl"
+        target="_blank"
+        class="group flex-1 min-w-[200px] flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#0a0a0a] hover:bg-[#0a0a0a] dark:hover:bg-white transition-all duration-150 cursor-pointer"
+        rel="noopener noreferrer"
+        role="listitem"
+        aria-label="Open Toast component documentation in ChatGPT AI assistant (opens in new tab)"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-5 text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+          viewBox="0 0 48 48"
+          aria-hidden="true"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="M18.38 27.94v-14.4l11.19-6.46c6.2-3.58 17.3 5.25 12.64 13.33"
+          />
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="m18.38 20.94l12.47-7.2l11.19 6.46c6.2 3.58 4.1 17.61-5.23 17.61"
+          />
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="m24.44 17.44l12.47 7.2v12.93c0 7.16-13.2 12.36-17.86 4.28"
+          />
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="M30.5 21.2v14.14L19.31 41.8c-6.2 3.58-17.3-5.25-12.64-13.33"
+          />
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="m30.5 27.94l-12.47 7.2l-11.19-6.46c-6.21-3.59-4.11-17.61 5.22-17.61"
+          />
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linejoin="round"
+            d="m24.44 31.44l-12.47-7.2V11.31c0-7.16 13.2-12.36 17.86-4.28"
+          />
+        </svg>
+        <span
+          class="text-xs sm:text-sm font-medium text-[#0a0a0a] dark:text-neutral-400 group-hover:text-white dark:group-hover:text-[#0a0a0a] transition-colors duration-150"
+        >
+          Open in ChatGPT
+        </span>
+      </a>
+    </div>
+
+    <!-- Installation -->
+    <section
+      id="installation"
+      class="mb-12"
+      aria-labelledby="installation-heading"
+    >
+      <h2
+        id="installation-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Installation ]
+      </h2>
+      <code
+        class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white block bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+        aria-label="Installation command for Toast component"
+      >
+        <pre><code [innerHTML]="installationCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </code>
+    </section>
+
+    <!-- Setup -->
+    <section id="setup" class="mb-12" aria-labelledby="setup-heading">
+      <h2
+        id="setup-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Setup ]
+      </h2>
+      <p
+        class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed"
+      >
+        Add the Toast component once at the root level of your application.
+      </p>
+      <div
+        class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+      >
+        <pre><code [innerHTML]="setupExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+    </section>
+
+    <!-- Basic Usage -->
+    <section
+      id="basic-usage"
+      class="mb-12"
+      aria-labelledby="basic-usage-heading"
+    >
+      <h2
+        id="basic-usage-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Basic Usage ]
+      </h2>
+      <div
+        class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+      >
+        <pre><code [innerHTML]="basicUsageCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+      <div
+        class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        role="img"
+        aria-label="Live preview of basic toast"
+      >
+        <wally-button (click)="showSuccess()">Show Success Toast</wally-button>
+      </div>
+    </section>
+
+    <!-- All Types Preview -->
+    <section
+      id="all-types"
+      class="mb-12"
+      aria-labelledby="types-preview-heading"
+    >
+      <h2
+        id="types-preview-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ All Types ]
+      </h2>
+      <div
+        class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        role="img"
+        aria-label="Live preview of all toast types"
+      >
+        <div class="flex flex-col gap-3">
+          <wally-button (click)="showSuccess()">Success Toast</wally-button>
+          <wally-button (click)="showError()">Error Toast</wally-button>
+          <wally-button (click)="showInfo()">Info Toast</wally-button>
+          <wally-button (click)="showWarning()">Warning Toast</wally-button>
+          <wally-button (click)="showLoading()">Loading Toast</wally-button>
+          <wally-button (click)="showNeutral()">Neutral Toast</wally-button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Types Documentation -->
+    <section id="types" class="mb-12" aria-labelledby="types-heading">
+      <h2
+        id="types-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Types ]
+      </h2>
+
+      <!-- Success -->
+      <article class="mb-8" aria-labelledby="success-type-heading">
+        <h3
+          id="success-type-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Success
+        </h3>
+        <p
+          class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed"
+        >
+          For successful operations, confirmations, and positive feedback.
+        </p>
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+        >
+          <pre><code [innerHTML]="successTypeCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div
+          class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        >
+          <wally-button (click)="showSuccess()">Show Success</wally-button>
+        </div>
+      </article>
+
+      <!-- Error -->
+      <article class="mb-8" aria-labelledby="error-type-heading">
+        <h3
+          id="error-type-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Error
+        </h3>
+        <p
+          class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed"
+        >
+          For errors, failures, and critical issues that need attention.
+        </p>
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+        >
+          <pre><code [innerHTML]="errorTypeCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div
+          class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        >
+          <wally-button (click)="showError()">Show Error</wally-button>
+        </div>
+      </article>
+
+      <!-- Info -->
+      <article class="mb-8" aria-labelledby="info-type-heading">
+        <h3
+          id="info-type-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Info
+        </h3>
+        <p
+          class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed"
+        >
+          For informational messages and general notifications.
+        </p>
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+        >
+          <pre><code [innerHTML]="infoTypeCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div
+          class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        >
+          <wally-button (click)="showInfo()">Show Info</wally-button>
+        </div>
+      </article>
+
+      <!-- Warning -->
+      <article class="mb-8" aria-labelledby="warning-type-heading">
+        <h3
+          id="warning-type-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Warning
+        </h3>
+        <p
+          class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed"
+        >
+          For warnings, cautions, and potential issues.
+        </p>
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+        >
+          <pre><code [innerHTML]="warningTypeCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div
+          class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        >
+          <wally-button (click)="showWarning()">Show Warning</wally-button>
+        </div>
+      </article>
+
+      <!-- Loading -->
+      <article class="mb-8" aria-labelledby="loading-type-heading">
+        <h3
+          id="loading-type-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Loading
+        </h3>
+        <p
+          class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed"
+        >
+          For async operations. Loading toasts don't auto-dismiss and must be
+          removed manually.
+        </p>
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+        >
+          <pre><code [innerHTML]="loadingTypeCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div
+          class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        >
+          <wally-button (click)="showLoading()">Show Loading</wally-button>
+        </div>
+      </article>
+
+      <!-- Neutral -->
+      <article class="mb-8" aria-labelledby="neutral-type-heading">
+        <h3
+          id="neutral-type-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Neutral
+        </h3>
+        <p
+          class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed"
+        >
+          For generic notifications without an icon. Neutral toasts don't
+          auto-dismiss and must be removed manually.
+        </p>
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+        >
+          <pre><code [innerHTML]="neutralTypeCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+        <div
+          class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        >
+          <wally-button (click)="showNeutral()">Show Neutral</wally-button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Positions -->
+    <section id="positions" class="mb-12" aria-labelledby="positions-heading">
+      <h2
+        id="positions-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Positions ]
+      </h2>
+      <p
+        class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed"
+      >
+        Toasts can be positioned in 9 different locations. Default position is
+        <code
+          class="px-1.5 py-0.5 bg-neutral-200 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 text-xs rounded"
+          >top-center</code
+        >.
+      </p>
+
+      <!-- Top Positions -->
+      <article class="mb-8">
+        <h3
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Top Positions
+        </h3>
+        <div
+          class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <wally-button (click)="showTopLeft()">Top Left</wally-button>
+            <wally-button (click)="showTopCenter()">Top Center</wally-button>
+            <wally-button (click)="showTopRight()">Top Right</wally-button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Center Positions -->
+      <article class="mb-8">
+        <h3
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Center Positions
+        </h3>
+        <div
+          class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <wally-button (click)="showCenterLeft()">Center Left</wally-button>
+            <wally-button (click)="showCenter()">Center</wally-button>
+            <wally-button (click)="showCenterRight()"
+              >Center Right</wally-button
+            >
+          </div>
+        </div>
+      </article>
+
+      <!-- Bottom Positions -->
+      <article class="mb-8">
+        <h3
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Bottom Positions
+        </h3>
+        <div
+          class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <wally-button (click)="showBottomLeft()">Bottom Left</wally-button>
+            <wally-button (click)="showBottomCenter()"
+              >Bottom Center</wally-button
+            >
+            <wally-button (click)="showBottomRight()"
+              >Bottom Right</wally-button
+            >
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Stacking Demo -->
+    <section id="stacking" class="mb-12" aria-labelledby="stacking-heading">
+      <h2
+        id="stacking-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Stacking & Hover Expansion ]
+      </h2>
+      <p
+        class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed"
+      >
+        Maximum 5 toasts per position. New toasts appear on top with subtle
+        stacking effect. Hover to expand and see all toasts.
+      </p>
+      <div
+        class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3 mb-4"
+      >
+        <pre><code [innerHTML]="stackingDemoCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+      </div>
+      <div
+        class="p-8 border-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#0a0a0a]"
+      >
+        <wally-button (click)="showStackingDemo()"
+          >Demo Stacking (5 Toasts)</wally-button
+        >
+      </div>
+    </section>
+
+    <!-- Production Examples -->
+    <section id="examples" class="mb-12" aria-labelledby="examples-heading">
+      <h2
+        id="examples-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ Production Examples ]
+      </h2>
+
+      <!-- Form Example -->
+      <article class="mb-8">
+        <h3
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Form Submission
+        </h3>
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+        >
+          <pre><code [innerHTML]="formExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+
+      <!-- Upload Example -->
+      <article class="mb-8">
+        <h3
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>File Upload
+        </h3>
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+        >
+          <pre><code [innerHTML]="uploadExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+
+      <!-- Clipboard Example -->
+      <article class="mb-8">
+        <h3
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-3 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Clipboard Copy
+        </h3>
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+        >
+          <pre><code [innerHTML]="clipboardExampleCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- API Reference -->
+    <section id="api" class="mb-12" aria-labelledby="api-heading">
+      <h2
+        id="api-heading"
+        class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-4"
+      >
+        [ API Reference ]
+      </h2>
+
+      <!-- Toast Properties -->
+      <article class="mb-8" aria-labelledby="toast-properties-heading">
+        <h3
+          id="toast-properties-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Toast Properties
+        </h3>
+        <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50 dark:bg-gray-900">
+                <tr>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Property</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Type</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Default</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">type</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">'success' | 'error' | 'info' | 'warning' | 'loading' | 'neutral'</td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">required</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">Visual type and icon of the toast. Loading and neutral have no auto-dismiss</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">message</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">required</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">Main message text displayed in the toast</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">title</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">undefined</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">Optional bold title text displayed above the message</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">duration</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">number</td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">5000</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">Auto-dismiss duration in milliseconds. Set to 0 for no auto-dismiss (manual close only)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">position</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">ToastPosition</td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">'top-center'</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">Position on screen: 'top-left', 'top-center', 'top-right', 'center-left', 'center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right'</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- ToastService Methods -->
+      <article class="mb-8" aria-labelledby="service-methods-heading">
+        <h3
+          id="service-methods-heading"
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>ToastService Methods
+        </h3>
+        <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50 dark:bg-gray-900">
+                <tr>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Method</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Parameters</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Returns</th>
+                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">create()</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">toast: Omit&lt;Toast, 'id'&gt;</td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">number</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">Creates and displays a new toast. Returns the toast ID for manual removal (required for loading toasts)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">remove()</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">id: number</td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">void</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">Removes a toast by ID. Use this to manually dismiss loading or neutral toasts</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">pause()</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">id: number</td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">void</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">Pauses auto-dismiss timer (used internally on hover). Calculates remaining time for accurate resume</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">resume()</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">id: number</td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">void</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">Resumes auto-dismiss timer with remaining duration (used internally when hover ends)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">setDefaultPosition()</td>
+                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">position: ToastPosition</td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">void</td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">Sets the default position for all future toasts. Call during app initialization</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Code Examples -->
+      <article class="mb-8">
+        <h3
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Usage Examples
+        </h3>
+
+        <!-- create() example -->
+        <div class="mb-6">
+          <h4 class="text-xs sm:text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">create()</h4>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="apiCreateMethodCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+        </div>
+
+        <!-- remove() example -->
+        <div class="mb-6">
+          <h4 class="text-xs sm:text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">remove()</h4>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="apiRemoveMethodCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+        </div>
+
+        <!-- setDefaultPosition() example -->
+        <div class="mb-6">
+          <h4 class="text-xs sm:text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">setDefaultPosition()</h4>
+          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+            <pre><code [innerHTML]="apiSetDefaultPositionCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+          </div>
+        </div>
+      </article>
+
+      <!-- Type Definitions -->
+      <article class="mb-8">
+        <h3
+          class="text-sm sm:text-base font-bold text-[#0a0a0a] dark:text-white mb-4 uppercase"
+        >
+          <span aria-hidden="true">&gt; </span>Type Definitions
+        </h3>
+        <div
+          class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+        >
+          <pre><code [innerHTML]="typeDefinitionsCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="pt-8 border-t border-neutral-300 dark:border-neutral-700"
+      role="contentinfo"
+    >
+      <p class="text-xs text-neutral-500 dark:text-neutral-500">
+        Last updated: 2026
+      </p>
+    </footer>
+  </div>
+
+  <!-- Toast Container -->
+  <wally-toast />
+</main>

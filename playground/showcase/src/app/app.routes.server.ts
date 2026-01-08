@@ -50,6 +50,10 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
   },
   {
+    path: 'documentation/components/toast',
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: 'documentation/chat-sdk',
     renderMode: RenderMode.Prerender,
   },

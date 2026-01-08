@@ -44,5 +44,9 @@ export const componentsRoutes: Routes = [
   {
     path: 'dialog',
     loadComponent: () => import('./dialog-docs/dialog-docs').then(m => m.DialogDocs)
+  },
+  {
+    path: 'toast',
+    loadComponent: () => import('./toast-docs/toast-docs').then(m => m.ToastDocs)
   }
 ];
