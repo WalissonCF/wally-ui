@@ -1,4 +1,4 @@
-<main class="min-h-dvh bg-white dark:bg-[#0a0a0a]" role="main">
+<main class="min-h-dvh bg-white dark:bg-[#0a0a0a] font-mono" role="main">
   <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 md:px-8">
     <!-- Breadcrumb Navigation -->
     <nav class="mb-8" aria-label="Breadcrumb navigation">
@@ -551,47 +551,120 @@
         >
           <span aria-hidden="true">&gt; </span>Toast Properties
         </h3>
-        <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
+        <div
+          class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden"
+        >
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
               <thead class="bg-gray-50 dark:bg-gray-900">
                 <tr>
-                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Property</th>
-                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Type</th>
-                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Default</th>
-                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Description</th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Property
+                  </th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Type
+                  </th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Default
+                  </th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Description
+                  </th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                 <tr>
-                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">type</td>
-                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">'success' | 'error' | 'info' | 'warning' | 'loading' | 'neutral'</td>
-                  <td class="p-4 font-mono text-green-600 dark:text-green-400">required</td>
-                  <td class="p-4 text-gray-700 dark:text-gray-300">Visual type and icon of the toast. Loading and neutral have no auto-dismiss</td>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    type
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    'success' | 'error' | 'info' | 'warning' | 'loading' |
+                    'neutral'
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    required
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Visual type and icon of the toast. Loading and neutral have
+                    no auto-dismiss
+                  </td>
                 </tr>
                 <tr>
-                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">message</td>
-                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
-                  <td class="p-4 font-mono text-green-600 dark:text-green-400">required</td>
-                  <td class="p-4 text-gray-700 dark:text-gray-300">Main message text displayed in the toast</td>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    message
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    string
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    required
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Main message text displayed in the toast
+                  </td>
                 </tr>
                 <tr>
-                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">title</td>
-                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">string</td>
-                  <td class="p-4 font-mono text-green-600 dark:text-green-400">undefined</td>
-                  <td class="p-4 text-gray-700 dark:text-gray-300">Optional bold title text displayed above the message</td>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    title
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    string
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    undefined
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Optional bold title text displayed above the message
+                  </td>
                 </tr>
                 <tr>
-                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">duration</td>
-                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">number</td>
-                  <td class="p-4 font-mono text-green-600 dark:text-green-400">5000</td>
-                  <td class="p-4 text-gray-700 dark:text-gray-300">Auto-dismiss duration in milliseconds. Set to 0 for no auto-dismiss (manual close only)</td>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    duration
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    number
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    5000
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Auto-dismiss duration in milliseconds. Set to 0 for no
+                    auto-dismiss (manual close only)
+                  </td>
                 </tr>
                 <tr>
-                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">position</td>
-                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">ToastPosition</td>
-                  <td class="p-4 font-mono text-green-600 dark:text-green-400">'top-center'</td>
-                  <td class="p-4 text-gray-700 dark:text-gray-300">Position on screen: 'top-left', 'top-center', 'top-right', 'center-left', 'center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right'</td>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    position
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    ToastPosition
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    'top-center'
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Position on screen: 'top-left', 'top-center', 'top-right',
+                    'center-left', 'center', 'center-right', 'bottom-left',
+                    'bottom-center', 'bottom-right'
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -607,47 +680,120 @@
         >
           <span aria-hidden="true">&gt; </span>ToastService Methods
         </h3>
-        <div class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden">
+        <div
+          class="bg-white dark:bg-[#0f0f0f] border-2 border-neutral-300 dark:border-neutral-800 overflow-hidden"
+        >
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
               <thead class="bg-gray-50 dark:bg-gray-900">
                 <tr>
-                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Method</th>
-                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Parameters</th>
-                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Returns</th>
-                  <th class="text-left p-4 font-medium text-gray-900 dark:text-gray-100">Description</th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Method
+                  </th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Parameters
+                  </th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Returns
+                  </th>
+                  <th
+                    class="text-left p-4 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Description
+                  </th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                 <tr>
-                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">create()</td>
-                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">toast: Omit&lt;Toast, 'id'&gt;</td>
-                  <td class="p-4 font-mono text-green-600 dark:text-green-400">number</td>
-                  <td class="p-4 text-gray-700 dark:text-gray-300">Creates and displays a new toast. Returns the toast ID for manual removal (required for loading toasts)</td>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    create()
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    toast: Omit&lt;Toast, 'id'&gt;
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    number
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Creates and displays a new toast. Returns the toast ID for
+                    manual removal (required for loading toasts)
+                  </td>
                 </tr>
                 <tr>
-                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">remove()</td>
-                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">id: number</td>
-                  <td class="p-4 font-mono text-green-600 dark:text-green-400">void</td>
-                  <td class="p-4 text-gray-700 dark:text-gray-300">Removes a toast by ID. Use this to manually dismiss loading or neutral toasts</td>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    remove()
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    id: number
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    void
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Removes a toast by ID. Use this to manually dismiss loading
+                    or neutral toasts
+                  </td>
                 </tr>
                 <tr>
-                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">pause()</td>
-                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">id: number</td>
-                  <td class="p-4 font-mono text-green-600 dark:text-green-400">void</td>
-                  <td class="p-4 text-gray-700 dark:text-gray-300">Pauses auto-dismiss timer (used internally on hover). Calculates remaining time for accurate resume</td>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    pause()
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    id: number
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    void
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Pauses auto-dismiss timer (used internally on hover).
+                    Calculates remaining time for accurate resume
+                  </td>
                 </tr>
                 <tr>
-                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">resume()</td>
-                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">id: number</td>
-                  <td class="p-4 font-mono text-green-600 dark:text-green-400">void</td>
-                  <td class="p-4 text-gray-700 dark:text-gray-300">Resumes auto-dismiss timer with remaining duration (used internally when hover ends)</td>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    resume()
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    id: number
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    void
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Resumes auto-dismiss timer with remaining duration (used
+                    internally when hover ends)
+                  </td>
                 </tr>
                 <tr>
-                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">setDefaultPosition()</td>
-                  <td class="p-4 font-mono text-purple-600 dark:text-purple-400">position: ToastPosition</td>
-                  <td class="p-4 font-mono text-green-600 dark:text-green-400">void</td>
-                  <td class="p-4 text-gray-700 dark:text-gray-300">Sets the default position for all future toasts. Call during app initialization</td>
+                  <td class="p-4 font-mono text-blue-600 dark:text-blue-400">
+                    setDefaultPosition()
+                  </td>
+                  <td
+                    class="p-4 font-mono text-purple-600 dark:text-purple-400"
+                  >
+                    position: ToastPosition
+                  </td>
+                  <td class="p-4 font-mono text-green-600 dark:text-green-400">
+                    void
+                  </td>
+                  <td class="p-4 text-gray-700 dark:text-gray-300">
+                    Sets the default position for all future toasts. Call during
+                    app initialization
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -665,24 +811,42 @@
 
         <!-- create() example -->
         <div class="mb-6">
-          <h4 class="text-xs sm:text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">create()</h4>
-          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <h4
+            class="text-xs sm:text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2"
+          >
+            create()
+          </h4>
+          <div
+            class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+          >
             <pre><code [innerHTML]="apiCreateMethodCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
         </div>
 
         <!-- remove() example -->
         <div class="mb-6">
-          <h4 class="text-xs sm:text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">remove()</h4>
-          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <h4
+            class="text-xs sm:text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2"
+          >
+            remove()
+          </h4>
+          <div
+            class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+          >
             <pre><code [innerHTML]="apiRemoveMethodCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
         </div>
 
         <!-- setDefaultPosition() example -->
         <div class="mb-6">
-          <h4 class="text-xs sm:text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2">setDefaultPosition()</h4>
-          <div class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3">
+          <h4
+            class="text-xs sm:text-sm font-semibold text-[#0a0a0a] dark:text-white mb-2"
+          >
+            setDefaultPosition()
+          </h4>
+          <div
+            class="bg-neutral-100 dark:bg-[#121212] border border-neutral-300 dark:border-neutral-700 p-3"
+          >
             <pre><code [innerHTML]="apiSetDefaultPositionCode" class="text-xs sm:text-sm text-[#0a0a0a] dark:text-white"></code></pre>
           </div>
         </div>
